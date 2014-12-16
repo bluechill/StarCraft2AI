@@ -1,0 +1,504 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4DAF733C1A2FAF5400DF7137 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAF733B1A2FAF5400DF7137 /* main.m */; };
+		4DAF73501A2FB04600DF7137 /* MachInjectorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DAF734E1A2FB03F00DF7137 /* MachInjectorFramework.framework */; };
+		4DAF73521A2FF92900DF7137 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DAF73511A2FF92900DF7137 /* Security.framework */; };
+		4DAF73601A2FFD1900DF7137 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAF733B1A2FAF5400DF7137 /* main.m */; };
+		4DAF73621A2FFD1900DF7137 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DAF73511A2FF92900DF7137 /* Security.framework */; };
+		4DAF73631A2FFD1900DF7137 /* MachInjectorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DAF734E1A2FB03F00DF7137 /* MachInjectorFramework.framework */; };
+		4DC671241A3B548F00712E41 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC671231A3B548F00712E41 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4DAF73471A2FB02100DF7137 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DAF73421A2FB02100DF7137 /* MachInjector.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D23DDE41A24E17B00EC6DA5;
+			remoteInfo = MachInjector;
+		};
+		4DAF73491A2FB02100DF7137 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DAF73421A2FB02100DF7137 /* MachInjector.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D7B7F651A2CBABB00FA5C0D;
+			remoteInfo = MachInjectorFramework;
+		};
+		4DAF734B1A2FB02800DF7137 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DAF73421A2FB02100DF7137 /* MachInjector.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D7B7F641A2CBABB00FA5C0D;
+			remoteInfo = MachInjectorFramework;
+		};
+		4DAF735E1A2FFD1900DF7137 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DAF73421A2FB02100DF7137 /* MachInjector.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D7B7F641A2CBABB00FA5C0D;
+			remoteInfo = MachInjectorFramework;
+		};
+		4DFDF1F51A37A4740023020B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DFDF1F01A37A4730023020B /* OpenGLFileLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DDE7A661A2E11360037056A;
+			remoteInfo = OpenGLFileLogger;
+		};
+		4DFDF1F71A37A4790023020B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DFDF1F01A37A4730023020B /* OpenGLFileLogger.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DDE7A651A2E11360037056A;
+			remoteInfo = OpenGLFileLogger;
+		};
+		4DFDF1F91A37A47D0023020B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DFDF1F01A37A4730023020B /* OpenGLFileLogger.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DDE7A651A2E11360037056A;
+			remoteInfo = OpenGLFileLogger;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4DAF73361A2FAF5400DF7137 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		4DAF73641A2FFD1900DF7137 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		4DAF73381A2FAF5400DF7137 /* InjectorCLI32 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = InjectorCLI32; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DAF733B1A2FAF5400DF7137 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4DAF73421A2FB02100DF7137 /* MachInjector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MachInjector.xcodeproj; path = /Users/bluechill/Developer/OpenGLInjector/Injector/../MachInjector/MachInjector.xcodeproj; sourceTree = "<absolute>"; };
+		4DAF734E1A2FB03F00DF7137 /* MachInjectorFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MachInjectorFramework.framework; path = "/Users/bluechill/Developer/OpenGLInjector/Injector/../../../Library/Developer/Xcode/DerivedData/OpenGLInjector-cybtiijcflqqgibtzfbrkecgjabw/Build/Products/Debug/MachInjectorFramework.framework"; sourceTree = "<absolute>"; };
+		4DAF73511A2FF92900DF7137 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4DAF73681A2FFD1900DF7137 /* InjectorCLI64 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = InjectorCLI64; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DC671211A3B548B00712E41 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		4DC671231A3B548F00712E41 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4DFDF1F01A37A4730023020B /* OpenGLFileLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OpenGLFileLogger.xcodeproj; path = ../OpenGLFileLogger/OpenGLFileLogger.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4DAF73351A2FAF5400DF7137 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DAF73521A2FF92900DF7137 /* Security.framework in Frameworks */,
+				4DAF73501A2FB04600DF7137 /* MachInjectorFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DAF73611A2FFD1900DF7137 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DC671241A3B548F00712E41 /* Foundation.framework in Frameworks */,
+				4DAF73621A2FFD1900DF7137 /* Security.framework in Frameworks */,
+				4DAF73631A2FFD1900DF7137 /* MachInjectorFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4DAF732F1A2FAF5400DF7137 = {
+			isa = PBXGroup;
+			children = (
+				4DC671231A3B548F00712E41 /* Foundation.framework */,
+				4DC671211A3B548B00712E41 /* AppKit.framework */,
+				4DFDF1F01A37A4730023020B /* OpenGLFileLogger.xcodeproj */,
+				4DAF73511A2FF92900DF7137 /* Security.framework */,
+				4DAF734E1A2FB03F00DF7137 /* MachInjectorFramework.framework */,
+				4DAF73421A2FB02100DF7137 /* MachInjector.xcodeproj */,
+				4DAF733A1A2FAF5400DF7137 /* InjectorCLI */,
+				4DAF73391A2FAF5400DF7137 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4DAF73391A2FAF5400DF7137 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DAF73381A2FAF5400DF7137 /* InjectorCLI32 */,
+				4DAF73681A2FFD1900DF7137 /* InjectorCLI64 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4DAF733A1A2FAF5400DF7137 /* InjectorCLI */ = {
+			isa = PBXGroup;
+			children = (
+				4DAF733B1A2FAF5400DF7137 /* main.m */,
+			);
+			path = InjectorCLI;
+			sourceTree = "<group>";
+		};
+		4DAF73431A2FB02100DF7137 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DAF73481A2FB02100DF7137 /* libMachInjector.dylib */,
+				4DAF734A1A2FB02100DF7137 /* MachInjectorFramework.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4DFDF1F11A37A4730023020B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DFDF1F61A37A4740023020B /* OpenGLFileLogger.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4DAF73371A2FAF5400DF7137 /* InjectorCLI32 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DAF733F1A2FAF5400DF7137 /* Build configuration list for PBXNativeTarget "InjectorCLI32" */;
+			buildPhases = (
+				4DAF73341A2FAF5400DF7137 /* Sources */,
+				4DAF73351A2FAF5400DF7137 /* Frameworks */,
+				4DAF73361A2FAF5400DF7137 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DFDF1F81A37A4790023020B /* PBXTargetDependency */,
+				4DAF734C1A2FB02800DF7137 /* PBXTargetDependency */,
+			);
+			name = InjectorCLI32;
+			productName = InjectorCLI;
+			productReference = 4DAF73381A2FAF5400DF7137 /* InjectorCLI32 */;
+			productType = "com.apple.product-type.tool";
+		};
+		4DAF735C1A2FFD1900DF7137 /* InjectorCLI64 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DAF73651A2FFD1900DF7137 /* Build configuration list for PBXNativeTarget "InjectorCLI64" */;
+			buildPhases = (
+				4DAF735F1A2FFD1900DF7137 /* Sources */,
+				4DAF73611A2FFD1900DF7137 /* Frameworks */,
+				4DAF73641A2FFD1900DF7137 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DFDF1FA1A37A47D0023020B /* PBXTargetDependency */,
+				4DAF735D1A2FFD1900DF7137 /* PBXTargetDependency */,
+			);
+			name = InjectorCLI64;
+			productName = InjectorCLI;
+			productReference = 4DAF73681A2FFD1900DF7137 /* InjectorCLI64 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4DAF73301A2FAF5400DF7137 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Alex Turner";
+				TargetAttributes = {
+					4DAF73371A2FAF5400DF7137 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 4DAF73331A2FAF5400DF7137 /* Build configuration list for PBXProject "InjectorCLI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4DAF732F1A2FAF5400DF7137;
+			productRefGroup = 4DAF73391A2FAF5400DF7137 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4DAF73431A2FB02100DF7137 /* Products */;
+					ProjectRef = 4DAF73421A2FB02100DF7137 /* MachInjector.xcodeproj */;
+				},
+				{
+					ProductGroup = 4DFDF1F11A37A4730023020B /* Products */;
+					ProjectRef = 4DFDF1F01A37A4730023020B /* OpenGLFileLogger.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				4DAF73371A2FAF5400DF7137 /* InjectorCLI32 */,
+				4DAF735C1A2FFD1900DF7137 /* InjectorCLI64 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4DAF73481A2FB02100DF7137 /* libMachInjector.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libMachInjector.dylib;
+			remoteRef = 4DAF73471A2FB02100DF7137 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4DAF734A1A2FB02100DF7137 /* MachInjectorFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MachInjectorFramework.framework;
+			remoteRef = 4DAF73491A2FB02100DF7137 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4DFDF1F61A37A4740023020B /* OpenGLFileLogger.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OpenGLFileLogger.bundle;
+			remoteRef = 4DFDF1F51A37A4740023020B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4DAF73341A2FAF5400DF7137 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DAF733C1A2FAF5400DF7137 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DAF735F1A2FFD1900DF7137 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DAF73601A2FFD1900DF7137 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4DAF734C1A2FB02800DF7137 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MachInjectorFramework;
+			targetProxy = 4DAF734B1A2FB02800DF7137 /* PBXContainerItemProxy */;
+		};
+		4DAF735D1A2FFD1900DF7137 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MachInjectorFramework;
+			targetProxy = 4DAF735E1A2FFD1900DF7137 /* PBXContainerItemProxy */;
+		};
+		4DFDF1F81A37A4790023020B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OpenGLFileLogger;
+			targetProxy = 4DFDF1F71A37A4790023020B /* PBXContainerItemProxy */;
+		};
+		4DFDF1FA1A37A47D0023020B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OpenGLFileLogger;
+			targetProxy = 4DFDF1F91A37A47D0023020B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4DAF733D1A2FAF5400DF7137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)/../OpenGLFileLoggerHelper/OpenGLFileLoggerHelper\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		4DAF733E1A2FAF5400DF7137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)/../OpenGLFileLoggerHelper/OpenGLFileLoggerHelper\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		4DAF73401A2FAF5400DF7137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/bluechill/Developer/OpenGLInjector/Injector/../../../Library/Developer/Xcode/DerivedData/OpenGLInjector-cybtiijcflqqgibtzfbrkecgjabw/Build/Products/Debug",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../MachInjector\"";
+				VALID_ARCHS = i386;
+			};
+			name = Debug;
+		};
+		4DAF73411A2FAF5400DF7137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/bluechill/Developer/OpenGLInjector/Injector/../../../Library/Developer/Xcode/DerivedData/OpenGLInjector-cybtiijcflqqgibtzfbrkecgjabw/Build/Products/Debug",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../MachInjector\"";
+				VALID_ARCHS = i386;
+			};
+			name = Release;
+		};
+		4DAF73661A2FFD1900DF7137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/bluechill/Developer/OpenGLInjector/Injector/../../../Library/Developer/Xcode/DerivedData/OpenGLInjector-cybtiijcflqqgibtzfbrkecgjabw/Build/Products/Debug",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = InjectorCLI64;
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../MachInjector\"";
+				VALID_ARCHS = x86_64;
+			};
+			name = Debug;
+		};
+		4DAF73671A2FFD1900DF7137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/bluechill/Developer/OpenGLInjector/Injector/../../../Library/Developer/Xcode/DerivedData/OpenGLInjector-cybtiijcflqqgibtzfbrkecgjabw/Build/Products/Debug",
+				);
+				PRODUCT_NAME = InjectorCLI64;
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../MachInjector\"";
+				VALID_ARCHS = x86_64;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4DAF73331A2FAF5400DF7137 /* Build configuration list for PBXProject "InjectorCLI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DAF733D1A2FAF5400DF7137 /* Debug */,
+				4DAF733E1A2FAF5400DF7137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DAF733F1A2FAF5400DF7137 /* Build configuration list for PBXNativeTarget "InjectorCLI32" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DAF73401A2FAF5400DF7137 /* Debug */,
+				4DAF73411A2FAF5400DF7137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DAF73651A2FFD1900DF7137 /* Build configuration list for PBXNativeTarget "InjectorCLI64" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DAF73661A2FFD1900DF7137 /* Debug */,
+				4DAF73671A2FFD1900DF7137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4DAF73301A2FAF5400DF7137 /* Project object */;
+}
