@@ -116,13 +116,19 @@ int main()
 	cout << endl;
 	cout << "#include \"mach_override.h\"" << endl;
 	cout << endl;
+	cout << "#include <unordered_set>" << endl;
+	cout << "#include <mutex>" << endl;
+	cout << endl;
+	cout << "using namespace std;" << endl;
+	cout << endl;
 	
+	cout << endl;
+	cout << "static mutex file_mutex;" << endl;
 	cout << "void OverrideCGLGetContext()" << endl;
 	cout << "{" << endl;
 	
 	cout << '\t' << "static FILE* output = fopen(\"/Users/bluechill/Developer/OpenGLInjector/OpenGLFileLogger/OpenGLFileLogger/OpenGLLog.log\", \"w\");" << endl;
 	cout << '\t' << "static CGLContextObj (*CGLGetCurrentContext_reenter)();" << endl;
-	cout << '\t' << "static bool overriden = false;" << endl;
 	
 	for (function_type& f : functions)
 		cout << '\t' << "static " << f.type << " (*" << f.function_name << "_reenter)(" << f.parameters << ");" << endl;
@@ -135,7 +141,9 @@ int main()
 	{
 		cout << '\t' << '\t' << "static " << f.type << " " << f.function_name << "_replacement(" << f.parameters << ")" << endl;
 		cout << '\t' << '\t' << "{" << endl;
+		cout << '\t' << '\t' << '\t' << "file_mutex.lock();" << endl;
 		cout << '\t' << '\t' << '\t' << "fprintf(output, \"OpenGLFileLogger: " << f.function_name << " called.\\n\");" << endl;
+		cout << '\t' << '\t' << '\t' << "file_mutex.unlock();" << endl;
 		cout << '\t' << '\t' << '\t' << endl;
 		cout << '\t' << '\t' << '\t' << "return " << f.function_name << "_reenter(" << f.parameter_names << ");" << endl;
 		cout << '\t' << '\t' << "}" << endl;
@@ -144,12 +152,15 @@ int main()
 	
 	cout << '\t' << '\t'<< "static CGLContextObj CGLGetCurrentContext_replacement(void)" << endl;
 	cout << '\t' << '\t'<< "{" << endl;
+	cout << '\t' << '\t'<< '\t' << "static unordered_set<CGLContextObj> overriden_context;" << endl;
+	cout << endl;
 	cout << '\t' << '\t'<< '\t' << "CGLContextObj obj = CGLGetCurrentContext_reenter();" << endl;
 	cout << '\t' << '\t'<< '\t' << "syslog(LOG_NOTICE, \"OpenGLFileLogger: Found Context: %p\", obj);" << endl;
-	cout << '\t' << '\t'<< '\t' << "if (!overriden)" << endl;
+	cout << '\t' << '\t'<< '\t' << "if (obj && overriden_context.find(obj) == overriden_context.end())" << endl;
 	cout << '\t' << '\t'<< '\t' << "{" << endl;
 	cout << '\t' << '\t'<< '\t' << '\t' << "extern void suspend_all_threads();" << endl;
 	cout << '\t' << '\t'<< '\t' << '\t' << "suspend_all_threads();" << endl;
+	cout << '\t' << '\t'<< '\t' << '\t' << "overriden_context.insert(obj);" << endl;
 	cout << endl;
 	
 	for (function_type& f : functions)
@@ -159,8 +170,6 @@ int main()
 		cout << endl;
 	}
 	
-	cout << endl;
-	cout << '\t' << '\t' << '\t' << '\t' << "overriden = true;" << endl;
 	cout << endl;
 	cout << '\t' << '\t' << '\t' << '\t' << "extern void unsuspend_all_threads();" << endl;
 	cout << '\t' << '\t' << '\t' << '\t' << "unsuspend_all_threads();" << endl;
@@ -187,6 +196,7 @@ int main()
 	cout << '\t' << "	syslog(LOG_ERR, \"OpenGLFileLogger: Error overriding OpenGL call 'CGLGetCurrentContext' %i\", error);" << endl;
 	cout << endl;
 	cout << '\t' << "dlclose(handle);" << endl;
+	cout << '\t' << "CGLGetCurrentContext();" << endl;
 	cout << "}" << endl;
 	
 	return 0;

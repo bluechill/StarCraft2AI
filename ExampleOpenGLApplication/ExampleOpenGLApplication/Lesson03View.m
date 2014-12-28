@@ -32,9 +32,9 @@
 	colorBits = numColorBits;
 	depthBits = numDepthBits;
 	runningFullScreen = runFullScreen;
-	originalDisplayMode = (__bridge NSDictionary *) CGDisplayCurrentMode(
-																		 kCGDirectMainDisplay );
+	originalDisplayMode = (__bridge NSDictionary *) CGDisplayCurrentMode( kCGDirectMainDisplay );
 	pixelFormat = [ self createPixelFormat:frame ];
+	
 	if( pixelFormat != nil )
 	{
 		self = [ super initWithFrame:frame pixelFormat:pixelFormat ];
@@ -224,7 +224,6 @@
 {
 	return runningFullScreen;
 }
-
 
 /*
  * Cleanup

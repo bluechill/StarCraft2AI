@@ -9,11 +9,17 @@
 
 #include "mach_override.h"
 
+#include <unordered_set>
+#include <mutex>
+
+using namespace std;
+
+
+static mutex file_mutex;
 void OverrideCGLGetContext()
 {
 	static FILE* output = fopen("/Users/bluechill/Developer/OpenGLInjector/OpenGLFileLogger/OpenGLFileLogger/OpenGLLog.log", "w");
 	static CGLContextObj (*CGLGetCurrentContext_reenter)();
-	static bool overriden = false;
 	static void (*accum_reenter)(GLIContext ctx, GLenum op, GLfloat value);
 	static void (*alpha_func_reenter)(GLIContext ctx, GLenum func, GLclampf ref);
 	static GLboolean (*are_textures_resident_reenter)(GLIContext ctx, GLsizei n, const GLuint *textures, GLboolean *residences);
@@ -991,6816 +997,8763 @@ void OverrideCGLGetContext()
 	{
 		static void accum_replacement(GLIContext ctx, GLenum op, GLfloat value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: accum called.\n");
+			file_mutex.unlock();
 			
 			return accum_reenter(ctx, op, value);
 		}
 		
 		static void alpha_func_replacement(GLIContext ctx, GLenum func, GLclampf ref)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: alpha_func called.\n");
+			file_mutex.unlock();
 			
 			return alpha_func_reenter(ctx, func, ref);
 		}
 		
 		static GLboolean are_textures_resident_replacement(GLIContext ctx, GLsizei n, const GLuint *textures, GLboolean *residences)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: are_textures_resident called.\n");
+			file_mutex.unlock();
 			
 			return are_textures_resident_reenter(ctx, n, textures, residences);
 		}
 		
 		static void array_element_replacement(GLIContext ctx, GLint i)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: array_element called.\n");
+			file_mutex.unlock();
 			
 			return array_element_reenter(ctx, i);
 		}
 		
 		static void begin_replacement(GLIContext ctx, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: begin called.\n");
+			file_mutex.unlock();
 			
 			return begin_reenter(ctx, mode);
 		}
 		
 		static void bind_texture_replacement(GLIContext ctx, GLenum target, GLuint texture)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_texture called.\n");
+			file_mutex.unlock();
 			
 			return bind_texture_reenter(ctx, target, texture);
 		}
 		
 		static void bitmap_replacement(GLIContext ctx, GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte *bitmap)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bitmap called.\n");
+			file_mutex.unlock();
 			
 			return bitmap_reenter(ctx, width, height, xorig, yorig, xmove, ymove, bitmap);
 		}
 		
 		static void blend_func_replacement(GLIContext ctx, GLenum sfactor, GLenum dfactor)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: blend_func called.\n");
+			file_mutex.unlock();
 			
 			return blend_func_reenter(ctx, sfactor, dfactor);
 		}
 		
 		static void call_list_replacement(GLIContext ctx, GLuint list)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: call_list called.\n");
+			file_mutex.unlock();
 			
 			return call_list_reenter(ctx, list);
 		}
 		
 		static void call_lists_replacement(GLIContext ctx, GLsizei n, GLenum type, const GLvoid *lists)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: call_lists called.\n");
+			file_mutex.unlock();
 			
 			return call_lists_reenter(ctx, n, type, lists);
 		}
 		
 		static void clear_replacement(GLIContext ctx, GLbitfield mask)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clear called.\n");
+			file_mutex.unlock();
 			
 			return clear_reenter(ctx, mask);
 		}
 		
 		static void clear_accum_replacement(GLIContext ctx, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clear_accum called.\n");
+			file_mutex.unlock();
 			
 			return clear_accum_reenter(ctx, red, green, blue, alpha);
 		}
 		
 		static void clear_color_replacement(GLIContext ctx, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clear_color called.\n");
+			file_mutex.unlock();
 			
 			return clear_color_reenter(ctx, red, green, blue, alpha);
 		}
 		
 		static void clear_depth_replacement(GLIContext ctx, GLclampd depth)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clear_depth called.\n");
+			file_mutex.unlock();
 			
 			return clear_depth_reenter(ctx, depth);
 		}
 		
 		static void clear_index_replacement(GLIContext ctx, GLfloat c)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clear_index called.\n");
+			file_mutex.unlock();
 			
 			return clear_index_reenter(ctx, c);
 		}
 		
 		static void clear_stencil_replacement(GLIContext ctx, GLint s)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clear_stencil called.\n");
+			file_mutex.unlock();
 			
 			return clear_stencil_reenter(ctx, s);
 		}
 		
 		static void clip_plane_replacement(GLIContext ctx, GLenum plane, const GLdouble *equation)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clip_plane called.\n");
+			file_mutex.unlock();
 			
 			return clip_plane_reenter(ctx, plane, equation);
 		}
 		
 		static void color3b_replacement(GLIContext ctx, GLbyte red, GLbyte green, GLbyte blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3b called.\n");
+			file_mutex.unlock();
 			
 			return color3b_reenter(ctx, red, green, blue);
 		}
 		
 		static void color3bv_replacement(GLIContext ctx, const GLbyte *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3bv called.\n");
+			file_mutex.unlock();
 			
 			return color3bv_reenter(ctx, v);
 		}
 		
 		static void color3d_replacement(GLIContext ctx, GLdouble red, GLdouble green, GLdouble blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3d called.\n");
+			file_mutex.unlock();
 			
 			return color3d_reenter(ctx, red, green, blue);
 		}
 		
 		static void color3dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3dv called.\n");
+			file_mutex.unlock();
 			
 			return color3dv_reenter(ctx, v);
 		}
 		
 		static void color3f_replacement(GLIContext ctx, GLfloat red, GLfloat green, GLfloat blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3f called.\n");
+			file_mutex.unlock();
 			
 			return color3f_reenter(ctx, red, green, blue);
 		}
 		
 		static void color3fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3fv called.\n");
+			file_mutex.unlock();
 			
 			return color3fv_reenter(ctx, v);
 		}
 		
 		static void color3i_replacement(GLIContext ctx, GLint red, GLint green, GLint blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3i called.\n");
+			file_mutex.unlock();
 			
 			return color3i_reenter(ctx, red, green, blue);
 		}
 		
 		static void color3iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3iv called.\n");
+			file_mutex.unlock();
 			
 			return color3iv_reenter(ctx, v);
 		}
 		
 		static void color3s_replacement(GLIContext ctx, GLshort red, GLshort green, GLshort blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3s called.\n");
+			file_mutex.unlock();
 			
 			return color3s_reenter(ctx, red, green, blue);
 		}
 		
 		static void color3sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3sv called.\n");
+			file_mutex.unlock();
 			
 			return color3sv_reenter(ctx, v);
 		}
 		
 		static void color3ub_replacement(GLIContext ctx, GLubyte red, GLubyte green, GLubyte blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3ub called.\n");
+			file_mutex.unlock();
 			
 			return color3ub_reenter(ctx, red, green, blue);
 		}
 		
 		static void color3ubv_replacement(GLIContext ctx, const GLubyte *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3ubv called.\n");
+			file_mutex.unlock();
 			
 			return color3ubv_reenter(ctx, v);
 		}
 		
 		static void color3ui_replacement(GLIContext ctx, GLuint red, GLuint green, GLuint blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3ui called.\n");
+			file_mutex.unlock();
 			
 			return color3ui_reenter(ctx, red, green, blue);
 		}
 		
 		static void color3uiv_replacement(GLIContext ctx, const GLuint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3uiv called.\n");
+			file_mutex.unlock();
 			
 			return color3uiv_reenter(ctx, v);
 		}
 		
 		static void color3us_replacement(GLIContext ctx, GLushort red, GLushort green, GLushort blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3us called.\n");
+			file_mutex.unlock();
 			
 			return color3us_reenter(ctx, red, green, blue);
 		}
 		
 		static void color3usv_replacement(GLIContext ctx, const GLushort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color3usv called.\n");
+			file_mutex.unlock();
 			
 			return color3usv_reenter(ctx, v);
 		}
 		
 		static void color4b_replacement(GLIContext ctx, GLbyte red, GLbyte green, GLbyte blue, GLbyte alpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4b called.\n");
+			file_mutex.unlock();
 			
 			return color4b_reenter(ctx, red, green, blue, alpha);
 		}
 		
 		static void color4bv_replacement(GLIContext ctx, const GLbyte *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4bv called.\n");
+			file_mutex.unlock();
 			
 			return color4bv_reenter(ctx, v);
 		}
 		
 		static void color4d_replacement(GLIContext ctx, GLdouble red, GLdouble green, GLdouble blue, GLdouble alpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4d called.\n");
+			file_mutex.unlock();
 			
 			return color4d_reenter(ctx, red, green, blue, alpha);
 		}
 		
 		static void color4dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4dv called.\n");
+			file_mutex.unlock();
 			
 			return color4dv_reenter(ctx, v);
 		}
 		
 		static void color4f_replacement(GLIContext ctx, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4f called.\n");
+			file_mutex.unlock();
 			
 			return color4f_reenter(ctx, red, green, blue, alpha);
 		}
 		
 		static void color4fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4fv called.\n");
+			file_mutex.unlock();
 			
 			return color4fv_reenter(ctx, v);
 		}
 		
 		static void color4i_replacement(GLIContext ctx, GLint red, GLint green, GLint blue, GLint alpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4i called.\n");
+			file_mutex.unlock();
 			
 			return color4i_reenter(ctx, red, green, blue, alpha);
 		}
 		
 		static void color4iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4iv called.\n");
+			file_mutex.unlock();
 			
 			return color4iv_reenter(ctx, v);
 		}
 		
 		static void color4s_replacement(GLIContext ctx, GLshort red, GLshort green, GLshort blue, GLshort alpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4s called.\n");
+			file_mutex.unlock();
 			
 			return color4s_reenter(ctx, red, green, blue, alpha);
 		}
 		
 		static void color4sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4sv called.\n");
+			file_mutex.unlock();
 			
 			return color4sv_reenter(ctx, v);
 		}
 		
 		static void color4ub_replacement(GLIContext ctx, GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4ub called.\n");
+			file_mutex.unlock();
 			
 			return color4ub_reenter(ctx, red, green, blue, alpha);
 		}
 		
 		static void color4ubv_replacement(GLIContext ctx, const GLubyte *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4ubv called.\n");
+			file_mutex.unlock();
 			
 			return color4ubv_reenter(ctx, v);
 		}
 		
 		static void color4ui_replacement(GLIContext ctx, GLuint red, GLuint green, GLuint blue, GLuint alpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4ui called.\n");
+			file_mutex.unlock();
 			
 			return color4ui_reenter(ctx, red, green, blue, alpha);
 		}
 		
 		static void color4uiv_replacement(GLIContext ctx, const GLuint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4uiv called.\n");
+			file_mutex.unlock();
 			
 			return color4uiv_reenter(ctx, v);
 		}
 		
 		static void color4us_replacement(GLIContext ctx, GLushort red, GLushort green, GLushort blue, GLushort alpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4us called.\n");
+			file_mutex.unlock();
 			
 			return color4us_reenter(ctx, red, green, blue, alpha);
 		}
 		
 		static void color4usv_replacement(GLIContext ctx, const GLushort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color4usv called.\n");
+			file_mutex.unlock();
 			
 			return color4usv_reenter(ctx, v);
 		}
 		
 		static void color_mask_replacement(GLIContext ctx, GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color_mask called.\n");
+			file_mutex.unlock();
 			
 			return color_mask_reenter(ctx, red, green, blue, alpha);
 		}
 		
 		static void color_material_replacement(GLIContext ctx, GLenum face, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color_material called.\n");
+			file_mutex.unlock();
 			
 			return color_material_reenter(ctx, face, mode);
 		}
 		
 		static void color_pointer_replacement(GLIContext ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color_pointer called.\n");
+			file_mutex.unlock();
 			
 			return color_pointer_reenter(ctx, size, type, stride, pointer);
 		}
 		
 		static void copy_pixels_replacement(GLIContext ctx, GLint x, GLint y, GLsizei width, GLsizei height, GLenum type)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: copy_pixels called.\n");
+			file_mutex.unlock();
 			
 			return copy_pixels_reenter(ctx, x, y, width, height, type);
 		}
 		
 		static void copy_tex_image1D_replacement(GLIContext ctx, GLenum target, GLint level, GLenum internalFormat, GLint x, GLint y, GLsizei width, GLint border)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: copy_tex_image1D called.\n");
+			file_mutex.unlock();
 			
 			return copy_tex_image1D_reenter(ctx, target, level, internalFormat, x, y, width, border);
 		}
 		
 		static void copy_tex_image2D_replacement(GLIContext ctx, GLenum target, GLint level, GLenum internalFormat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: copy_tex_image2D called.\n");
+			file_mutex.unlock();
 			
 			return copy_tex_image2D_reenter(ctx, target, level, internalFormat, x, y, width, height, border);
 		}
 		
 		static void copy_tex_sub_image1D_replacement(GLIContext ctx, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: copy_tex_sub_image1D called.\n");
+			file_mutex.unlock();
 			
 			return copy_tex_sub_image1D_reenter(ctx, target, level, xoffset, x, y, width);
 		}
 		
 		static void copy_tex_sub_image2D_replacement(GLIContext ctx, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: copy_tex_sub_image2D called.\n");
+			file_mutex.unlock();
 			
 			return copy_tex_sub_image2D_reenter(ctx, target, level, xoffset, yoffset, x, y, width, height);
 		}
 		
 		static void cull_face_replacement(GLIContext ctx, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: cull_face called.\n");
+			file_mutex.unlock();
 			
 			return cull_face_reenter(ctx, mode);
 		}
 		
 		static void delete_lists_replacement(GLIContext ctx, GLuint list, GLsizei range)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_lists called.\n");
+			file_mutex.unlock();
 			
 			return delete_lists_reenter(ctx, list, range);
 		}
 		
 		static void delete_textures_replacement(GLIContext ctx, GLsizei n, const GLuint *textures)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_textures called.\n");
+			file_mutex.unlock();
 			
 			return delete_textures_reenter(ctx, n, textures);
 		}
 		
 		static void depth_func_replacement(GLIContext ctx, GLenum func)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: depth_func called.\n");
+			file_mutex.unlock();
 			
 			return depth_func_reenter(ctx, func);
 		}
 		
 		static void depth_mask_replacement(GLIContext ctx, GLboolean flag)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: depth_mask called.\n");
+			file_mutex.unlock();
 			
 			return depth_mask_reenter(ctx, flag);
 		}
 		
 		static void depth_range_replacement(GLIContext ctx, GLclampd zNear, GLclampd zFar)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: depth_range called.\n");
+			file_mutex.unlock();
 			
 			return depth_range_reenter(ctx, zNear, zFar);
 		}
 		
 		static void disable_replacement(GLIContext ctx, GLenum cap)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: disable called.\n");
+			file_mutex.unlock();
 			
 			return disable_reenter(ctx, cap);
 		}
 		
 		static void disable_client_state_replacement(GLIContext ctx, GLenum array)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: disable_client_state called.\n");
+			file_mutex.unlock();
 			
 			return disable_client_state_reenter(ctx, array);
 		}
 		
 		static void draw_arrays_replacement(GLIContext ctx, GLenum mode, GLint first, GLsizei count)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_arrays called.\n");
+			file_mutex.unlock();
 			
 			return draw_arrays_reenter(ctx, mode, first, count);
 		}
 		
 		static void draw_buffer_replacement(GLIContext ctx, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_buffer called.\n");
+			file_mutex.unlock();
 			
 			return draw_buffer_reenter(ctx, mode);
 		}
 		
 		static void draw_elements_replacement(GLIContext ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_elements called.\n");
+			file_mutex.unlock();
 			
 			return draw_elements_reenter(ctx, mode, count, type, indices);
 		}
 		
 		static void draw_pixels_replacement(GLIContext ctx, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_pixels called.\n");
+			file_mutex.unlock();
 			
 			return draw_pixels_reenter(ctx, width, height, format, type, pixels);
 		}
 		
 		static void edge_flag_replacement(GLIContext ctx, GLboolean flag)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: edge_flag called.\n");
+			file_mutex.unlock();
 			
 			return edge_flag_reenter(ctx, flag);
 		}
 		
 		static void edge_flag_pointer_replacement(GLIContext ctx, GLsizei stride, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: edge_flag_pointer called.\n");
+			file_mutex.unlock();
 			
 			return edge_flag_pointer_reenter(ctx, stride, pointer);
 		}
 		
 		static void edge_flagv_replacement(GLIContext ctx, const GLboolean *flag)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: edge_flagv called.\n");
+			file_mutex.unlock();
 			
 			return edge_flagv_reenter(ctx, flag);
 		}
 		
 		static void enable_replacement(GLIContext ctx, GLenum cap)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: enable called.\n");
+			file_mutex.unlock();
 			
 			return enable_reenter(ctx, cap);
 		}
 		
 		static void enable_client_state_replacement(GLIContext ctx, GLenum array)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: enable_client_state called.\n");
+			file_mutex.unlock();
 			
 			return enable_client_state_reenter(ctx, array);
 		}
 		
 		static void end_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: end called.\n");
+			file_mutex.unlock();
 			
 			return end_reenter(ctx);
 		}
 		
 		static void end_list_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: end_list called.\n");
+			file_mutex.unlock();
 			
 			return end_list_reenter(ctx);
 		}
 		
 		static void eval_coord1d_replacement(GLIContext ctx, GLdouble u)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: eval_coord1d called.\n");
+			file_mutex.unlock();
 			
 			return eval_coord1d_reenter(ctx, u);
 		}
 		
 		static void eval_coord1dv_replacement(GLIContext ctx, const GLdouble *u)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: eval_coord1dv called.\n");
+			file_mutex.unlock();
 			
 			return eval_coord1dv_reenter(ctx, u);
 		}
 		
 		static void eval_coord1f_replacement(GLIContext ctx, GLfloat u)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: eval_coord1f called.\n");
+			file_mutex.unlock();
 			
 			return eval_coord1f_reenter(ctx, u);
 		}
 		
 		static void eval_coord1fv_replacement(GLIContext ctx, const GLfloat *u)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: eval_coord1fv called.\n");
+			file_mutex.unlock();
 			
 			return eval_coord1fv_reenter(ctx, u);
 		}
 		
 		static void eval_coord2d_replacement(GLIContext ctx, GLdouble u, GLdouble v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: eval_coord2d called.\n");
+			file_mutex.unlock();
 			
 			return eval_coord2d_reenter(ctx, u, v);
 		}
 		
 		static void eval_coord2dv_replacement(GLIContext ctx, const GLdouble *u)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: eval_coord2dv called.\n");
+			file_mutex.unlock();
 			
 			return eval_coord2dv_reenter(ctx, u);
 		}
 		
 		static void eval_coord2f_replacement(GLIContext ctx, GLfloat u, GLfloat v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: eval_coord2f called.\n");
+			file_mutex.unlock();
 			
 			return eval_coord2f_reenter(ctx, u, v);
 		}
 		
 		static void eval_coord2fv_replacement(GLIContext ctx, const GLfloat *u)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: eval_coord2fv called.\n");
+			file_mutex.unlock();
 			
 			return eval_coord2fv_reenter(ctx, u);
 		}
 		
 		static void eval_mesh1_replacement(GLIContext ctx, GLenum mode, GLint i1, GLint i2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: eval_mesh1 called.\n");
+			file_mutex.unlock();
 			
 			return eval_mesh1_reenter(ctx, mode, i1, i2);
 		}
 		
 		static void eval_mesh2_replacement(GLIContext ctx, GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: eval_mesh2 called.\n");
+			file_mutex.unlock();
 			
 			return eval_mesh2_reenter(ctx, mode, i1, i2, j1, j2);
 		}
 		
 		static void eval_point1_replacement(GLIContext ctx, GLint i)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: eval_point1 called.\n");
+			file_mutex.unlock();
 			
 			return eval_point1_reenter(ctx, i);
 		}
 		
 		static void eval_point2_replacement(GLIContext ctx, GLint i, GLint j)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: eval_point2 called.\n");
+			file_mutex.unlock();
 			
 			return eval_point2_reenter(ctx, i, j);
 		}
 		
 		static void feedback_buffer_replacement(GLIContext ctx, GLsizei size, GLenum type, GLfloat *buffer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: feedback_buffer called.\n");
+			file_mutex.unlock();
 			
 			return feedback_buffer_reenter(ctx, size, type, buffer);
 		}
 		
 		static void finish_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: finish called.\n");
+			file_mutex.unlock();
 			
 			return finish_reenter(ctx);
 		}
 		
 		static void flush_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: flush called.\n");
+			file_mutex.unlock();
 			
 			return flush_reenter(ctx);
 		}
 		
 		static void fogf_replacement(GLIContext ctx, GLenum pname, GLfloat param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: fogf called.\n");
+			file_mutex.unlock();
 			
 			return fogf_reenter(ctx, pname, param);
 		}
 		
 		static void fogfv_replacement(GLIContext ctx, GLenum pname, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: fogfv called.\n");
+			file_mutex.unlock();
 			
 			return fogfv_reenter(ctx, pname, params);
 		}
 		
 		static void fogi_replacement(GLIContext ctx, GLenum pname, GLint param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: fogi called.\n");
+			file_mutex.unlock();
 			
 			return fogi_reenter(ctx, pname, param);
 		}
 		
 		static void fogiv_replacement(GLIContext ctx, GLenum pname, const GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: fogiv called.\n");
+			file_mutex.unlock();
 			
 			return fogiv_reenter(ctx, pname, params);
 		}
 		
 		static void front_face_replacement(GLIContext ctx, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: front_face called.\n");
+			file_mutex.unlock();
 			
 			return front_face_reenter(ctx, mode);
 		}
 		
 		static void frustum_replacement(GLIContext ctx, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: frustum called.\n");
+			file_mutex.unlock();
 			
 			return frustum_reenter(ctx, left, right, bottom, top, zNear, zFar);
 		}
 		
 		static GLuint gen_lists_replacement(GLIContext ctx, GLsizei range)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: gen_lists called.\n");
+			file_mutex.unlock();
 			
 			return gen_lists_reenter(ctx, range);
 		}
 		
 		static void gen_textures_replacement(GLIContext ctx, GLsizei n, GLuint *textures)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: gen_textures called.\n");
+			file_mutex.unlock();
 			
 			return gen_textures_reenter(ctx, n, textures);
 		}
 		
 		static void get_booleanv_replacement(GLIContext ctx, GLenum pname, GLboolean *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_booleanv called.\n");
+			file_mutex.unlock();
 			
 			return get_booleanv_reenter(ctx, pname, params);
 		}
 		
 		static void get_clip_plane_replacement(GLIContext ctx, GLenum plane, GLdouble *equation)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_clip_plane called.\n");
+			file_mutex.unlock();
 			
 			return get_clip_plane_reenter(ctx, plane, equation);
 		}
 		
 		static void get_doublev_replacement(GLIContext ctx, GLenum pname, GLdouble *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_doublev called.\n");
+			file_mutex.unlock();
 			
 			return get_doublev_reenter(ctx, pname, params);
 		}
 		
 		static GLenum get_error_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_error called.\n");
+			file_mutex.unlock();
 			
 			return get_error_reenter(ctx);
 		}
 		
 		static void get_floatv_replacement(GLIContext ctx, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_floatv called.\n");
+			file_mutex.unlock();
 			
 			return get_floatv_reenter(ctx, pname, params);
 		}
 		
 		static void get_integerv_replacement(GLIContext ctx, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_integerv called.\n");
+			file_mutex.unlock();
 			
 			return get_integerv_reenter(ctx, pname, params);
 		}
 		
 		static void get_lightfv_replacement(GLIContext ctx, GLenum light, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_lightfv called.\n");
+			file_mutex.unlock();
 			
 			return get_lightfv_reenter(ctx, light, pname, params);
 		}
 		
 		static void get_lightiv_replacement(GLIContext ctx, GLenum light, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_lightiv called.\n");
+			file_mutex.unlock();
 			
 			return get_lightiv_reenter(ctx, light, pname, params);
 		}
 		
 		static void get_mapdv_replacement(GLIContext ctx, GLenum target, GLenum query, GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_mapdv called.\n");
+			file_mutex.unlock();
 			
 			return get_mapdv_reenter(ctx, target, query, v);
 		}
 		
 		static void get_mapfv_replacement(GLIContext ctx, GLenum target, GLenum query, GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_mapfv called.\n");
+			file_mutex.unlock();
 			
 			return get_mapfv_reenter(ctx, target, query, v);
 		}
 		
 		static void get_mapiv_replacement(GLIContext ctx, GLenum target, GLenum query, GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_mapiv called.\n");
+			file_mutex.unlock();
 			
 			return get_mapiv_reenter(ctx, target, query, v);
 		}
 		
 		static void get_materialfv_replacement(GLIContext ctx, GLenum face, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_materialfv called.\n");
+			file_mutex.unlock();
 			
 			return get_materialfv_reenter(ctx, face, pname, params);
 		}
 		
 		static void get_materialiv_replacement(GLIContext ctx, GLenum face, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_materialiv called.\n");
+			file_mutex.unlock();
 			
 			return get_materialiv_reenter(ctx, face, pname, params);
 		}
 		
 		static void get_pixel_mapfv_replacement(GLIContext ctx, GLenum map, GLfloat *values)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_pixel_mapfv called.\n");
+			file_mutex.unlock();
 			
 			return get_pixel_mapfv_reenter(ctx, map, values);
 		}
 		
 		static void get_pixel_mapuiv_replacement(GLIContext ctx, GLenum map, GLuint *values)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_pixel_mapuiv called.\n");
+			file_mutex.unlock();
 			
 			return get_pixel_mapuiv_reenter(ctx, map, values);
 		}
 		
 		static void get_pixel_mapusv_replacement(GLIContext ctx, GLenum map, GLushort *values)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_pixel_mapusv called.\n");
+			file_mutex.unlock();
 			
 			return get_pixel_mapusv_reenter(ctx, map, values);
 		}
 		
 		static void get_pointerv_replacement(GLIContext ctx, GLenum pname, GLvoid **params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_pointerv called.\n");
+			file_mutex.unlock();
 			
 			return get_pointerv_reenter(ctx, pname, params);
 		}
 		
 		static void get_polygon_stipple_replacement(GLIContext ctx, GLubyte *mask)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_polygon_stipple called.\n");
+			file_mutex.unlock();
 			
 			return get_polygon_stipple_reenter(ctx, mask);
 		}
 		
 		static void get_tex_envfv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_tex_envfv called.\n");
+			file_mutex.unlock();
 			
 			return get_tex_envfv_reenter(ctx, target, pname, params);
 		}
 		
 		static void get_tex_enviv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_tex_enviv called.\n");
+			file_mutex.unlock();
 			
 			return get_tex_enviv_reenter(ctx, target, pname, params);
 		}
 		
 		static void get_tex_gendv_replacement(GLIContext ctx, GLenum coord, GLenum pname, GLdouble *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_tex_gendv called.\n");
+			file_mutex.unlock();
 			
 			return get_tex_gendv_reenter(ctx, coord, pname, params);
 		}
 		
 		static void get_tex_genfv_replacement(GLIContext ctx, GLenum coord, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_tex_genfv called.\n");
+			file_mutex.unlock();
 			
 			return get_tex_genfv_reenter(ctx, coord, pname, params);
 		}
 		
 		static void get_tex_geniv_replacement(GLIContext ctx, GLenum coord, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_tex_geniv called.\n");
+			file_mutex.unlock();
 			
 			return get_tex_geniv_reenter(ctx, coord, pname, params);
 		}
 		
 		static void get_tex_image_replacement(GLIContext ctx, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_tex_image called.\n");
+			file_mutex.unlock();
 			
 			return get_tex_image_reenter(ctx, target, level, format, type, pixels);
 		}
 		
 		static void get_tex_level_parameterfv_replacement(GLIContext ctx, GLenum target, GLint level, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_tex_level_parameterfv called.\n");
+			file_mutex.unlock();
 			
 			return get_tex_level_parameterfv_reenter(ctx, target, level, pname, params);
 		}
 		
 		static void get_tex_level_parameteriv_replacement(GLIContext ctx, GLenum target, GLint level, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_tex_level_parameteriv called.\n");
+			file_mutex.unlock();
 			
 			return get_tex_level_parameteriv_reenter(ctx, target, level, pname, params);
 		}
 		
 		static void get_tex_parameterfv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_tex_parameterfv called.\n");
+			file_mutex.unlock();
 			
 			return get_tex_parameterfv_reenter(ctx, target, pname, params);
 		}
 		
 		static void get_tex_parameteriv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_tex_parameteriv called.\n");
+			file_mutex.unlock();
 			
 			return get_tex_parameteriv_reenter(ctx, target, pname, params);
 		}
 		
 		static void hint_replacement(GLIContext ctx, GLenum target, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: hint called.\n");
+			file_mutex.unlock();
 			
 			return hint_reenter(ctx, target, mode);
 		}
 		
 		static void index_mask_replacement(GLIContext ctx, GLuint mask)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: index_mask called.\n");
+			file_mutex.unlock();
 			
 			return index_mask_reenter(ctx, mask);
 		}
 		
 		static void index_pointer_replacement(GLIContext ctx, GLenum type, GLsizei stride, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: index_pointer called.\n");
+			file_mutex.unlock();
 			
 			return index_pointer_reenter(ctx, type, stride, pointer);
 		}
 		
 		static void indexd_replacement(GLIContext ctx, GLdouble c)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: indexd called.\n");
+			file_mutex.unlock();
 			
 			return indexd_reenter(ctx, c);
 		}
 		
 		static void indexdv_replacement(GLIContext ctx, const GLdouble *c)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: indexdv called.\n");
+			file_mutex.unlock();
 			
 			return indexdv_reenter(ctx, c);
 		}
 		
 		static void indexf_replacement(GLIContext ctx, GLfloat c)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: indexf called.\n");
+			file_mutex.unlock();
 			
 			return indexf_reenter(ctx, c);
 		}
 		
 		static void indexfv_replacement(GLIContext ctx, const GLfloat *c)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: indexfv called.\n");
+			file_mutex.unlock();
 			
 			return indexfv_reenter(ctx, c);
 		}
 		
 		static void indexi_replacement(GLIContext ctx, GLint c)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: indexi called.\n");
+			file_mutex.unlock();
 			
 			return indexi_reenter(ctx, c);
 		}
 		
 		static void indexiv_replacement(GLIContext ctx, const GLint *c)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: indexiv called.\n");
+			file_mutex.unlock();
 			
 			return indexiv_reenter(ctx, c);
 		}
 		
 		static void indexs_replacement(GLIContext ctx, GLshort c)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: indexs called.\n");
+			file_mutex.unlock();
 			
 			return indexs_reenter(ctx, c);
 		}
 		
 		static void indexsv_replacement(GLIContext ctx, const GLshort *c)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: indexsv called.\n");
+			file_mutex.unlock();
 			
 			return indexsv_reenter(ctx, c);
 		}
 		
 		static void indexub_replacement(GLIContext ctx, GLubyte c)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: indexub called.\n");
+			file_mutex.unlock();
 			
 			return indexub_reenter(ctx, c);
 		}
 		
 		static void indexubv_replacement(GLIContext ctx, const GLubyte *c)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: indexubv called.\n");
+			file_mutex.unlock();
 			
 			return indexubv_reenter(ctx, c);
 		}
 		
 		static void init_names_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: init_names called.\n");
+			file_mutex.unlock();
 			
 			return init_names_reenter(ctx);
 		}
 		
 		static void interleaved_arrays_replacement(GLIContext ctx, GLenum format, GLsizei stride, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: interleaved_arrays called.\n");
+			file_mutex.unlock();
 			
 			return interleaved_arrays_reenter(ctx, format, stride, pointer);
 		}
 		
 		static GLboolean is_enabled_replacement(GLIContext ctx, GLenum cap)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_enabled called.\n");
+			file_mutex.unlock();
 			
 			return is_enabled_reenter(ctx, cap);
 		}
 		
 		static GLboolean is_list_replacement(GLIContext ctx, GLuint list)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_list called.\n");
+			file_mutex.unlock();
 			
 			return is_list_reenter(ctx, list);
 		}
 		
 		static GLboolean is_texture_replacement(GLIContext ctx, GLuint texture)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_texture called.\n");
+			file_mutex.unlock();
 			
 			return is_texture_reenter(ctx, texture);
 		}
 		
 		static void light_modelf_replacement(GLIContext ctx, GLenum pname, GLfloat param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: light_modelf called.\n");
+			file_mutex.unlock();
 			
 			return light_modelf_reenter(ctx, pname, param);
 		}
 		
 		static void light_modelfv_replacement(GLIContext ctx, GLenum pname, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: light_modelfv called.\n");
+			file_mutex.unlock();
 			
 			return light_modelfv_reenter(ctx, pname, params);
 		}
 		
 		static void light_modeli_replacement(GLIContext ctx, GLenum pname, GLint param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: light_modeli called.\n");
+			file_mutex.unlock();
 			
 			return light_modeli_reenter(ctx, pname, param);
 		}
 		
 		static void light_modeliv_replacement(GLIContext ctx, GLenum pname, const GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: light_modeliv called.\n");
+			file_mutex.unlock();
 			
 			return light_modeliv_reenter(ctx, pname, params);
 		}
 		
 		static void lightf_replacement(GLIContext ctx, GLenum light, GLenum pname, GLfloat param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: lightf called.\n");
+			file_mutex.unlock();
 			
 			return lightf_reenter(ctx, light, pname, param);
 		}
 		
 		static void lightfv_replacement(GLIContext ctx, GLenum light, GLenum pname, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: lightfv called.\n");
+			file_mutex.unlock();
 			
 			return lightfv_reenter(ctx, light, pname, params);
 		}
 		
 		static void lighti_replacement(GLIContext ctx, GLenum light, GLenum pname, GLint param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: lighti called.\n");
+			file_mutex.unlock();
 			
 			return lighti_reenter(ctx, light, pname, param);
 		}
 		
 		static void lightiv_replacement(GLIContext ctx, GLenum light, GLenum pname, const GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: lightiv called.\n");
+			file_mutex.unlock();
 			
 			return lightiv_reenter(ctx, light, pname, params);
 		}
 		
 		static void line_stipple_replacement(GLIContext ctx, GLint factor, GLushort pattern)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: line_stipple called.\n");
+			file_mutex.unlock();
 			
 			return line_stipple_reenter(ctx, factor, pattern);
 		}
 		
 		static void line_width_replacement(GLIContext ctx, GLfloat width)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: line_width called.\n");
+			file_mutex.unlock();
 			
 			return line_width_reenter(ctx, width);
 		}
 		
 		static void list_base_replacement(GLIContext ctx, GLuint base)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: list_base called.\n");
+			file_mutex.unlock();
 			
 			return list_base_reenter(ctx, base);
 		}
 		
 		static void load_identity_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: load_identity called.\n");
+			file_mutex.unlock();
 			
 			return load_identity_reenter(ctx);
 		}
 		
 		static void load_matrixd_replacement(GLIContext ctx, const GLdouble *m)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: load_matrixd called.\n");
+			file_mutex.unlock();
 			
 			return load_matrixd_reenter(ctx, m);
 		}
 		
 		static void load_matrixf_replacement(GLIContext ctx, const GLfloat *m)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: load_matrixf called.\n");
+			file_mutex.unlock();
 			
 			return load_matrixf_reenter(ctx, m);
 		}
 		
 		static void load_name_replacement(GLIContext ctx, GLuint name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: load_name called.\n");
+			file_mutex.unlock();
 			
 			return load_name_reenter(ctx, name);
 		}
 		
 		static void logic_op_replacement(GLIContext ctx, GLenum opcode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: logic_op called.\n");
+			file_mutex.unlock();
 			
 			return logic_op_reenter(ctx, opcode);
 		}
 		
 		static void map1d_replacement(GLIContext ctx, GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: map1d called.\n");
+			file_mutex.unlock();
 			
 			return map1d_reenter(ctx, target, u1, u2, stride, order, points);
 		}
 		
 		static void map1f_replacement(GLIContext ctx, GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: map1f called.\n");
+			file_mutex.unlock();
 			
 			return map1f_reenter(ctx, target, u1, u2, stride, order, points);
 		}
 		
 		static void map2d_replacement(GLIContext ctx, GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: map2d called.\n");
+			file_mutex.unlock();
 			
 			return map2d_reenter(ctx, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 		}
 		
 		static void map2f_replacement(GLIContext ctx, GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: map2f called.\n");
+			file_mutex.unlock();
 			
 			return map2f_reenter(ctx, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 		}
 		
 		static void map_grid1d_replacement(GLIContext ctx, GLint un, GLdouble u1, GLdouble u2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: map_grid1d called.\n");
+			file_mutex.unlock();
 			
 			return map_grid1d_reenter(ctx, un, u1, u2);
 		}
 		
 		static void map_grid1f_replacement(GLIContext ctx, GLint un, GLfloat u1, GLfloat u2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: map_grid1f called.\n");
+			file_mutex.unlock();
 			
 			return map_grid1f_reenter(ctx, un, u1, u2);
 		}
 		
 		static void map_grid2d_replacement(GLIContext ctx, GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: map_grid2d called.\n");
+			file_mutex.unlock();
 			
 			return map_grid2d_reenter(ctx, un, u1, u2, vn, v1, v2);
 		}
 		
 		static void map_grid2f_replacement(GLIContext ctx, GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: map_grid2f called.\n");
+			file_mutex.unlock();
 			
 			return map_grid2f_reenter(ctx, un, u1, u2, vn, v1, v2);
 		}
 		
 		static void materialf_replacement(GLIContext ctx, GLenum face, GLenum pname, GLfloat param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: materialf called.\n");
+			file_mutex.unlock();
 			
 			return materialf_reenter(ctx, face, pname, param);
 		}
 		
 		static void materialfv_replacement(GLIContext ctx, GLenum face, GLenum pname, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: materialfv called.\n");
+			file_mutex.unlock();
 			
 			return materialfv_reenter(ctx, face, pname, params);
 		}
 		
 		static void materiali_replacement(GLIContext ctx, GLenum face, GLenum pname, GLint param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: materiali called.\n");
+			file_mutex.unlock();
 			
 			return materiali_reenter(ctx, face, pname, param);
 		}
 		
 		static void materialiv_replacement(GLIContext ctx, GLenum face, GLenum pname, const GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: materialiv called.\n");
+			file_mutex.unlock();
 			
 			return materialiv_reenter(ctx, face, pname, params);
 		}
 		
 		static void matrix_mode_replacement(GLIContext ctx, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: matrix_mode called.\n");
+			file_mutex.unlock();
 			
 			return matrix_mode_reenter(ctx, mode);
 		}
 		
 		static void mult_matrixd_replacement(GLIContext ctx, const GLdouble *m)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: mult_matrixd called.\n");
+			file_mutex.unlock();
 			
 			return mult_matrixd_reenter(ctx, m);
 		}
 		
 		static void mult_matrixf_replacement(GLIContext ctx, const GLfloat *m)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: mult_matrixf called.\n");
+			file_mutex.unlock();
 			
 			return mult_matrixf_reenter(ctx, m);
 		}
 		
 		static void new_list_replacement(GLIContext ctx, GLuint list, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: new_list called.\n");
+			file_mutex.unlock();
 			
 			return new_list_reenter(ctx, list, mode);
 		}
 		
 		static void normal3b_replacement(GLIContext ctx, GLbyte nx, GLbyte ny, GLbyte nz)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: normal3b called.\n");
+			file_mutex.unlock();
 			
 			return normal3b_reenter(ctx, nx, ny, nz);
 		}
 		
 		static void normal3bv_replacement(GLIContext ctx, const GLbyte *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: normal3bv called.\n");
+			file_mutex.unlock();
 			
 			return normal3bv_reenter(ctx, v);
 		}
 		
 		static void normal3d_replacement(GLIContext ctx, GLdouble nx, GLdouble ny, GLdouble nz)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: normal3d called.\n");
+			file_mutex.unlock();
 			
 			return normal3d_reenter(ctx, nx, ny, nz);
 		}
 		
 		static void normal3dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: normal3dv called.\n");
+			file_mutex.unlock();
 			
 			return normal3dv_reenter(ctx, v);
 		}
 		
 		static void normal3f_replacement(GLIContext ctx, GLfloat nx, GLfloat ny, GLfloat nz)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: normal3f called.\n");
+			file_mutex.unlock();
 			
 			return normal3f_reenter(ctx, nx, ny, nz);
 		}
 		
 		static void normal3fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: normal3fv called.\n");
+			file_mutex.unlock();
 			
 			return normal3fv_reenter(ctx, v);
 		}
 		
 		static void normal3i_replacement(GLIContext ctx, GLint nx, GLint ny, GLint nz)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: normal3i called.\n");
+			file_mutex.unlock();
 			
 			return normal3i_reenter(ctx, nx, ny, nz);
 		}
 		
 		static void normal3iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: normal3iv called.\n");
+			file_mutex.unlock();
 			
 			return normal3iv_reenter(ctx, v);
 		}
 		
 		static void normal3s_replacement(GLIContext ctx, GLshort nx, GLshort ny, GLshort nz)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: normal3s called.\n");
+			file_mutex.unlock();
 			
 			return normal3s_reenter(ctx, nx, ny, nz);
 		}
 		
 		static void normal3sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: normal3sv called.\n");
+			file_mutex.unlock();
 			
 			return normal3sv_reenter(ctx, v);
 		}
 		
 		static void normal_pointer_replacement(GLIContext ctx, GLenum type, GLsizei stride, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: normal_pointer called.\n");
+			file_mutex.unlock();
 			
 			return normal_pointer_reenter(ctx, type, stride, pointer);
 		}
 		
 		static void ortho_replacement(GLIContext ctx, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: ortho called.\n");
+			file_mutex.unlock();
 			
 			return ortho_reenter(ctx, left, right, bottom, top, zNear, zFar);
 		}
 		
 		static void pass_through_replacement(GLIContext ctx, GLfloat token)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pass_through called.\n");
+			file_mutex.unlock();
 			
 			return pass_through_reenter(ctx, token);
 		}
 		
 		static void pixel_mapfv_replacement(GLIContext ctx, GLenum map, GLsizei mapsize, const GLfloat *values)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pixel_mapfv called.\n");
+			file_mutex.unlock();
 			
 			return pixel_mapfv_reenter(ctx, map, mapsize, values);
 		}
 		
 		static void pixel_mapuiv_replacement(GLIContext ctx, GLenum map, GLsizei mapsize, const GLuint *values)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pixel_mapuiv called.\n");
+			file_mutex.unlock();
 			
 			return pixel_mapuiv_reenter(ctx, map, mapsize, values);
 		}
 		
 		static void pixel_mapusv_replacement(GLIContext ctx, GLenum map, GLsizei mapsize, const GLushort *values)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pixel_mapusv called.\n");
+			file_mutex.unlock();
 			
 			return pixel_mapusv_reenter(ctx, map, mapsize, values);
 		}
 		
 		static void pixel_storef_replacement(GLIContext ctx, GLenum pname, GLfloat param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pixel_storef called.\n");
+			file_mutex.unlock();
 			
 			return pixel_storef_reenter(ctx, pname, param);
 		}
 		
 		static void pixel_storei_replacement(GLIContext ctx, GLenum pname, GLint param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pixel_storei called.\n");
+			file_mutex.unlock();
 			
 			return pixel_storei_reenter(ctx, pname, param);
 		}
 		
 		static void pixel_transferf_replacement(GLIContext ctx, GLenum pname, GLfloat param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pixel_transferf called.\n");
+			file_mutex.unlock();
 			
 			return pixel_transferf_reenter(ctx, pname, param);
 		}
 		
 		static void pixel_transferi_replacement(GLIContext ctx, GLenum pname, GLint param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pixel_transferi called.\n");
+			file_mutex.unlock();
 			
 			return pixel_transferi_reenter(ctx, pname, param);
 		}
 		
 		static void pixel_zoom_replacement(GLIContext ctx, GLfloat xfactor, GLfloat yfactor)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pixel_zoom called.\n");
+			file_mutex.unlock();
 			
 			return pixel_zoom_reenter(ctx, xfactor, yfactor);
 		}
 		
 		static void point_size_replacement(GLIContext ctx, GLfloat size)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: point_size called.\n");
+			file_mutex.unlock();
 			
 			return point_size_reenter(ctx, size);
 		}
 		
 		static void polygon_mode_replacement(GLIContext ctx, GLenum face, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: polygon_mode called.\n");
+			file_mutex.unlock();
 			
 			return polygon_mode_reenter(ctx, face, mode);
 		}
 		
 		static void polygon_offset_replacement(GLIContext ctx, GLfloat factor, GLfloat units)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: polygon_offset called.\n");
+			file_mutex.unlock();
 			
 			return polygon_offset_reenter(ctx, factor, units);
 		}
 		
 		static void polygon_stipple_replacement(GLIContext ctx, const GLubyte *mask)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: polygon_stipple called.\n");
+			file_mutex.unlock();
 			
 			return polygon_stipple_reenter(ctx, mask);
 		}
 		
 		static void pop_attrib_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pop_attrib called.\n");
+			file_mutex.unlock();
 			
 			return pop_attrib_reenter(ctx);
 		}
 		
 		static void pop_client_attrib_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pop_client_attrib called.\n");
+			file_mutex.unlock();
 			
 			return pop_client_attrib_reenter(ctx);
 		}
 		
 		static void pop_matrix_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pop_matrix called.\n");
+			file_mutex.unlock();
 			
 			return pop_matrix_reenter(ctx);
 		}
 		
 		static void pop_name_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pop_name called.\n");
+			file_mutex.unlock();
 			
 			return pop_name_reenter(ctx);
 		}
 		
 		static void prioritize_textures_replacement(GLIContext ctx, GLsizei n, const GLuint *textures, const GLclampf *priorities)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: prioritize_textures called.\n");
+			file_mutex.unlock();
 			
 			return prioritize_textures_reenter(ctx, n, textures, priorities);
 		}
 		
 		static void push_attrib_replacement(GLIContext ctx, GLbitfield mask)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: push_attrib called.\n");
+			file_mutex.unlock();
 			
 			return push_attrib_reenter(ctx, mask);
 		}
 		
 		static void push_client_attrib_replacement(GLIContext ctx, GLbitfield mask)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: push_client_attrib called.\n");
+			file_mutex.unlock();
 			
 			return push_client_attrib_reenter(ctx, mask);
 		}
 		
 		static void push_matrix_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: push_matrix called.\n");
+			file_mutex.unlock();
 			
 			return push_matrix_reenter(ctx);
 		}
 		
 		static void push_name_replacement(GLIContext ctx, GLuint name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: push_name called.\n");
+			file_mutex.unlock();
 			
 			return push_name_reenter(ctx, name);
 		}
 		
 		static void raster_pos2d_replacement(GLIContext ctx, GLdouble x, GLdouble y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos2d called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos2d_reenter(ctx, x, y);
 		}
 		
 		static void raster_pos2dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos2dv called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos2dv_reenter(ctx, v);
 		}
 		
 		static void raster_pos2f_replacement(GLIContext ctx, GLfloat x, GLfloat y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos2f called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos2f_reenter(ctx, x, y);
 		}
 		
 		static void raster_pos2fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos2fv called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos2fv_reenter(ctx, v);
 		}
 		
 		static void raster_pos2i_replacement(GLIContext ctx, GLint x, GLint y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos2i called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos2i_reenter(ctx, x, y);
 		}
 		
 		static void raster_pos2iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos2iv called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos2iv_reenter(ctx, v);
 		}
 		
 		static void raster_pos2s_replacement(GLIContext ctx, GLshort x, GLshort y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos2s called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos2s_reenter(ctx, x, y);
 		}
 		
 		static void raster_pos2sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos2sv called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos2sv_reenter(ctx, v);
 		}
 		
 		static void raster_pos3d_replacement(GLIContext ctx, GLdouble x, GLdouble y, GLdouble z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos3d called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos3d_reenter(ctx, x, y, z);
 		}
 		
 		static void raster_pos3dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos3dv called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos3dv_reenter(ctx, v);
 		}
 		
 		static void raster_pos3f_replacement(GLIContext ctx, GLfloat x, GLfloat y, GLfloat z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos3f called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos3f_reenter(ctx, x, y, z);
 		}
 		
 		static void raster_pos3fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos3fv called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos3fv_reenter(ctx, v);
 		}
 		
 		static void raster_pos3i_replacement(GLIContext ctx, GLint x, GLint y, GLint z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos3i called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos3i_reenter(ctx, x, y, z);
 		}
 		
 		static void raster_pos3iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos3iv called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos3iv_reenter(ctx, v);
 		}
 		
 		static void raster_pos3s_replacement(GLIContext ctx, GLshort x, GLshort y, GLshort z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos3s called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos3s_reenter(ctx, x, y, z);
 		}
 		
 		static void raster_pos3sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos3sv called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos3sv_reenter(ctx, v);
 		}
 		
 		static void raster_pos4d_replacement(GLIContext ctx, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos4d called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos4d_reenter(ctx, x, y, z, w);
 		}
 		
 		static void raster_pos4dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos4dv called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos4dv_reenter(ctx, v);
 		}
 		
 		static void raster_pos4f_replacement(GLIContext ctx, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos4f called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos4f_reenter(ctx, x, y, z, w);
 		}
 		
 		static void raster_pos4fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos4fv called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos4fv_reenter(ctx, v);
 		}
 		
 		static void raster_pos4i_replacement(GLIContext ctx, GLint x, GLint y, GLint z, GLint w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos4i called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos4i_reenter(ctx, x, y, z, w);
 		}
 		
 		static void raster_pos4iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos4iv called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos4iv_reenter(ctx, v);
 		}
 		
 		static void raster_pos4s_replacement(GLIContext ctx, GLshort x, GLshort y, GLshort z, GLshort w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos4s called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos4s_reenter(ctx, x, y, z, w);
 		}
 		
 		static void raster_pos4sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: raster_pos4sv called.\n");
+			file_mutex.unlock();
 			
 			return raster_pos4sv_reenter(ctx, v);
 		}
 		
 		static void read_buffer_replacement(GLIContext ctx, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: read_buffer called.\n");
+			file_mutex.unlock();
 			
 			return read_buffer_reenter(ctx, mode);
 		}
 		
 		static void read_pixels_replacement(GLIContext ctx, GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: read_pixels called.\n");
+			file_mutex.unlock();
 			
 			return read_pixels_reenter(ctx, x, y, width, height, format, type, pixels);
 		}
 		
 		static void rectd_replacement(GLIContext ctx, GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: rectd called.\n");
+			file_mutex.unlock();
 			
 			return rectd_reenter(ctx, x1, y1, x2, y2);
 		}
 		
 		static void rectdv_replacement(GLIContext ctx, const GLdouble *v1, const GLdouble *v2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: rectdv called.\n");
+			file_mutex.unlock();
 			
 			return rectdv_reenter(ctx, v1, v2);
 		}
 		
 		static void rectf_replacement(GLIContext ctx, GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: rectf called.\n");
+			file_mutex.unlock();
 			
 			return rectf_reenter(ctx, x1, y1, x2, y2);
 		}
 		
 		static void rectfv_replacement(GLIContext ctx, const GLfloat *v1, const GLfloat *v2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: rectfv called.\n");
+			file_mutex.unlock();
 			
 			return rectfv_reenter(ctx, v1, v2);
 		}
 		
 		static void recti_replacement(GLIContext ctx, GLint x1, GLint y1, GLint x2, GLint y2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: recti called.\n");
+			file_mutex.unlock();
 			
 			return recti_reenter(ctx, x1, y1, x2, y2);
 		}
 		
 		static void rectiv_replacement(GLIContext ctx, const GLint *v1, const GLint *v2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: rectiv called.\n");
+			file_mutex.unlock();
 			
 			return rectiv_reenter(ctx, v1, v2);
 		}
 		
 		static void rects_replacement(GLIContext ctx, GLshort x1, GLshort y1, GLshort x2, GLshort y2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: rects called.\n");
+			file_mutex.unlock();
 			
 			return rects_reenter(ctx, x1, y1, x2, y2);
 		}
 		
 		static void rectsv_replacement(GLIContext ctx, const GLshort *v1, const GLshort *v2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: rectsv called.\n");
+			file_mutex.unlock();
 			
 			return rectsv_reenter(ctx, v1, v2);
 		}
 		
 		static GLint render_mode_replacement(GLIContext ctx, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: render_mode called.\n");
+			file_mutex.unlock();
 			
 			return render_mode_reenter(ctx, mode);
 		}
 		
 		static void rotated_replacement(GLIContext ctx, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: rotated called.\n");
+			file_mutex.unlock();
 			
 			return rotated_reenter(ctx, angle, x, y, z);
 		}
 		
 		static void rotatef_replacement(GLIContext ctx, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: rotatef called.\n");
+			file_mutex.unlock();
 			
 			return rotatef_reenter(ctx, angle, x, y, z);
 		}
 		
 		static void scaled_replacement(GLIContext ctx, GLdouble x, GLdouble y, GLdouble z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: scaled called.\n");
+			file_mutex.unlock();
 			
 			return scaled_reenter(ctx, x, y, z);
 		}
 		
 		static void scalef_replacement(GLIContext ctx, GLfloat x, GLfloat y, GLfloat z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: scalef called.\n");
+			file_mutex.unlock();
 			
 			return scalef_reenter(ctx, x, y, z);
 		}
 		
 		static void scissor_replacement(GLIContext ctx, GLint x, GLint y, GLsizei width, GLsizei height)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: scissor called.\n");
+			file_mutex.unlock();
 			
 			return scissor_reenter(ctx, x, y, width, height);
 		}
 		
 		static void select_buffer_replacement(GLIContext ctx, GLsizei size, GLuint *buffer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: select_buffer called.\n");
+			file_mutex.unlock();
 			
 			return select_buffer_reenter(ctx, size, buffer);
 		}
 		
 		static void shade_model_replacement(GLIContext ctx, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: shade_model called.\n");
+			file_mutex.unlock();
 			
 			return shade_model_reenter(ctx, mode);
 		}
 		
 		static void stencil_func_replacement(GLIContext ctx, GLenum func, GLint ref, GLuint mask)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: stencil_func called.\n");
+			file_mutex.unlock();
 			
 			return stencil_func_reenter(ctx, func, ref, mask);
 		}
 		
 		static void stencil_mask_replacement(GLIContext ctx, GLuint mask)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: stencil_mask called.\n");
+			file_mutex.unlock();
 			
 			return stencil_mask_reenter(ctx, mask);
 		}
 		
 		static void stencil_op_replacement(GLIContext ctx, GLenum fail, GLenum zfail, GLenum zpass)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: stencil_op called.\n");
+			file_mutex.unlock();
 			
 			return stencil_op_reenter(ctx, fail, zfail, zpass);
 		}
 		
 		static void tex_coord1d_replacement(GLIContext ctx, GLdouble s)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord1d called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord1d_reenter(ctx, s);
 		}
 		
 		static void tex_coord1dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord1dv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord1dv_reenter(ctx, v);
 		}
 		
 		static void tex_coord1f_replacement(GLIContext ctx, GLfloat s)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord1f called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord1f_reenter(ctx, s);
 		}
 		
 		static void tex_coord1fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord1fv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord1fv_reenter(ctx, v);
 		}
 		
 		static void tex_coord1i_replacement(GLIContext ctx, GLint s)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord1i called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord1i_reenter(ctx, s);
 		}
 		
 		static void tex_coord1iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord1iv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord1iv_reenter(ctx, v);
 		}
 		
 		static void tex_coord1s_replacement(GLIContext ctx, GLshort s)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord1s called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord1s_reenter(ctx, s);
 		}
 		
 		static void tex_coord1sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord1sv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord1sv_reenter(ctx, v);
 		}
 		
 		static void tex_coord2d_replacement(GLIContext ctx, GLdouble s, GLdouble t)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord2d called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord2d_reenter(ctx, s, t);
 		}
 		
 		static void tex_coord2dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord2dv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord2dv_reenter(ctx, v);
 		}
 		
 		static void tex_coord2f_replacement(GLIContext ctx, GLfloat s, GLfloat t)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord2f called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord2f_reenter(ctx, s, t);
 		}
 		
 		static void tex_coord2fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord2fv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord2fv_reenter(ctx, v);
 		}
 		
 		static void tex_coord2i_replacement(GLIContext ctx, GLint s, GLint t)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord2i called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord2i_reenter(ctx, s, t);
 		}
 		
 		static void tex_coord2iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord2iv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord2iv_reenter(ctx, v);
 		}
 		
 		static void tex_coord2s_replacement(GLIContext ctx, GLshort s, GLshort t)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord2s called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord2s_reenter(ctx, s, t);
 		}
 		
 		static void tex_coord2sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord2sv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord2sv_reenter(ctx, v);
 		}
 		
 		static void tex_coord3d_replacement(GLIContext ctx, GLdouble s, GLdouble t, GLdouble r)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord3d called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord3d_reenter(ctx, s, t, r);
 		}
 		
 		static void tex_coord3dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord3dv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord3dv_reenter(ctx, v);
 		}
 		
 		static void tex_coord3f_replacement(GLIContext ctx, GLfloat s, GLfloat t, GLfloat r)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord3f called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord3f_reenter(ctx, s, t, r);
 		}
 		
 		static void tex_coord3fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord3fv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord3fv_reenter(ctx, v);
 		}
 		
 		static void tex_coord3i_replacement(GLIContext ctx, GLint s, GLint t, GLint r)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord3i called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord3i_reenter(ctx, s, t, r);
 		}
 		
 		static void tex_coord3iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord3iv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord3iv_reenter(ctx, v);
 		}
 		
 		static void tex_coord3s_replacement(GLIContext ctx, GLshort s, GLshort t, GLshort r)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord3s called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord3s_reenter(ctx, s, t, r);
 		}
 		
 		static void tex_coord3sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord3sv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord3sv_reenter(ctx, v);
 		}
 		
 		static void tex_coord4d_replacement(GLIContext ctx, GLdouble s, GLdouble t, GLdouble r, GLdouble q)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord4d called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord4d_reenter(ctx, s, t, r, q);
 		}
 		
 		static void tex_coord4dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord4dv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord4dv_reenter(ctx, v);
 		}
 		
 		static void tex_coord4f_replacement(GLIContext ctx, GLfloat s, GLfloat t, GLfloat r, GLfloat q)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord4f called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord4f_reenter(ctx, s, t, r, q);
 		}
 		
 		static void tex_coord4fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord4fv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord4fv_reenter(ctx, v);
 		}
 		
 		static void tex_coord4i_replacement(GLIContext ctx, GLint s, GLint t, GLint r, GLint q)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord4i called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord4i_reenter(ctx, s, t, r, q);
 		}
 		
 		static void tex_coord4iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord4iv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord4iv_reenter(ctx, v);
 		}
 		
 		static void tex_coord4s_replacement(GLIContext ctx, GLshort s, GLshort t, GLshort r, GLshort q)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord4s called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord4s_reenter(ctx, s, t, r, q);
 		}
 		
 		static void tex_coord4sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord4sv called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord4sv_reenter(ctx, v);
 		}
 		
 		static void tex_coord_pointer_replacement(GLIContext ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_coord_pointer called.\n");
+			file_mutex.unlock();
 			
 			return tex_coord_pointer_reenter(ctx, size, type, stride, pointer);
 		}
 		
 		static void tex_envf_replacement(GLIContext ctx, GLenum target, GLenum pname, GLfloat param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_envf called.\n");
+			file_mutex.unlock();
 			
 			return tex_envf_reenter(ctx, target, pname, param);
 		}
 		
 		static void tex_envfv_replacement(GLIContext ctx, GLenum target, GLenum pname, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_envfv called.\n");
+			file_mutex.unlock();
 			
 			return tex_envfv_reenter(ctx, target, pname, params);
 		}
 		
 		static void tex_envi_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_envi called.\n");
+			file_mutex.unlock();
 			
 			return tex_envi_reenter(ctx, target, pname, param);
 		}
 		
 		static void tex_enviv_replacement(GLIContext ctx, GLenum target, GLenum pname, const GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_enviv called.\n");
+			file_mutex.unlock();
 			
 			return tex_enviv_reenter(ctx, target, pname, params);
 		}
 		
 		static void tex_gend_replacement(GLIContext ctx, GLenum coord, GLenum pname, GLdouble param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_gend called.\n");
+			file_mutex.unlock();
 			
 			return tex_gend_reenter(ctx, coord, pname, param);
 		}
 		
 		static void tex_gendv_replacement(GLIContext ctx, GLenum coord, GLenum pname, const GLdouble *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_gendv called.\n");
+			file_mutex.unlock();
 			
 			return tex_gendv_reenter(ctx, coord, pname, params);
 		}
 		
 		static void tex_genf_replacement(GLIContext ctx, GLenum coord, GLenum pname, GLfloat param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_genf called.\n");
+			file_mutex.unlock();
 			
 			return tex_genf_reenter(ctx, coord, pname, param);
 		}
 		
 		static void tex_genfv_replacement(GLIContext ctx, GLenum coord, GLenum pname, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_genfv called.\n");
+			file_mutex.unlock();
 			
 			return tex_genfv_reenter(ctx, coord, pname, params);
 		}
 		
 		static void tex_geni_replacement(GLIContext ctx, GLenum coord, GLenum pname, GLint param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_geni called.\n");
+			file_mutex.unlock();
 			
 			return tex_geni_reenter(ctx, coord, pname, param);
 		}
 		
 		static void tex_geniv_replacement(GLIContext ctx, GLenum coord, GLenum pname, const GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_geniv called.\n");
+			file_mutex.unlock();
 			
 			return tex_geniv_reenter(ctx, coord, pname, params);
 		}
 		
 		static void tex_image1D_replacement(GLIContext ctx, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_image1D called.\n");
+			file_mutex.unlock();
 			
 			return tex_image1D_reenter(ctx, target, level, internalformat, width, border, format, type, pixels);
 		}
 		
 		static void tex_image2D_replacement(GLIContext ctx, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_image2D called.\n");
+			file_mutex.unlock();
 			
 			return tex_image2D_reenter(ctx, target, level, internalformat, width, height, border, format, type, pixels);
 		}
 		
 		static void tex_parameterf_replacement(GLIContext ctx, GLenum target, GLenum pname, GLfloat param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_parameterf called.\n");
+			file_mutex.unlock();
 			
 			return tex_parameterf_reenter(ctx, target, pname, param);
 		}
 		
 		static void tex_parameterfv_replacement(GLIContext ctx, GLenum target, GLenum pname, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_parameterfv called.\n");
+			file_mutex.unlock();
 			
 			return tex_parameterfv_reenter(ctx, target, pname, params);
 		}
 		
 		static void tex_parameteri_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_parameteri called.\n");
+			file_mutex.unlock();
 			
 			return tex_parameteri_reenter(ctx, target, pname, param);
 		}
 		
 		static void tex_parameteriv_replacement(GLIContext ctx, GLenum target, GLenum pname, const GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_parameteriv called.\n");
+			file_mutex.unlock();
 			
 			return tex_parameteriv_reenter(ctx, target, pname, params);
 		}
 		
 		static void tex_sub_image1D_replacement(GLIContext ctx, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_sub_image1D called.\n");
+			file_mutex.unlock();
 			
 			return tex_sub_image1D_reenter(ctx, target, level, xoffset, width, format, type, pixels);
 		}
 		
 		static void tex_sub_image2D_replacement(GLIContext ctx, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_sub_image2D called.\n");
+			file_mutex.unlock();
 			
 			return tex_sub_image2D_reenter(ctx, target, level, xoffset, yoffset, width, height, format, type, pixels);
 		}
 		
 		static void translated_replacement(GLIContext ctx, GLdouble x, GLdouble y, GLdouble z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: translated called.\n");
+			file_mutex.unlock();
 			
 			return translated_reenter(ctx, x, y, z);
 		}
 		
 		static void translatef_replacement(GLIContext ctx, GLfloat x, GLfloat y, GLfloat z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: translatef called.\n");
+			file_mutex.unlock();
 			
 			return translatef_reenter(ctx, x, y, z);
 		}
 		
 		static void vertex2d_replacement(GLIContext ctx, GLdouble x, GLdouble y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex2d called.\n");
+			file_mutex.unlock();
 			
 			return vertex2d_reenter(ctx, x, y);
 		}
 		
 		static void vertex2dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex2dv called.\n");
+			file_mutex.unlock();
 			
 			return vertex2dv_reenter(ctx, v);
 		}
 		
 		static void vertex2f_replacement(GLIContext ctx, GLfloat x, GLfloat y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex2f called.\n");
+			file_mutex.unlock();
 			
 			return vertex2f_reenter(ctx, x, y);
 		}
 		
 		static void vertex2fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex2fv called.\n");
+			file_mutex.unlock();
 			
 			return vertex2fv_reenter(ctx, v);
 		}
 		
 		static void vertex2i_replacement(GLIContext ctx, GLint x, GLint y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex2i called.\n");
+			file_mutex.unlock();
 			
 			return vertex2i_reenter(ctx, x, y);
 		}
 		
 		static void vertex2iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex2iv called.\n");
+			file_mutex.unlock();
 			
 			return vertex2iv_reenter(ctx, v);
 		}
 		
 		static void vertex2s_replacement(GLIContext ctx, GLshort x, GLshort y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex2s called.\n");
+			file_mutex.unlock();
 			
 			return vertex2s_reenter(ctx, x, y);
 		}
 		
 		static void vertex2sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex2sv called.\n");
+			file_mutex.unlock();
 			
 			return vertex2sv_reenter(ctx, v);
 		}
 		
 		static void vertex3d_replacement(GLIContext ctx, GLdouble x, GLdouble y, GLdouble z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex3d called.\n");
+			file_mutex.unlock();
 			
 			return vertex3d_reenter(ctx, x, y, z);
 		}
 		
 		static void vertex3dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex3dv called.\n");
+			file_mutex.unlock();
 			
 			return vertex3dv_reenter(ctx, v);
 		}
 		
 		static void vertex3f_replacement(GLIContext ctx, GLfloat x, GLfloat y, GLfloat z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex3f called.\n");
+			file_mutex.unlock();
 			
 			return vertex3f_reenter(ctx, x, y, z);
 		}
 		
 		static void vertex3fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex3fv called.\n");
+			file_mutex.unlock();
 			
 			return vertex3fv_reenter(ctx, v);
 		}
 		
 		static void vertex3i_replacement(GLIContext ctx, GLint x, GLint y, GLint z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex3i called.\n");
+			file_mutex.unlock();
 			
 			return vertex3i_reenter(ctx, x, y, z);
 		}
 		
 		static void vertex3iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex3iv called.\n");
+			file_mutex.unlock();
 			
 			return vertex3iv_reenter(ctx, v);
 		}
 		
 		static void vertex3s_replacement(GLIContext ctx, GLshort x, GLshort y, GLshort z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex3s called.\n");
+			file_mutex.unlock();
 			
 			return vertex3s_reenter(ctx, x, y, z);
 		}
 		
 		static void vertex3sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex3sv called.\n");
+			file_mutex.unlock();
 			
 			return vertex3sv_reenter(ctx, v);
 		}
 		
 		static void vertex4d_replacement(GLIContext ctx, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex4d called.\n");
+			file_mutex.unlock();
 			
 			return vertex4d_reenter(ctx, x, y, z, w);
 		}
 		
 		static void vertex4dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex4dv called.\n");
+			file_mutex.unlock();
 			
 			return vertex4dv_reenter(ctx, v);
 		}
 		
 		static void vertex4f_replacement(GLIContext ctx, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex4f called.\n");
+			file_mutex.unlock();
 			
 			return vertex4f_reenter(ctx, x, y, z, w);
 		}
 		
 		static void vertex4fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex4fv called.\n");
+			file_mutex.unlock();
 			
 			return vertex4fv_reenter(ctx, v);
 		}
 		
 		static void vertex4i_replacement(GLIContext ctx, GLint x, GLint y, GLint z, GLint w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex4i called.\n");
+			file_mutex.unlock();
 			
 			return vertex4i_reenter(ctx, x, y, z, w);
 		}
 		
 		static void vertex4iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex4iv called.\n");
+			file_mutex.unlock();
 			
 			return vertex4iv_reenter(ctx, v);
 		}
 		
 		static void vertex4s_replacement(GLIContext ctx, GLshort x, GLshort y, GLshort z, GLshort w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex4s called.\n");
+			file_mutex.unlock();
 			
 			return vertex4s_reenter(ctx, x, y, z, w);
 		}
 		
 		static void vertex4sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex4sv called.\n");
+			file_mutex.unlock();
 			
 			return vertex4sv_reenter(ctx, v);
 		}
 		
 		static void vertex_pointer_replacement(GLIContext ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_pointer called.\n");
+			file_mutex.unlock();
 			
 			return vertex_pointer_reenter(ctx, size, type, stride, pointer);
 		}
 		
 		static void viewport_replacement(GLIContext ctx, GLint x, GLint y, GLsizei width, GLsizei height)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: viewport called.\n");
+			file_mutex.unlock();
 			
 			return viewport_reenter(ctx, x, y, width, height);
 		}
 		
 		static void blend_func_separate_replacement(GLIContext ctx, GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: blend_func_separate called.\n");
+			file_mutex.unlock();
 			
 			return blend_func_separate_reenter(ctx, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
 		}
 		
 		static void blend_color_replacement(GLIContext ctx, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: blend_color called.\n");
+			file_mutex.unlock();
 			
 			return blend_color_reenter(ctx, red, green, blue, alpha);
 		}
 		
 		static void blend_equation_replacement(GLIContext ctx, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: blend_equation called.\n");
+			file_mutex.unlock();
 			
 			return blend_equation_reenter(ctx, mode);
 		}
 		
 		static void lock_arrays_EXT_replacement(GLIContext ctx, GLint first, GLsizei count)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: lock_arrays_EXT called.\n");
+			file_mutex.unlock();
 			
 			return lock_arrays_EXT_reenter(ctx, first, count);
 		}
 		
 		static void unlock_arrays_EXT_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: unlock_arrays_EXT called.\n");
+			file_mutex.unlock();
 			
 			return unlock_arrays_EXT_reenter(ctx);
 		}
 		
 		static void client_active_texture_replacement(GLIContext ctx, GLenum target)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: client_active_texture called.\n");
+			file_mutex.unlock();
 			
 			return client_active_texture_reenter(ctx, target);
 		}
 		
 		static void active_texture_replacement(GLIContext ctx, GLenum target)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: active_texture called.\n");
+			file_mutex.unlock();
 			
 			return active_texture_reenter(ctx, target);
 		}
 		
 		static void multi_tex_coord1d_replacement(GLIContext ctx, GLenum target, GLdouble s)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord1d called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord1d_reenter(ctx, target, s);
 		}
 		
 		static void multi_tex_coord1dv_replacement(GLIContext ctx, GLenum target, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord1dv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord1dv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord1f_replacement(GLIContext ctx, GLenum target, GLfloat s)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord1f called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord1f_reenter(ctx, target, s);
 		}
 		
 		static void multi_tex_coord1fv_replacement(GLIContext ctx, GLenum target, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord1fv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord1fv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord1i_replacement(GLIContext ctx, GLenum target, GLint s)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord1i called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord1i_reenter(ctx, target, s);
 		}
 		
 		static void multi_tex_coord1iv_replacement(GLIContext ctx, GLenum target, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord1iv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord1iv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord1s_replacement(GLIContext ctx, GLenum target, GLshort s)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord1s called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord1s_reenter(ctx, target, s);
 		}
 		
 		static void multi_tex_coord1sv_replacement(GLIContext ctx, GLenum target, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord1sv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord1sv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord2d_replacement(GLIContext ctx, GLenum target, GLdouble s, GLdouble t)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord2d called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord2d_reenter(ctx, target, s, t);
 		}
 		
 		static void multi_tex_coord2dv_replacement(GLIContext ctx, GLenum target, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord2dv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord2dv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord2f_replacement(GLIContext ctx, GLenum target, GLfloat s, GLfloat t)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord2f called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord2f_reenter(ctx, target, s, t);
 		}
 		
 		static void multi_tex_coord2fv_replacement(GLIContext ctx, GLenum target, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord2fv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord2fv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord2i_replacement(GLIContext ctx, GLenum target, GLint s, GLint t)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord2i called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord2i_reenter(ctx, target, s, t);
 		}
 		
 		static void multi_tex_coord2iv_replacement(GLIContext ctx, GLenum target, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord2iv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord2iv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord2s_replacement(GLIContext ctx, GLenum target, GLshort s, GLshort t)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord2s called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord2s_reenter(ctx, target, s, t);
 		}
 		
 		static void multi_tex_coord2sv_replacement(GLIContext ctx, GLenum target, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord2sv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord2sv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord3d_replacement(GLIContext ctx, GLenum target, GLdouble s, GLdouble t, GLdouble r)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord3d called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord3d_reenter(ctx, target, s, t, r);
 		}
 		
 		static void multi_tex_coord3dv_replacement(GLIContext ctx, GLenum target, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord3dv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord3dv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord3f_replacement(GLIContext ctx, GLenum target, GLfloat s, GLfloat t, GLfloat r)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord3f called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord3f_reenter(ctx, target, s, t, r);
 		}
 		
 		static void multi_tex_coord3fv_replacement(GLIContext ctx, GLenum target, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord3fv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord3fv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord3i_replacement(GLIContext ctx, GLenum target, GLint s, GLint t, GLint r)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord3i called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord3i_reenter(ctx, target, s, t, r);
 		}
 		
 		static void multi_tex_coord3iv_replacement(GLIContext ctx, GLenum target, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord3iv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord3iv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord3s_replacement(GLIContext ctx, GLenum target, GLshort s, GLshort t, GLshort r)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord3s called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord3s_reenter(ctx, target, s, t, r);
 		}
 		
 		static void multi_tex_coord3sv_replacement(GLIContext ctx, GLenum target, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord3sv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord3sv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord4d_replacement(GLIContext ctx, GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord4d called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord4d_reenter(ctx, target, s, t, r, q);
 		}
 		
 		static void multi_tex_coord4dv_replacement(GLIContext ctx, GLenum target, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord4dv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord4dv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord4f_replacement(GLIContext ctx, GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord4f called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord4f_reenter(ctx, target, s, t, r, q);
 		}
 		
 		static void multi_tex_coord4fv_replacement(GLIContext ctx, GLenum target, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord4fv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord4fv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord4i_replacement(GLIContext ctx, GLenum target, GLint s, GLint t, GLint r, GLint q)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord4i called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord4i_reenter(ctx, target, s, t, r, q);
 		}
 		
 		static void multi_tex_coord4iv_replacement(GLIContext ctx, GLenum target, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord4iv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord4iv_reenter(ctx, target, v);
 		}
 		
 		static void multi_tex_coord4s_replacement(GLIContext ctx, GLenum target, GLshort s, GLshort t, GLshort r, GLshort q)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord4s called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord4s_reenter(ctx, target, s, t, r, q);
 		}
 		
 		static void multi_tex_coord4sv_replacement(GLIContext ctx, GLenum target, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_tex_coord4sv called.\n");
+			file_mutex.unlock();
 			
 			return multi_tex_coord4sv_reenter(ctx, target, v);
 		}
 		
 		static void load_transpose_matrixd_replacement(GLIContext ctx, const GLdouble *m)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: load_transpose_matrixd called.\n");
+			file_mutex.unlock();
 			
 			return load_transpose_matrixd_reenter(ctx, m);
 		}
 		
 		static void load_transpose_matrixf_replacement(GLIContext ctx, const GLfloat *m)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: load_transpose_matrixf called.\n");
+			file_mutex.unlock();
 			
 			return load_transpose_matrixf_reenter(ctx, m);
 		}
 		
 		static void mult_transpose_matrixd_replacement(GLIContext ctx, const GLdouble *m)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: mult_transpose_matrixd called.\n");
+			file_mutex.unlock();
 			
 			return mult_transpose_matrixd_reenter(ctx, m);
 		}
 		
 		static void mult_transpose_matrixf_replacement(GLIContext ctx, const GLfloat *m)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: mult_transpose_matrixf called.\n");
+			file_mutex.unlock();
 			
 			return mult_transpose_matrixf_reenter(ctx, m);
 		}
 		
 		static void compressed_tex_image3D_replacement(GLIContext ctx, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: compressed_tex_image3D called.\n");
+			file_mutex.unlock();
 			
 			return compressed_tex_image3D_reenter(ctx, target, level, internalformat, width, height, depth, border, imageSize, data);
 		}
 		
 		static void compressed_tex_image2D_replacement(GLIContext ctx, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: compressed_tex_image2D called.\n");
+			file_mutex.unlock();
 			
 			return compressed_tex_image2D_reenter(ctx, target, level, internalformat, width, height, border, imageSize, data);
 		}
 		
 		static void compressed_tex_image1D_replacement(GLIContext ctx, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: compressed_tex_image1D called.\n");
+			file_mutex.unlock();
 			
 			return compressed_tex_image1D_reenter(ctx, target, level, internalformat, width, border, imageSize, data);
 		}
 		
 		static void compressed_tex_sub_image3D_replacement(GLIContext ctx, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: compressed_tex_sub_image3D called.\n");
+			file_mutex.unlock();
 			
 			return compressed_tex_sub_image3D_reenter(ctx, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
 		}
 		
 		static void compressed_tex_sub_image2D_replacement(GLIContext ctx, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: compressed_tex_sub_image2D called.\n");
+			file_mutex.unlock();
 			
 			return compressed_tex_sub_image2D_reenter(ctx, target, level, xoffset, yoffset, width, height, format, imageSize, data);
 		}
 		
 		static void compressed_tex_sub_image1D_replacement(GLIContext ctx, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: compressed_tex_sub_image1D called.\n");
+			file_mutex.unlock();
 			
 			return compressed_tex_sub_image1D_reenter(ctx, target, level, xoffset, width, format, imageSize, data);
 		}
 		
 		static void get_compressed_tex_image_replacement(GLIContext ctx, GLenum target, GLint level, GLvoid *img)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_compressed_tex_image called.\n");
+			file_mutex.unlock();
 			
 			return get_compressed_tex_image_reenter(ctx, target, level, img);
 		}
 		
 		static void secondary_color3b_replacement(GLIContext ctx, GLbyte red, GLbyte green, GLbyte blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3b called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3b_reenter(ctx, red, green, blue);
 		}
 		
 		static void secondary_color3bv_replacement(GLIContext ctx, const GLbyte *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3bv called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3bv_reenter(ctx, v);
 		}
 		
 		static void secondary_color3d_replacement(GLIContext ctx, GLdouble red, GLdouble green, GLdouble blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3d called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3d_reenter(ctx, red, green, blue);
 		}
 		
 		static void secondary_color3dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3dv called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3dv_reenter(ctx, v);
 		}
 		
 		static void secondary_color3f_replacement(GLIContext ctx, GLfloat red, GLfloat green, GLfloat blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3f called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3f_reenter(ctx, red, green, blue);
 		}
 		
 		static void secondary_color3fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3fv called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3fv_reenter(ctx, v);
 		}
 		
 		static void secondary_color3i_replacement(GLIContext ctx, GLint red, GLint green, GLint blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3i called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3i_reenter(ctx, red, green, blue);
 		}
 		
 		static void secondary_color3iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3iv called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3iv_reenter(ctx, v);
 		}
 		
 		static void secondary_color3s_replacement(GLIContext ctx, GLshort red, GLshort green, GLshort blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3s called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3s_reenter(ctx, red, green, blue);
 		}
 		
 		static void secondary_color3sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3sv called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3sv_reenter(ctx, v);
 		}
 		
 		static void secondary_color3ub_replacement(GLIContext ctx, GLubyte red, GLubyte green, GLubyte blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3ub called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3ub_reenter(ctx, red, green, blue);
 		}
 		
 		static void secondary_color3ubv_replacement(GLIContext ctx, const GLubyte *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3ubv called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3ubv_reenter(ctx, v);
 		}
 		
 		static void secondary_color3ui_replacement(GLIContext ctx, GLuint red, GLuint green, GLuint blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3ui called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3ui_reenter(ctx, red, green, blue);
 		}
 		
 		static void secondary_color3uiv_replacement(GLIContext ctx, const GLuint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3uiv called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3uiv_reenter(ctx, v);
 		}
 		
 		static void secondary_color3us_replacement(GLIContext ctx, GLushort red, GLushort green, GLushort blue)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3us called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3us_reenter(ctx, red, green, blue);
 		}
 		
 		static void secondary_color3usv_replacement(GLIContext ctx, const GLushort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color3usv called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color3usv_reenter(ctx, v);
 		}
 		
 		static void secondary_color_pointer_replacement(GLIContext ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: secondary_color_pointer called.\n");
+			file_mutex.unlock();
 			
 			return secondary_color_pointer_reenter(ctx, size, type, stride, pointer);
 		}
 		
 		static void vertex_array_range_EXT_replacement(GLIContext ctx, GLsizei count, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_array_range_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_array_range_EXT_reenter(ctx, count, pointer);
 		}
 		
 		static void flush_vertex_array_range_EXT_replacement(GLIContext ctx, GLsizei count, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: flush_vertex_array_range_EXT called.\n");
+			file_mutex.unlock();
 			
 			return flush_vertex_array_range_EXT_reenter(ctx, count, pointer);
 		}
 		
 		static void draw_range_elements_replacement(GLIContext ctx, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_range_elements called.\n");
+			file_mutex.unlock();
 			
 			return draw_range_elements_reenter(ctx, mode, start, end, count, type, indices);
 		}
 		
 		static void color_table_replacement(GLIContext ctx, GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *table)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color_table called.\n");
+			file_mutex.unlock();
 			
 			return color_table_reenter(ctx, target, internalformat, width, format, type, table);
 		}
 		
 		static void color_table_parameterfv_replacement(GLIContext ctx, GLenum target, GLenum pname, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color_table_parameterfv called.\n");
+			file_mutex.unlock();
 			
 			return color_table_parameterfv_reenter(ctx, target, pname, params);
 		}
 		
 		static void color_table_parameteriv_replacement(GLIContext ctx, GLenum target, GLenum pname, const GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color_table_parameteriv called.\n");
+			file_mutex.unlock();
 			
 			return color_table_parameteriv_reenter(ctx, target, pname, params);
 		}
 		
 		static void copy_color_table_replacement(GLIContext ctx, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: copy_color_table called.\n");
+			file_mutex.unlock();
 			
 			return copy_color_table_reenter(ctx, target, internalformat, x, y, width);
 		}
 		
 		static void get_color_table_replacement(GLIContext ctx, GLenum target, GLenum format, GLenum type, GLvoid *table)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_color_table called.\n");
+			file_mutex.unlock();
 			
 			return get_color_table_reenter(ctx, target, format, type, table);
 		}
 		
 		static void get_color_table_parameterfv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_color_table_parameterfv called.\n");
+			file_mutex.unlock();
 			
 			return get_color_table_parameterfv_reenter(ctx, target, pname, params);
 		}
 		
 		static void get_color_table_parameteriv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_color_table_parameteriv called.\n");
+			file_mutex.unlock();
 			
 			return get_color_table_parameteriv_reenter(ctx, target, pname, params);
 		}
 		
 		static void color_sub_table_replacement(GLIContext ctx, GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const GLvoid *data)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color_sub_table called.\n");
+			file_mutex.unlock();
 			
 			return color_sub_table_reenter(ctx, target, start, count, format, type, data);
 		}
 		
 		static void copy_color_sub_table_replacement(GLIContext ctx, GLenum target, GLsizei start, GLint x, GLint y, GLsizei width)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: copy_color_sub_table called.\n");
+			file_mutex.unlock();
 			
 			return copy_color_sub_table_reenter(ctx, target, start, x, y, width);
 		}
 		
 		static void convolution_filter1D_replacement(GLIContext ctx, GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *image)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: convolution_filter1D called.\n");
+			file_mutex.unlock();
 			
 			return convolution_filter1D_reenter(ctx, target, internalformat, width, format, type, image);
 		}
 		
 		static void convolution_filter2D_replacement(GLIContext ctx, GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *image)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: convolution_filter2D called.\n");
+			file_mutex.unlock();
 			
 			return convolution_filter2D_reenter(ctx, target, internalformat, width, height, format, type, image);
 		}
 		
 		static void convolution_parameterf_replacement(GLIContext ctx, GLenum target, GLenum pname, GLfloat params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: convolution_parameterf called.\n");
+			file_mutex.unlock();
 			
 			return convolution_parameterf_reenter(ctx, target, pname, params);
 		}
 		
 		static void convolution_parameterfv_replacement(GLIContext ctx, GLenum target, GLenum pname, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: convolution_parameterfv called.\n");
+			file_mutex.unlock();
 			
 			return convolution_parameterfv_reenter(ctx, target, pname, params);
 		}
 		
 		static void convolution_parameteri_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: convolution_parameteri called.\n");
+			file_mutex.unlock();
 			
 			return convolution_parameteri_reenter(ctx, target, pname, params);
 		}
 		
 		static void convolution_parameteriv_replacement(GLIContext ctx, GLenum target, GLenum pname, const GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: convolution_parameteriv called.\n");
+			file_mutex.unlock();
 			
 			return convolution_parameteriv_reenter(ctx, target, pname, params);
 		}
 		
 		static void copy_convolution_filter1D_replacement(GLIContext ctx, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: copy_convolution_filter1D called.\n");
+			file_mutex.unlock();
 			
 			return copy_convolution_filter1D_reenter(ctx, target, internalformat, x, y, width);
 		}
 		
 		static void copy_convolution_filter2D_replacement(GLIContext ctx, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: copy_convolution_filter2D called.\n");
+			file_mutex.unlock();
 			
 			return copy_convolution_filter2D_reenter(ctx, target, internalformat, x, y, width, height);
 		}
 		
 		static void get_convolution_filter_replacement(GLIContext ctx, GLenum target, GLenum format, GLenum type, GLvoid *image)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_convolution_filter called.\n");
+			file_mutex.unlock();
 			
 			return get_convolution_filter_reenter(ctx, target, format, type, image);
 		}
 		
 		static void get_convolution_parameterfv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_convolution_parameterfv called.\n");
+			file_mutex.unlock();
 			
 			return get_convolution_parameterfv_reenter(ctx, target, pname, params);
 		}
 		
 		static void get_convolution_parameteriv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_convolution_parameteriv called.\n");
+			file_mutex.unlock();
 			
 			return get_convolution_parameteriv_reenter(ctx, target, pname, params);
 		}
 		
 		static void get_separable_filter_replacement(GLIContext ctx, GLenum target, GLenum format, GLenum type, GLvoid *row, GLvoid *column, GLvoid *span)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_separable_filter called.\n");
+			file_mutex.unlock();
 			
 			return get_separable_filter_reenter(ctx, target, format, type, row, column, span);
 		}
 		
 		static void separable_filter2D_replacement(GLIContext ctx, GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *row, const GLvoid *column)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: separable_filter2D called.\n");
+			file_mutex.unlock();
 			
 			return separable_filter2D_reenter(ctx, target, internalformat, width, height, format, type, row, column);
 		}
 		
 		static void get_histogram_replacement(GLIContext ctx, GLenum target, GLboolean reset, GLenum format, GLenum type, GLvoid *values)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_histogram called.\n");
+			file_mutex.unlock();
 			
 			return get_histogram_reenter(ctx, target, reset, format, type, values);
 		}
 		
 		static void get_histogram_parameterfv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_histogram_parameterfv called.\n");
+			file_mutex.unlock();
 			
 			return get_histogram_parameterfv_reenter(ctx, target, pname, params);
 		}
 		
 		static void get_histogram_parameteriv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_histogram_parameteriv called.\n");
+			file_mutex.unlock();
 			
 			return get_histogram_parameteriv_reenter(ctx, target, pname, params);
 		}
 		
 		static void get_minmax_replacement(GLIContext ctx, GLenum target, GLboolean reset, GLenum format, GLenum type, GLvoid *values)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_minmax called.\n");
+			file_mutex.unlock();
 			
 			return get_minmax_reenter(ctx, target, reset, format, type, values);
 		}
 		
 		static void get_minmax_parameterfv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_minmax_parameterfv called.\n");
+			file_mutex.unlock();
 			
 			return get_minmax_parameterfv_reenter(ctx, target, pname, params);
 		}
 		
 		static void get_minmax_parameteriv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_minmax_parameteriv called.\n");
+			file_mutex.unlock();
 			
 			return get_minmax_parameteriv_reenter(ctx, target, pname, params);
 		}
 		
 		static void histogram_replacement(GLIContext ctx, GLenum target, GLsizei width, GLenum internalformat, GLboolean sink)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: histogram called.\n");
+			file_mutex.unlock();
 			
 			return histogram_reenter(ctx, target, width, internalformat, sink);
 		}
 		
 		static void minmax_replacement(GLIContext ctx, GLenum target, GLenum internalformat, GLboolean sink)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: minmax called.\n");
+			file_mutex.unlock();
 			
 			return minmax_reenter(ctx, target, internalformat, sink);
 		}
 		
 		static void reset_histogram_replacement(GLIContext ctx, GLenum target)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: reset_histogram called.\n");
+			file_mutex.unlock();
 			
 			return reset_histogram_reenter(ctx, target);
 		}
 		
 		static void reset_minmax_replacement(GLIContext ctx, GLenum target)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: reset_minmax called.\n");
+			file_mutex.unlock();
 			
 			return reset_minmax_reenter(ctx, target);
 		}
 		
 		static void tex_image3D_replacement(GLIContext ctx, GLenum target, GLint level, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_image3D called.\n");
+			file_mutex.unlock();
 			
 			return tex_image3D_reenter(ctx, target, level, internalFormat, width, height, depth, border, format, type, pixels);
 		}
 		
 		static void tex_sub_image3D_replacement(GLIContext ctx, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_sub_image3D called.\n");
+			file_mutex.unlock();
 			
 			return tex_sub_image3D_reenter(ctx, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 		}
 		
 		static void copy_tex_sub_image3D_replacement(GLIContext ctx, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: copy_tex_sub_image3D called.\n");
+			file_mutex.unlock();
 			
 			return copy_tex_sub_image3D_reenter(ctx, target, level, xoffset, yoffset, zoffset, x, y, width, height);
 		}
 		
 		static void get_uniform_indices_replacement(GLIContext ctx, GLuint program, GLsizei uniformCount, const GLchar* const *uniformNames, GLuint* uniformIndices)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_uniform_indices called.\n");
+			file_mutex.unlock();
 			
 			return get_uniform_indices_reenter(ctx, program, uniformCount, uniformNames, uniformIndices);
 		}
 		
 		static void get_active_uniformsiv_replacement(GLIContext ctx, GLuint program, GLsizei uniformCount, const GLuint* uniformIndices, GLenum pname, GLint* params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_active_uniformsiv called.\n");
+			file_mutex.unlock();
 			
 			return get_active_uniformsiv_reenter(ctx, program, uniformCount, uniformIndices, pname, params);
 		}
 		
 		static void get_active_uniform_name_replacement(GLIContext ctx, GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei* length, GLchar* uniformName)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_active_uniform_name called.\n");
+			file_mutex.unlock();
 			
 			return get_active_uniform_name_reenter(ctx, program, uniformIndex, bufSize, length, uniformName);
 		}
 		
 		static GLuint get_uniform_block_index_replacement(GLIContext ctx, GLuint program, const GLchar* uniformBlockName)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_uniform_block_index called.\n");
+			file_mutex.unlock();
 			
 			return get_uniform_block_index_reenter(ctx, program, uniformBlockName);
 		}
 		
 		static void get_active_uniform_blockiv_replacement(GLIContext ctx, GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint* params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_active_uniform_blockiv called.\n");
+			file_mutex.unlock();
 			
 			return get_active_uniform_blockiv_reenter(ctx, program, uniformBlockIndex, pname, params);
 		}
 		
 		static void get_active_uniform_block_name_replacement(GLIContext ctx, GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei* length, GLchar* uniformBlockName)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_active_uniform_block_name called.\n");
+			file_mutex.unlock();
 			
 			return get_active_uniform_block_name_reenter(ctx, program, uniformBlockIndex, bufSize, length, uniformBlockName);
 		}
 		
 		static void uniform_block_binding_replacement(GLIContext ctx, GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_block_binding called.\n");
+			file_mutex.unlock();
 			
 			return uniform_block_binding_reenter(ctx, program, uniformBlockIndex, uniformBlockBinding);
 		}
 		
 		static void get_combiner_input_parameterfv_NV_replacement(GLIContext ctx, GLenum stage, GLenum portion, GLenum variable, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_combiner_input_parameterfv_NV called.\n");
+			file_mutex.unlock();
 			
 			return get_combiner_input_parameterfv_NV_reenter(ctx, stage, portion, variable, pname, params);
 		}
 		
 		static void get_combiner_input_parameteriv_NV_replacement(GLIContext ctx, GLenum stage, GLenum portion, GLenum variable, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_combiner_input_parameteriv_NV called.\n");
+			file_mutex.unlock();
 			
 			return get_combiner_input_parameteriv_NV_reenter(ctx, stage, portion, variable, pname, params);
 		}
 		
 		static void get_combiner_output_parameterfv_NV_replacement(GLIContext ctx, GLenum stage, GLenum portion, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_combiner_output_parameterfv_NV called.\n");
+			file_mutex.unlock();
 			
 			return get_combiner_output_parameterfv_NV_reenter(ctx, stage, portion, pname, params);
 		}
 		
 		static void get_combiner_output_parameteriv_NV_replacement(GLIContext ctx, GLenum stage, GLenum portion, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_combiner_output_parameteriv_NV called.\n");
+			file_mutex.unlock();
 			
 			return get_combiner_output_parameteriv_NV_reenter(ctx, stage, portion, pname, params);
 		}
 		
 		static void get_final_combiner_input_parameterfv_NV_replacement(GLIContext ctx, GLenum variable, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_final_combiner_input_parameterfv_NV called.\n");
+			file_mutex.unlock();
 			
 			return get_final_combiner_input_parameterfv_NV_reenter(ctx, variable, pname, params);
 		}
 		
 		static void get_final_combiner_input_parameteriv_NV_replacement(GLIContext ctx, GLenum variable, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_final_combiner_input_parameteriv_NV called.\n");
+			file_mutex.unlock();
 			
 			return get_final_combiner_input_parameteriv_NV_reenter(ctx, variable, pname, params);
 		}
 		
 		static void combiner_stage_parameterfv_NV_replacement(GLIContext ctx, GLenum stage, GLenum pname, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: combiner_stage_parameterfv_NV called.\n");
+			file_mutex.unlock();
 			
 			return combiner_stage_parameterfv_NV_reenter(ctx, stage, pname, params);
 		}
 		
 		static void get_combiner_stage_parameterfv_NV_replacement(GLIContext ctx, GLenum stage, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_combiner_stage_parameterfv_NV called.\n");
+			file_mutex.unlock();
 			
 			return get_combiner_stage_parameterfv_NV_reenter(ctx, stage, pname, params);
 		}
 		
 		static void texture_range_APPLE_replacement(GLIContext ctx, GLenum target, GLsizei length, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: texture_range_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return texture_range_APPLE_reenter(ctx, target, length, pointer);
 		}
 		
 		static void get_tex_parameter_pointerv_APPLE_replacement(GLIContext ctx, GLenum target, GLenum pname, GLvoid **params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_tex_parameter_pointerv_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return get_tex_parameter_pointerv_APPLE_reenter(ctx, target, pname, params);
 		}
 		
 		static void blend_equation_separate_EXT_replacement(GLIContext ctx, GLenum equationRGB, GLenum equationAlpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: blend_equation_separate_EXT called.\n");
+			file_mutex.unlock();
 			
 			return blend_equation_separate_EXT_reenter(ctx, equationRGB, equationAlpha);
 		}
 		
 		static void sample_coverage_replacement(GLIContext ctx, GLclampf value, GLboolean invert)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: sample_coverage called.\n");
+			file_mutex.unlock();
 			
 			return sample_coverage_reenter(ctx, value, invert);
 		}
 		
 		static void sample_pass_replacement(GLIContext ctx, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: sample_pass called.\n");
+			file_mutex.unlock();
 			
 			return sample_pass_reenter(ctx, mode);
 		}
 		
 		static void pn_trianglesi_ATI_replacement(GLIContext ctx, GLenum pname, GLint param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pn_trianglesi_ATI called.\n");
+			file_mutex.unlock();
 			
 			return pn_trianglesi_ATI_reenter(ctx, pname, param);
 		}
 		
 		static void pn_trianglesf_ATI_replacement(GLIContext ctx, GLenum pname, GLfloat param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pn_trianglesf_ATI called.\n");
+			file_mutex.unlock();
 			
 			return pn_trianglesf_ATI_reenter(ctx, pname, param);
 		}
 		
 		static void gen_fences_APPLE_replacement(GLIContext ctx, GLsizei n, GLuint *fences)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: gen_fences_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return gen_fences_APPLE_reenter(ctx, n, fences);
 		}
 		
 		static void delete_fences_APPLE_replacement(GLIContext ctx, GLsizei n, const GLuint *fences)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_fences_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return delete_fences_APPLE_reenter(ctx, n, fences);
 		}
 		
 		static void set_fence_APPLE_replacement(GLIContext ctx, GLuint fence)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: set_fence_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return set_fence_APPLE_reenter(ctx, fence);
 		}
 		
 		static GLboolean is_fence_APPLE_replacement(GLIContext ctx, GLuint fence)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_fence_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return is_fence_APPLE_reenter(ctx, fence);
 		}
 		
 		static GLboolean test_fence_APPLE_replacement(GLIContext ctx, GLuint fence)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: test_fence_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return test_fence_APPLE_reenter(ctx, fence);
 		}
 		
 		static void finish_fence_APPLE_replacement(GLIContext ctx, GLuint fence)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: finish_fence_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return finish_fence_APPLE_reenter(ctx, fence);
 		}
 		
 		static GLboolean test_object_APPLE_replacement(GLIContext ctx, GLenum object, GLuint name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: test_object_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return test_object_APPLE_reenter(ctx, object, name);
 		}
 		
 		static void finish_object_APPLE_replacement(GLIContext ctx, GLenum object, GLuint name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: finish_object_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return finish_object_APPLE_reenter(ctx, object, name);
 		}
 		
 		static void bind_program_ARB_replacement(GLIContext ctx, GLenum target, GLuint program)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_program_ARB called.\n");
+			file_mutex.unlock();
 			
 			return bind_program_ARB_reenter(ctx, target, program);
 		}
 		
 		static void delete_programs_ARB_replacement(GLIContext ctx, GLsizei n, const GLuint *programs)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_programs_ARB called.\n");
+			file_mutex.unlock();
 			
 			return delete_programs_ARB_reenter(ctx, n, programs);
 		}
 		
 		static void gen_programs_ARB_replacement(GLIContext ctx, GLsizei n, GLuint *programs)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: gen_programs_ARB called.\n");
+			file_mutex.unlock();
 			
 			return gen_programs_ARB_reenter(ctx, n, programs);
 		}
 		
 		static GLboolean is_program_ARB_replacement(GLIContext ctx, GLuint program)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_program_ARB called.\n");
+			file_mutex.unlock();
 			
 			return is_program_ARB_reenter(ctx, program);
 		}
 		
 		static void vertex_attrib1s_ARB_replacement(GLIContext ctx, GLuint index, GLshort x)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib1s_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib1s_ARB_reenter(ctx, index, x);
 		}
 		
 		static void vertex_attrib1f_ARB_replacement(GLIContext ctx, GLuint index, GLfloat x)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib1f_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib1f_ARB_reenter(ctx, index, x);
 		}
 		
 		static void vertex_attrib1d_ARB_replacement(GLIContext ctx, GLuint index, GLdouble x)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib1d_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib1d_ARB_reenter(ctx, index, x);
 		}
 		
 		static void vertex_attrib2s_ARB_replacement(GLIContext ctx, GLuint index, GLshort x, GLshort y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib2s_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib2s_ARB_reenter(ctx, index, x, y);
 		}
 		
 		static void vertex_attrib2f_ARB_replacement(GLIContext ctx, GLuint index, GLfloat x, GLfloat y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib2f_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib2f_ARB_reenter(ctx, index, x, y);
 		}
 		
 		static void vertex_attrib2d_ARB_replacement(GLIContext ctx, GLuint index, GLdouble x, GLdouble y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib2d_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib2d_ARB_reenter(ctx, index, x, y);
 		}
 		
 		static void vertex_attrib3s_ARB_replacement(GLIContext ctx, GLuint index, GLshort x, GLshort y, GLshort z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib3s_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib3s_ARB_reenter(ctx, index, x, y, z);
 		}
 		
 		static void vertex_attrib3f_ARB_replacement(GLIContext ctx, GLuint index, GLfloat x, GLfloat y, GLfloat z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib3f_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib3f_ARB_reenter(ctx, index, x, y, z);
 		}
 		
 		static void vertex_attrib3d_ARB_replacement(GLIContext ctx, GLuint index, GLdouble x, GLdouble y, GLdouble z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib3d_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib3d_ARB_reenter(ctx, index, x, y, z);
 		}
 		
 		static void vertex_attrib4s_ARB_replacement(GLIContext ctx, GLuint index, GLshort x, GLshort y, GLshort z, GLshort w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4s_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4s_ARB_reenter(ctx, index, x, y, z, w);
 		}
 		
 		static void vertex_attrib4f_ARB_replacement(GLIContext ctx, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4f_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4f_ARB_reenter(ctx, index, x, y, z, w);
 		}
 		
 		static void vertex_attrib4d_ARB_replacement(GLIContext ctx, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4d_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4d_ARB_reenter(ctx, index, x, y, z, w);
 		}
 		
 		static void vertex_attrib4Nub_ARB_replacement(GLIContext ctx, GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4Nub_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4Nub_ARB_reenter(ctx, index, x, y, z, w);
 		}
 		
 		static void vertex_attrib1sv_ARB_replacement(GLIContext ctx, GLuint index, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib1sv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib1sv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib1fv_ARB_replacement(GLIContext ctx, GLuint index, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib1fv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib1fv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib1dv_ARB_replacement(GLIContext ctx, GLuint index, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib1dv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib1dv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib2sv_ARB_replacement(GLIContext ctx, GLuint index, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib2sv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib2sv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib2fv_ARB_replacement(GLIContext ctx, GLuint index, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib2fv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib2fv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib2dv_ARB_replacement(GLIContext ctx, GLuint index, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib2dv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib2dv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib3sv_ARB_replacement(GLIContext ctx, GLuint index, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib3sv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib3sv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib3fv_ARB_replacement(GLIContext ctx, GLuint index, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib3fv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib3fv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib3dv_ARB_replacement(GLIContext ctx, GLuint index, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib3dv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib3dv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib4bv_ARB_replacement(GLIContext ctx, GLuint index, const GLbyte *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4bv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4bv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib4sv_ARB_replacement(GLIContext ctx, GLuint index, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4sv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4sv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib4iv_ARB_replacement(GLIContext ctx, GLuint index, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4iv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4iv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib4ubv_ARB_replacement(GLIContext ctx, GLuint index, const GLubyte *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4ubv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4ubv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib4usv_ARB_replacement(GLIContext ctx, GLuint index, const GLushort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4usv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4usv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib4uiv_ARB_replacement(GLIContext ctx, GLuint index, const GLuint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4uiv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4uiv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib4fv_ARB_replacement(GLIContext ctx, GLuint index, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4fv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4fv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib4dv_ARB_replacement(GLIContext ctx, GLuint index, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4dv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4dv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib4Nbv_ARB_replacement(GLIContext ctx, GLuint index, const GLbyte *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4Nbv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4Nbv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib4Nsv_ARB_replacement(GLIContext ctx, GLuint index, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4Nsv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4Nsv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib4Niv_ARB_replacement(GLIContext ctx, GLuint index, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4Niv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4Niv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib4Nubv_ARB_replacement(GLIContext ctx, GLuint index, const GLubyte *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4Nubv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4Nubv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib4Nusv_ARB_replacement(GLIContext ctx, GLuint index, const GLushort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4Nusv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4Nusv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib4Nuiv_ARB_replacement(GLIContext ctx, GLuint index, const GLuint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib4Nuiv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib4Nuiv_ARB_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib_pointer_ARB_replacement(GLIContext ctx, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib_pointer_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib_pointer_ARB_reenter(ctx, index, size, type, normalized, stride, pointer);
 		}
 		
 		static void enable_vertex_attrib_array_ARB_replacement(GLIContext ctx, GLuint index)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: enable_vertex_attrib_array_ARB called.\n");
+			file_mutex.unlock();
 			
 			return enable_vertex_attrib_array_ARB_reenter(ctx, index);
 		}
 		
 		static void disable_vertex_attrib_array_ARB_replacement(GLIContext ctx, GLuint index)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: disable_vertex_attrib_array_ARB called.\n");
+			file_mutex.unlock();
 			
 			return disable_vertex_attrib_array_ARB_reenter(ctx, index);
 		}
 		
 		static void get_vertex_attribdv_ARB_replacement(GLIContext ctx, GLuint index, GLenum pname, GLdouble *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_vertex_attribdv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_vertex_attribdv_ARB_reenter(ctx, index, pname, params);
 		}
 		
 		static void get_vertex_attribfv_ARB_replacement(GLIContext ctx, GLuint index, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_vertex_attribfv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_vertex_attribfv_ARB_reenter(ctx, index, pname, params);
 		}
 		
 		static void get_vertex_attribiv_ARB_replacement(GLIContext ctx, GLuint index, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_vertex_attribiv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_vertex_attribiv_ARB_reenter(ctx, index, pname, params);
 		}
 		
 		static void get_vertex_attrib_pointerv_ARB_replacement(GLIContext ctx, GLuint index, GLenum pname, GLvoid **pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_vertex_attrib_pointerv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_vertex_attrib_pointerv_ARB_reenter(ctx, index, pname, pointer);
 		}
 		
 		static void program_env_parameter4d_ARB_replacement(GLIContext ctx, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_env_parameter4d_ARB called.\n");
+			file_mutex.unlock();
 			
 			return program_env_parameter4d_ARB_reenter(ctx, target, index, x, y, z, w);
 		}
 		
 		static void program_env_parameter4dv_ARB_replacement(GLIContext ctx, GLenum target, GLuint index, const GLdouble *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_env_parameter4dv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return program_env_parameter4dv_ARB_reenter(ctx, target, index, params);
 		}
 		
 		static void program_env_parameter4f_ARB_replacement(GLIContext ctx, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_env_parameter4f_ARB called.\n");
+			file_mutex.unlock();
 			
 			return program_env_parameter4f_ARB_reenter(ctx, target, index, x, y, z, w);
 		}
 		
 		static void program_env_parameter4fv_ARB_replacement(GLIContext ctx, GLenum target, GLuint index, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_env_parameter4fv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return program_env_parameter4fv_ARB_reenter(ctx, target, index, params);
 		}
 		
 		static void program_local_parameter4d_ARB_replacement(GLIContext ctx, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_local_parameter4d_ARB called.\n");
+			file_mutex.unlock();
 			
 			return program_local_parameter4d_ARB_reenter(ctx, target, index, x, y, z, w);
 		}
 		
 		static void program_local_parameter4dv_ARB_replacement(GLIContext ctx, GLenum target, GLuint index, const GLdouble *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_local_parameter4dv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return program_local_parameter4dv_ARB_reenter(ctx, target, index, params);
 		}
 		
 		static void program_local_parameter4f_ARB_replacement(GLIContext ctx, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_local_parameter4f_ARB called.\n");
+			file_mutex.unlock();
 			
 			return program_local_parameter4f_ARB_reenter(ctx, target, index, x, y, z, w);
 		}
 		
 		static void program_local_parameter4fv_ARB_replacement(GLIContext ctx, GLenum target, GLuint index, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_local_parameter4fv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return program_local_parameter4fv_ARB_reenter(ctx, target, index, params);
 		}
 		
 		static void get_program_env_parameterdv_ARB_replacement(GLIContext ctx, GLenum target, GLuint index, GLdouble *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_program_env_parameterdv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_program_env_parameterdv_ARB_reenter(ctx, target, index, params);
 		}
 		
 		static void get_program_env_parameterfv_ARB_replacement(GLIContext ctx, GLenum target, GLuint index, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_program_env_parameterfv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_program_env_parameterfv_ARB_reenter(ctx, target, index, params);
 		}
 		
 		static void get_program_local_parameterdv_ARB_replacement(GLIContext ctx, GLenum target, GLuint index, GLdouble *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_program_local_parameterdv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_program_local_parameterdv_ARB_reenter(ctx, target, index, params);
 		}
 		
 		static void get_program_local_parameterfv_ARB_replacement(GLIContext ctx, GLenum target, GLuint index, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_program_local_parameterfv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_program_local_parameterfv_ARB_reenter(ctx, target, index, params);
 		}
 		
 		static void program_string_ARB_replacement(GLIContext ctx, GLenum target, GLenum format, GLsizei len, const GLvoid* string)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_string_ARB called.\n");
+			file_mutex.unlock();
 			
 			return program_string_ARB_reenter(ctx, target, format, len, string);
 		}
 		
 		static void get_program_string_ARB_replacement(GLIContext ctx, GLenum target, GLenum pname, GLvoid *string)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_program_string_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_program_string_ARB_reenter(ctx, target, pname, string);
 		}
 		
 		static void get_programiv_ARB_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_programiv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_programiv_ARB_reenter(ctx, target, pname, params);
 		}
 		
 		static void enable_vertex_attrib_ARB_replacement(GLIContext ctx, GLuint index, GLenum pname)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: enable_vertex_attrib_ARB called.\n");
+			file_mutex.unlock();
 			
 			return enable_vertex_attrib_ARB_reenter(ctx, index, pname);
 		}
 		
 		static void disable_vertex_attrib_ARB_replacement(GLIContext ctx, GLuint index, GLenum pname)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: disable_vertex_attrib_ARB called.\n");
+			file_mutex.unlock();
 			
 			return disable_vertex_attrib_ARB_reenter(ctx, index, pname);
 		}
 		
 		static GLboolean is_vertex_attrib_enabled_ARB_replacement(GLIContext ctx, GLuint index, GLenum pname)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_vertex_attrib_enabled_ARB called.\n");
+			file_mutex.unlock();
 			
 			return is_vertex_attrib_enabled_ARB_reenter(ctx, index, pname);
 		}
 		
 		static void map_vertex_attrib1d_ARB_replacement(GLIContext ctx, GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: map_vertex_attrib1d_ARB called.\n");
+			file_mutex.unlock();
 			
 			return map_vertex_attrib1d_ARB_reenter(ctx, index, size, u1, u2, stride, order, points);
 		}
 		
 		static void map_vertex_attrib1f_ARB_replacement(GLIContext ctx, GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: map_vertex_attrib1f_ARB called.\n");
+			file_mutex.unlock();
 			
 			return map_vertex_attrib1f_ARB_reenter(ctx, index, size, u1, u2, stride, order, points);
 		}
 		
 		static void map_vertex_attrib2d_ARB_replacement(GLIContext ctx, GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: map_vertex_attrib2d_ARB called.\n");
+			file_mutex.unlock();
 			
 			return map_vertex_attrib2d_ARB_reenter(ctx, index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 		}
 		
 		static void map_vertex_attrib2f_ARB_replacement(GLIContext ctx, GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: map_vertex_attrib2f_ARB called.\n");
+			file_mutex.unlock();
 			
 			return map_vertex_attrib2f_ARB_reenter(ctx, index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 		}
 		
 		static void point_parameterf_replacement(GLIContext ctx, GLenum pname, GLfloat param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: point_parameterf called.\n");
+			file_mutex.unlock();
 			
 			return point_parameterf_reenter(ctx, pname, param);
 		}
 		
 		static void point_parameterfv_replacement(GLIContext ctx, GLenum pname, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: point_parameterfv called.\n");
+			file_mutex.unlock();
 			
 			return point_parameterfv_reenter(ctx, pname, params);
 		}
 		
 		static void point_parameteri_replacement(GLIContext ctx, GLenum pname, GLint param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: point_parameteri called.\n");
+			file_mutex.unlock();
 			
 			return point_parameteri_reenter(ctx, pname, param);
 		}
 		
 		static void point_parameteriv_replacement(GLIContext ctx, GLenum pname, const GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: point_parameteriv called.\n");
+			file_mutex.unlock();
 			
 			return point_parameteriv_reenter(ctx, pname, params);
 		}
 		
 		static void fog_coordf_replacement(GLIContext ctx, GLfloat coord)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: fog_coordf called.\n");
+			file_mutex.unlock();
 			
 			return fog_coordf_reenter(ctx, coord);
 		}
 		
 		static void fog_coordfv_replacement(GLIContext ctx, const GLfloat *coord)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: fog_coordfv called.\n");
+			file_mutex.unlock();
 			
 			return fog_coordfv_reenter(ctx, coord);
 		}
 		
 		static void fog_coordd_replacement(GLIContext ctx, GLdouble coord)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: fog_coordd called.\n");
+			file_mutex.unlock();
 			
 			return fog_coordd_reenter(ctx, coord);
 		}
 		
 		static void fog_coorddv_replacement(GLIContext ctx, const GLdouble *coord)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: fog_coorddv called.\n");
+			file_mutex.unlock();
 			
 			return fog_coorddv_reenter(ctx, coord);
 		}
 		
 		static void fog_coord_pointer_replacement(GLIContext ctx, GLenum type, GLsizei stride, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: fog_coord_pointer called.\n");
+			file_mutex.unlock();
 			
 			return fog_coord_pointer_reenter(ctx, type, stride, pointer);
 		}
 		
 		static void vertex_array_parameteri_EXT_replacement(GLIContext ctx, GLenum pname, GLint param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_array_parameteri_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_array_parameteri_EXT_reenter(ctx, pname, param);
 		}
 		
 		static void bind_vertex_array_EXT_replacement(GLIContext ctx, GLuint id)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_vertex_array_EXT called.\n");
+			file_mutex.unlock();
 			
 			return bind_vertex_array_EXT_reenter(ctx, id);
 		}
 		
 		static void delete_vertex_arrays_EXT_replacement(GLIContext ctx, GLsizei n, const GLuint *ids)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_vertex_arrays_EXT called.\n");
+			file_mutex.unlock();
 			
 			return delete_vertex_arrays_EXT_reenter(ctx, n, ids);
 		}
 		
 		static void gen_vertex_arrays_EXT_replacement(GLIContext ctx, GLsizei n, GLuint *ids)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: gen_vertex_arrays_EXT called.\n");
+			file_mutex.unlock();
 			
 			return gen_vertex_arrays_EXT_reenter(ctx, n, ids);
 		}
 		
 		static GLboolean is_vertex_array_EXT_replacement(GLIContext ctx, GLuint id)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_vertex_array_EXT called.\n");
+			file_mutex.unlock();
 			
 			return is_vertex_array_EXT_reenter(ctx, id);
 		}
 		
 		static void element_pointer_APPLE_replacement(GLIContext ctx, GLenum type, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: element_pointer_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return element_pointer_APPLE_reenter(ctx, type, pointer);
 		}
 		
 		static void draw_element_array_APPLE_replacement(GLIContext ctx, GLenum mode, GLint first, GLsizei count)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_element_array_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return draw_element_array_APPLE_reenter(ctx, mode, first, count);
 		}
 		
 		static void draw_range_element_array_APPLE_replacement(GLIContext ctx, GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_range_element_array_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return draw_range_element_array_APPLE_reenter(ctx, mode, start, end, first, count);
 		}
 		
 		static void weightbv_ARB_replacement(GLIContext ctx, GLint size, const GLbyte *weights)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: weightbv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return weightbv_ARB_reenter(ctx, size, weights);
 		}
 		
 		static void weightsv_ARB_replacement(GLIContext ctx, GLint size, const GLshort *weights)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: weightsv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return weightsv_ARB_reenter(ctx, size, weights);
 		}
 		
 		static void weightiv_ARB_replacement(GLIContext ctx, GLint size, const GLint *weights)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: weightiv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return weightiv_ARB_reenter(ctx, size, weights);
 		}
 		
 		static void weightfv_ARB_replacement(GLIContext ctx, GLint size, const GLfloat *weights)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: weightfv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return weightfv_ARB_reenter(ctx, size, weights);
 		}
 		
 		static void weightdv_ARB_replacement(GLIContext ctx, GLint size, const GLdouble *weights)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: weightdv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return weightdv_ARB_reenter(ctx, size, weights);
 		}
 		
 		static void weightubv_ARB_replacement(GLIContext ctx, GLint size, const GLubyte *weights)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: weightubv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return weightubv_ARB_reenter(ctx, size, weights);
 		}
 		
 		static void weightusv_ARB_replacement(GLIContext ctx, GLint size, const GLushort *weights)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: weightusv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return weightusv_ARB_reenter(ctx, size, weights);
 		}
 		
 		static void weightuiv_ARB_replacement(GLIContext ctx, GLint size, const GLuint *weights)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: weightuiv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return weightuiv_ARB_reenter(ctx, size, weights);
 		}
 		
 		static void weight_pointer_ARB_replacement(GLIContext ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: weight_pointer_ARB called.\n");
+			file_mutex.unlock();
 			
 			return weight_pointer_ARB_reenter(ctx, size, type, stride, pointer);
 		}
 		
 		static void vertex_blend_ARB_replacement(GLIContext ctx, GLint count)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_blend_ARB called.\n");
+			file_mutex.unlock();
 			
 			return vertex_blend_ARB_reenter(ctx, count);
 		}
 		
 		static void multi_draw_arrays_replacement(GLIContext ctx, GLenum mode, const GLint *first, const GLsizei *count, GLsizei drawcount)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_draw_arrays called.\n");
+			file_mutex.unlock();
 			
 			return multi_draw_arrays_reenter(ctx, mode, first, count, drawcount);
 		}
 		
 		static void multi_draw_elements_replacement(GLIContext ctx, GLenum mode, const GLsizei *count, GLenum type, const GLvoid* const *indices, GLsizei drawcount)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_draw_elements called.\n");
+			file_mutex.unlock();
 			
 			return multi_draw_elements_reenter(ctx, mode, count, type, indices, drawcount);
 		}
 		
 		static void window_pos2d_replacement(GLIContext ctx, GLdouble x, GLdouble y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos2d called.\n");
+			file_mutex.unlock();
 			
 			return window_pos2d_reenter(ctx, x, y);
 		}
 		
 		static void window_pos2dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos2dv called.\n");
+			file_mutex.unlock();
 			
 			return window_pos2dv_reenter(ctx, v);
 		}
 		
 		static void window_pos2f_replacement(GLIContext ctx, GLfloat x, GLfloat y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos2f called.\n");
+			file_mutex.unlock();
 			
 			return window_pos2f_reenter(ctx, x, y);
 		}
 		
 		static void window_pos2fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos2fv called.\n");
+			file_mutex.unlock();
 			
 			return window_pos2fv_reenter(ctx, v);
 		}
 		
 		static void window_pos2i_replacement(GLIContext ctx, GLint x, GLint y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos2i called.\n");
+			file_mutex.unlock();
 			
 			return window_pos2i_reenter(ctx, x, y);
 		}
 		
 		static void window_pos2iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos2iv called.\n");
+			file_mutex.unlock();
 			
 			return window_pos2iv_reenter(ctx, v);
 		}
 		
 		static void window_pos2s_replacement(GLIContext ctx, GLshort x, GLshort y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos2s called.\n");
+			file_mutex.unlock();
 			
 			return window_pos2s_reenter(ctx, x, y);
 		}
 		
 		static void window_pos2sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos2sv called.\n");
+			file_mutex.unlock();
 			
 			return window_pos2sv_reenter(ctx, v);
 		}
 		
 		static void window_pos3d_replacement(GLIContext ctx, GLdouble x, GLdouble y, GLdouble z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos3d called.\n");
+			file_mutex.unlock();
 			
 			return window_pos3d_reenter(ctx, x, y, z);
 		}
 		
 		static void window_pos3dv_replacement(GLIContext ctx, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos3dv called.\n");
+			file_mutex.unlock();
 			
 			return window_pos3dv_reenter(ctx, v);
 		}
 		
 		static void window_pos3f_replacement(GLIContext ctx, GLfloat x, GLfloat y, GLfloat z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos3f called.\n");
+			file_mutex.unlock();
 			
 			return window_pos3f_reenter(ctx, x, y, z);
 		}
 		
 		static void window_pos3fv_replacement(GLIContext ctx, const GLfloat *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos3fv called.\n");
+			file_mutex.unlock();
 			
 			return window_pos3fv_reenter(ctx, v);
 		}
 		
 		static void window_pos3i_replacement(GLIContext ctx, GLint x, GLint y, GLint z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos3i called.\n");
+			file_mutex.unlock();
 			
 			return window_pos3i_reenter(ctx, x, y, z);
 		}
 		
 		static void window_pos3iv_replacement(GLIContext ctx, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos3iv called.\n");
+			file_mutex.unlock();
 			
 			return window_pos3iv_reenter(ctx, v);
 		}
 		
 		static void window_pos3s_replacement(GLIContext ctx, GLshort x, GLshort y, GLshort z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos3s called.\n");
+			file_mutex.unlock();
 			
 			return window_pos3s_reenter(ctx, x, y, z);
 		}
 		
 		static void window_pos3sv_replacement(GLIContext ctx, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: window_pos3sv called.\n");
+			file_mutex.unlock();
 			
 			return window_pos3sv_reenter(ctx, v);
 		}
 		
 		static void active_stencil_face_EXT_replacement(GLIContext ctx, GLenum face)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: active_stencil_face_EXT called.\n");
+			file_mutex.unlock();
 			
 			return active_stencil_face_EXT_reenter(ctx, face);
 		}
 		
 		static void stencil_op_separate_ATI_replacement(GLIContext ctx, GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: stencil_op_separate_ATI called.\n");
+			file_mutex.unlock();
 			
 			return stencil_op_separate_ATI_reenter(ctx, face, sfail, dpfail, dppass);
 		}
 		
 		static void stencil_func_separate_ATI_replacement(GLIContext ctx, GLenum frontfunc, GLenum backfunc, GLint ref, GLuint mask)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: stencil_func_separate_ATI called.\n");
+			file_mutex.unlock();
 			
 			return stencil_func_separate_ATI_reenter(ctx, frontfunc, backfunc, ref, mask);
 		}
 		
 		static void flush_render_APPLE_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: flush_render_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return flush_render_APPLE_reenter(ctx);
 		}
 		
 		static void finish_render_APPLE_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: finish_render_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return finish_render_APPLE_reenter(ctx);
 		}
 		
 		static void swap_APPLE_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: swap_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return swap_APPLE_reenter(ctx);
 		}
 		
 		static void delete_object_ARB_replacement(GLIContext ctx, GLhandleARB obj)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_object_ARB called.\n");
+			file_mutex.unlock();
 			
 			return delete_object_ARB_reenter(ctx, obj);
 		}
 		
 		static GLhandleARB get_handle_ARB_replacement(GLIContext ctx, GLenum pname)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_handle_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_handle_ARB_reenter(ctx, pname);
 		}
 		
 		static void detach_object_ARB_replacement(GLIContext ctx, GLhandleARB containerObj, GLhandleARB attachedObj)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: detach_object_ARB called.\n");
+			file_mutex.unlock();
 			
 			return detach_object_ARB_reenter(ctx, containerObj, attachedObj);
 		}
 		
 		static GLhandleARB create_shader_object_ARB_replacement(GLIContext ctx, GLenum shaderType)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: create_shader_object_ARB called.\n");
+			file_mutex.unlock();
 			
 			return create_shader_object_ARB_reenter(ctx, shaderType);
 		}
 		
 		static void shader_source_ARB_replacement(GLIContext ctx, GLhandleARB shaderObj, GLsizei count, const GLcharARB* const *string, const GLint *length)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: shader_source_ARB called.\n");
+			file_mutex.unlock();
 			
 			return shader_source_ARB_reenter(ctx, shaderObj, count, string, length);
 		}
 		
 		static void compile_shader_ARB_replacement(GLIContext ctx, GLhandleARB shaderObj)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: compile_shader_ARB called.\n");
+			file_mutex.unlock();
 			
 			return compile_shader_ARB_reenter(ctx, shaderObj);
 		}
 		
 		static GLhandleARB create_program_object_ARB_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: create_program_object_ARB called.\n");
+			file_mutex.unlock();
 			
 			return create_program_object_ARB_reenter(ctx);
 		}
 		
 		static void attach_object_ARB_replacement(GLIContext ctx, GLhandleARB containerObj, GLhandleARB obj)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: attach_object_ARB called.\n");
+			file_mutex.unlock();
 			
 			return attach_object_ARB_reenter(ctx, containerObj, obj);
 		}
 		
 		static void link_program_ARB_replacement(GLIContext ctx, GLhandleARB programObj)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: link_program_ARB called.\n");
+			file_mutex.unlock();
 			
 			return link_program_ARB_reenter(ctx, programObj);
 		}
 		
 		static void use_program_object_ARB_replacement(GLIContext ctx, GLhandleARB programObj)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: use_program_object_ARB called.\n");
+			file_mutex.unlock();
 			
 			return use_program_object_ARB_reenter(ctx, programObj);
 		}
 		
 		static void validate_program_ARB_replacement(GLIContext ctx, GLhandleARB programObj)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: validate_program_ARB called.\n");
+			file_mutex.unlock();
 			
 			return validate_program_ARB_reenter(ctx, programObj);
 		}
 		
 		static void uniform1f_ARB_replacement(GLIContext ctx, GLint location, GLfloat v0)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform1f_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform1f_ARB_reenter(ctx, location, v0);
 		}
 		
 		static void uniform2f_ARB_replacement(GLIContext ctx, GLint location, GLfloat v0, GLfloat v1)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform2f_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform2f_ARB_reenter(ctx, location, v0, v1);
 		}
 		
 		static void uniform3f_ARB_replacement(GLIContext ctx, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform3f_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform3f_ARB_reenter(ctx, location, v0, v1, v2);
 		}
 		
 		static void uniform4f_ARB_replacement(GLIContext ctx, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform4f_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform4f_ARB_reenter(ctx, location, v0, v1, v2, v3);
 		}
 		
 		static void uniform1i_ARB_replacement(GLIContext ctx, GLint location, GLint v0)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform1i_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform1i_ARB_reenter(ctx, location, v0);
 		}
 		
 		static void uniform2i_ARB_replacement(GLIContext ctx, GLint location, GLint v0, GLint v1)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform2i_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform2i_ARB_reenter(ctx, location, v0, v1);
 		}
 		
 		static void uniform3i_ARB_replacement(GLIContext ctx, GLint location, GLint v0, GLint v1, GLint v2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform3i_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform3i_ARB_reenter(ctx, location, v0, v1, v2);
 		}
 		
 		static void uniform4i_ARB_replacement(GLIContext ctx, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform4i_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform4i_ARB_reenter(ctx, location, v0, v1, v2, v3);
 		}
 		
 		static void uniform1fv_ARB_replacement(GLIContext ctx, GLint location, GLsizei count, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform1fv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform1fv_ARB_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform2fv_ARB_replacement(GLIContext ctx, GLint location, GLsizei count, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform2fv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform2fv_ARB_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform3fv_ARB_replacement(GLIContext ctx, GLint location, GLsizei count, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform3fv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform3fv_ARB_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform4fv_ARB_replacement(GLIContext ctx, GLint location, GLsizei count, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform4fv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform4fv_ARB_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform1iv_ARB_replacement(GLIContext ctx, GLint location, GLsizei count, const GLint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform1iv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform1iv_ARB_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform2iv_ARB_replacement(GLIContext ctx, GLint location, GLsizei count, const GLint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform2iv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform2iv_ARB_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform3iv_ARB_replacement(GLIContext ctx, GLint location, GLsizei count, const GLint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform3iv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform3iv_ARB_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform4iv_ARB_replacement(GLIContext ctx, GLint location, GLsizei count, const GLint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform4iv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform4iv_ARB_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform_matrix2fv_ARB_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix2fv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix2fv_ARB_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix3fv_ARB_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix3fv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix3fv_ARB_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix4fv_ARB_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix4fv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix4fv_ARB_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void get_object_parameterfv_ARB_replacement(GLIContext ctx, GLhandleARB obj, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_object_parameterfv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_object_parameterfv_ARB_reenter(ctx, obj, pname, params);
 		}
 		
 		static void get_object_parameteriv_ARB_replacement(GLIContext ctx, GLhandleARB obj, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_object_parameteriv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_object_parameteriv_ARB_reenter(ctx, obj, pname, params);
 		}
 		
 		static void get_info_log_ARB_replacement(GLIContext ctx, GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_info_log_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_info_log_ARB_reenter(ctx, obj, maxLength, length, infoLog);
 		}
 		
 		static void get_attached_objects_ARB_replacement(GLIContext ctx, GLhandleARB containerObj, GLsizei maxCount, GLsizei *count, GLhandleARB *obj)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_attached_objects_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_attached_objects_ARB_reenter(ctx, containerObj, maxCount, count, obj);
 		}
 		
 		static GLint get_uniform_location_ARB_replacement(GLIContext ctx, GLhandleARB programObj, const GLcharARB *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_uniform_location_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_uniform_location_ARB_reenter(ctx, programObj, name);
 		}
 		
 		static void get_active_uniform_ARB_replacement(GLIContext ctx, GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_active_uniform_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_active_uniform_ARB_reenter(ctx, programObj, index, maxLength, length, size, type, name);
 		}
 		
 		static void get_uniformfv_ARB_replacement(GLIContext ctx, GLhandleARB programObj, GLint location, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_uniformfv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_uniformfv_ARB_reenter(ctx, programObj, location, params);
 		}
 		
 		static void get_uniformiv_ARB_replacement(GLIContext ctx, GLhandleARB programObj, GLint location, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_uniformiv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_uniformiv_ARB_reenter(ctx, programObj, location, params);
 		}
 		
 		static void get_shader_source_ARB_replacement(GLIContext ctx, GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *source)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_shader_source_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_shader_source_ARB_reenter(ctx, obj, maxLength, length, source);
 		}
 		
 		static void bind_attrib_location_ARB_replacement(GLIContext ctx, GLhandleARB programObj, GLuint index, const GLcharARB *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_attrib_location_ARB called.\n");
+			file_mutex.unlock();
 			
 			return bind_attrib_location_ARB_reenter(ctx, programObj, index, name);
 		}
 		
 		static void get_active_attrib_ARB_replacement(GLIContext ctx, GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_active_attrib_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_active_attrib_ARB_reenter(ctx, programObj, index, maxLength, length, size, type, name);
 		}
 		
 		static GLint get_attrib_location_ARB_replacement(GLIContext ctx, GLhandleARB programObj, const GLcharARB *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_attrib_location_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_attrib_location_ARB_reenter(ctx, programObj, name);
 		}
 		
 		static void clamp_color_ARB_replacement(GLIContext ctx, GLenum target, GLenum clamp)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clamp_color_ARB called.\n");
+			file_mutex.unlock();
 			
 			return clamp_color_ARB_reenter(ctx, target, clamp);
 		}
 		
 		static void gen_queries_replacement(GLIContext ctx, GLsizei n, GLuint *ids)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: gen_queries called.\n");
+			file_mutex.unlock();
 			
 			return gen_queries_reenter(ctx, n, ids);
 		}
 		
 		static void delete_queries_replacement(GLIContext ctx, GLsizei n, const GLuint *ids)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_queries called.\n");
+			file_mutex.unlock();
 			
 			return delete_queries_reenter(ctx, n, ids);
 		}
 		
 		static GLboolean is_query_replacement(GLIContext ctx, GLuint id)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_query called.\n");
+			file_mutex.unlock();
 			
 			return is_query_reenter(ctx, id);
 		}
 		
 		static void begin_query_replacement(GLIContext ctx, GLenum target, GLuint id)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: begin_query called.\n");
+			file_mutex.unlock();
 			
 			return begin_query_reenter(ctx, target, id);
 		}
 		
 		static void end_query_replacement(GLIContext ctx, GLenum target)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: end_query called.\n");
+			file_mutex.unlock();
 			
 			return end_query_reenter(ctx, target);
 		}
 		
 		static void get_queryiv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_queryiv called.\n");
+			file_mutex.unlock();
 			
 			return get_queryiv_reenter(ctx, target, pname, params);
 		}
 		
 		static void get_query_objectiv_replacement(GLIContext ctx, GLuint id, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_query_objectiv called.\n");
+			file_mutex.unlock();
 			
 			return get_query_objectiv_reenter(ctx, id, pname, params);
 		}
 		
 		static void get_query_objectuiv_replacement(GLIContext ctx, GLuint id, GLenum pname, GLuint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_query_objectuiv called.\n");
+			file_mutex.unlock();
 			
 			return get_query_objectuiv_reenter(ctx, id, pname, params);
 		}
 		
 		static void bind_buffer_replacement(GLIContext ctx, GLenum target, GLuint buffer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_buffer called.\n");
+			file_mutex.unlock();
 			
 			return bind_buffer_reenter(ctx, target, buffer);
 		}
 		
 		static void delete_buffers_replacement(GLIContext ctx, GLsizei n, const GLuint *buffers)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_buffers called.\n");
+			file_mutex.unlock();
 			
 			return delete_buffers_reenter(ctx, n, buffers);
 		}
 		
 		static void gen_buffers_replacement(GLIContext ctx, GLsizei n, GLuint *buffers)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: gen_buffers called.\n");
+			file_mutex.unlock();
 			
 			return gen_buffers_reenter(ctx, n, buffers);
 		}
 		
 		static GLboolean is_buffer_replacement(GLIContext ctx, GLuint buffer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_buffer called.\n");
+			file_mutex.unlock();
 			
 			return is_buffer_reenter(ctx, buffer);
 		}
 		
 		static void buffer_data_replacement(GLIContext ctx, GLenum target, GLsizeiptrARB size, const GLvoid *data, GLenum usage)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: buffer_data called.\n");
+			file_mutex.unlock();
 			
 			return buffer_data_reenter(ctx, target, size, data, usage);
 		}
 		
 		static void buffer_sub_data_replacement(GLIContext ctx, GLenum target, GLintptrARB offset, GLsizeiptrARB size, const GLvoid *data)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: buffer_sub_data called.\n");
+			file_mutex.unlock();
 			
 			return buffer_sub_data_reenter(ctx, target, offset, size, data);
 		}
 		
 		static void get_buffer_sub_data_replacement(GLIContext ctx, GLenum target, GLintptrARB offset, GLsizeiptrARB size, GLvoid *data)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_buffer_sub_data called.\n");
+			file_mutex.unlock();
 			
 			return get_buffer_sub_data_reenter(ctx, target, offset, size, data);
 		}
 		
 		static GLvoid map_buffer_replacement(GLIContext ctx, GLenum target, GLenum access)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: map_buffer called.\n");
+			file_mutex.unlock();
 			
 			return map_buffer_reenter(ctx, target, access);
 		}
 		
 		static GLboolean unmap_buffer_replacement(GLIContext ctx, GLenum target)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: unmap_buffer called.\n");
+			file_mutex.unlock();
 			
 			return unmap_buffer_reenter(ctx, target);
 		}
 		
 		static void get_buffer_parameteriv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_buffer_parameteriv called.\n");
+			file_mutex.unlock();
 			
 			return get_buffer_parameteriv_reenter(ctx, target, pname, params);
 		}
 		
 		static void get_buffer_pointerv_replacement(GLIContext ctx, GLenum target, GLenum pname, GLvoid **params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_buffer_pointerv called.\n");
+			file_mutex.unlock();
 			
 			return get_buffer_pointerv_reenter(ctx, target, pname, params);
 		}
 		
 		static void depth_bounds_EXT_replacement(GLIContext ctx, GLclampd zmin, GLclampd zmax)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: depth_bounds_EXT called.\n");
+			file_mutex.unlock();
 			
 			return depth_bounds_EXT_reenter(ctx, zmin, zmax);
 		}
 		
 		static void draw_buffers_ARB_replacement(GLIContext ctx, GLsizei n, const GLenum *bufs)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_buffers_ARB called.\n");
+			file_mutex.unlock();
 			
 			return draw_buffers_ARB_reenter(ctx, n, bufs);
 		}
 		
 		static GLboolean is_shader_replacement(GLIContext ctx, GLuint shader)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_shader called.\n");
+			file_mutex.unlock();
 			
 			return is_shader_reenter(ctx, shader);
 		}
 		
 		static GLboolean is_program_replacement(GLIContext ctx, GLuint program)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_program called.\n");
+			file_mutex.unlock();
 			
 			return is_program_reenter(ctx, program);
 		}
 		
 		static void get_shaderiv_replacement(GLIContext ctx, GLuint shader, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_shaderiv called.\n");
+			file_mutex.unlock();
 			
 			return get_shaderiv_reenter(ctx, shader, pname, params);
 		}
 		
 		static void get_programiv_replacement(GLIContext ctx, GLuint program, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_programiv called.\n");
+			file_mutex.unlock();
 			
 			return get_programiv_reenter(ctx, program, pname, params);
 		}
 		
 		static void get_shader_info_log_replacement(GLIContext ctx, GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_shader_info_log called.\n");
+			file_mutex.unlock();
 			
 			return get_shader_info_log_reenter(ctx, shader, bufSize, length, infoLog);
 		}
 		
 		static void get_program_info_log_replacement(GLIContext ctx, GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_program_info_log called.\n");
+			file_mutex.unlock();
 			
 			return get_program_info_log_reenter(ctx, program, bufSize, length, infoLog);
 		}
 		
 		static void stencil_func_separate_replacement(GLIContext ctx, GLenum face, GLenum func, GLint ref, GLuint mask)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: stencil_func_separate called.\n");
+			file_mutex.unlock();
 			
 			return stencil_func_separate_reenter(ctx, face, func, ref, mask);
 		}
 		
 		static void stencil_mask_separate_replacement(GLIContext ctx, GLenum face, GLuint mask)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: stencil_mask_separate called.\n");
+			file_mutex.unlock();
 			
 			return stencil_mask_separate_reenter(ctx, face, mask);
 		}
 		
 		static void multi_draw_element_array_APPLE_replacement(GLIContext ctx, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_draw_element_array_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return multi_draw_element_array_APPLE_reenter(ctx, mode, first, count, primcount);
 		}
 		
 		static void multi_draw_range_element_array_APPLE_replacement(GLIContext ctx, GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_draw_range_element_array_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return multi_draw_range_element_array_APPLE_reenter(ctx, mode, start, end, first, count, primcount);
 		}
 		
 		static GLboolean is_renderbuffer_EXT_replacement(GLIContext ctx, GLuint renderbuffer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_renderbuffer_EXT called.\n");
+			file_mutex.unlock();
 			
 			return is_renderbuffer_EXT_reenter(ctx, renderbuffer);
 		}
 		
 		static void bind_renderbuffer_EXT_replacement(GLIContext ctx, GLenum target, GLuint renderbuffer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_renderbuffer_EXT called.\n");
+			file_mutex.unlock();
 			
 			return bind_renderbuffer_EXT_reenter(ctx, target, renderbuffer);
 		}
 		
 		static void delete_renderbuffers_EXT_replacement(GLIContext ctx, GLsizei n, const GLuint *renderbuffers)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_renderbuffers_EXT called.\n");
+			file_mutex.unlock();
 			
 			return delete_renderbuffers_EXT_reenter(ctx, n, renderbuffers);
 		}
 		
 		static void gen_renderbuffers_EXT_replacement(GLIContext ctx, GLsizei n, GLuint *renderbuffers)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: gen_renderbuffers_EXT called.\n");
+			file_mutex.unlock();
 			
 			return gen_renderbuffers_EXT_reenter(ctx, n, renderbuffers);
 		}
 		
 		static void renderbuffer_storage_EXT_replacement(GLIContext ctx, GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: renderbuffer_storage_EXT called.\n");
+			file_mutex.unlock();
 			
 			return renderbuffer_storage_EXT_reenter(ctx, target, internalformat, width, height);
 		}
 		
 		static void get_renderbuffer_parameteriv_EXT_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_renderbuffer_parameteriv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return get_renderbuffer_parameteriv_EXT_reenter(ctx, target, pname, params);
 		}
 		
 		static GLboolean is_framebuffer_EXT_replacement(GLIContext ctx, GLuint framebuffer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_framebuffer_EXT called.\n");
+			file_mutex.unlock();
 			
 			return is_framebuffer_EXT_reenter(ctx, framebuffer);
 		}
 		
 		static void bind_framebuffer_EXT_replacement(GLIContext ctx, GLenum target, GLuint framebuffer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_framebuffer_EXT called.\n");
+			file_mutex.unlock();
 			
 			return bind_framebuffer_EXT_reenter(ctx, target, framebuffer);
 		}
 		
 		static void delete_framebuffers_EXT_replacement(GLIContext ctx, GLsizei n, const GLuint *framebuffers)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_framebuffers_EXT called.\n");
+			file_mutex.unlock();
 			
 			return delete_framebuffers_EXT_reenter(ctx, n, framebuffers);
 		}
 		
 		static void gen_framebuffers_EXT_replacement(GLIContext ctx, GLsizei n, GLuint *framebuffers)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: gen_framebuffers_EXT called.\n");
+			file_mutex.unlock();
 			
 			return gen_framebuffers_EXT_reenter(ctx, n, framebuffers);
 		}
 		
 		static GLenum check_framebuffer_status_EXT_replacement(GLIContext ctx, GLenum target)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: check_framebuffer_status_EXT called.\n");
+			file_mutex.unlock();
 			
 			return check_framebuffer_status_EXT_reenter(ctx, target);
 		}
 		
 		static void framebuffer_texture1D_EXT_replacement(GLIContext ctx, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: framebuffer_texture1D_EXT called.\n");
+			file_mutex.unlock();
 			
 			return framebuffer_texture1D_EXT_reenter(ctx, target, attachment, textarget, texture, level);
 		}
 		
 		static void framebuffer_texture2D_EXT_replacement(GLIContext ctx, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: framebuffer_texture2D_EXT called.\n");
+			file_mutex.unlock();
 			
 			return framebuffer_texture2D_EXT_reenter(ctx, target, attachment, textarget, texture, level);
 		}
 		
 		static void framebuffer_texture3D_EXT_replacement(GLIContext ctx, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: framebuffer_texture3D_EXT called.\n");
+			file_mutex.unlock();
 			
 			return framebuffer_texture3D_EXT_reenter(ctx, target, attachment, textarget, texture, level, zoffset);
 		}
 		
 		static void framebuffer_renderbuffer_EXT_replacement(GLIContext ctx, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: framebuffer_renderbuffer_EXT called.\n");
+			file_mutex.unlock();
 			
 			return framebuffer_renderbuffer_EXT_reenter(ctx, target, attachment, renderbuffertarget, renderbuffer);
 		}
 		
 		static void get_framebuffer_attachment_parameteriv_EXT_replacement(GLIContext ctx, GLenum target, GLenum attachment, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_framebuffer_attachment_parameteriv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return get_framebuffer_attachment_parameteriv_EXT_reenter(ctx, target, attachment, pname, params);
 		}
 		
 		static void generate_mipmap_EXT_replacement(GLIContext ctx, GLenum target)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: generate_mipmap_EXT called.\n");
+			file_mutex.unlock();
 			
 			return generate_mipmap_EXT_reenter(ctx, target);
 		}
 		
 		static void buffer_parameteri_APPLE_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: buffer_parameteri_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return buffer_parameteri_APPLE_reenter(ctx, target, pname, param);
 		}
 		
 		static void flush_mapped_buffer_range_APPLE_replacement(GLIContext ctx, GLenum target, GLintptr offset, GLsizeiptr size)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: flush_mapped_buffer_range_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return flush_mapped_buffer_range_APPLE_reenter(ctx, target, offset, size);
 		}
 		
 		static void program_env_parameters4fv_EXT_replacement(GLIContext ctx, GLenum target, GLuint index, GLsizei count, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_env_parameters4fv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return program_env_parameters4fv_EXT_reenter(ctx, target, index, count, params);
 		}
 		
 		static void program_local_parameters4fv_EXT_replacement(GLIContext ctx, GLenum target, GLuint index, GLsizei count, const GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_local_parameters4fv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return program_local_parameters4fv_EXT_reenter(ctx, target, index, count, params);
 		}
 		
 		static GLenum object_purgeable_APPLE_replacement(GLIContext ctx, GLenum objectType, GLuint name, GLenum option)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: object_purgeable_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return object_purgeable_APPLE_reenter(ctx, objectType, name, option);
 		}
 		
 		static GLenum object_unpurgeable_APPLE_replacement(GLIContext ctx, GLenum objectType, GLuint name, GLenum option)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: object_unpurgeable_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return object_unpurgeable_APPLE_reenter(ctx, objectType, name, option);
 		}
 		
 		static void get_object_parameteriv_APPLE_replacement(GLIContext ctx, GLenum objectType, GLuint name, GLenum pname, GLint* params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_object_parameteriv_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return get_object_parameteriv_APPLE_reenter(ctx, objectType, name, pname, params);
 		}
 		
 		static void program_parameteri_EXT_replacement(GLIContext ctx, GLuint program_name, GLenum pname, GLint value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_parameteri_EXT called.\n");
+			file_mutex.unlock();
 			
 			return program_parameteri_EXT_reenter(ctx, program_name, pname, value);
 		}
 		
 		static void framebuffer_texture_EXT_replacement(GLIContext ctx, GLenum target, GLenum attachment, GLuint texture, GLint level)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: framebuffer_texture_EXT called.\n");
+			file_mutex.unlock();
 			
 			return framebuffer_texture_EXT_reenter(ctx, target, attachment, texture, level);
 		}
 		
 		static void framebuffer_texture_layer_EXT_replacement(GLIContext ctx, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: framebuffer_texture_layer_EXT called.\n");
+			file_mutex.unlock();
 			
 			return framebuffer_texture_layer_EXT_reenter(ctx, target, attachment, texture, level, layer);
 		}
 		
 		static void framebuffer_texture_face_EXT_replacement(GLIContext ctx, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: framebuffer_texture_face_EXT called.\n");
+			file_mutex.unlock();
 			
 			return framebuffer_texture_face_EXT_reenter(ctx, target, attachment, texture, level, face);
 		}
 		
 		static void bind_buffer_range_EXT_replacement(GLIContext ctx, GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_buffer_range_EXT called.\n");
+			file_mutex.unlock();
 			
 			return bind_buffer_range_EXT_reenter(ctx, target, index, buffer, offset, size);
 		}
 		
 		static void bind_buffer_offset_EXT_replacement(GLIContext ctx, GLenum target, GLuint index, GLuint buffer, GLintptr offset)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_buffer_offset_EXT called.\n");
+			file_mutex.unlock();
 			
 			return bind_buffer_offset_EXT_reenter(ctx, target, index, buffer, offset);
 		}
 		
 		static void bind_buffer_base_EXT_replacement(GLIContext ctx, GLenum target, GLuint index, GLuint buffer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_buffer_base_EXT called.\n");
+			file_mutex.unlock();
 			
 			return bind_buffer_base_EXT_reenter(ctx, target, index, buffer);
 		}
 		
 		static void begin_transform_feedback_EXT_replacement(GLIContext ctx, GLenum primitiveMode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: begin_transform_feedback_EXT called.\n");
+			file_mutex.unlock();
 			
 			return begin_transform_feedback_EXT_reenter(ctx, primitiveMode);
 		}
 		
 		static void end_transform_feedback_EXT_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: end_transform_feedback_EXT called.\n");
+			file_mutex.unlock();
 			
 			return end_transform_feedback_EXT_reenter(ctx);
 		}
 		
 		static void transform_feedback_varyings_EXT_replacement(GLIContext ctx, GLuint program, GLsizei count, const GLchar* const *varyings, GLenum bufferMode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: transform_feedback_varyings_EXT called.\n");
+			file_mutex.unlock();
 			
 			return transform_feedback_varyings_EXT_reenter(ctx, program, count, varyings, bufferMode);
 		}
 		
 		static void get_transform_feedback_varying_EXT_replacement(GLIContext ctx, GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_transform_feedback_varying_EXT called.\n");
+			file_mutex.unlock();
 			
 			return get_transform_feedback_varying_EXT_reenter(ctx, program, index, bufSize, length, size, type, name);
 		}
 		
 		static void get_integer_indexedv_EXT_replacement(GLIContext ctx, GLenum param, GLuint index, GLint *values)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_integer_indexedv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return get_integer_indexedv_EXT_reenter(ctx, param, index, values);
 		}
 		
 		static void get_boolean_indexedv_EXT_replacement(GLIContext ctx, GLenum param, GLuint index, GLboolean *values)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_boolean_indexedv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return get_boolean_indexedv_EXT_reenter(ctx, param, index, values);
 		}
 		
 		static void uniform_buffer_EXT_replacement(GLIContext ctx, GLuint program, GLint location, GLuint buffer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_buffer_EXT called.\n");
+			file_mutex.unlock();
 			
 			return uniform_buffer_EXT_reenter(ctx, program, location, buffer);
 		}
 		
 		static GLint get_uniform_buffer_size_EXT_replacement(GLIContext ctx, GLuint program, GLint location)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_uniform_buffer_size_EXT called.\n");
+			file_mutex.unlock();
 			
 			return get_uniform_buffer_size_EXT_reenter(ctx, program, location);
 		}
 		
 		static GLintptr get_uniform_buffer_offset_EXT_replacement(GLIContext ctx, GLuint program, GLint location)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_uniform_buffer_offset_EXT called.\n");
+			file_mutex.unlock();
 			
 			return get_uniform_buffer_offset_EXT_reenter(ctx, program, location);
 		}
 		
 		static void clear_colorIi_EXT_replacement(GLIContext ctx, GLint r, GLint g, GLint b, GLint a )
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clear_colorIi_EXT called.\n");
+			file_mutex.unlock();
 			
 			return clear_colorIi_EXT_reenter(ctx, r, g, b, a);
 		}
 		
 		static void clear_colorIui_EXT_replacement(GLIContext ctx, GLuint r, GLuint g, GLuint b, GLuint a )
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clear_colorIui_EXT called.\n");
+			file_mutex.unlock();
 			
 			return clear_colorIui_EXT_reenter(ctx, r, g, b, a);
 		}
 		
 		static void tex_parameterIiv_EXT_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint *params )
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_parameterIiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return tex_parameterIiv_EXT_reenter(ctx, target, pname, params);
 		}
 		
 		static void tex_parameterIuiv_EXT_replacement(GLIContext ctx, GLenum target, GLenum pname, GLuint *params )
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_parameterIuiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return tex_parameterIuiv_EXT_reenter(ctx, target, pname, params);
 		}
 		
 		static void get_tex_parameterIiv_EXT_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_tex_parameterIiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return get_tex_parameterIiv_EXT_reenter(ctx, target, pname, params);
 		}
 		
 		static void get_tex_parameterIuiv_EXT_replacement(GLIContext ctx, GLenum target, GLenum pname, GLuint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_tex_parameterIuiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return get_tex_parameterIuiv_EXT_reenter(ctx, target, pname, params);
 		}
 		
 		static void vertex_attribI1i_EXT_replacement(GLIContext ctx, GLuint index, GLint x)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI1i_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI1i_EXT_reenter(ctx, index, x);
 		}
 		
 		static void vertex_attribI2i_EXT_replacement(GLIContext ctx, GLuint index, GLint x, GLint y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI2i_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI2i_EXT_reenter(ctx, index, x, y);
 		}
 		
 		static void vertex_attribI3i_EXT_replacement(GLIContext ctx, GLuint index, GLint x, GLint y, GLint z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI3i_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI3i_EXT_reenter(ctx, index, x, y, z);
 		}
 		
 		static void vertex_attribI4i_EXT_replacement(GLIContext ctx, GLuint index, GLint x, GLint y, GLint z, GLint w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI4i_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI4i_EXT_reenter(ctx, index, x, y, z, w);
 		}
 		
 		static void vertex_attribI1ui_EXT_replacement(GLIContext ctx, GLuint index, GLuint x)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI1ui_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI1ui_EXT_reenter(ctx, index, x);
 		}
 		
 		static void vertex_attribI2ui_EXT_replacement(GLIContext ctx, GLuint index, GLuint x, GLuint y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI2ui_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI2ui_EXT_reenter(ctx, index, x, y);
 		}
 		
 		static void vertex_attribI3ui_EXT_replacement(GLIContext ctx, GLuint index, GLuint x, GLuint y, GLuint z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI3ui_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI3ui_EXT_reenter(ctx, index, x, y, z);
 		}
 		
 		static void vertex_attribI4ui_EXT_replacement(GLIContext ctx, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI4ui_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI4ui_EXT_reenter(ctx, index, x, y, z, w);
 		}
 		
 		static void vertex_attribI1iv_EXT_replacement(GLIContext ctx, GLuint index, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI1iv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI1iv_EXT_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribI2iv_EXT_replacement(GLIContext ctx, GLuint index, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI2iv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI2iv_EXT_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribI3iv_EXT_replacement(GLIContext ctx, GLuint index, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI3iv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI3iv_EXT_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribI4iv_EXT_replacement(GLIContext ctx, GLuint index, const GLint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI4iv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI4iv_EXT_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribI1uiv_EXT_replacement(GLIContext ctx, GLuint index, const GLuint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI1uiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI1uiv_EXT_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribI2uiv_EXT_replacement(GLIContext ctx, GLuint index, const GLuint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI2uiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI2uiv_EXT_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribI3uiv_EXT_replacement(GLIContext ctx, GLuint index, const GLuint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI3uiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI3uiv_EXT_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribI4uiv_EXT_replacement(GLIContext ctx, GLuint index, const GLuint *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI4uiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI4uiv_EXT_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribI4bv_EXT_replacement(GLIContext ctx, GLuint index, const GLbyte *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI4bv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI4bv_EXT_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribI4sv_EXT_replacement(GLIContext ctx, GLuint index, const GLshort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI4sv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI4sv_EXT_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribI4ubv_EXT_replacement(GLIContext ctx, GLuint index, const GLubyte *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI4ubv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI4ubv_EXT_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribI4usv_EXT_replacement(GLIContext ctx, GLuint index, const GLushort *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI4usv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI4usv_EXT_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribI_pointer_EXT_replacement(GLIContext ctx, GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribI_pointer_EXT called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribI_pointer_EXT_reenter(ctx, index, size, type, stride, pointer);
 		}
 		
 		static void get_vertex_attribIiv_EXT_replacement(GLIContext ctx, GLuint index, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_vertex_attribIiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return get_vertex_attribIiv_EXT_reenter(ctx, index, pname, params);
 		}
 		
 		static void get_vertex_attribIuiv_EXT_replacement(GLIContext ctx, GLuint index, GLenum pname, GLuint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_vertex_attribIuiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return get_vertex_attribIuiv_EXT_reenter(ctx, index, pname, params);
 		}
 		
 		static void uniform1ui_EXT_replacement(GLIContext ctx, GLint location, GLuint v0)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform1ui_EXT called.\n");
+			file_mutex.unlock();
 			
 			return uniform1ui_EXT_reenter(ctx, location, v0);
 		}
 		
 		static void uniform2ui_EXT_replacement(GLIContext ctx, GLint location, GLuint v0, GLuint v1)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform2ui_EXT called.\n");
+			file_mutex.unlock();
 			
 			return uniform2ui_EXT_reenter(ctx, location, v0, v1);
 		}
 		
 		static void uniform3ui_EXT_replacement(GLIContext ctx, GLint location, GLuint v0, GLuint v1, GLuint v2)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform3ui_EXT called.\n");
+			file_mutex.unlock();
 			
 			return uniform3ui_EXT_reenter(ctx, location, v0, v1, v2);
 		}
 		
 		static void uniform4ui_EXT_replacement(GLIContext ctx, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform4ui_EXT called.\n");
+			file_mutex.unlock();
 			
 			return uniform4ui_EXT_reenter(ctx, location, v0, v1, v2, v3);
 		}
 		
 		static void uniform1uiv_EXT_replacement(GLIContext ctx, GLint location, GLsizei count, const GLuint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform1uiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return uniform1uiv_EXT_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform2uiv_EXT_replacement(GLIContext ctx, GLint location, GLsizei count, const GLuint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform2uiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return uniform2uiv_EXT_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform3uiv_EXT_replacement(GLIContext ctx, GLint location, GLsizei count, const GLuint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform3uiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return uniform3uiv_EXT_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform4uiv_EXT_replacement(GLIContext ctx, GLint location, GLsizei count, const GLuint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform4uiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return uniform4uiv_EXT_reenter(ctx, location, count, value);
 		}
 		
 		static void get_uniformuiv_EXT_replacement(GLIContext ctx, GLuint program, GLint location, GLuint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_uniformuiv_EXT called.\n");
+			file_mutex.unlock();
 			
 			return get_uniformuiv_EXT_reenter(ctx, program, location, params);
 		}
 		
 		static void bind_frag_data_location_EXT_replacement(GLIContext ctx, GLuint program, GLuint colorNumber, const GLchar *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_frag_data_location_EXT called.\n");
+			file_mutex.unlock();
 			
 			return bind_frag_data_location_EXT_reenter(ctx, program, colorNumber, name);
 		}
 		
 		static GLint get_frag_data_location_EXT_replacement(GLIContext ctx, GLuint program, const GLchar *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_frag_data_location_EXT called.\n");
+			file_mutex.unlock();
 			
 			return get_frag_data_location_EXT_reenter(ctx, program, name);
 		}
 		
 		static void color_mask_indexed_EXT_replacement(GLIContext ctx, GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: color_mask_indexed_EXT called.\n");
+			file_mutex.unlock();
 			
 			return color_mask_indexed_EXT_reenter(ctx, index, r, g, b, a);
 		}
 		
 		static void enable_indexed_EXT_replacement(GLIContext ctx, GLenum target, GLuint index)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: enable_indexed_EXT called.\n");
+			file_mutex.unlock();
 			
 			return enable_indexed_EXT_reenter(ctx, target, index);
 		}
 		
 		static void disable_indexed_EXT_replacement(GLIContext ctx, GLenum target, GLuint index)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: disable_indexed_EXT called.\n");
+			file_mutex.unlock();
 			
 			return disable_indexed_EXT_reenter(ctx, target, index);
 		}
 		
 		static GLboolean is_enabled_indexed_EXT_replacement(GLIContext ctx, GLenum target, GLuint index)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_enabled_indexed_EXT called.\n");
+			file_mutex.unlock();
 			
 			return is_enabled_indexed_EXT_reenter(ctx, target, index);
 		}
 		
 		static void uniform_matrix2x3fv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix2x3fv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix2x3fv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix3x2fv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix3x2fv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix3x2fv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix2x4fv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix2x4fv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix2x4fv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix4x2fv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix4x2fv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix4x2fv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix3x4fv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix3x4fv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix3x4fv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix4x3fv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix4x3fv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix4x3fv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void blit_framebuffer_EXT_replacement(GLIContext ctx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: blit_framebuffer_EXT called.\n");
+			file_mutex.unlock();
 			
 			return blit_framebuffer_EXT_reenter(ctx, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 		}
 		
 		static void renderbuffer_storage_multisample_EXT_replacement(GLIContext ctx, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: renderbuffer_storage_multisample_EXT called.\n");
+			file_mutex.unlock();
 			
 			return renderbuffer_storage_multisample_EXT_reenter(ctx, target, samples, internalformat, width, height);
 		}
 		
 		static void begin_conditional_render_NV_replacement(GLIContext ctx, GLuint id, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: begin_conditional_render_NV called.\n");
+			file_mutex.unlock();
 			
 			return begin_conditional_render_NV_reenter(ctx, id, mode);
 		}
 		
 		static void end_conditional_render_NV_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: end_conditional_render_NV called.\n");
+			file_mutex.unlock();
 			
 			return end_conditional_render_NV_reenter(ctx);
 		}
 		
 		static void get_attached_shaders_replacement(GLIContext ctx, GLuint program, GLsizei maxCount, GLsizei *count, GLuint *shaders)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_attached_shaders called.\n");
+			file_mutex.unlock();
 			
 			return get_attached_shaders_reenter(ctx, program, maxCount, count, shaders);
 		}
 		
 		static void provoking_vertex_EXT_replacement(GLIContext ctx, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: provoking_vertex_EXT called.\n");
+			file_mutex.unlock();
 			
 			return provoking_vertex_EXT_reenter(ctx, mode);
 		}
 		
 		static void vertex_attrib_divisor_replacement(GLIContext ctx, GLuint index, GLuint divisor)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib_divisor called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib_divisor_reenter(ctx, index, divisor);
 		}
 		
 		static void draw_arrays_instanced_replacement(GLIContext ctx, GLenum mode, GLint first, GLsizei count, GLsizei instancecount)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_arrays_instanced called.\n");
+			file_mutex.unlock();
 			
 			return draw_arrays_instanced_reenter(ctx, mode, first, count, instancecount);
 		}
 		
 		static void draw_elements_instanced_replacement(GLIContext ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei instancecount)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_elements_instanced called.\n");
+			file_mutex.unlock();
 			
 			return draw_elements_instanced_reenter(ctx, mode, count, type, indices, instancecount);
 		}
 		
 		static void draw_elements_base_vertex_replacement(GLIContext ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint base_vertex)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_elements_base_vertex called.\n");
+			file_mutex.unlock();
 			
 			return draw_elements_base_vertex_reenter(ctx, mode, count, type, indices, base_vertex);
 		}
 		
 		static void draw_range_elements_base_vertex_replacement(GLIContext ctx, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint base_vertex)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_range_elements_base_vertex called.\n");
+			file_mutex.unlock();
 			
 			return draw_range_elements_base_vertex_reenter(ctx, mode, start, end, count, type, indices, base_vertex);
 		}
 		
 		static void draw_elements_instanced_base_vertex_replacement(GLIContext ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei instancecount, GLint base_vertex)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_elements_instanced_base_vertex called.\n");
+			file_mutex.unlock();
 			
 			return draw_elements_instanced_base_vertex_reenter(ctx, mode, count, type, indices, instancecount, base_vertex);
 		}
 		
 		static void multi_draw_elements_base_vertex_replacement(GLIContext ctx, GLenum mode, const GLsizei *count, GLenum type, const GLvoid* const *indices, GLsizei drawcount, const GLint *base_vertex)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: multi_draw_elements_base_vertex called.\n");
+			file_mutex.unlock();
 			
 			return multi_draw_elements_base_vertex_reenter(ctx, mode, count, type, indices, drawcount, base_vertex);
 		}
 		
 		static void bind_vertex_array_ARB_replacement(GLIContext ctx, GLuint array)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_vertex_array_ARB called.\n");
+			file_mutex.unlock();
 			
 			return bind_vertex_array_ARB_reenter(ctx, array);
 		}
 		
 		static void delete_vertex_arrays_ARB_replacement(GLIContext ctx, GLsizei n, const GLuint *arrays)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_vertex_arrays_ARB called.\n");
+			file_mutex.unlock();
 			
 			return delete_vertex_arrays_ARB_reenter(ctx, n, arrays);
 		}
 		
 		static void gen_vertex_arrays_ARB_replacement(GLIContext ctx, GLsizei n, GLuint *arrays)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: gen_vertex_arrays_ARB called.\n");
+			file_mutex.unlock();
 			
 			return gen_vertex_arrays_ARB_reenter(ctx, n, arrays);
 		}
 		
 		static GLboolean is_vertex_array_ARB_replacement(GLIContext ctx, GLuint array)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_vertex_array_ARB called.\n");
+			file_mutex.unlock();
 			
 			return is_vertex_array_ARB_reenter(ctx, array);
 		}
 		
 		static void point_size_pointer_replacement(GLIContext ctx, GLenum type, GLsizei stride, const GLvoid *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: point_size_pointer called.\n");
+			file_mutex.unlock();
 			
 			return point_size_pointer_reenter(ctx, type, stride, pointer);
 		}
 		
 		static void vertex_point_sizef_APPLE_replacement(GLIContext ctx, GLfloat size)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_point_sizef_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return vertex_point_sizef_APPLE_reenter(ctx, size);
 		}
 		
 		static void clear_bufferiv_replacement(GLIContext ctx, GLenum buffer, GLint drawbuffer, const GLint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clear_bufferiv called.\n");
+			file_mutex.unlock();
 			
 			return clear_bufferiv_reenter(ctx, buffer, drawbuffer, value);
 		}
 		
 		static void clear_bufferuiv_replacement(GLIContext ctx, GLenum buffer, GLint drawbuffer, const GLuint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clear_bufferuiv called.\n");
+			file_mutex.unlock();
 			
 			return clear_bufferuiv_reenter(ctx, buffer, drawbuffer, value);
 		}
 		
 		static void clear_bufferfv_replacement(GLIContext ctx, GLenum buffer, GLint drawbuffer, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clear_bufferfv called.\n");
+			file_mutex.unlock();
 			
 			return clear_bufferfv_reenter(ctx, buffer, drawbuffer, value);
 		}
 		
 		static void clear_bufferfi_replacement(GLIContext ctx, GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clear_bufferfi called.\n");
+			file_mutex.unlock();
 			
 			return clear_bufferfi_reenter(ctx, buffer, drawbuffer, depth, stencil);
 		}
 		
 		static GLsync fence_sync_replacement(GLIContext ctx, GLenum condition, GLbitfield flags)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: fence_sync called.\n");
+			file_mutex.unlock();
 			
 			return fence_sync_reenter(ctx, condition, flags);
 		}
 		
 		static GLboolean is_sync_replacement(GLIContext ctx, GLsync sync)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_sync called.\n");
+			file_mutex.unlock();
 			
 			return is_sync_reenter(ctx, sync);
 		}
 		
 		static void delete_sync_replacement(GLIContext ctx, GLsync sync)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_sync called.\n");
+			file_mutex.unlock();
 			
 			return delete_sync_reenter(ctx, sync);
 		}
 		
 		static GLenum client_wait_sync_replacement(GLIContext ctx, GLsync sync, GLbitfield flags, GLuint64 timeout)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: client_wait_sync called.\n");
+			file_mutex.unlock();
 			
 			return client_wait_sync_reenter(ctx, sync, flags, timeout);
 		}
 		
 		static void wait_sync_replacement(GLIContext ctx, GLsync sync, GLbitfield flags, GLuint64 timeout)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: wait_sync called.\n");
+			file_mutex.unlock();
 			
 			return wait_sync_reenter(ctx, sync, flags, timeout);
 		}
 		
 		static void get_integer64v_sync_replacement(GLIContext ctx, GLenum pname, GLint64 *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_integer64v_sync called.\n");
+			file_mutex.unlock();
 			
 			return get_integer64v_sync_reenter(ctx, pname, params);
 		}
 		
 		static void get_synciv_replacement(GLIContext ctx, GLsync sync, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_synciv called.\n");
+			file_mutex.unlock();
 			
 			return get_synciv_reenter(ctx, sync, pname, bufSize, length, values);
 		}
 		
 		static void tex_image2D_multisample_replacement(GLIContext ctx, GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_image2D_multisample called.\n");
+			file_mutex.unlock();
 			
 			return tex_image2D_multisample_reenter(ctx, target, samples, internalformat, width, height, fixedsamplelocations);
 		}
 		
 		static void tex_image3D_multisample_replacement(GLIContext ctx, GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_image3D_multisample called.\n");
+			file_mutex.unlock();
 			
 			return tex_image3D_multisample_reenter(ctx, target, samples, internalformat, width, height, depth, fixedsamplelocations);
 		}
 		
 		static void get_multisamplefv_replacement(GLIContext ctx, GLenum pname, GLuint index, GLfloat *val)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_multisamplefv called.\n");
+			file_mutex.unlock();
 			
 			return get_multisamplefv_reenter(ctx, pname, index, val);
 		}
 		
 		static void sample_maski_replacement(GLIContext ctx, GLuint index, GLbitfield mask)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: sample_maski called.\n");
+			file_mutex.unlock();
 			
 			return sample_maski_reenter(ctx, index, mask);
 		}
 		
 		static void tex_buffer_replacement(GLIContext ctx, GLenum target, GLenum internalformat, GLuint buffer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_buffer called.\n");
+			file_mutex.unlock();
 			
 			return tex_buffer_reenter(ctx, target, internalformat, buffer);
 		}
 		
 		static void copy_buffer_sub_data_replacement(GLIContext ctx, GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: copy_buffer_sub_data called.\n");
+			file_mutex.unlock();
 			
 			return copy_buffer_sub_data_reenter(ctx, readtarget, writetarget, readoffset, writeoffset, size);
 		}
 		
 		static void primitive_restart_index_replacement(GLIContext ctx, GLuint index)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: primitive_restart_index called.\n");
+			file_mutex.unlock();
 			
 			return primitive_restart_index_reenter(ctx, index);
 		}
 		
 		static void get_query_objecti64v_replacement(GLIContext ctx, GLuint id, GLenum pname, GLint64EXT *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_query_objecti64v called.\n");
+			file_mutex.unlock();
 			
 			return get_query_objecti64v_reenter(ctx, id, pname, params);
 		}
 		
 		static void get_query_objectui64v_replacement(GLIContext ctx, GLuint id, GLenum pname, GLuint64EXT *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_query_objectui64v called.\n");
+			file_mutex.unlock();
 			
 			return get_query_objectui64v_reenter(ctx, id, pname, params);
 		}
 		
 		static GLvoid map_buffer_range_replacement(GLIContext ctx, GLenum target, GLintptr offset, GLsizeiptr length, GLenum access)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: map_buffer_range called.\n");
+			file_mutex.unlock();
 			
 			return map_buffer_range_reenter(ctx, target, offset, length, access);
 		}
 		
 		static void flush_mapped_buffer_range_replacement(GLIContext ctx, GLenum target, GLintptr offset, GLsizeiptr length)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: flush_mapped_buffer_range called.\n");
+			file_mutex.unlock();
 			
 			return flush_mapped_buffer_range_reenter(ctx, target, offset, length);
 		}
 		
 		static void query_counter_replacement(GLIContext ctx, GLuint id, GLenum target)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: query_counter called.\n");
+			file_mutex.unlock();
 			
 			return query_counter_reenter(ctx, id, target);
 		}
 		
 		static void get_integer64i_v_replacement(GLIContext ctx, GLenum target, GLuint index, GLint64 *data)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_integer64i_v called.\n");
+			file_mutex.unlock();
 			
 			return get_integer64i_v_reenter(ctx, target, index, data);
 		}
 		
 		static void get_buffer_parameteri64v_replacement(GLIContext ctx, GLenum target, GLenum pname, GLint64 *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_buffer_parameteri64v called.\n");
+			file_mutex.unlock();
 			
 			return get_buffer_parameteri64v_reenter(ctx, target, pname, params);
 		}
 		
 		static void gen_samplers_replacement(GLIContext ctx, GLsizei count, GLuint *samplers)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: gen_samplers called.\n");
+			file_mutex.unlock();
 			
 			return gen_samplers_reenter(ctx, count, samplers);
 		}
 		
 		static void delete_samplers_replacement(GLIContext ctx, GLsizei count, const GLuint *samplers)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_samplers called.\n");
+			file_mutex.unlock();
 			
 			return delete_samplers_reenter(ctx, count, samplers);
 		}
 		
 		static GLboolean is_sampler_replacement(GLIContext ctx, GLuint sampler)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_sampler called.\n");
+			file_mutex.unlock();
 			
 			return is_sampler_reenter(ctx, sampler);
 		}
 		
 		static void bind_sampler_replacement(GLIContext ctx, GLuint unit, GLuint sampler)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_sampler called.\n");
+			file_mutex.unlock();
 			
 			return bind_sampler_reenter(ctx, unit, sampler);
 		}
 		
 		static void sampler_parameteri_replacement(GLIContext ctx, GLuint sampler, GLenum pname, GLint param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: sampler_parameteri called.\n");
+			file_mutex.unlock();
 			
 			return sampler_parameteri_reenter(ctx, sampler, pname, param);
 		}
 		
 		static void sampler_parameteriv_replacement(GLIContext ctx, GLuint sampler, GLenum pname, const GLint *param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: sampler_parameteriv called.\n");
+			file_mutex.unlock();
 			
 			return sampler_parameteriv_reenter(ctx, sampler, pname, param);
 		}
 		
 		static void sampler_parameterf_replacement(GLIContext ctx, GLuint sampler, GLenum pname, GLfloat param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: sampler_parameterf called.\n");
+			file_mutex.unlock();
 			
 			return sampler_parameterf_reenter(ctx, sampler, pname, param);
 		}
 		
 		static void sampler_parameterfv_replacement(GLIContext ctx, GLuint sampler, GLenum pname, const GLfloat *param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: sampler_parameterfv called.\n");
+			file_mutex.unlock();
 			
 			return sampler_parameterfv_reenter(ctx, sampler, pname, param);
 		}
 		
 		static void sampler_parameterIiv_replacement(GLIContext ctx, GLuint sampler, GLenum pname, const GLint *param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: sampler_parameterIiv called.\n");
+			file_mutex.unlock();
 			
 			return sampler_parameterIiv_reenter(ctx, sampler, pname, param);
 		}
 		
 		static void sampler_parameterIuiv_replacement(GLIContext ctx, GLuint sampler, GLenum pname, const GLuint *param)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: sampler_parameterIuiv called.\n");
+			file_mutex.unlock();
 			
 			return sampler_parameterIuiv_reenter(ctx, sampler, pname, param);
 		}
 		
 		static void get_sampler_parameteriv_replacement(GLIContext ctx, GLuint sampler, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_sampler_parameteriv called.\n");
+			file_mutex.unlock();
 			
 			return get_sampler_parameteriv_reenter(ctx, sampler, pname, params);
 		}
 		
 		static void get_sampler_parameterfv_replacement(GLIContext ctx, GLuint sampler, GLenum pname, GLfloat *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_sampler_parameterfv called.\n");
+			file_mutex.unlock();
 			
 			return get_sampler_parameterfv_reenter(ctx, sampler, pname, params);
 		}
 		
 		static void get_sampler_parameterIiv_replacement(GLIContext ctx, GLuint sampler, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_sampler_parameterIiv called.\n");
+			file_mutex.unlock();
 			
 			return get_sampler_parameterIiv_reenter(ctx, sampler, pname, params);
 		}
 		
 		static void get_sampler_parameterIuiv_replacement(GLIContext ctx, GLuint sampler, GLenum pname, GLuint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_sampler_parameterIuiv called.\n");
+			file_mutex.unlock();
 			
 			return get_sampler_parameterIuiv_reenter(ctx, sampler, pname, params);
 		}
 		
 		static void label_object_EXT_replacement(GLIContext ctx, GLenum type, GLuint object, GLsizei length, const GLchar *label)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: label_object_EXT called.\n");
+			file_mutex.unlock();
 			
 			return label_object_EXT_reenter(ctx, type, object, length, label);
 		}
 		
 		static void get_object_label_EXT_replacement(GLIContext ctx, GLenum type, GLuint object, GLsizei bufSize, GLsizei *length, GLchar *label)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_object_label_EXT called.\n");
+			file_mutex.unlock();
 			
 			return get_object_label_EXT_reenter(ctx, type, object, bufSize, length, label);
 		}
 		
 		static void insert_event_marker_EXT_replacement(GLIContext ctx, GLsizei length, const GLchar *marker)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: insert_event_marker_EXT called.\n");
+			file_mutex.unlock();
 			
 			return insert_event_marker_EXT_reenter(ctx, length, marker);
 		}
 		
 		static void push_group_marker_EXT_replacement(GLIContext ctx, GLsizei length, const GLchar *marker)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: push_group_marker_EXT called.\n");
+			file_mutex.unlock();
 			
 			return push_group_marker_EXT_reenter(ctx, length, marker);
 		}
 		
 		static void pop_group_marker_EXT_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pop_group_marker_EXT called.\n");
+			file_mutex.unlock();
 			
 			return pop_group_marker_EXT_reenter(ctx);
 		}
 		
 		static void use_program_stages_replacement(GLIContext ctx, GLuint pipeline, GLbitfield stages, GLuint program)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: use_program_stages called.\n");
+			file_mutex.unlock();
 			
 			return use_program_stages_reenter(ctx, pipeline, stages, program);
 		}
 		
 		static void active_shader_program_replacement(GLIContext ctx, GLuint pipeline, GLuint program)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: active_shader_program called.\n");
+			file_mutex.unlock();
 			
 			return active_shader_program_reenter(ctx, pipeline, program);
 		}
 		
 		static GLuint create_shader_programv_replacement(GLIContext ctx, GLenum type, GLsizei count, const GLchar* const *strings)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: create_shader_programv called.\n");
+			file_mutex.unlock();
 			
 			return create_shader_programv_reenter(ctx, type, count, strings);
 		}
 		
 		static void bind_program_pipeline_replacement(GLIContext ctx, GLuint pipeline)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_program_pipeline called.\n");
+			file_mutex.unlock();
 			
 			return bind_program_pipeline_reenter(ctx, pipeline);
 		}
 		
 		static void delete_program_pipelines_replacement(GLIContext ctx, GLsizei n, const GLuint *pipelines)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_program_pipelines called.\n");
+			file_mutex.unlock();
 			
 			return delete_program_pipelines_reenter(ctx, n, pipelines);
 		}
 		
 		static void gen_program_pipelines_replacement(GLIContext ctx, GLsizei n, GLuint *pipelines)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: gen_program_pipelines called.\n");
+			file_mutex.unlock();
 			
 			return gen_program_pipelines_reenter(ctx, n, pipelines);
 		}
 		
 		static GLboolean is_program_pipeline_replacement(GLIContext ctx, GLuint pipeline)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_program_pipeline called.\n");
+			file_mutex.unlock();
 			
 			return is_program_pipeline_reenter(ctx, pipeline);
 		}
 		
 		static void get_program_pipelineiv_replacement(GLIContext ctx, GLuint pipeline, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_program_pipelineiv called.\n");
+			file_mutex.unlock();
 			
 			return get_program_pipelineiv_reenter(ctx, pipeline, pname, params);
 		}
 		
 		static void validate_program_pipeline_replacement(GLIContext ctx, GLuint pipeline)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: validate_program_pipeline called.\n");
+			file_mutex.unlock();
 			
 			return validate_program_pipeline_reenter(ctx, pipeline);
 		}
 		
 		static void get_program_pipeline_info_log_replacement(GLIContext ctx, GLuint pipeline, GLsizei bufSize, GLsizei *length, GLchar *infoLog)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_program_pipeline_info_log called.\n");
+			file_mutex.unlock();
 			
 			return get_program_pipeline_info_log_reenter(ctx, pipeline, bufSize, length, infoLog);
 		}
 		
 		static void program_uniform1i_replacement(GLIContext ctx, GLuint program, GLint location, GLint x)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform1i called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform1i_reenter(ctx, program, location, x);
 		}
 		
 		static void program_uniform2i_replacement(GLIContext ctx, GLuint program, GLint location, GLint x, GLint y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform2i called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform2i_reenter(ctx, program, location, x, y);
 		}
 		
 		static void program_uniform3i_replacement(GLIContext ctx, GLuint program, GLint location, GLint x, GLint y, GLint z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform3i called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform3i_reenter(ctx, program, location, x, y, z);
 		}
 		
 		static void program_uniform4i_replacement(GLIContext ctx, GLuint program, GLint location, GLint x, GLint y, GLint z, GLint w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform4i called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform4i_reenter(ctx, program, location, x, y, z, w);
 		}
 		
 		static void program_uniform1f_replacement(GLIContext ctx, GLuint program, GLint location, GLfloat x)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform1f called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform1f_reenter(ctx, program, location, x);
 		}
 		
 		static void program_uniform2f_replacement(GLIContext ctx, GLuint program, GLint location, GLfloat x, GLfloat y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform2f called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform2f_reenter(ctx, program, location, x, y);
 		}
 		
 		static void program_uniform3f_replacement(GLIContext ctx, GLuint program, GLint location, GLfloat x, GLfloat y, GLfloat z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform3f called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform3f_reenter(ctx, program, location, x, y, z);
 		}
 		
 		static void program_uniform4f_replacement(GLIContext ctx, GLuint program, GLint location, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform4f called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform4f_reenter(ctx, program, location, x, y, z, w);
 		}
 		
 		static void program_uniform1iv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform1iv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform1iv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform2iv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform2iv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform2iv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform3iv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform3iv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform3iv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform4iv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform4iv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform4iv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform1fv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform1fv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform1fv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform2fv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform2fv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform2fv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform3fv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform3fv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform3fv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform4fv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform4fv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform4fv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform_matrix2fv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix2fv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix2fv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix3fv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix3fv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix3fv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix4fv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix4fv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix4fv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform1ui_replacement(GLIContext ctx, GLuint program, GLint location, GLuint x)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform1ui called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform1ui_reenter(ctx, program, location, x);
 		}
 		
 		static void program_uniform2ui_replacement(GLIContext ctx, GLuint program, GLint location, GLuint x, GLuint y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform2ui called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform2ui_reenter(ctx, program, location, x, y);
 		}
 		
 		static void program_uniform3ui_replacement(GLIContext ctx, GLuint program, GLint location, GLuint x, GLuint y, GLuint z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform3ui called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform3ui_reenter(ctx, program, location, x, y, z);
 		}
 		
 		static void program_uniform4ui_replacement(GLIContext ctx, GLuint program, GLint location, GLuint x, GLuint y, GLuint z, GLuint w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform4ui called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform4ui_reenter(ctx, program, location, x, y, z, w);
 		}
 		
 		static void program_uniform1uiv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLuint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform1uiv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform1uiv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform2uiv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLuint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform2uiv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform2uiv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform3uiv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLuint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform3uiv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform3uiv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform4uiv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLuint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform4uiv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform4uiv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform_matrix2x3fv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix2x3fv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix2x3fv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix3x2fv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix3x2fv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix3x2fv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix2x4fv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix2x4fv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix2x4fv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix4x2fv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix4x2fv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix4x2fv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix3x4fv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix3x4fv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix3x4fv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix4x3fv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix4x3fv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix4x3fv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void bind_frag_data_location_indexed_replacement(GLIContext ctx, GLuint program, GLuint colorNumber, GLuint index, const GLchar *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_frag_data_location_indexed called.\n");
+			file_mutex.unlock();
 			
 			return bind_frag_data_location_indexed_reenter(ctx, program, colorNumber, index, name);
 		}
 		
 		static GLint get_frag_data_index_replacement(GLIContext ctx, GLuint program, const GLchar *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_frag_data_index called.\n");
+			file_mutex.unlock();
 			
 			return get_frag_data_index_reenter(ctx, program, name);
 		}
 		
 		static void blend_func_i_replacement(GLIContext ctx, GLuint buf, GLenum src, GLenum dst)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: blend_func_i called.\n");
+			file_mutex.unlock();
 			
 			return blend_func_i_reenter(ctx, buf, src, dst);
 		}
 		
 		static void blend_func_separate_i_replacement(GLIContext ctx, GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: blend_func_separate_i called.\n");
+			file_mutex.unlock();
 			
 			return blend_func_separate_i_reenter(ctx, buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
 		}
 		
 		static void blend_equation_i_replacement(GLIContext ctx, GLuint buf, GLenum mode)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: blend_equation_i called.\n");
+			file_mutex.unlock();
 			
 			return blend_equation_i_reenter(ctx, buf, mode);
 		}
 		
 		static void blend_equation_separate_i_replacement(GLIContext ctx, GLuint buf, GLenum modeRGB, GLenum modeAlpha)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: blend_equation_separate_i called.\n");
+			file_mutex.unlock();
 			
 			return blend_equation_separate_i_reenter(ctx, buf, modeRGB, modeAlpha);
 		}
 		
 		static void named_string_ARB_replacement(GLIContext ctx, GLenum type, GLint namelen, const GLchar *name, GLint stringlen, const GLchar *string)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: named_string_ARB called.\n");
+			file_mutex.unlock();
 			
 			return named_string_ARB_reenter(ctx, type, namelen, name, stringlen, string);
 		}
 		
 		static void delete_named_string_ARB_replacement(GLIContext ctx, GLint namelen, const GLchar *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_named_string_ARB called.\n");
+			file_mutex.unlock();
 			
 			return delete_named_string_ARB_reenter(ctx, namelen, name);
 		}
 		
 		static void compile_shader_include_ARB_replacement(GLIContext ctx, GLuint shader, GLsizei count, const GLchar* const *path, const GLint *length)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: compile_shader_include_ARB called.\n");
+			file_mutex.unlock();
 			
 			return compile_shader_include_ARB_reenter(ctx, shader, count, path, length);
 		}
 		
 		static GLboolean is_named_string_ARB_replacement(GLIContext ctx, GLint namelen, const GLchar *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_named_string_ARB called.\n");
+			file_mutex.unlock();
 			
 			return is_named_string_ARB_reenter(ctx, namelen, name);
 		}
 		
 		static void get_named_string_ARB_replacement(GLIContext ctx, GLint namelen, const GLchar *name, GLsizei bufSize, GLint *stringlen, GLchar *string)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_named_string_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_named_string_ARB_reenter(ctx, namelen, name, bufSize, stringlen, string);
 		}
 		
 		static void get_named_string_iv_ARB_replacement(GLIContext ctx, GLint namelen, const GLchar *name, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_named_string_iv_ARB called.\n");
+			file_mutex.unlock();
 			
 			return get_named_string_iv_ARB_reenter(ctx, namelen, name, pname, params);
 		}
 		
 		static void release_shader_compiler_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: release_shader_compiler called.\n");
+			file_mutex.unlock();
 			
 			return release_shader_compiler_reenter(ctx);
 		}
 		
 		static void shader_binary_replacement(GLIContext ctx, GLint n, GLuint *shaders, GLenum binaryformat, const GLvoid *binary, GLint length)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: shader_binary called.\n");
+			file_mutex.unlock();
 			
 			return shader_binary_reenter(ctx, n, shaders, binaryformat, binary, length);
 		}
 		
 		static void get_shader_precision_format_replacement(GLIContext ctx, GLenum shadertype, GLenum precisiontype, GLint *range, GLint *precision)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_shader_precision_format called.\n");
+			file_mutex.unlock();
 			
 			return get_shader_precision_format_reenter(ctx, shadertype, precisiontype, range, precision);
 		}
 		
 		static void depth_rangef_replacement(GLIContext ctx, GLclampf zNear, GLclampf zFar)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: depth_rangef called.\n");
+			file_mutex.unlock();
 			
 			return depth_rangef_reenter(ctx, zNear, zFar);
 		}
 		
 		static void clear_depthf_replacement(GLIContext ctx, GLclampf depth)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: clear_depthf called.\n");
+			file_mutex.unlock();
 			
 			return clear_depthf_reenter(ctx, depth);
 		}
 		
 		static void vertex_attribP1ui_replacement(GLIContext ctx, GLuint index, GLenum type, GLboolean normalized, GLuint value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribP1ui called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribP1ui_reenter(ctx, index, type, normalized, value);
 		}
 		
 		static void vertex_attribP2ui_replacement(GLIContext ctx, GLuint index, GLenum type, GLboolean normalized, GLuint value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribP2ui called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribP2ui_reenter(ctx, index, type, normalized, value);
 		}
 		
 		static void vertex_attribP3ui_replacement(GLIContext ctx, GLuint index, GLenum type, GLboolean normalized, GLuint value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribP3ui called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribP3ui_reenter(ctx, index, type, normalized, value);
 		}
 		
 		static void vertex_attribP4ui_replacement(GLIContext ctx, GLuint index, GLenum type, GLboolean normalized, GLuint value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribP4ui called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribP4ui_reenter(ctx, index, type, normalized, value);
 		}
 		
 		static void vertex_attribP1uiv_replacement(GLIContext ctx, GLuint index, GLenum type, GLboolean normalized, const GLuint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribP1uiv called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribP1uiv_reenter(ctx, index, type, normalized, value);
 		}
 		
 		static void vertex_attribP2uiv_replacement(GLIContext ctx, GLuint index, GLenum type, GLboolean normalized, const GLuint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribP2uiv called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribP2uiv_reenter(ctx, index, type, normalized, value);
 		}
 		
 		static void vertex_attribP3uiv_replacement(GLIContext ctx, GLuint index, GLenum type, GLboolean normalized, const GLuint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribP3uiv called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribP3uiv_reenter(ctx, index, type, normalized, value);
 		}
 		
 		static void vertex_attribP4uiv_replacement(GLIContext ctx, GLuint index, GLenum type, GLboolean normalized, const GLuint *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribP4uiv called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribP4uiv_reenter(ctx, index, type, normalized, value);
 		}
 		
 		static void get_program_binary_replacement(GLIContext ctx, GLuint program, GLsizei bufSize, GLsizei *length, GLenum *binaryFormat, GLvoid *binary)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_program_binary called.\n");
+			file_mutex.unlock();
 			
 			return get_program_binary_reenter(ctx, program, bufSize, length, binaryFormat, binary);
 		}
 		
 		static void program_binary_replacement(GLIContext ctx, GLuint program, GLenum binaryFormat, const GLvoid *binary, GLsizei length)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_binary called.\n");
+			file_mutex.unlock();
 			
 			return program_binary_reenter(ctx, program, binaryFormat, binary, length);
 		}
 		
 		static void min_sample_shading_replacement(GLIContext ctx, GLclampf value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: min_sample_shading called.\n");
+			file_mutex.unlock();
 			
 			return min_sample_shading_reenter(ctx, value);
 		}
 		
 		static void viewport_arrayv_replacement(GLIContext ctx, GLuint first, GLsizei count, const GLfloat * v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: viewport_arrayv called.\n");
+			file_mutex.unlock();
 			
 			return viewport_arrayv_reenter(ctx, first, count, v);
 		}
 		
 		static void viewport_indexedf_replacement(GLIContext ctx, GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: viewport_indexedf called.\n");
+			file_mutex.unlock();
 			
 			return viewport_indexedf_reenter(ctx, index, x, y, w, h);
 		}
 		
 		static void viewport_indexedfv_replacement(GLIContext ctx, GLuint index, const GLfloat * v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: viewport_indexedfv called.\n");
+			file_mutex.unlock();
 			
 			return viewport_indexedfv_reenter(ctx, index, v);
 		}
 		
 		static void scissor_arrayv_replacement(GLIContext ctx, GLuint first, GLsizei count, const GLint * v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: scissor_arrayv called.\n");
+			file_mutex.unlock();
 			
 			return scissor_arrayv_reenter(ctx, first, count, v);
 		}
 		
 		static void scissor_indexed_replacement(GLIContext ctx, GLuint index, GLint left, GLint bottom, GLsizei width, GLsizei height)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: scissor_indexed called.\n");
+			file_mutex.unlock();
 			
 			return scissor_indexed_reenter(ctx, index, left, bottom, width, height);
 		}
 		
 		static void scissor_indexedv_replacement(GLIContext ctx, GLuint index, const GLint * v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: scissor_indexedv called.\n");
+			file_mutex.unlock();
 			
 			return scissor_indexedv_reenter(ctx, index, v);
 		}
 		
 		static void depth_range_arrayv_replacement(GLIContext ctx, GLuint first, GLsizei count, const GLclampd * v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: depth_range_arrayv called.\n");
+			file_mutex.unlock();
 			
 			return depth_range_arrayv_reenter(ctx, first, count, v);
 		}
 		
 		static void depth_range_indexed_replacement(GLIContext ctx, GLuint index, GLclampd n, GLclampd f)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: depth_range_indexed called.\n");
+			file_mutex.unlock();
 			
 			return depth_range_indexed_reenter(ctx, index, n, f);
 		}
 		
 		static void get_floati_v_replacement(GLIContext ctx, GLenum target, GLuint index, GLfloat *data)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_floati_v called.\n");
+			file_mutex.unlock();
 			
 			return get_floati_v_reenter(ctx, target, index, data);
 		}
 		
 		static void get_doublei_v_replacement(GLIContext ctx, GLenum target, GLuint index, GLdouble *data)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_doublei_v called.\n");
+			file_mutex.unlock();
 			
 			return get_doublei_v_reenter(ctx, target, index, data);
 		}
 		
 		static void draw_arrays_indirect_replacement(GLIContext ctx, GLenum mode, const GLvoid *indirect)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_arrays_indirect called.\n");
+			file_mutex.unlock();
 			
 			return draw_arrays_indirect_reenter(ctx, mode, indirect);
 		}
 		
 		static void draw_elements_indirect_replacement(GLIContext ctx, GLenum mode, GLenum type, const GLvoid *indirect)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_elements_indirect called.\n");
+			file_mutex.unlock();
 			
 			return draw_elements_indirect_reenter(ctx, mode, type, indirect);
 		}
 		
 		static void patch_parameteri_replacement(GLIContext ctx, GLenum pname, GLint value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: patch_parameteri called.\n");
+			file_mutex.unlock();
 			
 			return patch_parameteri_reenter(ctx, pname, value);
 		}
 		
 		static void patch_parameterfv_replacement(GLIContext ctx, GLenum pname, const GLfloat* values)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: patch_parameterfv called.\n");
+			file_mutex.unlock();
 			
 			return patch_parameterfv_reenter(ctx, pname, values);
 		}
 		
 		static void bind_transform_feedback_replacement(GLIContext ctx, GLenum target, GLuint name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: bind_transform_feedback called.\n");
+			file_mutex.unlock();
 			
 			return bind_transform_feedback_reenter(ctx, target, name);
 		}
 		
 		static void gen_transform_feedbacks_replacement(GLIContext ctx, GLsizei n, GLuint* ids)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: gen_transform_feedbacks called.\n");
+			file_mutex.unlock();
 			
 			return gen_transform_feedbacks_reenter(ctx, n, ids);
 		}
 		
 		static void delete_transform_feedbacks_replacement(GLIContext ctx, GLsizei n, const GLuint* ids)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: delete_transform_feedbacks called.\n");
+			file_mutex.unlock();
 			
 			return delete_transform_feedbacks_reenter(ctx, n, ids);
 		}
 		
 		static void pause_transform_feedback_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: pause_transform_feedback called.\n");
+			file_mutex.unlock();
 			
 			return pause_transform_feedback_reenter(ctx);
 		}
 		
 		static void resume_transform_feedback_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: resume_transform_feedback called.\n");
+			file_mutex.unlock();
 			
 			return resume_transform_feedback_reenter(ctx);
 		}
 		
 		static GLboolean is_transform_feedback_replacement(GLIContext ctx, GLuint name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: is_transform_feedback called.\n");
+			file_mutex.unlock();
 			
 			return is_transform_feedback_reenter(ctx, name);
 		}
 		
 		static void draw_transform_feedback_replacement(GLIContext ctx, GLenum mode, GLuint name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_transform_feedback called.\n");
+			file_mutex.unlock();
 			
 			return draw_transform_feedback_reenter(ctx, mode, name);
 		}
 		
 		static void begin_query_indexed_replacement(GLIContext ctx, GLenum target, GLuint index, GLuint id)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: begin_query_indexed called.\n");
+			file_mutex.unlock();
 			
 			return begin_query_indexed_reenter(ctx, target, index, id);
 		}
 		
 		static void end_query_indexed_replacement(GLIContext ctx, GLenum target, GLuint index)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: end_query_indexed called.\n");
+			file_mutex.unlock();
 			
 			return end_query_indexed_reenter(ctx, target, index);
 		}
 		
 		static void get_query_indexediv_replacement(GLIContext ctx, GLenum target, GLuint index, GLenum pname, GLint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_query_indexediv called.\n");
+			file_mutex.unlock();
 			
 			return get_query_indexediv_reenter(ctx, target, index, pname, params);
 		}
 		
 		static void draw_transform_feedback_stream_replacement(GLIContext ctx, GLenum mode, GLuint name, GLuint stream)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: draw_transform_feedback_stream called.\n");
+			file_mutex.unlock();
 			
 			return draw_transform_feedback_stream_reenter(ctx, mode, name, stream);
 		}
 		
 		static void program_uniform1d_replacement(GLIContext ctx, GLuint program, GLint location, GLdouble x)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform1d called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform1d_reenter(ctx, program, location, x);
 		}
 		
 		static void program_uniform2d_replacement(GLIContext ctx, GLuint program, GLint location, GLdouble x, GLdouble y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform2d called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform2d_reenter(ctx, program, location, x, y);
 		}
 		
 		static void program_uniform3d_replacement(GLIContext ctx, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform3d called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform3d_reenter(ctx, program, location, x, y, z);
 		}
 		
 		static void program_uniform4d_replacement(GLIContext ctx, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform4d called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform4d_reenter(ctx, program, location, x, y, z, w);
 		}
 		
 		static void program_uniform1dv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform1dv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform1dv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform2dv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform2dv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform2dv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform3dv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform3dv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform3dv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform4dv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform4dv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform4dv_reenter(ctx, program, location, count, value);
 		}
 		
 		static void program_uniform_matrix2dv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix2dv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix2dv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix3dv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix3dv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix3dv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix4dv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix4dv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix4dv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix2x3dv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix2x3dv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix2x3dv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix3x2dv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix3x2dv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix3x2dv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix2x4dv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix2x4dv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix2x4dv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix4x2dv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix4x2dv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix4x2dv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix3x4dv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix3x4dv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix3x4dv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void program_uniform_matrix4x3dv_replacement(GLIContext ctx, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: program_uniform_matrix4x3dv called.\n");
+			file_mutex.unlock();
 			
 			return program_uniform_matrix4x3dv_reenter(ctx, program, location, count, transpose, value);
 		}
 		
 		static void uniform1d_replacement(GLIContext ctx, GLint location, GLdouble x)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform1d called.\n");
+			file_mutex.unlock();
 			
 			return uniform1d_reenter(ctx, location, x);
 		}
 		
 		static void uniform2d_replacement(GLIContext ctx, GLint location, GLdouble x, GLdouble y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform2d called.\n");
+			file_mutex.unlock();
 			
 			return uniform2d_reenter(ctx, location, x, y);
 		}
 		
 		static void uniform3d_replacement(GLIContext ctx, GLint location, GLdouble x, GLdouble y, GLdouble z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform3d called.\n");
+			file_mutex.unlock();
 			
 			return uniform3d_reenter(ctx, location, x, y, z);
 		}
 		
 		static void uniform4d_replacement(GLIContext ctx, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform4d called.\n");
+			file_mutex.unlock();
 			
 			return uniform4d_reenter(ctx, location, x, y, z, w);
 		}
 		
 		static void uniform1dv_replacement(GLIContext ctx, GLint location, GLsizei count, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform1dv called.\n");
+			file_mutex.unlock();
 			
 			return uniform1dv_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform2dv_replacement(GLIContext ctx, GLint location, GLsizei count, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform2dv called.\n");
+			file_mutex.unlock();
 			
 			return uniform2dv_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform3dv_replacement(GLIContext ctx, GLint location, GLsizei count, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform3dv called.\n");
+			file_mutex.unlock();
 			
 			return uniform3dv_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform4dv_replacement(GLIContext ctx, GLint location, GLsizei count, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform4dv called.\n");
+			file_mutex.unlock();
 			
 			return uniform4dv_reenter(ctx, location, count, value);
 		}
 		
 		static void uniform_matrix2dv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix2dv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix2dv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix3dv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix3dv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix3dv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix4dv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix4dv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix4dv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix2x3dv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix2x3dv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix2x3dv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix3x2dv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix3x2dv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix3x2dv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix2x4dv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix2x4dv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix2x4dv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix4x2dv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix4x2dv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix4x2dv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix3x4dv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix3x4dv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix3x4dv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void uniform_matrix4x3dv_replacement(GLIContext ctx, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_matrix4x3dv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_matrix4x3dv_reenter(ctx, location, count, transpose, value);
 		}
 		
 		static void get_uniformdv_replacement(GLIContext ctx, GLuint program_obj, GLint location, GLdouble *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_uniformdv called.\n");
+			file_mutex.unlock();
 			
 			return get_uniformdv_reenter(ctx, program_obj, location, params);
 		}
 		
 		static void vertex_attribl1d_replacement(GLIContext ctx, GLuint index, GLdouble x)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribl1d called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribl1d_reenter(ctx, index, x);
 		}
 		
 		static void vertex_attribl2d_replacement(GLIContext ctx, GLuint index, GLdouble x, GLdouble y)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribl2d called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribl2d_reenter(ctx, index, x, y);
 		}
 		
 		static void vertex_attribl3d_replacement(GLIContext ctx, GLuint index, GLdouble x, GLdouble y, GLdouble z)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribl3d called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribl3d_reenter(ctx, index, x, y, z);
 		}
 		
 		static void vertex_attribl4d_replacement(GLIContext ctx, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribl4d called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribl4d_reenter(ctx, index, x, y, z, w);
 		}
 		
 		static void vertex_attribl1dv_replacement(GLIContext ctx, GLuint index, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribl1dv called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribl1dv_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribl2dv_replacement(GLIContext ctx, GLuint index, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribl2dv called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribl2dv_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribl3dv_replacement(GLIContext ctx, GLuint index, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribl3dv called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribl3dv_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attribl4dv_replacement(GLIContext ctx, GLuint index, const GLdouble *v)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attribl4dv called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attribl4dv_reenter(ctx, index, v);
 		}
 		
 		static void vertex_attrib_lpointer_replacement(GLIContext ctx, GLuint index, GLint size, GLenum type, GLsizei stride, const void *pointer)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: vertex_attrib_lpointer called.\n");
+			file_mutex.unlock();
 			
 			return vertex_attrib_lpointer_reenter(ctx, index, size, type, stride, pointer);
 		}
 		
 		static void get_vertex_attrib_ldv_replacement(GLIContext ctx, GLuint index, GLenum pname, GLdouble *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_vertex_attrib_ldv called.\n");
+			file_mutex.unlock();
 			
 			return get_vertex_attrib_ldv_reenter(ctx, index, pname, params);
 		}
 		
 		static GLint get_subroutine_uniform_location_replacement(GLIContext ctx, GLuint program, GLenum shadertype, const GLchar *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_subroutine_uniform_location called.\n");
+			file_mutex.unlock();
 			
 			return get_subroutine_uniform_location_reenter(ctx, program, shadertype, name);
 		}
 		
 		static GLuint get_subroutine_index_replacement(GLIContext ctx, GLuint program, GLenum shadertype, const GLchar *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_subroutine_index called.\n");
+			file_mutex.unlock();
 			
 			return get_subroutine_index_reenter(ctx, program, shadertype, name);
 		}
 		
 		static void get_active_subroutine_uniformiv_replacement(GLIContext ctx, GLuint program, GLenum shadertype, GLuint index, GLenum pname, GLint *values)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_active_subroutine_uniformiv called.\n");
+			file_mutex.unlock();
 			
 			return get_active_subroutine_uniformiv_reenter(ctx, program, shadertype, index, pname, values);
 		}
 		
 		static void get_active_subroutine_uniform_name_replacement(GLIContext ctx, GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei *length, GLchar *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_active_subroutine_uniform_name called.\n");
+			file_mutex.unlock();
 			
 			return get_active_subroutine_uniform_name_reenter(ctx, program, shadertype, index, bufsize, length, name);
 		}
 		
 		static void get_active_subroutine_name_replacement(GLIContext ctx, GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei *length, GLchar *name)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_active_subroutine_name called.\n");
+			file_mutex.unlock();
 			
 			return get_active_subroutine_name_reenter(ctx, program, shadertype, index, bufsize, length, name);
 		}
 		
 		static void uniform_subroutinesuiv_replacement(GLIContext ctx, GLenum shadertype, GLsizei count, const GLuint *indices)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: uniform_subroutinesuiv called.\n");
+			file_mutex.unlock();
 			
 			return uniform_subroutinesuiv_reenter(ctx, shadertype, count, indices);
 		}
 		
 		static void get_uniform_subroutineuiv_replacement(GLIContext ctx, GLenum shadertype, GLint location, GLuint *params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_uniform_subroutineuiv called.\n");
+			file_mutex.unlock();
 			
 			return get_uniform_subroutineuiv_reenter(ctx, shadertype, location, params);
 		}
 		
 		static void get_program_stageiv_replacement(GLIContext ctx, GLuint program, GLenum shadertype, GLenum pname, GLint *values)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_program_stageiv called.\n");
+			file_mutex.unlock();
 			
 			return get_program_stageiv_reenter(ctx, program, shadertype, pname, values);
 		}
 		
 		static void get_internal_formativ_replacement(GLIContext ctx, GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint* params)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: get_internal_formativ called.\n");
+			file_mutex.unlock();
 			
 			return get_internal_formativ_reenter(ctx, target, internalformat, pname, bufSize, params);
 		}
 		
 		static void tex_storage1D_replacement(GLIContext ctx, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_storage1D called.\n");
+			file_mutex.unlock();
 			
 			return tex_storage1D_reenter(ctx, target, levels, internalformat, width);
 		}
 		
 		static void tex_storage2D_replacement(GLIContext ctx, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_storage2D called.\n");
+			file_mutex.unlock();
 			
 			return tex_storage2D_reenter(ctx, target, levels, internalformat, width, height);
 		}
 		
 		static void tex_storage3D_replacement(GLIContext ctx, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: tex_storage3D called.\n");
+			file_mutex.unlock();
 			
 			return tex_storage3D_reenter(ctx, target, levels, internalformat, width, height, depth);
 		}
 		
 		static void label_object_with_responsible_process_APPLE_replacement(GLIContext ctx, GLenum type, GLuint name, GLint pid)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: label_object_with_responsible_process_APPLE called.\n");
+			file_mutex.unlock();
 			
 			return label_object_with_responsible_process_APPLE_reenter(ctx, type, name, pid);
 		}
 		
 		static void texture_barrier_NV_replacement(GLIContext ctx)
 		{
+			file_mutex.lock();
 			fprintf(output, "OpenGLFileLogger: texture_barrier_NV called.\n");
+			file_mutex.unlock();
 			
 			return texture_barrier_NV_reenter(ctx);
 		}
 		
 		static CGLContextObj CGLGetCurrentContext_replacement(void)
 		{
+			static unordered_set<CGLContextObj> overriden_context;
+
 			CGLContextObj obj = CGLGetCurrentContext_reenter();
 			syslog(LOG_NOTICE, "OpenGLFileLogger: Found Context: %p", obj);
-			if (!overriden)
+			if (obj && overriden_context.find(obj) == overriden_context.end())
 			{
 				extern void suspend_all_threads();
 				suspend_all_threads();
+				overriden_context.insert(obj);
 
 				if (obj->disp.accum)
 					mach_override_ptr((void*)obj->disp.accum, (void*)accum_replacement, (void**)&accum_reenter);
@@ -10719,8 +12672,6 @@ void OverrideCGLGetContext()
 					mach_override_ptr((void*)obj->disp.texture_barrier_NV, (void*)texture_barrier_NV_replacement, (void**)&texture_barrier_NV_reenter);
 
 
-				overriden = true;
-
 				extern void unsuspend_all_threads();
 				unsuspend_all_threads();
 			}
@@ -10745,4 +12696,5 @@ void OverrideCGLGetContext()
 		syslog(LOG_ERR, "OpenGLFileLogger: Error overriding OpenGL call 'CGLGetCurrentContext' %i", error);
 
 	dlclose(handle);
+	CGLGetCurrentContext();
 }
