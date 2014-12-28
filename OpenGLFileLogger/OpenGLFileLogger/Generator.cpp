@@ -20,81 +20,173 @@ int main()
 	}
 	
 	std::string line;
-//	for (int i = 0;i < 2377;++i)
-//		getline(gl, line);
 	
-	cout << "#include \"OpenGLLogger.h\"" << endl;
-	cout << "#include <OpenGL/gliDispatch.h>" << endl;
-	cout << "#include <syslog.h>" << endl;
-	cout << "#include \"mach_override.h\"" << endl;
-	cout << endl;
-	cout << "extern OpenGLLogger logger;" << endl;
-	cout << endl;
-	cout << "void OverrideOpenGL()" << endl;
-	cout << "{" << endl;
-	cout << '\t' << "kern_return_t err;" << endl;
-	cout << endl;
+	struct function_type
+	{
+		string type, function_name;
+		string parameters;
+		string parameter_names;
+	};
+	
+	vector<function_type> functions;
 	
 	while (getline(gl, line))
 	{
-		if (line.size() == 0)
+		if (line.size() == 0 ||
+			line[0] == '/' ||
+			line[0] == '{' ||
+			line[0] == '}' ||
+			line[0] == '*' ||
+			line == "\t")
 			continue;
 		
 		// 	void (*accum)(GLIContext ctx, GLenum op, GLfloat value);
-		//	[void function_stuff]
 		
-		string type, function_name, parameters;
+		string type, function_name, parameters, parameter_names;
 		
-		int i, start;
+		int i = 0, start = 0;
 		
 		for(i = 0;!isalpha(line[i]);++i);
 		
 		start = i;
-		for(i = 0;isalpha(line[i]);++i);
+		for(;isalpha(line[i]);++i);
 		
-		type = line.substr(start, i);
+		type = line.substr(start, i-start);
 		
 		if (type != "void" && (type[0] != 'G' && type[1] != 'L'))
 			continue;
 		
-		++i; // skip space
+		if (type == "GL")
+			continue;
+		
+		for(;line[i] != '(';++i);
+		
 		++i; // skip (
 		++i; // skip *
 		
 		start = i;
 		for(;line[i] != ')';++i);
 		
+		function_name = line.substr(start, i - start);
 		
+		++i; // skip )
 		
-		function_name = tokens[1].substr(2, tokens[1].length());
+		if (line[i] == ' ')
+			++i; // skip space
 		
-		for (;function_name[i] != ')';++i);
+		++i; // skip (
 		
-		function_name.erase(i, function_name.length());
+		start = i;
+		for(;line[i] != ')';++i);
 		
-		parameters = tokens[1].substr(2 + function_name.length() + 3, tokens[1].length());
-		parameters.erase(parameters.size()-2, 2);
+		parameters = line.substr(start, i-start);
 		
-		// Override output
-		cout << '\t' << "MACH_OVERRIDE(" << type << ", " << function_name << ", " << parameters << ", err)" << endl;
-		cout << '\t' << "{" << endl;
-		cout << '\t' << '\t' << "logger." << function_name << "(" << parameter_names << ");" << endl;
-		cout << endl;
+		istringstream iss(parameters);
 		
-		if (type == "void")
-			cout << '\t' << '\t' << function_name << "_reenter(" << parameter_names << ");" << endl;
-		else
-			cout << '\t' << '\t' << "return " << function_name << "_reenter(" << parameter_names << ");" << endl;
-
-		cout << '\t' << "} END_MACH_OVERRIDE(" << function_name << ");" << endl;
+		vector<string> tokens{	istream_iterator<string>{iss},
+								istream_iterator<string>{}};
 		
-		cout << endl;
-		cout << '\t' << "if (err)" << endl;
-		cout << '\t' << '\t' << "syslog(LOG_ERR, \"OpenGLFileLogger: Error overriding OpenGL call '" << function_name << "' %i\", err);" << endl;
-
+		for (int i = 1;i < tokens.size();++i)
+		{
+			if (tokens[i].back() != ',' && (i+1) != tokens.size())
+				continue;
+			
+			while (tokens[i].front() == '*')
+				tokens[i] = tokens[i].substr(1);
+			
+			parameter_names += tokens[i];
+			parameter_names += " ";
+		}
+		
+		parameter_names.pop_back();
+		
+		// Generate the override output
+		functions.push_back({type, function_name, parameters, parameter_names});
+	}
+	
+	// 	static CGLContextObj (*CGLGetCurrentContext_reenter)();
+	cout << "#include <OpenGL/OpenGL.h>" << endl;
+	cout << "#include <OpenGL/CGLTypes.h>" << endl;
+	cout << "#include <OpenGL/CGLContext.h>" << endl;
+	cout << "#include <OpenGL/gliContext.h>" << endl;
+	cout << endl;
+	cout << "#include <syslog.h>" << endl;
+	cout << "#include <cstdio>" << endl;
+	cout << "#include <dlfcn.h>" << endl;
+	cout << endl;
+	cout << "#include \"mach_override.h\"" << endl;
+	cout << endl;
+	
+	cout << "void OverrideCGLGetContext()" << endl;
+	cout << "{" << endl;
+	
+	cout << '\t' << "static FILE* output = fopen(\"/Users/bluechill/Developer/OpenGLInjector/OpenGLFileLogger/OpenGLFileLogger/OpenGLLog.log\", \"w\");" << endl;
+	cout << '\t' << "static CGLContextObj (*CGLGetCurrentContext_reenter)();" << endl;
+	cout << '\t' << "static bool overriden = false;" << endl;
+	
+	for (function_type& f : functions)
+		cout << '\t' << "static " << f.type << " (*" << f.function_name << "_reenter)(" << f.parameters << ");" << endl;
+	
+	cout << endl;
+	cout << '\t' << "struct replacement" << endl;
+	cout << '\t' << "{" << endl;
+	
+	for (function_type& f : functions)
+	{
+		cout << '\t' << '\t' << "static " << f.type << " " << f.function_name << "_replacement(" << f.parameters << ")" << endl;
+		cout << '\t' << '\t' << "{" << endl;
+		cout << '\t' << '\t' << '\t' << "fprintf(output, \"OpenGLFileLogger: " << f.function_name << " called.\\n\");" << endl;
+		cout << '\t' << '\t' << '\t' << endl;
+		cout << '\t' << '\t' << '\t' << "return " << f.function_name << "_reenter(" << f.parameter_names << ");" << endl;
+		cout << '\t' << '\t' << "}" << endl;
+		cout << '\t' << '\t' << endl;
+	}
+	
+	cout << '\t' << '\t'<< "static CGLContextObj CGLGetCurrentContext_replacement(void)" << endl;
+	cout << '\t' << '\t'<< "{" << endl;
+	cout << '\t' << '\t'<< '\t' << "CGLContextObj obj = CGLGetCurrentContext_reenter();" << endl;
+	cout << '\t' << '\t'<< '\t' << "syslog(LOG_NOTICE, \"OpenGLFileLogger: Found Context: %p\", obj);" << endl;
+	cout << '\t' << '\t'<< '\t' << "if (!overriden)" << endl;
+	cout << '\t' << '\t'<< '\t' << "{" << endl;
+	cout << '\t' << '\t'<< '\t' << '\t' << "extern void suspend_all_threads();" << endl;
+	cout << '\t' << '\t'<< '\t' << '\t' << "suspend_all_threads();" << endl;
+	cout << endl;
+	
+	for (function_type& f : functions)
+	{
+		cout << '\t' << '\t' << '\t' << '\t' << "if (obj->disp." << f.function_name << ")" << endl;
+		cout << '\t' << '\t' << '\t' << '\t' << '\t' << "mach_override_ptr((void*)obj->disp." << f.function_name << ", (void*)" << f.function_name << "_replacement, (void**)&" << f.function_name << "_reenter);" << endl;
 		cout << endl;
 	}
 	
+	cout << endl;
+	cout << '\t' << '\t' << '\t' << '\t' << "overriden = true;" << endl;
+	cout << endl;
+	cout << '\t' << '\t' << '\t' << '\t' << "extern void unsuspend_all_threads();" << endl;
+	cout << '\t' << '\t' << '\t' << '\t' << "unsuspend_all_threads();" << endl;
+	cout << '\t' << '\t' << '\t' << "}" << endl;
+	cout << '\t' << '\t' << endl;
+	cout << '\t' << '\t' << '\t' << "return obj;" << endl;
+	cout << '\t' << '\t' << "}" << endl;
+	cout << '\t' << "};" << endl;
+	cout << endl;
+	
+	cout << '\t' << "void* handle = dlopen(\"/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib\", RTLD_NOW);" << endl;
+	cout << endl;
+	cout << '\t' << "if (!handle)" << endl;
+	cout << '\t' << "	syslog(LOG_ERR, \"Failed to open libGL.  %s\", dlerror());" << endl;
+	cout << endl;
+	cout << '\t' << "void* opengl_function = dlsym(handle, \"CGLGetCurrentContext\");" << endl;
+	cout << endl;
+	cout << '\t' << "if (!opengl_function)" << endl;
+	cout << '\t' << "	syslog(LOG_ERR, \"Failed to find _CGLGetCurrentContext.  %s\", dlerror());" << endl;
+	cout << endl;
+	cout << '\t' << "mach_error_t error = mach_override_ptr((void*)opengl_function, (void*)replacement::CGLGetCurrentContext_replacement, (void**)&CGLGetCurrentContext_reenter);" << endl;
+	cout << endl;
+	cout << '\t' << "if (error)" << endl;
+	cout << '\t' << "	syslog(LOG_ERR, \"OpenGLFileLogger: Error overriding OpenGL call 'CGLGetCurrentContext' %i\", error);" << endl;
+	cout << endl;
+	cout << '\t' << "dlclose(handle);" << endl;
 	cout << "}" << endl;
 	
 	return 0;

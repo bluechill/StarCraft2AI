@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DA37A901A50932E00B3EB2B /* Generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE2CEB1A2E138000A1F5F8 /* Generator.cpp */; };
+		4DB094551A509801005872DE /* OpenGLOverrider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB094541A509801005872DE /* OpenGLOverrider.cpp */; };
 		4DCE2CE11A2E124800A1F5F8 /* decode.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE2CCD1A2E124800A1F5F8 /* decode.c */; };
 		4DCE2CE21A2E124800A1F5F8 /* input.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE2CD01A2E124800A1F5F8 /* input.c */; };
 		4DCE2CE31A2E124800A1F5F8 /* itab.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE2CD21A2E124800A1F5F8 /* itab.c */; };
@@ -16,12 +18,24 @@
 		4DCE2CE71A2E124800A1F5F8 /* udis86.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE2CDA1A2E124800A1F5F8 /* udis86.c */; };
 		4DCE2CE81A2E124800A1F5F8 /* Loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE2CDC1A2E124800A1F5F8 /* Loader.cpp */; };
 		4DCE2CE91A2E124800A1F5F8 /* mach_override.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE2CDD1A2E124800A1F5F8 /* mach_override.c */; };
-		4DCE2CEA1A2E124800A1F5F8 /* OpenGLLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE2CDF1A2E124800A1F5F8 /* OpenGLLogger.cpp */; };
-		4DCE2CED1A2E1B1900A1F5F8 /* OpenGLMachOverrides.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE2CEC1A2E1B1900A1F5F8 /* OpenGLMachOverrides.cpp */; };
 		4DCE2CEF1A2E1F5800A1F5F8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE2CEE1A2E1F5800A1F5F8 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4DA37A871A50932000B3EB2B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		4DA37A891A50932000B3EB2B /* Generator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Generator; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DB094541A509801005872DE /* OpenGLOverrider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLOverrider.cpp; sourceTree = "<group>"; };
 		4DCE2CCD1A2E124800A1F5F8 /* decode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = decode.c; sourceTree = "<group>"; };
 		4DCE2CCE1A2E124800A1F5F8 /* decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decode.h; sourceTree = "<group>"; };
 		4DCE2CCF1A2E124800A1F5F8 /* extern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extern.h; sourceTree = "<group>"; };
@@ -40,16 +54,20 @@
 		4DCE2CDC1A2E124800A1F5F8 /* Loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Loader.cpp; sourceTree = "<group>"; };
 		4DCE2CDD1A2E124800A1F5F8 /* mach_override.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mach_override.c; sourceTree = "<group>"; };
 		4DCE2CDE1A2E124800A1F5F8 /* mach_override.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mach_override.h; sourceTree = "<group>"; };
-		4DCE2CDF1A2E124800A1F5F8 /* OpenGLLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLLogger.cpp; sourceTree = "<group>"; };
-		4DCE2CE01A2E124800A1F5F8 /* OpenGLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLLogger.h; sourceTree = "<group>"; };
 		4DCE2CEB1A2E138000A1F5F8 /* Generator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Generator.cpp; sourceTree = "<group>"; };
-		4DCE2CEC1A2E1B1900A1F5F8 /* OpenGLMachOverrides.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLMachOverrides.cpp; sourceTree = "<group>"; };
 		4DCE2CEE1A2E1F5800A1F5F8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		4DDE7A661A2E11360037056A /* OpenGLFileLogger.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenGLFileLogger.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDE7A6A1A2E11360037056A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4DA37A861A50932000B3EB2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DDE7A631A2E11360037056A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -96,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				4DDE7A661A2E11360037056A /* OpenGLFileLogger.bundle */,
+				4DA37A891A50932000B3EB2B /* Generator */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,11 +124,9 @@
 			children = (
 				4DCE2CCC1A2E124800A1F5F8 /* libudis86 */,
 				4DCE2CDC1A2E124800A1F5F8 /* Loader.cpp */,
-				4DCE2CEC1A2E1B1900A1F5F8 /* OpenGLMachOverrides.cpp */,
+				4DB094541A509801005872DE /* OpenGLOverrider.cpp */,
 				4DCE2CDD1A2E124800A1F5F8 /* mach_override.c */,
 				4DCE2CDE1A2E124800A1F5F8 /* mach_override.h */,
-				4DCE2CDF1A2E124800A1F5F8 /* OpenGLLogger.cpp */,
-				4DCE2CE01A2E124800A1F5F8 /* OpenGLLogger.h */,
 				4DCE2CEB1A2E138000A1F5F8 /* Generator.cpp */,
 				4DDE7A691A2E11360037056A /* Supporting Files */,
 			);
@@ -127,6 +144,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4DA37A881A50932000B3EB2B /* Generator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DA37A8F1A50932000B3EB2B /* Build configuration list for PBXNativeTarget "Generator" */;
+			buildPhases = (
+				4DA37A851A50932000B3EB2B /* Sources */,
+				4DA37A861A50932000B3EB2B /* Frameworks */,
+				4DA37A871A50932000B3EB2B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Generator;
+			productName = Generator;
+			productReference = 4DA37A891A50932000B3EB2B /* Generator */;
+			productType = "com.apple.product-type.tool";
+		};
 		4DDE7A651A2E11360037056A /* OpenGLFileLogger */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DDE7A6D1A2E11360037056A /* Build configuration list for PBXNativeTarget "OpenGLFileLogger" */;
@@ -153,6 +187,9 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Alex Turner";
 				TargetAttributes = {
+					4DA37A881A50932000B3EB2B = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 					4DDE7A651A2E11360037056A = {
 						CreatedOnToolsVersion = 6.1;
 					};
@@ -171,6 +208,7 @@
 			projectRoot = "";
 			targets = (
 				4DDE7A651A2E11360037056A /* OpenGLFileLogger */,
+				4DA37A881A50932000B3EB2B /* Generator */,
 			);
 		};
 /* End PBXProject section */
@@ -186,6 +224,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4DA37A851A50932000B3EB2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DA37A901A50932E00B3EB2B /* Generator.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DDE7A621A2E11360037056A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -194,19 +240,36 @@
 				4DCE2CE71A2E124800A1F5F8 /* udis86.c in Sources */,
 				4DCE2CE61A2E124800A1F5F8 /* syn.c in Sources */,
 				4DCE2CE81A2E124800A1F5F8 /* Loader.cpp in Sources */,
-				4DCE2CEA1A2E124800A1F5F8 /* OpenGLLogger.cpp in Sources */,
 				4DCE2CE51A2E124800A1F5F8 /* syn-intel.c in Sources */,
 				4DCE2CE21A2E124800A1F5F8 /* input.c in Sources */,
+				4DB094551A509801005872DE /* OpenGLOverrider.cpp in Sources */,
 				4DCE2CE31A2E124800A1F5F8 /* itab.c in Sources */,
 				4DCE2CE41A2E124800A1F5F8 /* syn-att.c in Sources */,
 				4DCE2CE11A2E124800A1F5F8 /* decode.c in Sources */,
-				4DCE2CED1A2E1B1900A1F5F8 /* OpenGLMachOverrides.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		4DA37A8D1A50932000B3EB2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4DA37A8E1A50932000B3EB2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		4DDE7A6B1A2E11360037056A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -323,6 +386,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4DA37A8F1A50932000B3EB2B /* Build configuration list for PBXNativeTarget "Generator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DA37A8D1A50932000B3EB2B /* Debug */,
+				4DA37A8E1A50932000B3EB2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4DDE7A611A2E11360037056A /* Build configuration list for PBXProject "OpenGLFileLogger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
