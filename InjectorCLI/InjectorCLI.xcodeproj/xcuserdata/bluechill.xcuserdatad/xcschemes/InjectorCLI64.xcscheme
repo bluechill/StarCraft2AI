@@ -68,11 +68,11 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--application"
+            argument = "--pid"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "ExampleOpenGLApp"
+            argument = "17592"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
