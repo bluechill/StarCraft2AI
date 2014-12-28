@@ -6,9 +6,19 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4DB094581A50A76F005872DE /* mach_override.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DB094561A50A76F005872DE /* mach_override.c */; };
+		4DB0945B1A50A780005872DE /* Loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB094591A50A780005872DE /* Loader.cpp */; };
+		4DB0945C1A50A780005872DE /* OpenGLOverrider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB0945A1A50A780005872DE /* OpenGLOverrider.cpp */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		4DAF72F91A2F7C1600DF7137 /* StarCraft2API.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarCraft2API.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DAF72FD1A2F7C1600DF7137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DB094561A50A76F005872DE /* mach_override.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mach_override.c; path = ../../OpenGLFileLogger/OpenGLFileLogger/mach_override.c; sourceTree = "<group>"; };
+		4DB094571A50A76F005872DE /* mach_override.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mach_override.h; path = ../../OpenGLFileLogger/OpenGLFileLogger/mach_override.h; sourceTree = "<group>"; };
+		4DB094591A50A780005872DE /* Loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Loader.cpp; sourceTree = "<group>"; };
+		4DB0945A1A50A780005872DE /* OpenGLOverrider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLOverrider.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +51,10 @@
 		4DAF72FB1A2F7C1600DF7137 /* StarCraft2API */ = {
 			isa = PBXGroup;
 			children = (
+				4DB094591A50A780005872DE /* Loader.cpp */,
+				4DB0945A1A50A780005872DE /* OpenGLOverrider.cpp */,
+				4DB094561A50A76F005872DE /* mach_override.c */,
+				4DB094571A50A76F005872DE /* mach_override.h */,
 				4DAF72FC1A2F7C1600DF7137 /* Supporting Files */,
 			);
 			path = StarCraft2API;
@@ -120,6 +134,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB0945B1A50A780005872DE /* Loader.cpp in Sources */,
+				4DB0945C1A50A780005872DE /* OpenGLOverrider.cpp in Sources */,
+				4DB094581A50A76F005872DE /* mach_override.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +260,7 @@
 				4DAF73021A2F7C1600DF7137 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
