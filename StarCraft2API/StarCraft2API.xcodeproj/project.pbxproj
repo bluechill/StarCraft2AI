@@ -26,10 +26,52 @@
 		4DE06EDC1A62CA67007C676D /* syn-intel.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06ED01A62CA67007C676D /* syn-intel.c */; };
 		4DE06EDD1A62CA67007C676D /* syn.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06ED11A62CA67007C676D /* syn.c */; };
 		4DE06EDE1A62CA67007C676D /* udis86.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06ED51A62CA67007C676D /* udis86.c */; };
+		4DE06EE81A62DC4B007C676D /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06EE71A62DC4B007C676D /* main.mm */; };
+		4DE06EED1A62DCD6007C676D /* MachInjectorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE06EEC1A62DCD6007C676D /* MachInjectorFramework.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4DE06EF31A62F9F7007C676D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE06EEE1A62F9F7007C676D /* MachInjector.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D23DDE41A24E17B00EC6DA5;
+			remoteInfo = MachInjector;
+		};
+		4DE06EF51A62F9F7007C676D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE06EEE1A62F9F7007C676D /* MachInjector.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D7B7F651A2CBABB00FA5C0D;
+			remoteInfo = MachInjectorFramework;
+		};
+		4DE06EF71A62FA03007C676D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE06EEE1A62F9F7007C676D /* MachInjector.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D7B7F641A2CBABB00FA5C0D;
+			remoteInfo = MachInjectorFramework;
+		};
+		4DE06EFB1A62FC83007C676D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DAF72F11A2F7C1600DF7137 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DAF72F81A2F7C1600DF7137;
+			remoteInfo = StarCraft2API;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		4D34F74D1A5B4CB000A08B73 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		4DE06EE31A62DC4B007C676D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -75,6 +117,11 @@
 		4DE06ED51A62CA67007C676D /* udis86.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = udis86.c; sourceTree = "<group>"; };
 		4DE06ED61A62CA67007C676D /* udis86.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = udis86.h; sourceTree = "<group>"; };
 		4DE06EE01A62D9A1007C676D /* mach_override.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mach_override.h; path = ../../ExampleFunctionOverride/ExampleFunctionOverride/mach_override.h; sourceTree = "<group>"; };
+		4DE06EE51A62DC4B007C676D /* StarCraft Injector */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "StarCraft Injector"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DE06EE71A62DC4B007C676D /* main.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		4DE06EEC1A62DCD6007C676D /* MachInjectorFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MachInjectorFramework.framework; path = "/Users/bluechill/Developer/OpenGLInjector/Injector/../../../Library/Developer/Xcode/DerivedData/OpenGLInjector-cybtiijcflqqgibtzfbrkecgjabw/Build/Products/Debug/MachInjectorFramework.framework"; sourceTree = "<absolute>"; };
+		4DE06EEE1A62F9F7007C676D /* MachInjector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MachInjector.xcodeproj; path = /Users/bluechill/Developer/OpenGLInjector/Injector/../MachInjector/MachInjector.xcodeproj; sourceTree = "<absolute>"; };
+		4DE06EFA1A62FA98007C676D /* mach_inject_bundle_pid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mach_inject_bundle_pid.h; path = "../../../../Library/Developer/Xcode/DerivedData/OpenGLInjector-cybtiijcflqqgibtzfbrkecgjabw/Build/Products/Debug/MachInjectorFramework.framework/Headers/mach_inject_bundle_pid.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +136,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DE06EE21A62DC4B007C676D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DE06EED1A62DCD6007C676D /* MachInjectorFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				4DAF72FB1A2F7C1600DF7137 /* StarCraft2API */,
+				4DE06EE61A62DC4B007C676D /* StarCraft Injector */,
 				4DAF72FA1A2F7C1600DF7137 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -140,6 +196,7 @@
 			children = (
 				4DAF72F91A2F7C1600DF7137 /* StarCraft2API.bundle */,
 				4D34F74F1A5B4CB000A08B73 /* Generator */,
+				4DE06EE51A62DC4B007C676D /* StarCraft Injector */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,6 +249,26 @@
 			path = ../../OpenGLFileLogger/OpenGLFileLogger/libudis86;
 			sourceTree = "<group>";
 		};
+		4DE06EE61A62DC4B007C676D /* StarCraft Injector */ = {
+			isa = PBXGroup;
+			children = (
+				4DE06EEE1A62F9F7007C676D /* MachInjector.xcodeproj */,
+				4DE06EEC1A62DCD6007C676D /* MachInjectorFramework.framework */,
+				4DE06EE71A62DC4B007C676D /* main.mm */,
+				4DE06EFA1A62FA98007C676D /* mach_inject_bundle_pid.h */,
+			);
+			path = "StarCraft Injector";
+			sourceTree = "<group>";
+		};
+		4DE06EEF1A62F9F7007C676D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DE06EF41A62F9F7007C676D /* libMachInjector.dylib */,
+				4DE06EF61A62F9F7007C676D /* MachInjectorFramework.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -229,6 +306,25 @@
 			productReference = 4DAF72F91A2F7C1600DF7137 /* StarCraft2API.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
+		4DE06EE41A62DC4B007C676D /* StarCraft Injector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DE06EE91A62DC4B007C676D /* Build configuration list for PBXNativeTarget "StarCraft Injector" */;
+			buildPhases = (
+				4DE06EE11A62DC4B007C676D /* Sources */,
+				4DE06EE21A62DC4B007C676D /* Frameworks */,
+				4DE06EE31A62DC4B007C676D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DE06EFC1A62FC83007C676D /* PBXTargetDependency */,
+				4DE06EF81A62FA03007C676D /* PBXTargetDependency */,
+			);
+			name = "StarCraft Injector";
+			productName = "StarCraft Injector";
+			productReference = 4DE06EE51A62DC4B007C676D /* StarCraft Injector */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -244,6 +340,9 @@
 					4DAF72F81A2F7C1600DF7137 = {
 						CreatedOnToolsVersion = 6.1;
 					};
+					4DE06EE41A62DC4B007C676D = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 				};
 			};
 			buildConfigurationList = 4DAF72F41A2F7C1600DF7137 /* Build configuration list for PBXProject "StarCraft2API" */;
@@ -256,13 +355,37 @@
 			mainGroup = 4DAF72F01A2F7C1600DF7137;
 			productRefGroup = 4DAF72FA1A2F7C1600DF7137 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4DE06EEF1A62F9F7007C676D /* Products */;
+					ProjectRef = 4DE06EEE1A62F9F7007C676D /* MachInjector.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4DAF72F81A2F7C1600DF7137 /* StarCraft2API */,
 				4D34F74E1A5B4CB000A08B73 /* Generator */,
+				4DE06EE41A62DC4B007C676D /* StarCraft Injector */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4DE06EF41A62F9F7007C676D /* libMachInjector.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libMachInjector.dylib;
+			remoteRef = 4DE06EF31A62F9F7007C676D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4DE06EF61A62F9F7007C676D /* MachInjectorFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MachInjectorFramework.framework;
+			remoteRef = 4DE06EF51A62F9F7007C676D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4DAF72F71A2F7C1600DF7137 /* Resources */ = {
@@ -308,7 +431,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4DE06EE11A62DC4B007C676D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DE06EE81A62DC4B007C676D /* main.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4DE06EF81A62FA03007C676D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MachInjectorFramework;
+			targetProxy = 4DE06EF71A62FA03007C676D /* PBXContainerItemProxy */;
+		};
+		4DE06EFC1A62FC83007C676D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DAF72F81A2F7C1600DF7137 /* StarCraft2API */;
+			targetProxy = 4DE06EFB1A62FC83007C676D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4D34F7541A5B4CB000A08B73 /* Debug */ = {
@@ -406,6 +550,7 @@
 		4DAF73011A2F7C1600DF7137 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = StarCraft2API/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -418,12 +563,43 @@
 		4DAF73021A2F7C1600DF7137 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = StarCraft2API/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		4DE06EEA1A62DC4B007C676D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/bluechill/Developer/OpenGLInjector/Injector/../../../Library/Developer/Xcode/DerivedData/OpenGLInjector-cybtiijcflqqgibtzfbrkecgjabw/Build/Products/Debug",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4DE06EEB1A62DC4B007C676D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/bluechill/Developer/OpenGLInjector/Injector/../../../Library/Developer/Xcode/DerivedData/OpenGLInjector-cybtiijcflqqgibtzfbrkecgjabw/Build/Products/Debug",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -456,6 +632,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		4DE06EE91A62DC4B007C676D /* Build configuration list for PBXNativeTarget "StarCraft Injector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DE06EEA1A62DC4B007C676D /* Debug */,
+				4DE06EEB1A62DC4B007C676D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

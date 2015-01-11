@@ -34,11 +34,11 @@ void suspend_all_threads()
 	
 	if (err)
 	{
-		syslog(LOG_ERR, "OpenGLFileLogger: Unable to get a list of all threads: %i", err);
+		syslog(LOG_ERR, "SC2API: Unable to get a list of all threads: %i", err);
 		return;
 	}
 	
-	syslog(LOG_NOTICE, "OpenGLFileLogger: Suspending all other threads.");
+	syslog(LOG_NOTICE, "SC2API: Suspending all other threads.");
 	
 	thread_port_t my_thread = pthread_mach_thread_np(pthread_self());
 	
@@ -56,7 +56,7 @@ void suspend_all_threads()
 			syslog(LOG_ERR, "Failed to suspend thread: %i", *current);
 	}
 	
-	syslog(LOG_NOTICE, "OpenGLFileLogger: Suspended all other threads.");
+	syslog(LOG_NOTICE, "SC2API: Suspended all other threads.");
 }
 
 void unsuspend_all_threads()
@@ -69,11 +69,11 @@ void unsuspend_all_threads()
 	
 	if (err)
 	{
-		syslog(LOG_ERR, "OpenGLFileLogger: Unable to get a list of all threads: %i", err);
+		syslog(LOG_ERR, "SC2API: Unable to get a list of all threads: %i", err);
 		return;
 	}
 	
-	syslog(LOG_NOTICE, "OpenGLFileLogger: Unsuspending all other threads.");
+	syslog(LOG_NOTICE, "SC2API: Unsuspending all other threads.");
 	
 	thread_port_t my_thread = pthread_mach_thread_np(pthread_self());
 	
@@ -91,13 +91,13 @@ void unsuspend_all_threads()
 			syslog(LOG_ERR, "Failed to suspend thread: %i", *current);
 	}
 	
-	syslog(LOG_NOTICE, "OpenGLFileLogger: Unsuspended all other threads.");
+	syslog(LOG_NOTICE, "SC2API: Unsuspended all other threads.");
 }
 
 __attribute__((constructor))
 void load()
 {
-	syslog(LOG_NOTICE, "OpenGLFileLogger: Loaded.  My pid is %d\n", getpid());
+	syslog(LOG_NOTICE, "SC2API: Loaded.  My pid is %d\n", getpid());
 	
 	// Suspend all other threads
 	suspend_all_threads();

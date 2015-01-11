@@ -12,11 +12,11 @@
 		4D23DE3B1A24EF1C00EC6DA5 /* mach_inject.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D23DE391A24EF1C00EC6DA5 /* mach_inject.c */; };
 		4D23DE3C1A24EF1C00EC6DA5 /* mach_inject.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23DE3A1A24EF1C00EC6DA5 /* mach_inject.h */; };
 		4D7B7F7E1A2CBAD000FA5C0D /* mach_inject_bundle_pid.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D23DE351A24EF0100EC6DA5 /* mach_inject_bundle_pid.c */; };
-		4D7B7F7F1A2CBAD000FA5C0D /* mach_inject_bundle_pid.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23DE361A24EF0100EC6DA5 /* mach_inject_bundle_pid.h */; };
+		4D7B7F7F1A2CBAD000FA5C0D /* mach_inject_bundle_pid.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23DE361A24EF0100EC6DA5 /* mach_inject_bundle_pid.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D7B7F801A2CBAD000FA5C0D /* mach_inject.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D23DE391A24EF1C00EC6DA5 /* mach_inject.c */; };
-		4D7B7F811A2CBAD000FA5C0D /* mach_inject.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23DE3A1A24EF1C00EC6DA5 /* mach_inject.h */; };
+		4D7B7F811A2CBAD000FA5C0D /* mach_inject.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23DE3A1A24EF1C00EC6DA5 /* mach_inject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D7B7F8E1A2CBB6A00FA5C0D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B7F8D1A2CBB6A00FA5C0D /* Info.plist */; };
-		4D7B7F8F1A2CBC5400FA5C0D /* InjectorStub64.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B7F871A2CBAE700FA5C0D /* InjectorStub64.bundle */; };
+		4D7B7F8F1A2CBC5400FA5C0D /* InjectorStub.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B7F871A2CBAE700FA5C0D /* InjectorStub.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +90,7 @@
 		4D7B7F831A2CBAE600FA5C0D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4D7B7F871A2CBAE700FA5C0D /* InjectorStub64.bundle */,
+				4D7B7F871A2CBAE700FA5C0D /* InjectorStub.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -205,10 +205,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		4D7B7F871A2CBAE700FA5C0D /* InjectorStub64.bundle */ = {
+		4D7B7F871A2CBAE700FA5C0D /* InjectorStub.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = InjectorStub64.bundle;
+			path = InjectorStub.bundle;
 			remoteRef = 4D7B7F861A2CBAE700FA5C0D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -220,7 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D7B7F8E1A2CBB6A00FA5C0D /* Info.plist in Resources */,
-				4D7B7F8F1A2CBC5400FA5C0D /* InjectorStub64.bundle in Resources */,
+				4D7B7F8F1A2CBC5400FA5C0D /* InjectorStub.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

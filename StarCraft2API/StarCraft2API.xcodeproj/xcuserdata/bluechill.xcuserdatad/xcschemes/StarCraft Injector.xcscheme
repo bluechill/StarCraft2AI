@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4DF5417C1A55CB5400AD8457"
-               BuildableName = "StarCraftInjector"
-               BlueprintName = "StarCraftInjector"
+               BlueprintIdentifier = "4DE06EE41A62DC4B007C676D"
+               BuildableName = "StarCraft Injector"
+               BlueprintName = "StarCraft Injector"
                ReferencedContainer = "container:StarCraft2API.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4DF5417C1A55CB5400AD8457"
-            BuildableName = "StarCraftInjector"
-            BlueprintName = "StarCraftInjector"
+            BlueprintIdentifier = "4DE06EE41A62DC4B007C676D"
+            BuildableName = "StarCraft Injector"
+            BlueprintName = "StarCraft Injector"
             ReferencedContainer = "container:StarCraft2API.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -52,15 +52,15 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4DF5417C1A55CB5400AD8457"
-            BuildableName = "StarCraftInjector"
-            BlueprintName = "StarCraftInjector"
+            BlueprintIdentifier = "4DE06EE41A62DC4B007C676D"
+            BuildableName = "StarCraft Injector"
+            BlueprintName = "StarCraft Injector"
             ReferencedContainer = "container:StarCraft2API.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "--bundle"
+            argument = "--bundlePath"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -80,9 +80,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4DF5417C1A55CB5400AD8457"
-            BuildableName = "StarCraftInjector"
-            BlueprintName = "StarCraftInjector"
+            BlueprintIdentifier = "4DE06EE41A62DC4B007C676D"
+            BuildableName = "StarCraft Injector"
+            BlueprintName = "StarCraft Injector"
             ReferencedContainer = "container:StarCraft2API.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

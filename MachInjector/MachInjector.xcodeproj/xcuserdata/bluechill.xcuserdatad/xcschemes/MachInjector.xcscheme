@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4DAF73091A2FA31F00DF7137"
-               BuildableName = "InjectorStub copy.bundle"
-               BlueprintName = "InjectorStub32"
-               ReferencedContainer = "container:InjectorStub.xcodeproj">
+               BlueprintIdentifier = "4D23DDE31A24E17B00EC6DA5"
+               BuildableName = "libMachInjector.dylib"
+               BlueprintName = "MachInjector"
+               ReferencedContainer = "container:MachInjector.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,10 +42,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4DAF73091A2FA31F00DF7137"
-            BuildableName = "InjectorStub copy.bundle"
-            BlueprintName = "InjectorStub32"
-            ReferencedContainer = "container:InjectorStub.xcodeproj">
+            BlueprintIdentifier = "4D23DDE31A24E17B00EC6DA5"
+            BuildableName = "libMachInjector.dylib"
+            BlueprintName = "MachInjector"
+            ReferencedContainer = "container:MachInjector.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -60,10 +60,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4DAF73091A2FA31F00DF7137"
-            BuildableName = "InjectorStub copy.bundle"
-            BlueprintName = "InjectorStub32"
-            ReferencedContainer = "container:InjectorStub.xcodeproj">
+            BlueprintIdentifier = "4D23DDE31A24E17B00EC6DA5"
+            BuildableName = "libMachInjector.dylib"
+            BlueprintName = "MachInjector"
+            ReferencedContainer = "container:MachInjector.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

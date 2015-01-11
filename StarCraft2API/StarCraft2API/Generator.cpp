@@ -14,13 +14,10 @@ int main(int argc, char** argv)
 	ostream* out = &cout;
 	ofstream file;
 	
-	if (argc == 3)
-	{
-		file.open("/Users/bluechill/Developer/OpenGLInjector/StarCraft2API/StarCraft2API/OpenGLOverrider.cpp");
+	file.open("/Users/bluechill/Developer/OpenGLInjector/StarCraft2API/StarCraft2API/OpenGLOverrider.cpp");
 		
-		if (file.is_open())
-			out = &file;
-	}
+	if (file.is_open())
+		out = &file;
 	
 	ifstream gl("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/OpenGL.framework/Versions/A/Headers/gliDispatch.h");
 
@@ -159,6 +156,8 @@ int main(int argc, char** argv)
 	*out << endl;
 	*out << "#include \"mach_override.h\"" << endl;
 	*out << endl;
+	*out << "extern std::string GLenumToString(GLenum value);" << endl;
+	*out << endl;
 	*out << "using namespace std;" << endl;
 	*out << endl;
 	
@@ -166,7 +165,7 @@ int main(int argc, char** argv)
 	
 	// Logging
 	*out << "static mutex file_mutex;" << endl;
-	*out << "static FILE* output = fopen(\"/Users/bluechill/Developer/OpenGLInjector/OpenGLFileLogger/OpenGLFileLogger/OpenGLLog.log\", \"w\");" << endl;
+	*out << "static FILE* output = fopen(\"/Users/bluechill/Developer/OpenGLInjector/StarCraft2API/StarCraft2API/SC2Info/SC2Log.log\", \"w\");" << endl;
 
 	*out << "static void file_log(const char* message, ...)" << endl;
 	*out << "{" << endl;
@@ -211,11 +210,11 @@ int main(int argc, char** argv)
 	for (function_type& f : functions)
 	{
 		*out << '\t' << '\t' << "MACH_OVERRIDE(" << f.type << "," << f.function_name << ",(" << f.parameters << "), err ) {" << endl;
-		*out << '\t' << '\t' << '\t' << "file_log(\"" << f.function_name << " called: ";
+		*out << '\t' << '\t' << '\t' << "file_log(\"" << f.function_name << " called:";
 		
 		for (pair<string,string>& p : f.parameter_vector)
 		{
-			*out << p.second << " (" << p.first << " : ";
+			*out << " " << p.second << " (" << p.first << " : ";
 			
 			if (p.first == "GLenum")
 				*out << "%s";
@@ -233,11 +232,14 @@ int main(int argc, char** argv)
 			*out << ")";
 		}
 		
-		*out << "\", ";
+		*out << "\\n\", ";
 		
 		for (int i = 0;i < f.parameter_vector.size();++i)
 		{
-			*out << f.parameter_vector[i].second;
+			if (f.parameter_vector[i].first != "GLenum")
+				*out << f.parameter_vector[i].second;
+			else
+				*out << "GLenumToString(" << f.parameter_vector[i].second << ").c_str()";
 			
 			if ((i+1) != f.parameter_vector.size())
 				*out << ", ";
@@ -250,7 +252,7 @@ int main(int argc, char** argv)
 		*out << '\t' << '\t' << "} END_MACH_OVERRIDE_PTR(" << f.function_name << ", obj->disp." << f.function_name << ");" << endl << endl;
 		
 		*out << '\t' << '\t' << "if (err)" << endl;
-		*out << '\t' << '\t' << '\t' << "log(LOG_ERR, \"Failed to override " << f.function_name << ": %i\", err);" << endl;
+		*out << '\t' << '\t' << '\t' << "log(LOG_ERR, \"Failed to override " << f.function_name << ": %i\", err);" << endl << endl;
 	}
 	
 	*out << '\t'<< '\t' << "extern void unsuspend_all_threads();" << endl;
