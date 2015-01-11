@@ -53,11 +53,11 @@
 		4DCE2CDB1A2E124800A1F5F8 /* udis86.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = udis86.h; sourceTree = "<group>"; };
 		4DCE2CDC1A2E124800A1F5F8 /* Loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Loader.cpp; sourceTree = "<group>"; };
 		4DCE2CDD1A2E124800A1F5F8 /* mach_override.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mach_override.c; sourceTree = "<group>"; };
-		4DCE2CDE1A2E124800A1F5F8 /* mach_override.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mach_override.h; sourceTree = "<group>"; };
 		4DCE2CEB1A2E138000A1F5F8 /* Generator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Generator.cpp; sourceTree = "<group>"; };
 		4DCE2CEE1A2E1F5800A1F5F8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		4DDE7A661A2E11360037056A /* OpenGLFileLogger.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenGLFileLogger.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDE7A6A1A2E11360037056A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DE06EDF1A62D99D007C676D /* mach_override.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mach_override.h; path = ../../ExampleFunctionOverride/ExampleFunctionOverride/mach_override.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +126,7 @@
 				4DCE2CDC1A2E124800A1F5F8 /* Loader.cpp */,
 				4DB094541A509801005872DE /* OpenGLOverrider.cpp */,
 				4DCE2CDD1A2E124800A1F5F8 /* mach_override.c */,
-				4DCE2CDE1A2E124800A1F5F8 /* mach_override.h */,
+				4DE06EDF1A62D99D007C676D /* mach_override.h */,
 				4DCE2CEB1A2E138000A1F5F8 /* Generator.cpp */,
 				4DDE7A691A2E11360037056A /* Supporting Files */,
 			);

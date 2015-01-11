@@ -71,6 +71,13 @@ __END_DECLS
 																												\
 	err = mach_override_class__##ORIGINAL_FUNCTION_NAME::override((void*)ORIGINAL_FUNCTION_NAME);				\
 }
+
+#define END_MACH_OVERRIDE_PTR( ORIGINAL_FUNCTION_NAME, ORIGINAL_FUNCTION_PTR )									\
+		}																										\
+	};																											\
+																												\
+	err = mach_override_class__##ORIGINAL_FUNCTION_NAME::override((void*)ORIGINAL_FUNCTION_PTR);				\
+}
 #endif
 
 #endif	//	_mach_override_
