@@ -51,6 +51,8 @@ static void HandleCGLGetCurrentContext(CGLContextObj obj)
 	
 	if (obj && overriden_ctx.find(obj->rend) == overriden_ctx.end())
 	{
+		log(LOG_NOTICE, "Overriding Context Function PTRs\n");
+		
 		overriden_ctx[obj->rend] = obj;
 		extern void suspend_all_threads();
 		suspend_all_threads();
@@ -4798,6 +4800,7 @@ static void HandleCGLGetCurrentContext(CGLContextObj obj)
 
 		MACH_OVERRIDE(void,swap_APPLE,(GLIContext ctx), err ) {
 			file_log("swap_APPLE called: ctx (GLIContext : %p)\n", ctx);
+			OpenGL::StateMachine::Shared.swap_APPLE(ctx);
 			return swap_APPLE_reenter(ctx);
 		} END_MACH_OVERRIDE_PTR(swap_APPLE, obj->disp.swap_APPLE);
 
@@ -7920,6 +7923,8 @@ static void HandleCGLGetCurrentContext(CGLContextObj obj)
 
 		extern void unsuspend_all_threads();
 		unsuspend_all_threads();
+		
+		log(LOG_NOTICE, "Finished overriding Context Function PTRs");
 	}
 }
 

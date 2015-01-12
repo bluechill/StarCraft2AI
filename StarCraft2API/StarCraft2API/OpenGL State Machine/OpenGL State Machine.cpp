@@ -8,6 +8,11 @@
 
 #include "OpenGL State Machine.h"
 
+#include <string>
+
+#include "lupng.h"
+#include "xxhash.h"
+
 using namespace std;
 
 extern void file_log(const char* message, ...);
@@ -19,11 +24,12 @@ namespace OpenGL
 	StateMachine::StateMachine()
 	{
 		was_setup = false;
+		m_active_texture = 0;
 	}
 	
 	StateMachine::~StateMachine()
 	{
-		delete[] texture_units;
+		delete[] m_texture_units;
 	}
 	
 	/////////////////////////////////////////////////////////////////
@@ -33,6 +39,8 @@ namespace OpenGL
 	void StateMachine::active_texture(GLIContext ctx, GLenum target)
 	{
 		shared_setup();
+		
+		m_active_texture = target - GL_TEXTURE0;
 	}
 	
 	void StateMachine::active_stencil_face_EXT(GLIContext ctx, GLenum face)
@@ -52,6 +60,9 @@ namespace OpenGL
 	void StateMachine::bind_texture(GLIContext ctx, GLenum target, GLuint texture)
 	{
 		shared_setup();
+		
+		m_texture_units[m_active_texture].first = target;
+		m_texture_units[m_active_texture].second = texture;
 	}
 	
 	void StateMachine::bind_program_ARB(GLIContext ctx, GLenum target, GLuint program)
@@ -134,70 +145,119 @@ namespace OpenGL
 	/////////////////////////////////////////////////////////////////
 	
 	void StateMachine::draw_arrays(GLIContext ctx, GLenum mode, GLint first, GLsizei count)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_buffer(GLIContext ctx, GLenum mode)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_elements(GLIContext ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_pixels(GLIContext ctx, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_range_elements(GLIContext ctx, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_element_array_APPLE(GLIContext ctx, GLenum mode, GLint first, GLsizei count)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_range_element_array_APPLE(GLIContext ctx, GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::multi_draw_arrays(GLIContext ctx, GLenum mode, const GLint *first, const GLsizei *count, GLsizei drawcount)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::multi_draw_elements(GLIContext ctx, GLenum mode, const GLsizei *count, GLenum type, const GLvoid* const *indices, GLsizei drawcount)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_buffers_ARB(GLIContext ctx, GLsizei n, const GLenum *bufs)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::multi_draw_element_array_APPLE(GLIContext ctx, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::multi_draw_range_element_array_APPLE(GLIContext ctx, GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_arrays_instanced(GLIContext ctx, GLenum mode, GLint first, GLsizei count, GLsizei instancecount)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_elements_instanced(GLIContext ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei instancecount)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_elements_base_vertex(GLIContext ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint base_vertex)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_range_elements_base_vertex(GLIContext ctx, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint base_vertex)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_elements_instanced_base_vertex(GLIContext ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei instancecount, GLint base_vertex)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::multi_draw_elements_base_vertex(GLIContext ctx, GLenum mode, const GLsizei *count, GLenum type, const GLvoid* const *indices, GLsizei drawcount, const GLint *base_vertex)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_arrays_indirect(GLIContext ctx, GLenum mode, const GLvoid *indirect)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_elements_indirect(GLIContext ctx, GLenum mode, GLenum type, const GLvoid *indirect)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_transform_feedback(GLIContext ctx, GLenum mode, GLuint name)
-	{}
+	{
+		draw_event();
+	}
 	
 	void StateMachine::draw_transform_feedback_stream(GLIContext ctx, GLenum mode, GLuint name, GLuint stream)
-	{}
+	{
+		draw_event();
+	}
+	
+	void StateMachine::swap_APPLE(GLIContext ctx)
+	{
+		end_of_frame();
+	}
 	
 	void StateMachine::shared_setup()
 	{
@@ -208,12 +268,54 @@ namespace OpenGL
 			GLint t_size;
 			glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &t_size);
 			
-			texture_units = new pair<GLenum, GLuint>[t_size];
+			m_texture_units = new pair<GLenum, GLuint>[t_size];
 		}
+	}
+	
+	void StateMachine::draw_event()
+	{
+		// Log the texture to a file if we haven't already
+		if (m_logged_textures.find(m_texture_units[m_active_texture].second) == m_logged_textures.end())
+		{
+			// New texture
+			GLint width, height;
+			GLenum type = m_texture_units[m_active_texture].first;
+			
+			glGetTexLevelParameteriv(type, 0, GL_TEXTURE_WIDTH, &width);
+			glGetTexLevelParameteriv(type, 0, GL_TEXTURE_HEIGHT, &height);
+			
+			if (width != 0 && height != 0)
+			{
+				GLubyte* pixels = new GLubyte[width*height*4];
+				glGetTexImage(type, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+				
+				unsigned int hash = XXH32(pixels, width*height*4, 0xDEADBEEF);
+				
+				string file_name = "/Users/bluechill/Developer/OpenGLInjector/StarCraft2API/StarCraft2API/SC2Info/SC2Textures/";
+				file_name += to_string(hash);
+				file_name += ".png";
+				
+				FILE* file = fopen(file_name.c_str(), "wb");
+				
+				LuImage* image = luImageCreate(width, height, 4, 8);
+				image->data = pixels;
+				luPngWrite([](const void *ptr, size_t size, size_t count, void *userPtr)
+						   {
+							   return fwrite(ptr, size, count, (FILE*)userPtr);
+						   }, file, image);
+				
+				fclose(file);
+				delete[] pixels;
+				
+				m_logged_textures.insert(m_texture_units[m_active_texture].second);
+			}
+		}
+		
+		file_log("DRAW EVENT\n\n\n");
 	}
 	
 	void StateMachine::end_of_frame()
 	{
-		file_log("DRAW EVENT\n\n\n");
+		file_log("END OF FRAME\n\n\n");
 	}
 }

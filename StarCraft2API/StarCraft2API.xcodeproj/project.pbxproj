@@ -10,7 +10,6 @@
 		4D0D41E11A5F243400443983 /* OpenGLEnumToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D0D41E01A5F243400443983 /* OpenGLEnumToString.cpp */; };
 		4D34F73B1A5B3A7F00A08B73 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4D34F7331A5B3A7F00A08B73 /* LICENSE */; };
 		4D34F73C1A5B3A7F00A08B73 /* lupng.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D34F7341A5B3A7F00A08B73 /* lupng.c */; };
-		4D34F73D1A5B3A7F00A08B73 /* miniz.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D34F7371A5B3A7F00A08B73 /* miniz.c */; };
 		4D34F73E1A5B3A7F00A08B73 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4D34F7391A5B3A7F00A08B73 /* README.md */; };
 		4D34F7451A5B3A8A00A08B73 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4D34F7401A5B3A8A00A08B73 /* LICENSE */; };
 		4D34F7461A5B3A8A00A08B73 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4D34F7411A5B3A8A00A08B73 /* README.md */; };
@@ -30,6 +29,7 @@
 		4DE06EED1A62DCD6007C676D /* MachInjectorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE06EEC1A62DCD6007C676D /* MachInjectorFramework.framework */; };
 		4DE06F031A6326AB007C676D /* OpenGL State Machine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06F011A6326AB007C676D /* OpenGL State Machine.cpp */; };
 		4DE06F061A634E28007C676D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE06F041A634E10007C676D /* OpenGL.framework */; };
+		4DE06F081A6355DC007C676D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE06F071A6355DC007C676D /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,8 +89,6 @@
 		4D34F7331A5B3A7F00A08B73 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4D34F7341A5B3A7F00A08B73 /* lupng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lupng.c; sourceTree = "<group>"; };
 		4D34F7351A5B3A7F00A08B73 /* lupng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lupng.h; sourceTree = "<group>"; };
-		4D34F7371A5B3A7F00A08B73 /* miniz.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = miniz.c; sourceTree = "<group>"; };
-		4D34F7381A5B3A7F00A08B73 /* miniz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = miniz.h; sourceTree = "<group>"; };
 		4D34F7391A5B3A7F00A08B73 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4D34F7401A5B3A8A00A08B73 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4D34F7411A5B3A8A00A08B73 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -127,6 +125,7 @@
 		4DE06F011A6326AB007C676D /* OpenGL State Machine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "OpenGL State Machine.cpp"; path = "OpenGL State Machine/OpenGL State Machine.cpp"; sourceTree = "<group>"; };
 		4DE06F021A6326AB007C676D /* OpenGL State Machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OpenGL State Machine.h"; path = "OpenGL State Machine/OpenGL State Machine.h"; sourceTree = "<group>"; };
 		4DE06F041A634E10007C676D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		4DE06F071A6355DC007C676D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DE06F081A6355DC007C676D /* libz.dylib in Frameworks */,
 				4DE06F061A634E28007C676D /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,19 +162,9 @@
 				4D34F7331A5B3A7F00A08B73 /* LICENSE */,
 				4D34F7341A5B3A7F00A08B73 /* lupng.c */,
 				4D34F7351A5B3A7F00A08B73 /* lupng.h */,
-				4D34F7361A5B3A7F00A08B73 /* miniz */,
 				4D34F7391A5B3A7F00A08B73 /* README.md */,
 			);
 			path = LuPng;
-			sourceTree = "<group>";
-		};
-		4D34F7361A5B3A7F00A08B73 /* miniz */ = {
-			isa = PBXGroup;
-			children = (
-				4D34F7371A5B3A7F00A08B73 /* miniz.c */,
-				4D34F7381A5B3A7F00A08B73 /* miniz.h */,
-			);
-			path = miniz;
 			sourceTree = "<group>";
 		};
 		4D34F73F1A5B3A8A00A08B73 /* xxhash */ = {
@@ -211,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				4DE06F041A634E10007C676D /* OpenGL.framework */,
+				4DE06F071A6355DC007C676D /* libz.dylib */,
 				4DB094591A50A780005872DE /* Loader.cpp */,
 				4DE06F001A632692007C676D /* OpenGL State Machine */,
 				4DE06EFF1A632689007C676D /* OpenGL Overrider */,
@@ -457,7 +448,6 @@
 				4DE06ED81A62CA67007C676D /* decode.c in Sources */,
 				4DB0945C1A50A780005872DE /* OpenGLOverrider.cpp in Sources */,
 				4D34F73E1A5B3A7F00A08B73 /* README.md in Sources */,
-				4D34F73D1A5B3A7F00A08B73 /* miniz.c in Sources */,
 				4DE06EDB1A62CA67007C676D /* syn-att.c in Sources */,
 				4DB094581A50A76F005872DE /* mach_override.c in Sources */,
 				4DE06F031A6326AB007C676D /* OpenGL State Machine.cpp in Sources */,
@@ -596,6 +586,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = StarCraft2API/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				OTHER_CFLAGS = "-DLUPNG_USE_ZLIB";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
@@ -609,6 +600,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = StarCraft2API/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				OTHER_CFLAGS = "-DLUPNG_USE_ZLIB";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;

@@ -13,6 +13,7 @@
 #include <OpenGL/CGLContext.h>
 
 #include <map>
+#include <unordered_set>
 
 namespace OpenGL
 {
@@ -68,15 +69,20 @@ namespace OpenGL
 		void draw_transform_feedback(GLIContext ctx, GLenum mode, GLuint name);
 		void draw_transform_feedback_stream(GLIContext ctx, GLenum mode, GLuint name, GLuint stream);
 		
+		void swap_APPLE(GLIContext ctx);
+		
 	private:
 		// OpenGL state
-		std::pair<GLenum,GLuint> *texture_units;
+		GLuint m_active_texture;
+		std::pair<GLenum,GLuint> *m_texture_units;
 		
+		std::unordered_set<GLuint> m_logged_textures;
 		
 		// Setup & Interpreting
 		bool was_setup;
 		inline void shared_setup();
 		
+		void draw_event();
 		void end_of_frame();
 	};
 }
