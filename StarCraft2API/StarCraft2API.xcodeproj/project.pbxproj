@@ -28,6 +28,8 @@
 		4DE06EDE1A62CA67007C676D /* udis86.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06ED51A62CA67007C676D /* udis86.c */; };
 		4DE06EE81A62DC4B007C676D /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06EE71A62DC4B007C676D /* main.mm */; };
 		4DE06EED1A62DCD6007C676D /* MachInjectorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE06EEC1A62DCD6007C676D /* MachInjectorFramework.framework */; };
+		4DE06F031A6326AB007C676D /* OpenGL State Machine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06F011A6326AB007C676D /* OpenGL State Machine.cpp */; };
+		4DE06F061A634E28007C676D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE06F041A634E10007C676D /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +124,9 @@
 		4DE06EEC1A62DCD6007C676D /* MachInjectorFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MachInjectorFramework.framework; path = "/Users/bluechill/Developer/OpenGLInjector/Injector/../../../Library/Developer/Xcode/DerivedData/OpenGLInjector-cybtiijcflqqgibtzfbrkecgjabw/Build/Products/Debug/MachInjectorFramework.framework"; sourceTree = "<absolute>"; };
 		4DE06EEE1A62F9F7007C676D /* MachInjector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MachInjector.xcodeproj; path = /Users/bluechill/Developer/OpenGLInjector/Injector/../MachInjector/MachInjector.xcodeproj; sourceTree = "<absolute>"; };
 		4DE06EFA1A62FA98007C676D /* mach_inject_bundle_pid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mach_inject_bundle_pid.h; path = "../../../../Library/Developer/Xcode/DerivedData/OpenGLInjector-cybtiijcflqqgibtzfbrkecgjabw/Build/Products/Debug/MachInjectorFramework.framework/Headers/mach_inject_bundle_pid.h"; sourceTree = "<group>"; };
+		4DE06F011A6326AB007C676D /* OpenGL State Machine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "OpenGL State Machine.cpp"; path = "OpenGL State Machine/OpenGL State Machine.cpp"; sourceTree = "<group>"; };
+		4DE06F021A6326AB007C676D /* OpenGL State Machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OpenGL State Machine.h"; path = "OpenGL State Machine/OpenGL State Machine.h"; sourceTree = "<group>"; };
+		4DE06F041A634E10007C676D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DE06F061A634E28007C676D /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,12 +210,12 @@
 		4DAF72FB1A2F7C1600DF7137 /* StarCraft2API */ = {
 			isa = PBXGroup;
 			children = (
+				4DE06F041A634E10007C676D /* OpenGL.framework */,
 				4DB094591A50A780005872DE /* Loader.cpp */,
-				4DB0945A1A50A780005872DE /* OpenGLOverrider.cpp */,
-				4D0D41E01A5F243400443983 /* OpenGLEnumToString.cpp */,
-				4DB094561A50A76F005872DE /* mach_override.c */,
-				4DE06EE01A62D9A1007C676D /* mach_override.h */,
-				4D34F7491A5B3B0800A08B73 /* Generator.cpp */,
+				4DE06F001A632692007C676D /* OpenGL State Machine */,
+				4DE06EFF1A632689007C676D /* OpenGL Overrider */,
+				4DE06EFE1A632681007C676D /* Mach Override */,
+				4DE06EFD1A632676007C676D /* OpenGLOverride Generator */,
 				4DE06ED71A62CA67007C676D /* libudis86 */,
 				4D34F73F1A5B3A8A00A08B73 /* xxhash */,
 				4D34F7311A5B3A7F00A08B73 /* LuPng */,
@@ -267,6 +273,41 @@
 				4DE06EF61A62F9F7007C676D /* MachInjectorFramework.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		4DE06EFD1A632676007C676D /* OpenGLOverride Generator */ = {
+			isa = PBXGroup;
+			children = (
+				4D34F7491A5B3B0800A08B73 /* Generator.cpp */,
+			);
+			name = "OpenGLOverride Generator";
+			sourceTree = "<group>";
+		};
+		4DE06EFE1A632681007C676D /* Mach Override */ = {
+			isa = PBXGroup;
+			children = (
+				4DB094561A50A76F005872DE /* mach_override.c */,
+				4DE06EE01A62D9A1007C676D /* mach_override.h */,
+			);
+			name = "Mach Override";
+			sourceTree = "<group>";
+		};
+		4DE06EFF1A632689007C676D /* OpenGL Overrider */ = {
+			isa = PBXGroup;
+			children = (
+				4DB0945A1A50A780005872DE /* OpenGLOverrider.cpp */,
+				4D0D41E01A5F243400443983 /* OpenGLEnumToString.cpp */,
+			);
+			name = "OpenGL Overrider";
+			sourceTree = "<group>";
+		};
+		4DE06F001A632692007C676D /* OpenGL State Machine */ = {
+			isa = PBXGroup;
+			children = (
+				4DE06F011A6326AB007C676D /* OpenGL State Machine.cpp */,
+				4DE06F021A6326AB007C676D /* OpenGL State Machine.h */,
+			);
+			name = "OpenGL State Machine";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,6 +460,7 @@
 				4D34F73D1A5B3A7F00A08B73 /* miniz.c in Sources */,
 				4DE06EDB1A62CA67007C676D /* syn-att.c in Sources */,
 				4DB094581A50A76F005872DE /* mach_override.c in Sources */,
+				4DE06F031A6326AB007C676D /* OpenGL State Machine.cpp in Sources */,
 				4D34F7461A5B3A8A00A08B73 /* README.md in Sources */,
 				4DE06EDE1A62CA67007C676D /* udis86.c in Sources */,
 				4DE06ED91A62CA67007C676D /* input.c in Sources */,

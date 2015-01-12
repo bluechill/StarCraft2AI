@@ -125,7 +125,7 @@ int main(int argc, char** argv)
 				
 				parameter.second = tokens[i];
 				
-				parameter_names += parameter.second + " ,";
+				parameter_names += parameter.second + ", ";
 				parameter_vector.push_back(parameter);
 				
 				parameter.first = "";
@@ -157,6 +157,7 @@ int main(int argc, char** argv)
 	*out << "#include \"mach_override.h\"" << endl;
 	*out << endl;
 	*out << "extern std::string GLenumToString(GLenum value);" << endl;
+	*out << "#include \"OpenGL State Machine.h\"" << endl;
 	*out << endl;
 	*out << "using namespace std;" << endl;
 	*out << endl;
@@ -247,7 +248,22 @@ int main(int argc, char** argv)
 		
 		*out << ");" << endl;
 		
-		*out << '\t' << '\t' << '\t' << "return " << f.function_name << "_reenter(" << f.parameter_names << ");" << endl;
+		if (f.type != "void" && f.type != "GLvoid")
+		{
+			*out << '\t' << '\t' << '\t' << f.type << " result = " << f.function_name << "_reenter(" << f.parameter_names << ");" << endl;
+			
+			if (f.function_name.find("bind_") != string::npos || f.function_name.find("draw_") != string::npos || f.function_name.find("active_") == 0)
+				*out << '\t' << '\t' << '\t' << "OpenGL::StateMachine::Shared." << f.function_name << "(" << f.parameter_names << ", result" << ");" << endl;
+			
+			*out << '\t' << '\t' << '\t' << "return result;" << endl;
+		}
+		else
+		{
+			if (f.function_name.find("bind_") != string::npos || f.function_name.find("draw_") != string::npos || f.function_name.find("active_") == 0)
+				*out << '\t' << '\t' << '\t' << "OpenGL::StateMachine::Shared." << f.function_name << "(" << f.parameter_names << ");" << endl;
+			
+			*out << '\t' << '\t' << '\t' << "return " << f.function_name << "_reenter(" << f.parameter_names << ");" << endl;
+		}
 		
 		*out << '\t' << '\t' << "} END_MACH_OVERRIDE_PTR(" << f.function_name << ", obj->disp." << f.function_name << ");" << endl << endl;
 		
