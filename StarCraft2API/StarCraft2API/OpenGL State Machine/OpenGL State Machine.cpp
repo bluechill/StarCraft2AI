@@ -10,9 +10,6 @@
 
 #include <string>
 
-#include "lupng.h"
-#include "xxhash.h"
-
 using namespace std;
 
 extern void file_log(const char* message, ...);
@@ -275,41 +272,8 @@ namespace OpenGL
 	void StateMachine::draw_event()
 	{
 		// Log the texture to a file if we haven't already
-		if (m_logged_textures.find(m_texture_units[m_active_texture].second) == m_logged_textures.end())
-		{
-			// New texture
-			GLint width, height;
-			GLenum type = m_texture_units[m_active_texture].first;
-			
-			glGetTexLevelParameteriv(type, 0, GL_TEXTURE_WIDTH, &width);
-			glGetTexLevelParameteriv(type, 0, GL_TEXTURE_HEIGHT, &height);
-			
-			if (width != 0 && height != 0)
-			{
-				GLubyte* pixels = new GLubyte[width*height*4];
-				glGetTexImage(type, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
-				
-				unsigned int hash = XXH32(pixels, width*height*4, 0xDEADBEEF);
-				
-				string file_name = "/Users/bluechill/Developer/OpenGLInjector/StarCraft2API/StarCraft2API/SC2Info/SC2Textures/";
-				file_name += to_string(hash);
-				file_name += ".png";
-				
-				FILE* file = fopen(file_name.c_str(), "wb");
-				
-				LuImage* image = luImageCreate(width, height, 4, 8);
-				image->data = pixels;
-				luPngWrite([](const void *ptr, size_t size, size_t count, void *userPtr)
-						   {
-							   return fwrite(ptr, size, count, (FILE*)userPtr);
-						   }, file, image);
-				
-				fclose(file);
-				delete[] pixels;
-				
-				m_logged_textures.insert(m_texture_units[m_active_texture].second);
-			}
-		}
+		if (!db.has_texture(m_texture_units[m_active_texture].second))
+			db.create_texture(m_texture_units[m_active_texture].second);
 		
 		file_log("DRAW EVENT\n\n\n");
 	}

@@ -11,9 +11,12 @@
 
 #include <OpenGL/gl.h>
 #include <OpenGL/CGLContext.h>
+#include <OpenGL/OpenGL.h>
 
 #include <map>
 #include <unordered_set>
+
+#include "TextureDatabase.h"
 
 namespace OpenGL
 {
@@ -21,6 +24,8 @@ namespace OpenGL
 	{
 	public:
 		static StateMachine Shared;
+		
+		CGLContextObj ctx;
 		
 		StateMachine();
 		~StateMachine();
@@ -72,6 +77,8 @@ namespace OpenGL
 		void swap_APPLE(GLIContext ctx);
 		
 	private:
+		friend class TextureDatabase;
+		
 		// OpenGL state
 		GLuint m_active_texture;
 		std::pair<GLenum,GLuint> *m_texture_units;
@@ -84,6 +91,8 @@ namespace OpenGL
 		
 		void draw_event();
 		void end_of_frame();
+		
+		TextureDatabase db;
 	};
 }
 

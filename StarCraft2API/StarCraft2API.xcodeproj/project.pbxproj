@@ -30,6 +30,8 @@
 		4DE06F031A6326AB007C676D /* OpenGL State Machine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06F011A6326AB007C676D /* OpenGL State Machine.cpp */; };
 		4DE06F061A634E28007C676D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE06F041A634E10007C676D /* OpenGL.framework */; };
 		4DE06F081A6355DC007C676D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE06F071A6355DC007C676D /* libz.dylib */; };
+		4DE06F0B1A63573C007C676D /* TextureDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06F091A63573C007C676D /* TextureDatabase.cpp */; };
+		4DE06F0E1A635747007C676D /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06F0C1A635747007C676D /* Texture.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +128,14 @@
 		4DE06F021A6326AB007C676D /* OpenGL State Machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OpenGL State Machine.h"; path = "OpenGL State Machine/OpenGL State Machine.h"; sourceTree = "<group>"; };
 		4DE06F041A634E10007C676D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		4DE06F071A6355DC007C676D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		4DE06F091A63573C007C676D /* TextureDatabase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureDatabase.cpp; path = "OpenGL State Machine/TextureDatabase.cpp"; sourceTree = "<group>"; };
+		4DE06F0A1A63573C007C676D /* TextureDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextureDatabase.h; path = "OpenGL State Machine/TextureDatabase.h"; sourceTree = "<group>"; };
+		4DE06F0C1A635747007C676D /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Texture.cpp; path = "OpenGL State Machine/Texture.cpp"; sourceTree = "<group>"; };
+		4DE06F0D1A635747007C676D /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Texture.h; path = "OpenGL State Machine/Texture.h"; sourceTree = "<group>"; };
+		4DE06F101A635965007C676D /* rapidxml_iterators.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_iterators.hpp; sourceTree = "<group>"; };
+		4DE06F111A635965007C676D /* rapidxml_print.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_print.hpp; sourceTree = "<group>"; };
+		4DE06F121A635965007C676D /* rapidxml_utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_utils.hpp; sourceTree = "<group>"; };
+		4DE06F131A635965007C676D /* rapidxml.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rapidxml.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +213,7 @@
 				4DE06F041A634E10007C676D /* OpenGL.framework */,
 				4DE06F071A6355DC007C676D /* libz.dylib */,
 				4DB094591A50A780005872DE /* Loader.cpp */,
+				4DE06F0F1A635958007C676D /* RapidXML */,
 				4DE06F001A632692007C676D /* OpenGL State Machine */,
 				4DE06EFF1A632689007C676D /* OpenGL Overrider */,
 				4DE06EFE1A632681007C676D /* Mach Override */,
@@ -297,8 +308,23 @@
 			children = (
 				4DE06F011A6326AB007C676D /* OpenGL State Machine.cpp */,
 				4DE06F021A6326AB007C676D /* OpenGL State Machine.h */,
+				4DE06F091A63573C007C676D /* TextureDatabase.cpp */,
+				4DE06F0A1A63573C007C676D /* TextureDatabase.h */,
+				4DE06F0C1A635747007C676D /* Texture.cpp */,
+				4DE06F0D1A635747007C676D /* Texture.h */,
 			);
 			name = "OpenGL State Machine";
+			sourceTree = "<group>";
+		};
+		4DE06F0F1A635958007C676D /* RapidXML */ = {
+			isa = PBXGroup;
+			children = (
+				4DE06F101A635965007C676D /* rapidxml_iterators.hpp */,
+				4DE06F111A635965007C676D /* rapidxml_print.hpp */,
+				4DE06F121A635965007C676D /* rapidxml_utils.hpp */,
+				4DE06F131A635965007C676D /* rapidxml.hpp */,
+			);
+			path = RapidXML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,10 +473,12 @@
 				4DB0945B1A50A780005872DE /* Loader.cpp in Sources */,
 				4DE06ED81A62CA67007C676D /* decode.c in Sources */,
 				4DB0945C1A50A780005872DE /* OpenGLOverrider.cpp in Sources */,
+				4DE06F0E1A635747007C676D /* Texture.cpp in Sources */,
 				4D34F73E1A5B3A7F00A08B73 /* README.md in Sources */,
 				4DE06EDB1A62CA67007C676D /* syn-att.c in Sources */,
 				4DB094581A50A76F005872DE /* mach_override.c in Sources */,
 				4DE06F031A6326AB007C676D /* OpenGL State Machine.cpp in Sources */,
+				4DE06F0B1A63573C007C676D /* TextureDatabase.cpp in Sources */,
 				4D34F7461A5B3A8A00A08B73 /* README.md in Sources */,
 				4DE06EDE1A62CA67007C676D /* udis86.c in Sources */,
 				4DE06ED91A62CA67007C676D /* input.c in Sources */,

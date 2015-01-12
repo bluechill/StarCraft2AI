@@ -54,6 +54,8 @@ static void HandleCGLGetCurrentContext(CGLContextObj obj)
 		log(LOG_NOTICE, "Overriding Context Function PTRs\n");
 		
 		overriden_ctx[obj->rend] = obj;
+		OpenGL::StateMachine::Shared.ctx = obj;
+		
 		extern void suspend_all_threads();
 		suspend_all_threads();
 		kern_return_t err;
