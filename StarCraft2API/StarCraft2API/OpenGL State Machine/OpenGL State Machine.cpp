@@ -60,6 +60,12 @@ namespace OpenGL
 		
 		m_texture_units[m_active_texture].first = target;
 		m_texture_units[m_active_texture].second = texture;
+		
+		if (db.has_texture(texture))
+		{
+			const Texture& t = db.get_texture(texture);
+			file_log("Bound Texture (hash: %i): %s", t.get_hash(), t.get_classification().c_str());
+		}
 	}
 	
 	void StateMachine::bind_program_ARB(GLIContext ctx, GLenum target, GLuint program)

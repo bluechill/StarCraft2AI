@@ -19,10 +19,25 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Texture Classifier.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>4D34F74E1A5B4CB000A08B73</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4DA692581A637CD2004A4A13</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4DA6926A1A637CD3004A4A13</key>
 		<dict>
 			<key>primary</key>
 			<true/>

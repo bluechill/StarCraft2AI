@@ -17,18 +17,20 @@
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="VBX-gW-Bb5" customClass="Lesson03Controller">
+        <viewController id="IcA-Z6-vdo" customClass="MainView">
             <connections>
-                <outlet property="glWindow" destination="QvC-M9-y7g" id="fDo-wj-0ui"/>
+                <outlet property="classification" destination="Zrh-Oy-06W" id="6Bl-7i-1Wn"/>
+                <outlet property="imageView" destination="Q0E-Tb-0cW" id="ogr-Oc-KNs"/>
+                <outlet property="view" destination="EiT-Mj-1SZ" id="3Fl-iT-vCy"/>
             </connections>
-        </customObject>
+        </viewController>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
-                <menuItem title="ExampleOpenGLApplication" id="1Xt-HY-uBw">
+                <menuItem title="Texture Classifier" id="1Xt-HY-uBw">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="ExampleOpenGLApplication" systemMenu="apple" id="uQy-DD-JDr">
+                    <menu key="submenu" title="Texture Classifier" systemMenu="apple" id="uQy-DD-JDr">
                         <items>
-                            <menuItem title="About ExampleOpenGLApplication" id="5kV-Vb-QxS">
+                            <menuItem title="About Texture Classifier" id="5kV-Vb-QxS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
@@ -42,7 +44,7 @@
                                 <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                            <menuItem title="Hide ExampleOpenGLApplication" keyEquivalent="h" id="Olw-nP-bQN">
+                            <menuItem title="Hide Texture Classifier" keyEquivalent="h" id="Olw-nP-bQN">
                                 <connections>
                                     <action selector="hide:" target="-1" id="PnN-Uc-m68"/>
                                 </connections>
@@ -60,7 +62,7 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                            <menuItem title="Quit ExampleOpenGLApplication" keyEquivalent="q" id="4sb-4s-VLi">
+                            <menuItem title="Quit Texture Classifier" keyEquivalent="q" id="4sb-4s-VLi">
                                 <connections>
                                     <action selector="terminate:" target="-1" id="Te7-pn-YzF"/>
                                 </connections>
@@ -647,11 +649,6 @@
                                     <action selector="performZoom:" target="-1" id="DIl-cC-cCs"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Fullscreen" keyEquivalent="f" id="NpU-yJ-c1e">
-                                <connections>
-                                    <action selector="setFullScreen:" target="VBX-gW-Bb5" id="YKW-5T-LDy"/>
-                                </connections>
-                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
                             <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -666,7 +663,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                         <items>
-                            <menuItem title="ExampleOpenGLApplication Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                            <menuItem title="Texture Classifier Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                 <connections>
                                     <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
                                 </connections>
@@ -676,38 +673,41 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="ExampleOpenGLApplication" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="Texture Classifier" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
+            <rect key="contentRect" x="183" y="37" width="512" height="512"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="512" height="512"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gvU-bU-jCg">
-                        <rect key="frame" x="20" y="51" width="440" height="289"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="DSB-X3-biz"/>
-                    </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fy9-7H-RcN">
-                        <rect key="frame" x="20" y="26" width="101" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Classsification: " id="Mwe-CD-lrh">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j48-K2-t8F">
+                        <rect key="frame" x="18" y="23" width="101" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Classsification: " id="wZc-Wh-eM5">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iLv-wO-VUT">
-                        <rect key="frame" x="127" y="23" width="333" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="vNj-VS-0rz">
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zrh-Oy-06W">
+                        <rect key="frame" x="125" y="20" width="367" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="CEu-Sg-ubQ">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <outlet property="delegate" destination="IcA-Z6-vdo" id="x8e-gG-ZtL"/>
+                        </connections>
                     </textField>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q0E-Tb-0cW">
+                        <rect key="frame" x="20" y="50" width="472" height="442"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="LhQ-n5-Ml2"/>
+                    </imageView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="68" y="440"/>
+            <point key="canvasLocation" x="232" y="649"/>
         </window>
     </objects>
 </document>

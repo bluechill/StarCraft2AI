@@ -15,6 +15,11 @@
 		4D34F7461A5B3A8A00A08B73 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4D34F7411A5B3A8A00A08B73 /* README.md */; };
 		4D34F7471A5B3A8A00A08B73 /* xxhash.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D34F7421A5B3A8A00A08B73 /* xxhash.c */; };
 		4D34F7561A5B4CBA00A08B73 /* Generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D34F7491A5B3B0800A08B73 /* Generator.cpp */; };
+		4DA6925F1A637CD2004A4A13 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6925E1A637CD2004A4A13 /* AppDelegate.m */; };
+		4DA692611A637CD2004A4A13 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA692601A637CD2004A4A13 /* main.m */; };
+		4DA692631A637CD2004A4A13 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DA692621A637CD2004A4A13 /* Images.xcassets */; };
+		4DA692661A637CD2004A4A13 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA692641A637CD2004A4A13 /* MainMenu.xib */; };
+		4DA692801A637E57004A4A13 /* MainView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6927E1A637E57004A4A13 /* MainView.mm */; };
 		4DB094581A50A76F005872DE /* mach_override.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DB094561A50A76F005872DE /* mach_override.c */; };
 		4DB0945B1A50A780005872DE /* Loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB094591A50A780005872DE /* Loader.cpp */; };
 		4DB0945C1A50A780005872DE /* OpenGLOverrider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB0945A1A50A780005872DE /* OpenGLOverrider.cpp */; };
@@ -98,6 +103,19 @@
 		4D34F7431A5B3A8A00A08B73 /* xxhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxhash.h; sourceTree = "<group>"; };
 		4D34F7491A5B3B0800A08B73 /* Generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Generator.cpp; sourceTree = "<group>"; };
 		4D34F74F1A5B4CB000A08B73 /* Generator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Generator; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DA692591A637CD2004A4A13 /* Texture Classifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Texture Classifier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DA6925C1A637CD2004A4A13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DA6925D1A637CD2004A4A13 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4DA6925E1A637CD2004A4A13 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4DA692601A637CD2004A4A13 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4DA692621A637CD2004A4A13 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4DA692651A637CD2004A4A13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		4DA6927D1A637E57004A4A13 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
+		4DA6927E1A637E57004A4A13 /* MainView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainView.mm; sourceTree = "<group>"; };
+		4DA692831A6408E0004A4A13 /* rapidxml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml.hpp; sourceTree = "<group>"; };
+		4DA692841A6408E0004A4A13 /* rapidxml_iterators.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_iterators.hpp; sourceTree = "<group>"; };
+		4DA692851A6408E0004A4A13 /* rapidxml_print.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_print.hpp; sourceTree = "<group>"; };
+		4DA692861A6408E0004A4A13 /* rapidxml_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_utils.hpp; sourceTree = "<group>"; };
 		4DAF72F91A2F7C1600DF7137 /* StarCraft2API.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarCraft2API.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DAF72FD1A2F7C1600DF7137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DB094561A50A76F005872DE /* mach_override.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mach_override.c; path = ../../OpenGLFileLogger/OpenGLFileLogger/mach_override.c; sourceTree = "<group>"; };
@@ -146,6 +164,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4DA692561A637CD2004A4A13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DAF72F61A2F7C1600DF7137 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,11 +213,47 @@
 			path = xxhash;
 			sourceTree = "<group>";
 		};
+		4DA6925A1A637CD2004A4A13 /* Texture Classifier */ = {
+			isa = PBXGroup;
+			children = (
+				4DE06F0F1A635958007C676D /* RapidXML */,
+				4DA6925D1A637CD2004A4A13 /* AppDelegate.h */,
+				4DA6925E1A637CD2004A4A13 /* AppDelegate.m */,
+				4DA692621A637CD2004A4A13 /* Images.xcassets */,
+				4DA692641A637CD2004A4A13 /* MainMenu.xib */,
+				4DA6925B1A637CD2004A4A13 /* Supporting Files */,
+				4DA6927D1A637E57004A4A13 /* MainView.h */,
+				4DA6927E1A637E57004A4A13 /* MainView.mm */,
+			);
+			path = "Texture Classifier";
+			sourceTree = "<group>";
+		};
+		4DA6925B1A637CD2004A4A13 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4DA6925C1A637CD2004A4A13 /* Info.plist */,
+				4DA692601A637CD2004A4A13 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4DA692821A6408E0004A4A13 /* RapidXML */ = {
+			isa = PBXGroup;
+			children = (
+				4DA692831A6408E0004A4A13 /* rapidxml.hpp */,
+				4DA692841A6408E0004A4A13 /* rapidxml_iterators.hpp */,
+				4DA692851A6408E0004A4A13 /* rapidxml_print.hpp */,
+				4DA692861A6408E0004A4A13 /* rapidxml_utils.hpp */,
+			);
+			path = RapidXML;
+			sourceTree = "<group>";
+		};
 		4DAF72F01A2F7C1600DF7137 = {
 			isa = PBXGroup;
 			children = (
 				4DAF72FB1A2F7C1600DF7137 /* StarCraft2API */,
 				4DE06EE61A62DC4B007C676D /* StarCraft Injector */,
+				4DA6925A1A637CD2004A4A13 /* Texture Classifier */,
 				4DAF72FA1A2F7C1600DF7137 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -203,6 +264,7 @@
 				4DAF72F91A2F7C1600DF7137 /* StarCraft2API.bundle */,
 				4D34F74F1A5B4CB000A08B73 /* Generator */,
 				4DE06EE51A62DC4B007C676D /* StarCraft Injector */,
+				4DA692591A637CD2004A4A13 /* Texture Classifier.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -213,7 +275,7 @@
 				4DE06F041A634E10007C676D /* OpenGL.framework */,
 				4DE06F071A6355DC007C676D /* libz.dylib */,
 				4DB094591A50A780005872DE /* Loader.cpp */,
-				4DE06F0F1A635958007C676D /* RapidXML */,
+				4DA692821A6408E0004A4A13 /* RapidXML */,
 				4DE06F001A632692007C676D /* OpenGL State Machine */,
 				4DE06EFF1A632689007C676D /* OpenGL Overrider */,
 				4DE06EFE1A632681007C676D /* Mach Override */,
@@ -324,7 +386,8 @@
 				4DE06F121A635965007C676D /* rapidxml_utils.hpp */,
 				4DE06F131A635965007C676D /* rapidxml.hpp */,
 			);
-			path = RapidXML;
+			name = RapidXML;
+			path = ../StarCraft2API/RapidXML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,6 +409,23 @@
 			productName = Generator;
 			productReference = 4D34F74F1A5B4CB000A08B73 /* Generator */;
 			productType = "com.apple.product-type.tool";
+		};
+		4DA692581A637CD2004A4A13 /* Texture Classifier */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DA692781A637CD3004A4A13 /* Build configuration list for PBXNativeTarget "Texture Classifier" */;
+			buildPhases = (
+				4DA692551A637CD2004A4A13 /* Sources */,
+				4DA692561A637CD2004A4A13 /* Frameworks */,
+				4DA692571A637CD2004A4A13 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Texture Classifier";
+			productName = "Texture Classifier";
+			productReference = 4DA692591A637CD2004A4A13 /* Texture Classifier.app */;
+			productType = "com.apple.product-type.application";
 		};
 		4DAF72F81A2F7C1600DF7137 /* StarCraft2API */ = {
 			isa = PBXNativeTarget;
@@ -395,6 +475,9 @@
 					4D34F74E1A5B4CB000A08B73 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
+					4DA692581A637CD2004A4A13 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 					4DAF72F81A2F7C1600DF7137 = {
 						CreatedOnToolsVersion = 6.1;
 					};
@@ -409,6 +492,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 4DAF72F01A2F7C1600DF7137;
 			productRefGroup = 4DAF72FA1A2F7C1600DF7137 /* Products */;
@@ -424,6 +508,7 @@
 				4DAF72F81A2F7C1600DF7137 /* StarCraft2API */,
 				4D34F74E1A5B4CB000A08B73 /* Generator */,
 				4DE06EE41A62DC4B007C676D /* StarCraft Injector */,
+				4DA692581A637CD2004A4A13 /* Texture Classifier */,
 			);
 		};
 /* End PBXProject section */
@@ -446,6 +531,15 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4DA692571A637CD2004A4A13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DA692631A637CD2004A4A13 /* Images.xcassets in Resources */,
+				4DA692661A637CD2004A4A13 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DAF72F71A2F7C1600DF7137 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -463,6 +557,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D34F7561A5B4CBA00A08B73 /* Generator.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DA692551A637CD2004A4A13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DA692611A637CD2004A4A13 /* main.m in Sources */,
+				4DA6925F1A637CD2004A4A13 /* AppDelegate.m in Sources */,
+				4DA692801A637E57004A4A13 /* MainView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +618,17 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		4DA692641A637CD2004A4A13 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DA692651A637CD2004A4A13 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		4D34F7541A5B4CB000A08B73 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -529,6 +644,34 @@
 		4D34F7551A5B4CB000A08B73 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4DA692731A637CD3004A4A13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Texture Classifier/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4DA692741A637CD3004A4A13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Texture Classifier/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -677,6 +820,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		4DA692781A637CD3004A4A13 /* Build configuration list for PBXNativeTarget "Texture Classifier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DA692731A637CD3004A4A13 /* Debug */,
+				4DA692741A637CD3004A4A13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		4DAF72F41A2F7C1600DF7137 /* Build configuration list for PBXProject "StarCraft2API" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -702,6 +853,7 @@
 				4DE06EEB1A62DC4B007C676D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
