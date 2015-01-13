@@ -20,9 +20,15 @@
 		4DA692631A637CD2004A4A13 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DA692621A637CD2004A4A13 /* Images.xcassets */; };
 		4DA692661A637CD2004A4A13 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA692641A637CD2004A4A13 /* MainMenu.xib */; };
 		4DA692801A637E57004A4A13 /* MainView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6927E1A637E57004A4A13 /* MainView.mm */; };
+		4DAAEEA31A656DBD002666EA /* Logging.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DAAEEA21A656DBD002666EA /* Logging.mm */; };
+		4DAAEEA61A656E5C002666EA /* ThreadHelpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DAAEEA41A656E5C002666EA /* ThreadHelpers.cpp */; };
 		4DB094581A50A76F005872DE /* mach_override.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DB094561A50A76F005872DE /* mach_override.c */; };
-		4DB0945B1A50A780005872DE /* Loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB094591A50A780005872DE /* Loader.cpp */; };
+		4DB0945B1A50A780005872DE /* Loader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB094591A50A780005872DE /* Loader.mm */; };
 		4DB0945C1A50A780005872DE /* OpenGLOverrider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB0945A1A50A780005872DE /* OpenGLOverrider.cpp */; };
+		4DB832871A659F340028F3F2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB832861A659F340028F3F2 /* Cocoa.framework */; };
+		4DB832931A65C51E0028F3F2 /* SC2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB832911A65C51E0028F3F2 /* SC2Controller.m */; };
+		4DB832941A65C51E0028F3F2 /* SC2Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB832921A65C51E0028F3F2 /* SC2Controller.xib */; };
+		4DB832961A65C6170028F3F2 /* SC2Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB832951A65C6170028F3F2 /* SC2Window.xib */; };
 		4DE06ED81A62CA67007C676D /* decode.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06EC81A62CA67007C676D /* decode.c */; };
 		4DE06ED91A62CA67007C676D /* input.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06ECB1A62CA67007C676D /* input.c */; };
 		4DE06EDA1A62CA67007C676D /* itab.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06ECD1A62CA67007C676D /* itab.c */; };
@@ -116,11 +122,20 @@
 		4DA692841A6408E0004A4A13 /* rapidxml_iterators.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_iterators.hpp; sourceTree = "<group>"; };
 		4DA692851A6408E0004A4A13 /* rapidxml_print.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_print.hpp; sourceTree = "<group>"; };
 		4DA692861A6408E0004A4A13 /* rapidxml_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_utils.hpp; sourceTree = "<group>"; };
+		4DAAEEA11A656B32002666EA /* Logging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Logging.h; path = SC2API/Utilities/Logging.h; sourceTree = "<group>"; };
+		4DAAEEA21A656DBD002666EA /* Logging.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Logging.mm; path = SC2API/Utilities/Logging.mm; sourceTree = "<group>"; };
+		4DAAEEA41A656E5C002666EA /* ThreadHelpers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ThreadHelpers.cpp; path = SC2API/Utilities/ThreadHelpers.cpp; sourceTree = "<group>"; };
+		4DAAEEA51A656E5C002666EA /* ThreadHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThreadHelpers.h; path = SC2API/Utilities/ThreadHelpers.h; sourceTree = "<group>"; };
 		4DAF72F91A2F7C1600DF7137 /* StarCraft2API.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarCraft2API.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DAF72FD1A2F7C1600DF7137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DB094561A50A76F005872DE /* mach_override.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mach_override.c; path = ../../OpenGLFileLogger/OpenGLFileLogger/mach_override.c; sourceTree = "<group>"; };
-		4DB094591A50A780005872DE /* Loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Loader.cpp; sourceTree = "<group>"; };
+		4DB094591A50A780005872DE /* Loader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Loader.mm; sourceTree = "<group>"; };
 		4DB0945A1A50A780005872DE /* OpenGLOverrider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLOverrider.cpp; sourceTree = "<group>"; };
+		4DB832861A659F340028F3F2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		4DB832901A65C51E0028F3F2 /* SC2Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SC2Controller.h; path = SC2API/Cocoa/SC2Controller.h; sourceTree = "<group>"; };
+		4DB832911A65C51E0028F3F2 /* SC2Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SC2Controller.m; path = SC2API/Cocoa/SC2Controller.m; sourceTree = "<group>"; };
+		4DB832921A65C51E0028F3F2 /* SC2Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SC2Controller.xib; path = SC2API/Cocoa/SC2Controller.xib; sourceTree = "<group>"; };
+		4DB832951A65C6170028F3F2 /* SC2Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SC2Window.xib; path = SC2API/Cocoa/SC2Window.xib; sourceTree = "<group>"; };
 		4DE06EC81A62CA67007C676D /* decode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = decode.c; sourceTree = "<group>"; };
 		4DE06EC91A62CA67007C676D /* decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decode.h; sourceTree = "<group>"; };
 		4DE06ECA1A62CA67007C676D /* extern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extern.h; sourceTree = "<group>"; };
@@ -175,6 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB832871A659F340028F3F2 /* Cocoa.framework in Frameworks */,
 				4DE06F081A6355DC007C676D /* libz.dylib in Frameworks */,
 				4DE06F061A634E28007C676D /* OpenGL.framework in Frameworks */,
 			);
@@ -248,9 +264,30 @@
 			path = RapidXML;
 			sourceTree = "<group>";
 		};
+		4DAAEE9E1A656AAE002666EA /* SC2API */ = {
+			isa = PBXGroup;
+			children = (
+				4DB8328F1A65C48A0028F3F2 /* Cocoa */,
+				4DAAEEA01A656AB5002666EA /* Utilities */,
+			);
+			name = SC2API;
+			sourceTree = "<group>";
+		};
+		4DAAEEA01A656AB5002666EA /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4DAAEEA11A656B32002666EA /* Logging.h */,
+				4DAAEEA21A656DBD002666EA /* Logging.mm */,
+				4DAAEEA41A656E5C002666EA /* ThreadHelpers.cpp */,
+				4DAAEEA51A656E5C002666EA /* ThreadHelpers.h */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		4DAF72F01A2F7C1600DF7137 = {
 			isa = PBXGroup;
 			children = (
+				4DB832861A659F340028F3F2 /* Cocoa.framework */,
 				4DAF72FB1A2F7C1600DF7137 /* StarCraft2API */,
 				4DE06EE61A62DC4B007C676D /* StarCraft Injector */,
 				4DA6925A1A637CD2004A4A13 /* Texture Classifier */,
@@ -274,7 +311,8 @@
 			children = (
 				4DE06F041A634E10007C676D /* OpenGL.framework */,
 				4DE06F071A6355DC007C676D /* libz.dylib */,
-				4DB094591A50A780005872DE /* Loader.cpp */,
+				4DB094591A50A780005872DE /* Loader.mm */,
+				4DAAEE9E1A656AAE002666EA /* SC2API */,
 				4DA692821A6408E0004A4A13 /* RapidXML */,
 				4DE06F001A632692007C676D /* OpenGL State Machine */,
 				4DE06EFF1A632689007C676D /* OpenGL Overrider */,
@@ -294,6 +332,17 @@
 				4DAF72FD1A2F7C1600DF7137 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4DB8328F1A65C48A0028F3F2 /* Cocoa */ = {
+			isa = PBXGroup;
+			children = (
+				4DB832901A65C51E0028F3F2 /* SC2Controller.h */,
+				4DB832911A65C51E0028F3F2 /* SC2Controller.m */,
+				4DB832921A65C51E0028F3F2 /* SC2Controller.xib */,
+				4DB832951A65C6170028F3F2 /* SC2Window.xib */,
+			);
+			name = Cocoa;
 			sourceTree = "<group>";
 		};
 		4DE06ED71A62CA67007C676D /* libudis86 */ = {
@@ -544,7 +593,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB832941A65C51E0028F3F2 /* SC2Controller.xib in Resources */,
 				4D34F7451A5B3A8A00A08B73 /* LICENSE in Resources */,
+				4DB832961A65C6170028F3F2 /* SC2Window.xib in Resources */,
 				4D34F73B1A5B3A7F00A08B73 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,7 +625,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DB0945B1A50A780005872DE /* Loader.cpp in Sources */,
+				4DB0945B1A50A780005872DE /* Loader.mm in Sources */,
 				4DE06ED81A62CA67007C676D /* decode.c in Sources */,
 				4DB0945C1A50A780005872DE /* OpenGLOverrider.cpp in Sources */,
 				4DE06F0E1A635747007C676D /* Texture.cpp in Sources */,
@@ -585,10 +636,13 @@
 				4DE06F0B1A63573C007C676D /* TextureDatabase.cpp in Sources */,
 				4D34F7461A5B3A8A00A08B73 /* README.md in Sources */,
 				4DE06EDE1A62CA67007C676D /* udis86.c in Sources */,
+				4DB832931A65C51E0028F3F2 /* SC2Controller.m in Sources */,
 				4DE06ED91A62CA67007C676D /* input.c in Sources */,
+				4DAAEEA61A656E5C002666EA /* ThreadHelpers.cpp in Sources */,
 				4D34F7471A5B3A8A00A08B73 /* xxhash.c in Sources */,
 				4D0D41E11A5F243400443983 /* OpenGLEnumToString.cpp in Sources */,
 				4D34F73C1A5B3A7F00A08B73 /* lupng.c in Sources */,
+				4DAAEEA31A656DBD002666EA /* Logging.mm in Sources */,
 				4DE06EDA1A62CA67007C676D /* itab.c in Sources */,
 				4DE06EDD1A62CA67007C676D /* syn.c in Sources */,
 				4DE06EDC1A62CA67007C676D /* syn-intel.c in Sources */,
@@ -754,6 +808,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = StarCraft2API/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -768,6 +823,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = StarCraft2API/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -827,6 +883,7 @@
 				4DA692741A637CD3004A4A13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DAF72F41A2F7C1600DF7137 /* Build configuration list for PBXProject "StarCraft2API" */ = {
 			isa = XCConfigurationList;

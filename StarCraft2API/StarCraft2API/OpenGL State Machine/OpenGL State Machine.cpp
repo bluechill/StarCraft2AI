@@ -12,7 +12,7 @@
 
 using namespace std;
 
-extern void file_log(const char* message, ...);
+#include "Logging.h"
 
 namespace OpenGL
 {
@@ -64,7 +64,7 @@ namespace OpenGL
 		if (db.has_texture(texture))
 		{
 			const Texture& t = db.get_texture(texture);
-			file_log("Bound Texture (hash: %i): %s", t.get_hash(), t.get_classification().c_str());
+			SC2::Utilities::file_log("Bound Texture (hash: %i): %s", t.get_hash(), t.get_classification().c_str());
 		}
 	}
 	
@@ -281,11 +281,11 @@ namespace OpenGL
 		if (!db.has_texture(m_texture_units[m_active_texture].second))
 			db.create_texture(m_texture_units[m_active_texture].second);
 		
-		file_log("DRAW EVENT\n\n\n");
+		SC2::Utilities::file_log("DRAW EVENT\n\n\n");
 	}
 	
 	void StateMachine::end_of_frame()
 	{
-		file_log("END OF FRAME\n\n\n");
+		SC2::Utilities::file_log("END OF FRAME\n\n\n");
 	}
 }

@@ -22,10 +22,10 @@
 
 #include "rapidxml_print.hpp"
 
+#include "Logging.h"
+
 using namespace rapidxml;
 using namespace std;
-
-extern void log(int priority, const char* message, ...);
 
 namespace OpenGL
 {
@@ -59,12 +59,12 @@ namespace OpenGL
 				contents += l + '\n';
 		}
 		else
-			log(LOG_ERR, "Failed to open DB file: %s", strerror(errno));
+			SC2::Utilities::console_log("Failed to open DB file: %s", strerror(errno));
 		
 		try {
 			db_xml.parse<0>(const_cast<char*>(contents.c_str()));
 		} catch (rapidxml::parse_error& e) {
-			log(LOG_ERR, "Failed to parse DB: %s : %s", e.what(), e.where<char>());
+			SC2::Utilities::console_log("Failed to parse DB: %s : %s", e.what(), e.where<char>());
 		}
 		
 		xml_node<> *root = db_xml.first_node(texture_db_root.c_str());
