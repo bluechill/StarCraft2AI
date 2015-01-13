@@ -54,6 +54,8 @@ void load()
 	// Unsuspend them all
 	SC2::Utilities::unsuspend_all_threads();
 	
+	// Load the logging window
+	
 	sc2api_bundle = [[NSBundle bundleWithIdentifier:@"edu.umich.StarCraft2API"] retain];
 	
 	NSArray* array;
@@ -70,23 +72,15 @@ void load()
 	
 	[sc2api_bundle loadNibNamed:@"SC2Controller" owner:nil topLevelObjects:&array];
 	
-	NSView* controllerView = nil;
 	for (id i in array)
 	{
 		if ([i isKindOfClass:SC2Controller.class])
 		{
 			sc2api_controller = i;
 			[sc2api_controller retain];
-			SC2::Utilities::console_log("SC2API Controller View: %p", sc2api_controller.view);
-		}
-		else if ([i isKindOfClass:NSView.class])
-		{
-			controllerView = i;
-			[controllerView retain];
 		}
 	}
 	
-	sc2api_controller.view = controllerView;
 	sc2api_window.contentView = sc2api_controller.view;
 	
 	sc2api_window_controller = [[NSWindowController alloc] initWithWindow:sc2api_window];
