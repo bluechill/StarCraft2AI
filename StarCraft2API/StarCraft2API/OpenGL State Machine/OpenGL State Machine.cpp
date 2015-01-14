@@ -64,7 +64,7 @@ namespace OpenGL
 		if (db.has_texture(texture))
 		{
 			const Texture& t = db.get_texture(texture);
-			SC2::Utilities::file_log("Bound Texture (hash: %i): %s", t.get_hash(), t.get_classification().c_str());
+			SC2::Utilities::file_log("Bound Texture (hash: %lu): %s\n", t.get_hash(), t.get_classification().c_str());
 		}
 	}
 	
@@ -277,11 +277,14 @@ namespace OpenGL
 	
 	void StateMachine::draw_event()
 	{
+		SC2::Utilities::file_log("DRAW EVENT\n\n\n");
+
 		// Log the texture to a file if we haven't already
 		if (!db.has_texture(m_texture_units[m_active_texture].second))
 			db.create_texture(m_texture_units[m_active_texture].second);
 		
-		SC2::Utilities::file_log("DRAW EVENT\n\n\n");
+		SC2::Utilities::file_log("\n\n\n");
+
 	}
 	
 	void StateMachine::end_of_frame()

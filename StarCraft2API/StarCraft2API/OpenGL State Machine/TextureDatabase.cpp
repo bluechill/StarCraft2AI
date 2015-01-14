@@ -45,24 +45,38 @@ namespace OpenGL
 	void TextureDatabase::setup_db()
 	{
 		errno = 0;
-		std::ifstream in(texture_db_file, std::ios::in);
-		std::vector<string> contents_vec;
-		string contents;
-		
-		if (in)
-		{
-			for (std::string line; std::getline(in, line); ) {
-				contents_vec.push_back(line);
+		FILE* db_file = fopen(texture_db_file.c_str(), "r");
+		char *source = NULL;
+		if (db_file != NULL) {
+			/* Go to the end of the file. */
+			if (fseek(db_file, 0L, SEEK_END) == 0) {
+				/* Get the size of the file. */
+				long bufsize = ftell(db_file);
+				if (bufsize == -1) { /* Error */ }
+				
+				/* Allocate our buffer to that size. */
+				source = new char[bufsize];
+				
+				/* Go back to the start of the file. */
+				if (fseek(db_file, 0L, SEEK_SET) != 0) { /* Error */ }
+				
+				/* Read the entire file into memory. */
+				size_t newLen = fread(source, sizeof(char), bufsize, db_file);
+				if (newLen == 0) {
+					SC2::Utilities::console_log("Error reading file", stderr);
+				} else {
+					source[++newLen] = '\0'; /* Just to be safe. */
+				}
 			}
+			else
+				SC2::Utilities::console_log("Empty DB");
 			
-			for (string l : contents_vec)
-				contents += l + '\n';
+			fclose(db_file);
 		}
-		else
-			SC2::Utilities::console_log("Failed to open DB file: %s", strerror(errno));
 		
 		try {
-			db_xml.parse<0>(const_cast<char*>(contents.c_str()));
+			char* contents = db_xml.allocate_string(source);
+			db_xml.parse<0>(contents);
 		} catch (rapidxml::parse_error& e) {
 			SC2::Utilities::console_log("Failed to parse DB: %s : %s", e.what(), e.where<char>());
 		}
@@ -170,14 +184,19 @@ namespace OpenGL
 					root->append_node(texture_node);
 					
 					// Write the DB to disk
-					ofstream out(texture_db_file);
 					
-					out << db_xml;
+					ofstream out(texture_db_file, std::ios::out);
+					
+					string contents;
+					
+					rapidxml::print(back_inserter(contents), db_xml);
+					
+					out << contents;
 					
 					out.close();
-					opengl_to_sc2api[texture] = hash;
 				}
 				
+				opengl_to_sc2api[texture] = hash;
 				opengl_textures.insert(StateMachine::Shared.m_texture_units[StateMachine::Shared.m_active_texture].second);
 			}
 		}
