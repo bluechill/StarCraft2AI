@@ -11,11 +11,12 @@
 
 #include <string>
 #include <iostream>
+#include <mutex>
 
 namespace SC2
 {
 	namespace Utilities
-	{
+	{		
 		void console_log(std::string format, ...);
 		void screen_log(std::string format, ...);
 		void file_log(std::string format, ...);

@@ -12,8 +12,6 @@
 
 #include "SC2Controller.h"
 
-#include <mutex>
-
 #include <syslog.h>
 #include <cstdarg>
 #include <vector>
@@ -97,14 +95,11 @@ namespace SC2
 			vfprintf(output, format.c_str(), list);
 			file_mutex.unlock();
 		}
-
 		
 		void file_log(FILE* file, std::string format, ...)
 		{
 			va_list list;
 			va_start(list, format);
-			
-			format.insert(0, "SC2API: ");
 			
 			file_mutex.lock();
 			vfprintf(file, format.c_str(), list);

@@ -4289,6 +4289,7 @@ static void HandleCGLGetCurrentContext(CGLContextObj obj)
 
 		MACH_OVERRIDE(void,program_string_ARB,(GLIContext ctx, GLenum target, GLenum format, GLsizei len, const GLvoid* string), err ) {
 			SC2::Utilities::file_log("program_string_ARB called: ctx (GLIContext : %p) target (GLenum : %s) format (GLenum : %s) len (GLsizei : %i) string (const GLvoid* : %p)\n", ctx, GLenumToString(target).c_str(), GLenumToString(format).c_str(), len, string);
+			OpenGL::StateMachine::Shared.program_string_ARB(ctx, target, format, len, string);
 			return program_string_ARB_reenter(ctx, target, format, len, string);
 		} END_MACH_OVERRIDE_PTR(program_string_ARB, obj->disp.program_string_ARB);
 
@@ -5550,6 +5551,7 @@ static void HandleCGLGetCurrentContext(CGLContextObj obj)
 
 		MACH_OVERRIDE(void,program_env_parameters4fv_EXT,(GLIContext ctx, GLenum target, GLuint index, GLsizei count, const GLfloat *params), err ) {
 			SC2::Utilities::file_log("program_env_parameters4fv_EXT called: ctx (GLIContext : %p) target (GLenum : %s) index (GLuint : %u) count (GLsizei : %i) params (const GLfloat* : %p)\n", ctx, GLenumToString(target).c_str(), index, count, params);
+			OpenGL::StateMachine::Shared.program_env_parameters4fv_EXT(ctx, target, index, count, params);
 			return program_env_parameters4fv_EXT_reenter(ctx, target, index, count, params);
 		} END_MACH_OVERRIDE_PTR(program_env_parameters4fv_EXT, obj->disp.program_env_parameters4fv_EXT);
 

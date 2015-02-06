@@ -9,10 +9,21 @@
 #include "OpenGL State Machine.h"
 
 #include <string>
+#include <fstream>
 
 using namespace std;
 
 #include "Logging.h"
+#include "xxhash.h"
+
+#include <OpenGL/gl3.h>
+#include <OpenGL/gl3ext.h>
+
+#include <OpenCL/cl_gl.h>
+
+#include "opencl_error.hpp"
+
+extern std::string GLenumToString(GLenum value);
 
 namespace OpenGL
 {
@@ -27,6 +38,11 @@ namespace OpenGL
 	StateMachine::~StateMachine()
 	{
 		delete[] m_texture_units;
+		delete[] m_vert_program_env;
+		delete[] m_frag_program_env;
+		
+		clReleaseMemObject(m_opencl_frag_program_env);
+		clReleaseMemObject(m_opencl_vert_program_env);
 	}
 	
 	/////////////////////////////////////////////////////////////////
@@ -71,6 +87,34 @@ namespace OpenGL
 	void StateMachine::bind_program_ARB(GLIContext ctx, GLenum target, GLuint program)
 	{
 		shared_setup();
+		
+		if (target == GL_FRAGMENT_PROGRAM_ARB)
+		{
+			m_bound_frag_program = program;
+			
+			if (!m_frag_program_env)
+			{
+				GLint max_env_params;
+				glGetProgramiv(m_bound_frag_program, GL_MAX_PROGRAM_ENV_PARAMETERS_ARB, &max_env_params);
+
+				m_frag_program_env = new cl_float4[max_env_params];
+				m_opencl_frag_program_env = clCreateBuffer(opencl_context, CL_MEM_READ_ONLY, sizeof(cl_float4) * max_env_params, nullptr, nullptr);
+			}
+		}
+		else if (target == GL_VERTEX_PROGRAM_ARB)
+		{
+			m_bound_vert_program = program;
+			
+			
+			if (!m_vert_program_env)
+			{
+				GLint max_env_params;
+				glGetProgramiv(m_bound_vert_program, GL_MAX_PROGRAM_ENV_PARAMETERS_ARB, &max_env_params);
+				
+				m_vert_program_env = new cl_float4[max_env_params];
+				m_opencl_vert_program_env = clCreateBuffer(opencl_context, CL_MEM_READ_ONLY, sizeof(cl_float4) * max_env_params, nullptr, nullptr);
+			}
+		}
 	}
 	
 	void StateMachine::bind_vertex_array_EXT(GLIContext ctx, GLuint id)
@@ -86,6 +130,9 @@ namespace OpenGL
 	void StateMachine::bind_buffer(GLIContext ctx, GLenum target, GLuint buffer)
 	{
 		shared_setup();
+		
+		m_bound_buffer = buffer;
+		m_bound_buffer_type = target;
 	}
 	
 	void StateMachine::bind_renderbuffer_EXT(GLIContext ctx, GLenum target, GLuint renderbuffer)
@@ -141,6 +188,42 @@ namespace OpenGL
 	void StateMachine::bind_transform_feedback(GLIContext ctx, GLenum target, GLuint name)
 	{
 		shared_setup();
+	}
+	
+	void StateMachine::program_local_parameters4fv_EXT(GLIContext ctx, GLenum target, GLuint index, GLsizei count, const GLfloat* params)
+	{
+		GLuint program = 0;
+		
+		if (target == GL_FRAGMENT_PROGRAM_ARB)
+			program = m_bound_frag_program;
+		else if (target == GL_VERTEX_PROGRAM_ARB)
+			program = m_bound_vert_program;
+		
+		for (int i = index, j = 0;i < count+index;++i)
+		{
+			m_gl_program_to_cl[program]->m_local_parameters[i].x = params[j++];
+			m_gl_program_to_cl[program]->m_local_parameters[i].y = params[j++];
+			m_gl_program_to_cl[program]->m_local_parameters[i].z = params[j++];
+			m_gl_program_to_cl[program]->m_local_parameters[i].w = params[j++];
+		}
+	}
+	
+	void StateMachine::program_env_parameters4fv_EXT(GLIContext ctx, GLenum target, GLuint index, GLsizei count, const GLfloat* params)
+	{
+		cl_float4* array = nullptr;
+		
+		if (target == GL_FRAGMENT_PROGRAM_ARB)
+			array = m_frag_program_env;
+		else if (target == GL_VERTEX_PROGRAM_ARB)
+			array = m_vert_program_env;
+		
+		for (int i = index, j = 0;i < count+index;++i)
+		{
+			array[i].x = params[j++];
+			array[i].y = params[j++];
+			array[i].z = params[j++];
+			array[i].w = params[j++];
+		}
 	}
 	
 	/////////////////////////////////////////////////////////////////
@@ -262,6 +345,34 @@ namespace OpenGL
 		end_of_frame();
 	}
 	
+	void StateMachine::program_string_ARB(GLIContext ctx, GLenum target, GLenum format, GLsizei len, const GLvoid* string)
+	{
+		unsigned int hash = XXH32(string, len, 0xDEADBEEF);
+
+		std::string shader_source = (const char*)string;
+		
+		size_t program = shader_source.find("#program ");
+		size_t end = shader_source.find("\n", program);
+		
+		if (program == string::npos || end == string::npos)
+			SC2::Utilities::console_log("Failed to find #program string: %i", hash);
+		
+		program += 9;
+		
+		std::string name = shader_source.substr(program, end-program);
+		std::string path = "/Users/bluechill/Developer/OpenGLInjector/StarCraft2API/StarCraft2API/SC2Info/SC2Shaders/" + name + "-" + to_string(hash) + ".arb";
+
+		ofstream shader_file;
+		shader_file.open(path, std::ios::trunc | std::ios::out);
+		shader_file << shader_source;
+		shader_file.close();
+		
+		if (target == GL_VERTEX_PROGRAM_ARB && m_gl_program_to_cl.find(m_bound_vert_program) == m_gl_program_to_cl.end())
+			m_gl_program_to_cl[m_bound_vert_program] = SC2ProgramFactory::construct(shader_source, this);
+		else if (target == GL_FRAGMENT_PROGRAM_ARB && m_gl_program_to_cl.find(m_bound_frag_program) == m_gl_program_to_cl.end())
+			m_gl_program_to_cl[m_bound_frag_program] = SC2ProgramFactory::construct(shader_source, this);
+	}
+	
 	void StateMachine::shared_setup()
 	{
 		if (!was_setup)
@@ -272,6 +383,47 @@ namespace OpenGL
 			glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &t_size);
 			
 			m_texture_units = new pair<GLenum, GLuint>[t_size];
+			
+			// Setup OpenCL
+			cl_int error = 0;
+			error = clGetPlatformIDs(1, &opencl_platform_id, nullptr);
+			
+			if (error != CL_SUCCESS)
+			{
+				// Failed to setup OpenCL
+				SC2::Utilities::console_log("Failed to get OpenCL Platform! %s", boost::compute::opencl_error::to_string(error).c_str());
+				return;
+			}
+			
+			error = clGetDeviceIDs(opencl_platform_id, CL_DEVICE_TYPE_GPU, 1, &opencl_device_id, nullptr);
+			
+			if (error != CL_SUCCESS)
+			{
+				// Failed to setup OpenCL
+				SC2::Utilities::console_log("Failed to get OpenCL Device! %s", boost::compute::opencl_error::to_string(error).c_str());
+				return;
+			}
+			
+			 // Get current CGL Context and CGL Share group
+			CGLContextObj cgl_context = CGLGetCurrentContext();
+			CGLShareGroupObj sharegroup = CGLGetShareGroup(cgl_context);
+			
+			// Create CL context properties, add handle & share-group enum
+			cl_context_properties properties[] = {
+				CL_CONTEXT_PROPERTY_USE_CGL_SHAREGROUP_APPLE,
+				(cl_context_properties)sharegroup,
+				CL_CONTEXT_PLATFORM,
+				(cl_context_properties)opencl_platform_id, 0
+			};
+			
+			opencl_context = clCreateContext(properties, 1, &opencl_device_id, nullptr, 0, &error);
+			
+			if (error != CL_SUCCESS)
+			{
+				// Failed to setup OpenCL
+				SC2::Utilities::console_log("Failed to share OpenGL OpenCL Context! %s", boost::compute::opencl_error::to_string(error).c_str());
+				return;
+			}
 		}
 	}
 	
@@ -284,7 +436,6 @@ namespace OpenGL
 			db.create_texture(m_texture_units[m_active_texture].second);
 		
 		SC2::Utilities::file_log("\n\n\n");
-
 	}
 	
 	void StateMachine::end_of_frame()

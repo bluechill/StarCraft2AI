@@ -13,10 +13,17 @@
 #include <OpenGL/CGLContext.h>
 #include <OpenGL/OpenGL.h>
 
+#include <OpenCL/OpenCL.h>
+
 #include <map>
 #include <unordered_set>
+#include <unordered_map>
 
 #include "TextureDatabase.h"
+
+#include "SC2Program.h"
+#include "SC2VertexProgram.h"
+#include "SC2FragmentProgram.h"
 
 namespace OpenGL
 {
@@ -51,6 +58,9 @@ namespace OpenGL
 		void bind_frag_data_location_indexed(GLIContext ctx, GLuint program, GLuint colorNumber, GLuint index, const GLchar *name);
 		void bind_transform_feedback(GLIContext ctx, GLenum target, GLuint name);
 		
+		void program_env_parameters4fv_EXT(GLIContext ctx, GLenum target, GLuint index, GLsizei count, const GLfloat *params);
+		void program_local_parameters4fv_EXT(GLIContext ctx, GLenum target, GLuint index, GLsizei count, const GLfloat *params);
+		
 		void draw_arrays(GLIContext ctx, GLenum mode, GLint first, GLsizei count);
 		void draw_buffer(GLIContext ctx, GLenum mode);
 		void draw_elements(GLIContext ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices);
@@ -76,12 +86,33 @@ namespace OpenGL
 		
 		void swap_APPLE(GLIContext ctx);
 		
+		void program_string_ARB(GLIContext ctx, GLenum target, GLenum format, GLsizei len, const GLvoid* string);
+		
+		cl_context get_opencl_context() { return opencl_context; }
+		
 	private:
 		friend class TextureDatabase;
+		friend class SC2Program;
+		friend class SC2ProgramFactory;
+		friend class SC2VertexProgram;
+		friend class SC2FragmentProgram;
 		
 		// OpenGL state
 		GLuint m_active_texture;
 		std::pair<GLenum,GLuint> *m_texture_units;
+		
+		GLuint m_bound_frag_program;
+		cl_mem m_opencl_frag_program_env = nullptr;
+		cl_float4* m_frag_program_env = nullptr;
+		
+		GLuint m_bound_vert_program;
+		cl_mem m_opencl_vert_program_env = nullptr;
+		cl_float4* m_vert_program_env = nullptr;
+		
+		std::unordered_map<GLuint, SC2Program*> m_gl_program_to_cl;
+		
+		GLuint m_bound_buffer_type;
+		GLuint m_bound_buffer;
 		
 		std::unordered_set<GLuint> m_logged_textures;
 		
@@ -93,6 +124,12 @@ namespace OpenGL
 		void end_of_frame();
 		
 		TextureDatabase db;
+		
+		// OpenCL setup
+		cl_platform_id opencl_platform_id;
+		cl_device_id opencl_device_id;
+		cl_context opencl_context;
+		cl_command_queue commands;
 	};
 }
 

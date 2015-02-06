@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ARBtoOpenCL/ARBtoOpenCL.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:StarCraft2API/StarCraft2API.xcodeproj">
    </FileRef>
    <FileRef

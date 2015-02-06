@@ -74,11 +74,14 @@ namespace OpenGL
 			fclose(db_file);
 		}
 		
-		try {
-			char* contents = db_xml.allocate_string(source);
-			db_xml.parse<0>(contents);
-		} catch (rapidxml::parse_error& e) {
-			SC2::Utilities::console_log("Failed to parse DB: %s : %s", e.what(), e.where<char>());
+		if (source)
+		{
+			try {
+				char* contents = db_xml.allocate_string(source);
+				db_xml.parse<0>(contents);
+			} catch (rapidxml::parse_error& e) {
+				SC2::Utilities::console_log("Failed to parse DB: %s : %s", e.what(), e.where<char>());
+			}
 		}
 		
 		xml_node<> *root = db_xml.first_node(texture_db_root.c_str());
