@@ -11,6 +11,8 @@
 
 #include "SC2Program.h"
 
+#include "Structures.h"
+
 namespace OpenGL
 {
 	class SC2VertexProgram : public SC2Program
@@ -18,7 +20,14 @@ namespace OpenGL
 	public:
 		SC2VertexProgram(StateMachine* s, GLint max_local_parameters);
 		
-		virtual std::vector<result> run();
+		virtual std::vector<SC2Program::result_struct> run();
+		
+	private:
+		friend class OpenGL::StateMachine;
+		
+		cl_mem m_opencl_attrib_info_array;
+		
+		attrib_info_struct m_vertex_attribs[16];
 	};
 }
 #endif /* defined(__StarCraft2API__SC2VertexProgram__) */

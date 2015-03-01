@@ -32,7 +32,7 @@ namespace OpenGL
 	public:
 		virtual void load(std::vector<std::string> program_lines, unsigned long hash);
 		virtual std::ostream& operator<<(std::ostream&);
-		
+				
 	private:
 		std::vector<std::string> opencl_program;
 		

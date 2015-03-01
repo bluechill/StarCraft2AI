@@ -18,7 +18,7 @@ namespace OpenGL
 	public:
 		SC2FragmentProgram(StateMachine* s, GLint max_local_parameters);
 
-		virtual std::vector<result> run();
+		virtual std::vector<SC2Program::result_struct> run();
 	};
 }
 

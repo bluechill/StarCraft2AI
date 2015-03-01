@@ -286,9 +286,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "324"
-            endingLineNumber = "324"
-            landmarkName = "StateMachine::draw_arrays_indirect(GLIContext ctx, GLenum mode, const GLvoid *indirect)"
-            landmarkType = "5">
+            endingLineNumber = "324">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -331,7 +329,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "320"
             endingLineNumber = "320"
-            landmarkName = "StateMachine::multi_draw_elements_base_vertex(GLIContext ctx, GLenum mode, const GLsizei *count, GLenum type, const GLvoid* const *indices, GLsizei drawcount, const GLint *base_vertex)"
+            landmarkName = "StateMachine::draw_arrays_instanced(GLIContext ctx, GLenum mode, GLint first, GLsizei count, GLsizei instancecount)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

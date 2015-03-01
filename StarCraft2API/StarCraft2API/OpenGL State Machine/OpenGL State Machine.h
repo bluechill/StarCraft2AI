@@ -104,15 +104,24 @@ namespace OpenGL
 		GLuint m_bound_frag_program;
 		cl_mem m_opencl_frag_program_env = nullptr;
 		cl_float4* m_frag_program_env = nullptr;
+		size_t m_frag_program_env_size = 0;
 		
 		GLuint m_bound_vert_program;
 		cl_mem m_opencl_vert_program_env = nullptr;
 		cl_float4* m_vert_program_env = nullptr;
+		size_t m_vert_program_env_size = 0;
 		
 		std::unordered_map<GLuint, SC2Program*> m_gl_program_to_cl;
 		
-		GLuint m_bound_buffer_type;
-		GLuint m_bound_buffer;
+		GLuint m_bound_array_buffer;
+		cl_mem m_bound_array_buffer_cl;
+		GLint m_bound_array_buffer_size;
+		
+		GLuint m_bound_element_buffer;
+		cl_mem m_bound_element_buffer_cl;
+		GLint m_bound_element_buffer_size;
+		
+		std::unordered_map<GLuint, cl_mem> gl_buffer_to_cl;
 		
 		std::unordered_set<GLuint> m_logged_textures;
 		

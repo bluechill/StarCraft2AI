@@ -27,45 +27,12 @@ namespace OpenGL
 		SC2Program(StateMachine* s, GLint max_local_parameters);
 		~SC2Program();
 		
-		struct vec4
-		{
-			float x,y,z,w;
-		};
+#include "Structures.h"
 		
-		struct color
-		{
-			float r,g,b,a;
-		};
-		
-		struct tex
-		{
-			float s,t,r,q;
-		};
-		
-		struct result
-		{
-			// Vertex Shader
-			vec4 position;
-			
-			color front_primary;
-			color front_secondary;
-			
-			color back_primary;
-			color back_secondary;
-			
-			float fogcoord;
-			float pointsize;
-			
-			std::vector<tex> texcoord;
-			
-			// Fragment Shader
-			std::vector<color> fragment_color;
-			float depth;
-		};
-		
-		virtual std::vector<result> run() = 0;
+		virtual std::vector<result_struct> run() = 0;
 		
 		cl_float4* m_local_parameters;
+		size_t m_local_parameters_size;
 		cl_mem m_opencl_local_parameters;
 		
 	protected:
@@ -76,9 +43,10 @@ namespace OpenGL
 		cl_program m_program;
 		cl_kernel m_kernel;
 		
-		//__global vertex_struct* vertex, __global result_struct* result, __global fragment_struct* fragment, __global program_struct* program, const unsigned int count
+		result_struct* m_result_array;
+		cl_mem m_opencl_result_array;
 		
-		
+		size_t max_texcoord;
 	private:
 		std::vector<std::string> split_string(std::string str, char delim );
 		

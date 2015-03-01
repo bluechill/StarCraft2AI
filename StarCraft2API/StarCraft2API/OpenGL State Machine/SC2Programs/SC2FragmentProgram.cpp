@@ -16,7 +16,7 @@ namespace OpenGL
 		
 	}
 	
-	std::vector<SC2Program::result> SC2FragmentProgram::run()
+	std::vector<SC2Program::result_struct> SC2FragmentProgram::run()
 	{
 		return {};
 	}

@@ -16,9 +16,6 @@ using namespace std;
 #include "Logging.h"
 #include "xxhash.h"
 
-#include <OpenGL/gl3.h>
-#include <OpenGL/gl3ext.h>
-
 #include <OpenCL/cl_gl.h>
 
 #include "opencl_error.hpp"
@@ -105,7 +102,6 @@ namespace OpenGL
 		{
 			m_bound_vert_program = program;
 			
-			
 			if (!m_vert_program_env)
 			{
 				GLint max_env_params;
@@ -131,8 +127,36 @@ namespace OpenGL
 	{
 		shared_setup();
 		
-		m_bound_buffer = buffer;
-		m_bound_buffer_type = target;
+		if (target == GL_ELEMENT_ARRAY_BUFFER)
+		{
+			m_bound_element_buffer = buffer;
+			
+			if (gl_buffer_to_cl.find(buffer) != gl_buffer_to_cl.end())
+				m_bound_element_buffer_cl = gl_buffer_to_cl[buffer];
+			else
+			{
+				m_bound_element_buffer_cl = clCreateFromGLBuffer(opencl_context, CL_MEM_READ_ONLY, buffer, nullptr);
+				gl_buffer_to_cl[buffer] = m_bound_element_buffer_cl;
+			}
+			
+			glGetBufferParameteriv(GL_ELEMENT_ARRAY_BUFFER, GL_BUFFER_SIZE, &m_bound_element_buffer_size);
+			m_bound_element_buffer_size /= sizeof(float);
+		}
+		else if (target == GL_ARRAY_BUFFER)
+		{
+			m_bound_array_buffer = buffer;
+			
+			if (gl_buffer_to_cl.find(buffer) != gl_buffer_to_cl.end())
+				m_bound_array_buffer_cl = gl_buffer_to_cl[buffer];
+			else
+			{
+				m_bound_array_buffer_cl = clCreateFromGLBuffer(opencl_context, CL_MEM_READ_ONLY, buffer, nullptr);
+				gl_buffer_to_cl[buffer] = m_bound_array_buffer_cl;
+			}
+			
+			glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &m_bound_array_buffer_size);
+			m_bound_array_buffer_size /= sizeof(float);
+		}
 	}
 	
 	void StateMachine::bind_renderbuffer_EXT(GLIContext ctx, GLenum target, GLuint renderbuffer)
@@ -434,6 +458,22 @@ namespace OpenGL
 		// Log the texture to a file if we haven't already
 		if (!db.has_texture(m_texture_units[m_active_texture].second))
 			db.create_texture(m_texture_units[m_active_texture].second);
+		
+		vector<SC2Program::result_struct> results = m_gl_program_to_cl[m_bound_vert_program]->run();
+		
+		cl_float4 position;
+		
+		const float size = results.size();
+		
+		for (SC2Program::result_struct& s : results)
+		{
+			position.x += s.position.x / size;
+			position.y += s.position.y / size;
+			position.z += s.position.z / size;
+			position.w += s.position.w / size;
+		}
+		
+		SC2::Utilities::file_log("Rendering Object at (x,y,z,w): (%f, %f, %f, %f)", position.x, position.y, position.z, position.w);
 		
 		SC2::Utilities::file_log("\n\n\n");
 	}

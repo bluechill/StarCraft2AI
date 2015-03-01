@@ -470,8 +470,7 @@ namespace OpenGL
 		{
 			string line = input;
 			
-			replaceAll(line, "program.", "program->");
-			replaceAll(line, "program->local", "program->local_env");
+			replaceAll(line, "program.local", "program.local_env");
 			
 			replaceAll(line, "result.", "result->");
 			replaceAll(line, "vertex.", "vertex->");
@@ -524,17 +523,19 @@ namespace OpenGL
 				
 				name = line.substr(program, end-program);
 				
-				opencl_program.push_back("__kernel void " + name + " (__global vertex_struct** vertex_array, __global result_struct** result_array, __global fragment_struct** fragment_array, __global program_struct** program_array, const unsigned int count)");
+				opencl_program.push_back("__kernel void " + name + " (__global float4* program_env, __global float4* program_local, __global float* vertex_attrib_array, __global unsigned int vertex_attrib_index_array_count, __global struct attrib_info* vertex_attrib_info_array, __global fragment_struct* fragment_array, __global float4* fragment_texcoord_array, __global unsigned int fragment_max_texcoord_size, __global result_struct* result_array, __global float4* result_texcoord_array, __global unsigned int result_texcoord_max_size,  __global float4* result_frag_color_array, __global unsigned int result_frag_color_max_size, const unsigned int count)");
 				opencl_program.push_back("{");
 				opencl_program.push_back("\tint global_identifier = get_global_id(0);");
 				opencl_program.push_back("\tif (global_identifier < count)");
 				opencl_program.push_back("\t{");
 				
 				opencl_program.push_back("");
-				opencl_program.push_back("\t\tvertex_struct* vertex = vertex_array[global_identifier];");
-				opencl_program.push_back("\t\tresult_struct* result = result_array[global_identifier];");
-				opencl_program.push_back("\t\tfragment_struct* fragment = fragment_array[global_identifier];");
-				opencl_program.push_back("\t\tprogram_struct* program = prorgam_array[global_identifier];");
+
+				ifstream opencl_setup_code("/Users/bluechill/Developer/OpenGLInjector/StarCraft2API/StarCraft2API/OpenGL State Machine/SC2Programs/OpenCLSetupCode.cl");
+
+				while (getline(opencl_setup_code, line))
+					opencl_program.push_back(line);
+				
 				opencl_program.push_back("");
 				opencl_program.push_back("////////////////////////////////////////////////////////////////////////////////////////");
 				opencl_program.push_back("//                                                                                    //");
