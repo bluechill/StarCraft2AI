@@ -8,25 +8,10 @@
       location = "group:StarCraft2API/StarCraft2API.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:OpenGLFileLogger/OpenGLFileLogger.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:ExampleOpenGLApplication/ExampleOpenGLApplication.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:ExampleOpenGLOverride/ExampleOpenGLOverride.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:ExampleFunctionOverride/ExampleFunctionOverride.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:InjectorStub/InjectorStub.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:ExamplePayload/ExamplePayload.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:ExampleApplication/ExampleApplication.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:MachInjector/MachInjector.xcodeproj">
