@@ -28,3 +28,7 @@
 *.app
 
 StarCraft2API/SC2 Info/
+*.png
+*.xml
+*.log
+DerivedData/
