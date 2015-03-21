@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4DAF72F81A2F7C1600DF7137"
-               BuildableName = "StarCraft2API.bundle"
-               BlueprintName = "StarCraft2API"
+               BuildableName = "Loader.bundle"
+               BlueprintName = "Loader"
                ReferencedContainer = "container:StarCraft2API.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4DAF72F81A2F7C1600DF7137"
-            BuildableName = "StarCraft2API.bundle"
-            BlueprintName = "StarCraft2API"
+            BuildableName = "Loader.bundle"
+            BlueprintName = "Loader"
             ReferencedContainer = "container:StarCraft2API.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -61,8 +61,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4DAF72F81A2F7C1600DF7137"
-            BuildableName = "StarCraft2API.bundle"
-            BlueprintName = "StarCraft2API"
+            BuildableName = "Loader.bundle"
+            BlueprintName = "Loader"
             ReferencedContainer = "container:StarCraft2API.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

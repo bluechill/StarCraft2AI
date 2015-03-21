@@ -7,8 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D69DA351ABB7E7D0058B8CD /* FlashVertexMain-3040141427.cl in Sources */ = {isa = PBXBuildFile; fileRef = 4D69DA331ABB7E770058B8CD /* FlashVertexMain-3040141427.cl */; };
+		4D70DF781AB37AED00E6716E /* ARBtoOpenCL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D70DF761AB37AED00E6716E /* ARBtoOpenCL.cpp */; };
+		4D70DF7E1AB37B8200E6716E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4D70DF7B1AB37B8200E6716E /* README.md */; };
+		4D70DF7F1AB37B8200E6716E /* xxhash.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D70DF7C1AB37B8200E6716E /* xxhash.c */; };
 		4DD9A4511A813FBA00DB2CDA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9A4501A813FBA00DB2CDA /* main.cpp */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4D70DF901AB3810200E6716E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DD9A4451A813FBA00DB2CDA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DD9A44C1A813FBA00DB2CDA;
+			remoteInfo = ARBtoOpenCL;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		4DD9A44B1A813FBA00DB2CDA /* CopyFiles */ = {
@@ -23,11 +37,27 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4D69DA331ABB7E770058B8CD /* FlashVertexMain-3040141427.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; name = "FlashVertexMain-3040141427.cl"; path = "../../StarCraft2API/SC2 Info/SC2Shaders/FlashVertexMain-3040141427.cl"; sourceTree = "<group>"; };
+		4D70DF761AB37AED00E6716E /* ARBtoOpenCL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ARBtoOpenCL.cpp; path = "../../StarCraft2API/OpenGL State Machine/OpenGL Programs/ARBtoOpenCL.cpp"; sourceTree = "<group>"; };
+		4D70DF771AB37AED00E6716E /* ARBtoOpenCL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARBtoOpenCL.h; path = "../../StarCraft2API/OpenGL State Machine/OpenGL Programs/ARBtoOpenCL.h"; sourceTree = "<group>"; };
+		4D70DF7A1AB37B8200E6716E /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		4D70DF7B1AB37B8200E6716E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4D70DF7C1AB37B8200E6716E /* xxhash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xxhash.c; sourceTree = "<group>"; };
+		4D70DF7D1AB37B8200E6716E /* xxhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxhash.h; sourceTree = "<group>"; };
+		4D70DF891AB380FD00E6716E /* Test.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D70DF8C1AB380FD00E6716E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DD9A44D1A813FBA00DB2CDA /* ARBtoOpenCL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ARBtoOpenCL; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD9A4501A813FBA00DB2CDA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4D70DF861AB380FD00E6716E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DD9A44A1A813FBA00DB2CDA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,10 +68,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D70DF791AB37B8100E6716E /* xxhash */ = {
+			isa = PBXGroup;
+			children = (
+				4D70DF7A1AB37B8200E6716E /* LICENSE */,
+				4D70DF7B1AB37B8200E6716E /* README.md */,
+				4D70DF7C1AB37B8200E6716E /* xxhash.c */,
+				4D70DF7D1AB37B8200E6716E /* xxhash.h */,
+			);
+			name = xxhash;
+			path = "../../StarCraft2API/OpenGL State Machine/xxhash";
+			sourceTree = "<group>";
+		};
+		4D70DF8A1AB380FD00E6716E /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				4D70DF8B1AB380FD00E6716E /* Supporting Files */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		4D70DF8B1AB380FD00E6716E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4D70DF8C1AB380FD00E6716E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		4DD9A4441A813FBA00DB2CDA = {
 			isa = PBXGroup;
 			children = (
 				4DD9A44F1A813FBA00DB2CDA /* ARBtoOpenCL */,
+				4D70DF8A1AB380FD00E6716E /* Test */,
 				4DD9A44E1A813FBA00DB2CDA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				4DD9A44D1A813FBA00DB2CDA /* ARBtoOpenCL */,
+				4D70DF891AB380FD00E6716E /* Test.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,7 +117,11 @@
 		4DD9A44F1A813FBA00DB2CDA /* ARBtoOpenCL */ = {
 			isa = PBXGroup;
 			children = (
+				4D69DA331ABB7E770058B8CD /* FlashVertexMain-3040141427.cl */,
 				4DD9A4501A813FBA00DB2CDA /* main.cpp */,
+				4D70DF761AB37AED00E6716E /* ARBtoOpenCL.cpp */,
+				4D70DF771AB37AED00E6716E /* ARBtoOpenCL.h */,
+				4D70DF791AB37B8100E6716E /* xxhash */,
 			);
 			path = ARBtoOpenCL;
 			sourceTree = "<group>";
@@ -65,6 +129,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4D70DF881AB380FD00E6716E /* Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D70DF8D1AB380FD00E6716E /* Build configuration list for PBXNativeTarget "Test" */;
+			buildPhases = (
+				4D70DF921AB3810F00E6716E /* ShellScript */,
+				4D70DF851AB380FD00E6716E /* Sources */,
+				4D70DF861AB380FD00E6716E /* Frameworks */,
+				4D70DF871AB380FD00E6716E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D70DF911AB3810200E6716E /* PBXTargetDependency */,
+			);
+			name = Test;
+			productName = Test;
+			productReference = 4D70DF891AB380FD00E6716E /* Test.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		4DD9A44C1A813FBA00DB2CDA /* ARBtoOpenCL */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DD9A4541A813FBA00DB2CDA /* Build configuration list for PBXNativeTarget "ARBtoOpenCL" */;
@@ -91,6 +174,9 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Alex Turner";
 				TargetAttributes = {
+					4D70DF881AB380FD00E6716E = {
+						CreatedOnToolsVersion = 6.2;
+					};
 					4DD9A44C1A813FBA00DB2CDA = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -109,22 +195,97 @@
 			projectRoot = "";
 			targets = (
 				4DD9A44C1A813FBA00DB2CDA /* ARBtoOpenCL */,
+				4D70DF881AB380FD00E6716E /* Test */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		4D70DF871AB380FD00E6716E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4D70DF921AB3810F00E6716E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/../DerivedData/OpenGLInjector/Build/Products/Debug/ARBtoOpenCL";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		4D70DF851AB380FD00E6716E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D69DA351ABB7E7D0058B8CD /* FlashVertexMain-3040141427.cl in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DD9A4491A813FBA00DB2CDA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D70DF7E1AB37B8200E6716E /* README.md in Sources */,
+				4D70DF7F1AB37B8200E6716E /* xxhash.c in Sources */,
 				4DD9A4511A813FBA00DB2CDA /* main.cpp in Sources */,
+				4D70DF781AB37AED00E6716E /* ARBtoOpenCL.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4D70DF911AB3810200E6716E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DD9A44C1A813FBA00DB2CDA /* ARBtoOpenCL */;
+			targetProxy = 4D70DF901AB3810200E6716E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		4D70DF8E1AB380FD00E6716E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Test/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		4D70DF8F1AB380FD00E6716E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = Test/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		4DD9A4521A813FBA00DB2CDA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -202,6 +363,7 @@
 		4DD9A4551A813FBA00DB2CDA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -209,6 +371,7 @@
 		4DD9A4561A813FBA00DB2CDA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -216,6 +379,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4D70DF8D1AB380FD00E6716E /* Build configuration list for PBXNativeTarget "Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D70DF8E1AB380FD00E6716E /* Debug */,
+				4D70DF8F1AB380FD00E6716E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4DD9A4481A813FBA00DB2CDA /* Build configuration list for PBXProject "ARBtoOpenCL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -232,6 +404,7 @@
 				4DD9A4561A813FBA00DB2CDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4DE06EE41A62DC4B007C676D"
-               BuildableName = "StarCraft Injector"
-               BlueprintName = "StarCraft Injector"
+               BuildableName = "SC2 API Injector"
+               BlueprintName = "SC2 API Injector"
                ReferencedContainer = "container:StarCraft2API.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4DE06EE41A62DC4B007C676D"
-            BuildableName = "StarCraft Injector"
-            BlueprintName = "StarCraft Injector"
+            BuildableName = "SC2 API Injector"
+            BlueprintName = "SC2 API Injector"
             ReferencedContainer = "container:StarCraft2API.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -49,12 +49,13 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4DE06EE41A62DC4B007C676D"
-            BuildableName = "StarCraft Injector"
-            BlueprintName = "StarCraft Injector"
+            BuildableName = "SC2 API Injector"
+            BlueprintName = "SC2 API Injector"
             ReferencedContainer = "container:StarCraft2API.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -64,7 +65,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/bluechill/Library/Developer/Xcode/DerivedData/OpenGLInjector-cybtiijcflqqgibtzfbrkecgjabw/Build/Products/Debug/StarCraft2API.bundle"
+            argument = "/Users/bluechill/Developer/OpenGLInjector/DerivedData/OpenGLInjector/Build/Products/Debug/Loader.bundle"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
@@ -77,12 +78,13 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4DE06EE41A62DC4B007C676D"
-            BuildableName = "StarCraft Injector"
-            BlueprintName = "StarCraft Injector"
+            BuildableName = "SC2 API Injector"
+            BlueprintName = "SC2 API Injector"
             ReferencedContainer = "container:StarCraft2API.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

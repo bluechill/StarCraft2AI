@@ -15,7 +15,6 @@
 		4D7B7F7F1A2CBAD000FA5C0D /* mach_inject_bundle_pid.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23DE361A24EF0100EC6DA5 /* mach_inject_bundle_pid.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D7B7F801A2CBAD000FA5C0D /* mach_inject.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D23DE391A24EF1C00EC6DA5 /* mach_inject.c */; };
 		4D7B7F811A2CBAD000FA5C0D /* mach_inject.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D23DE3A1A24EF1C00EC6DA5 /* mach_inject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4D7B7F8E1A2CBB6A00FA5C0D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B7F8D1A2CBB6A00FA5C0D /* Info.plist */; };
 		4D7B7F8F1A2CBC5400FA5C0D /* InjectorStub.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B7F871A2CBAE700FA5C0D /* InjectorStub.bundle */; };
 /* End PBXBuildFile section */
 
@@ -219,7 +218,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D7B7F8E1A2CBB6A00FA5C0D /* Info.plist in Resources */,
 				4D7B7F8F1A2CBC5400FA5C0D /* InjectorStub.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

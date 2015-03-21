@@ -17,8 +17,8 @@
 
 #include <syslog.h>
 
-static const std::string texture_db_file = "/Users/bluechill/Developer/OpenGLInjector/StarCraft2API/StarCraft2API/SC2Info/SC2DB.xml";
-static const std::string texture_db_texture_folder = "/Users/bluechill/Developer/OpenGLInjector/StarCraft2API/StarCraft2API/SC2Info/SC2Textures/";
+static const std::string texture_db_file = "/Users/bluechill/Developer/OpenGLInjector/StarCraft2API/SC2 Info/SC2DB.xml";
+static const std::string texture_db_texture_folder = "/Users/bluechill/Developer/OpenGLInjector/StarCraft2API/SC2 Info/SC2Textures/";
 
 static const std::string texture_db_root = "TextureDatabase";
 static const std::string texture_db_texture = "Texture";

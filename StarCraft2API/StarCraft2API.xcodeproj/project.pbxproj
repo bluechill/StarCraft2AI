@@ -7,48 +7,79 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D00B7911A718ED300F1CBA3 /* SC2VertexProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D00B78F1A718ED300F1CBA3 /* SC2VertexProgram.cpp */; };
-		4D00B7941A718EDF00F1CBA3 /* SC2Program.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D00B7921A718EDF00F1CBA3 /* SC2Program.cpp */; };
-		4D00B7971A718EF500F1CBA3 /* SC2FragmentProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D00B7951A718EF500F1CBA3 /* SC2FragmentProgram.cpp */; };
 		4D00B7991A7195CA00F1CBA3 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D00B7981A7195CA00F1CBA3 /* OpenCL.framework */; };
-		4D0D41E11A5F243400443983 /* OpenGLEnumToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D0D41E01A5F243400443983 /* OpenGLEnumToString.cpp */; };
-		4D34F73C1A5B3A7F00A08B73 /* lupng.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D34F7341A5B3A7F00A08B73 /* lupng.c */; };
-		4D34F7471A5B3A8A00A08B73 /* xxhash.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D34F7421A5B3A8A00A08B73 /* xxhash.c */; };
-		4D34F7561A5B4CBA00A08B73 /* Generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D34F7491A5B3B0800A08B73 /* Generator.cpp */; };
+		4D70DF5B1AB1E82200E6716E /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE06F041A634E10007C676D /* OpenGL.framework */; };
+		4D70DF5C1AB1E82600E6716E /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D00B7981A7195CA00F1CBA3 /* OpenCL.framework */; };
+		4D70DF5D1AB1E82D00E6716E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE06F071A6355DC007C676D /* libz.dylib */; };
+		4D70DF5F1AB1E9C400E6716E /* Logging_definitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D70DF5E1AB1E9C400E6716E /* Logging_definitions.cpp */; };
+		4D70DF631AB1EA1400E6716E /* OpenGL State Machine_definitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D70DF621AB1EA1400E6716E /* OpenGL State Machine_definitions.cpp */; };
+		4D70DF641AB1EA1400E6716E /* OpenGL State Machine_definitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D70DF621AB1EA1400E6716E /* OpenGL State Machine_definitions.cpp */; };
+		4D70DF651AB1EA1400E6716E /* OpenGL State Machine_definitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D70DF621AB1EA1400E6716E /* OpenGL State Machine_definitions.cpp */; };
+		4D70DF681AB220A100E6716E /* LoaderAPI.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4D70DF661AB220A100E6716E /* LoaderAPI.mm */; };
+		4D70DF6B1AB225BA00E6716E /* Logging_definitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D70DF6A1AB225BA00E6716E /* Logging_definitions.cpp */; };
+		4D70DF6D1AB225D600E6716E /* Logging_definitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D70DF6C1AB225D600E6716E /* Logging_definitions.cpp */; };
+		4D70DF6F1AB225E800E6716E /* LoaderAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D70DF6E1AB225E800E6716E /* LoaderAPI.cpp */; };
+		4D70DF751AB3754D00E6716E /* version.h in Sources */ = {isa = PBXBuildFile; fileRef = 4D70DF731AB374C400E6716E /* version.h */; };
+		4D96660C1AB1DFCC00EF4F1B /* SC2Controller.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4D9665EC1AB1DFCC00EF4F1B /* SC2Controller.mm */; };
+		4D96660D1AB1DFCC00EF4F1B /* SC2Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9665ED1AB1DFCC00EF4F1B /* SC2Controller.xib */; };
+		4D96660E1AB1DFCC00EF4F1B /* SC2Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9665EE1AB1DFCC00EF4F1B /* SC2Window.xib */; };
+		4D96660F1AB1DFCC00EF4F1B /* decode.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D9665F01AB1DFCC00EF4F1B /* decode.c */; };
+		4D9666101AB1DFCC00EF4F1B /* input.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D9665F31AB1DFCC00EF4F1B /* input.c */; };
+		4D9666111AB1DFCC00EF4F1B /* itab.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D9665F51AB1DFCC00EF4F1B /* itab.c */; };
+		4D9666121AB1DFCC00EF4F1B /* syn-att.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D9665F71AB1DFCC00EF4F1B /* syn-att.c */; };
+		4D9666131AB1DFCC00EF4F1B /* syn-intel.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D9665F81AB1DFCC00EF4F1B /* syn-intel.c */; };
+		4D9666141AB1DFCC00EF4F1B /* syn.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D9665F91AB1DFCC00EF4F1B /* syn.c */; };
+		4D9666151AB1DFCC00EF4F1B /* udis86.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D9665FD1AB1DFCC00EF4F1B /* udis86.c */; };
+		4D9666161AB1DFCC00EF4F1B /* Loader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4D9665FF1AB1DFCC00EF4F1B /* Loader.mm */; };
+		4D9666171AB1DFCC00EF4F1B /* mach_override.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D9666001AB1DFCC00EF4F1B /* mach_override.c */; };
+		4D9666181AB1DFCC00EF4F1B /* Logging.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4D9666091AB1DFCC00EF4F1B /* Logging.mm */; };
+		4D9666191AB1DFCC00EF4F1B /* ThreadHelpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D96660A1AB1DFCC00EF4F1B /* ThreadHelpers.cpp */; };
+		4D96661C1AB1DFD600EF4F1B /* Generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D96661B1AB1DFD600EF4F1B /* Generator.cpp */; };
+		4D9666411AB1DFDD00EF4F1B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D96661E1AB1DFDD00EF4F1B /* Info.plist */; };
+		4D9666421AB1DFDD00EF4F1B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4D9666201AB1DFDD00EF4F1B /* LICENSE */; };
+		4D9666431AB1DFDD00EF4F1B /* lupng.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D9666211AB1DFDD00EF4F1B /* lupng.c */; };
+		4D9666441AB1DFDD00EF4F1B /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4D9666231AB1DFDD00EF4F1B /* README.md */; };
+		4D9666461AB1DFDD00EF4F1B /* ARBtoOpenCL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D9666271AB1DFDD00EF4F1B /* ARBtoOpenCL.cpp */; };
+		4D9666481AB1DFDD00EF4F1B /* SC2FragmentProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D96662A1AB1DFDD00EF4F1B /* SC2FragmentProgram.cpp */; };
+		4D9666491AB1DFDD00EF4F1B /* SC2Program.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D96662C1AB1DFDD00EF4F1B /* SC2Program.cpp */; };
+		4D96664A1AB1DFDD00EF4F1B /* SC2VertexProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D96662E1AB1DFDD00EF4F1B /* SC2VertexProgram.cpp */; };
+		4D96664C1AB1DFDD00EF4F1B /* SC2 State Machine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D9666331AB1DFDD00EF4F1B /* SC2 State Machine.cpp */; };
+		4D96664F1AB1DFDD00EF4F1B /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D9666381AB1DFDD00EF4F1B /* Texture.cpp */; };
+		4D9666501AB1DFDD00EF4F1B /* TextureDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D96663A1AB1DFDD00EF4F1B /* TextureDatabase.cpp */; };
+		4D9666511AB1DFDD00EF4F1B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4D96663D1AB1DFDD00EF4F1B /* LICENSE */; };
+		4D9666521AB1DFDD00EF4F1B /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4D96663E1AB1DFDD00EF4F1B /* README.md */; };
+		4D9666531AB1DFDD00EF4F1B /* xxhash.c in Sources */ = {isa = PBXBuildFile; fileRef = 4D96663F1AB1DFDD00EF4F1B /* xxhash.c */; };
+		4D9666561AB1DFE300EF4F1B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D9666551AB1DFE300EF4F1B /* Info.plist */; };
+		4D9672581AB1E11A00EF4F1B /* OpenGLOverrider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D9666361AB1DFDD00EF4F1B /* OpenGLOverrider.cpp */; };
+		4D9672591AB1E18D00EF4F1B /* OpenGLEnumToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D9666351AB1DFDD00EF4F1B /* OpenGLEnumToString.cpp */; };
+		4D96725B1AB1E1D700EF4F1B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D96725A1AB1E1D700EF4F1B /* Info.plist */; };
 		4DA6925F1A637CD2004A4A13 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6925E1A637CD2004A4A13 /* AppDelegate.m */; };
 		4DA692611A637CD2004A4A13 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA692601A637CD2004A4A13 /* main.m */; };
 		4DA692631A637CD2004A4A13 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DA692621A637CD2004A4A13 /* Images.xcassets */; };
 		4DA692661A637CD2004A4A13 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA692641A637CD2004A4A13 /* MainMenu.xib */; };
 		4DA692801A637E57004A4A13 /* MainView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6927E1A637E57004A4A13 /* MainView.mm */; };
-		4DAAEEA31A656DBD002666EA /* Logging.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DAAEEA21A656DBD002666EA /* Logging.mm */; };
-		4DAAEEA61A656E5C002666EA /* ThreadHelpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DAAEEA41A656E5C002666EA /* ThreadHelpers.cpp */; };
-		4DAB00F21A8512A800844B10 /* ARBtoOpenCL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB00F01A8512A800844B10 /* ARBtoOpenCL.cpp */; };
-		4DB094581A50A76F005872DE /* mach_override.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DB094561A50A76F005872DE /* mach_override.c */; };
-		4DB0945B1A50A780005872DE /* Loader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DB094591A50A780005872DE /* Loader.mm */; };
-		4DB0945C1A50A780005872DE /* OpenGLOverrider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB0945A1A50A780005872DE /* OpenGLOverrider.cpp */; };
-		4DB773651AA3825D007161B2 /* ARBInstructions.cl in Sources */ = {isa = PBXBuildFile; fileRef = 4D00B79B1A71A3F000F1CBA3 /* ARBInstructions.cl */; };
-		4DB773661AA38260007161B2 /* Structures.cl in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB00ED1A82C20C00844B10 /* Structures.cl */; };
 		4DB832871A659F340028F3F2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB832861A659F340028F3F2 /* Cocoa.framework */; };
-		4DB832931A65C51E0028F3F2 /* SC2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB832911A65C51E0028F3F2 /* SC2Controller.m */; };
-		4DB832941A65C51E0028F3F2 /* SC2Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB832921A65C51E0028F3F2 /* SC2Controller.xib */; };
-		4DB832961A65C6170028F3F2 /* SC2Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB832951A65C6170028F3F2 /* SC2Window.xib */; };
-		4DE06ED81A62CA67007C676D /* decode.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06EC81A62CA67007C676D /* decode.c */; };
-		4DE06ED91A62CA67007C676D /* input.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06ECB1A62CA67007C676D /* input.c */; };
-		4DE06EDA1A62CA67007C676D /* itab.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06ECD1A62CA67007C676D /* itab.c */; };
-		4DE06EDB1A62CA67007C676D /* syn-att.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06ECF1A62CA67007C676D /* syn-att.c */; };
-		4DE06EDC1A62CA67007C676D /* syn-intel.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06ED01A62CA67007C676D /* syn-intel.c */; };
-		4DE06EDD1A62CA67007C676D /* syn.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06ED11A62CA67007C676D /* syn.c */; };
-		4DE06EDE1A62CA67007C676D /* udis86.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06ED51A62CA67007C676D /* udis86.c */; };
 		4DE06EE81A62DC4B007C676D /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06EE71A62DC4B007C676D /* main.mm */; };
 		4DE06EED1A62DCD6007C676D /* MachInjectorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE06EEC1A62DCD6007C676D /* MachInjectorFramework.framework */; };
-		4DE06F031A6326AB007C676D /* OpenGL State Machine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06F011A6326AB007C676D /* OpenGL State Machine.cpp */; };
 		4DE06F061A634E28007C676D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE06F041A634E10007C676D /* OpenGL.framework */; };
 		4DE06F081A6355DC007C676D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE06F071A6355DC007C676D /* libz.dylib */; };
-		4DE06F0B1A63573C007C676D /* TextureDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06F091A63573C007C676D /* TextureDatabase.cpp */; };
-		4DE06F0E1A635747007C676D /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE06F0C1A635747007C676D /* Texture.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4D70DF561AB1E55800E6716E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DAF72F11A2F7C1600DF7137 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D9665D01AB089DC00EF4F1B;
+			remoteInfo = OpenGLStateMachine;
+		};
+		4D70DF581AB1E55A00E6716E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DAF72F11A2F7C1600DF7137 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D9665DC1AB089ED00EF4F1B;
+			remoteInfo = SC2API;
+		};
 		4DE06EF31A62F9F7007C676D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4DE06EEE1A62F9F7007C676D /* MachInjector.xcodeproj */;
@@ -101,27 +132,82 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4D00B78F1A718ED300F1CBA3 /* SC2VertexProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SC2VertexProgram.cpp; path = "OpenGL State Machine/SC2Programs/SC2VertexProgram.cpp"; sourceTree = "<group>"; };
-		4D00B7901A718ED300F1CBA3 /* SC2VertexProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SC2VertexProgram.h; path = "OpenGL State Machine/SC2Programs/SC2VertexProgram.h"; sourceTree = "<group>"; };
-		4D00B7921A718EDF00F1CBA3 /* SC2Program.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SC2Program.cpp; path = "OpenGL State Machine/SC2Programs/SC2Program.cpp"; sourceTree = "<group>"; };
-		4D00B7931A718EDF00F1CBA3 /* SC2Program.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SC2Program.h; path = "OpenGL State Machine/SC2Programs/SC2Program.h"; sourceTree = "<group>"; };
-		4D00B7951A718EF500F1CBA3 /* SC2FragmentProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SC2FragmentProgram.cpp; path = "OpenGL State Machine/SC2Programs/SC2FragmentProgram.cpp"; sourceTree = "<group>"; };
-		4D00B7961A718EF500F1CBA3 /* SC2FragmentProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SC2FragmentProgram.h; path = "OpenGL State Machine/SC2Programs/SC2FragmentProgram.h"; sourceTree = "<group>"; };
 		4D00B7981A7195CA00F1CBA3 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
-		4D00B79A1A7198B500F1CBA3 /* opencl_error.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = opencl_error.hpp; path = "OpenGL State Machine/opencl_error.hpp"; sourceTree = "<group>"; };
-		4D00B79B1A71A3F000F1CBA3 /* ARBInstructions.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; name = ARBInstructions.cl; path = "OpenGL State Machine/SC2Programs/ARBInstructions.cl"; sourceTree = "<group>"; };
-		4D0D41E01A5F243400443983 /* OpenGLEnumToString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLEnumToString.cpp; sourceTree = "<group>"; };
-		4D34F7331A5B3A7F00A08B73 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		4D34F7341A5B3A7F00A08B73 /* lupng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lupng.c; sourceTree = "<group>"; };
-		4D34F7351A5B3A7F00A08B73 /* lupng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lupng.h; sourceTree = "<group>"; };
-		4D34F7391A5B3A7F00A08B73 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		4D34F7401A5B3A8A00A08B73 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		4D34F7411A5B3A8A00A08B73 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		4D34F7421A5B3A8A00A08B73 /* xxhash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xxhash.c; sourceTree = "<group>"; };
-		4D34F7431A5B3A8A00A08B73 /* xxhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxhash.h; sourceTree = "<group>"; };
-		4D34F7491A5B3B0800A08B73 /* Generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Generator.cpp; sourceTree = "<group>"; };
 		4D34F74F1A5B4CB000A08B73 /* Generator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Generator; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D4725251A89084E005ABBD2 /* OpenCLSetupCode.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; name = OpenCLSetupCode.cl; path = "OpenGL State Machine/SC2Programs/OpenCLSetupCode.cl"; sourceTree = "<group>"; };
+		4D70DF551AB1E39D00E6716E /* OpenGL State Machine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenGL State Machine.h"; sourceTree = "<group>"; };
+		4D70DF5E1AB1E9C400E6716E /* Logging_definitions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logging_definitions.cpp; sourceTree = "<group>"; };
+		4D70DF621AB1EA1400E6716E /* OpenGL State Machine_definitions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "OpenGL State Machine_definitions.cpp"; sourceTree = "<group>"; };
+		4D70DF661AB220A100E6716E /* LoaderAPI.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoaderAPI.mm; sourceTree = "<group>"; };
+		4D70DF6A1AB225BA00E6716E /* Logging_definitions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logging_definitions.cpp; sourceTree = "<group>"; };
+		4D70DF6C1AB225D600E6716E /* Logging_definitions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logging_definitions.cpp; sourceTree = "<group>"; };
+		4D70DF6E1AB225E800E6716E /* LoaderAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoaderAPI.cpp; sourceTree = "<group>"; };
+		4D70DF731AB374C400E6716E /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		4D9665D11AB089DC00EF4F1B /* OpenGLStateMachine.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenGLStateMachine.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D9665DD1AB089ED00EF4F1B /* SC2API.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SC2API.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D9665EB1AB1DFCC00EF4F1B /* SC2Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC2Controller.h; sourceTree = "<group>"; };
+		4D9665EC1AB1DFCC00EF4F1B /* SC2Controller.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SC2Controller.mm; sourceTree = "<group>"; };
+		4D9665ED1AB1DFCC00EF4F1B /* SC2Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SC2Controller.xib; sourceTree = "<group>"; };
+		4D9665EE1AB1DFCC00EF4F1B /* SC2Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SC2Window.xib; sourceTree = "<group>"; };
+		4D9665F01AB1DFCC00EF4F1B /* decode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = decode.c; sourceTree = "<group>"; };
+		4D9665F11AB1DFCC00EF4F1B /* decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decode.h; sourceTree = "<group>"; };
+		4D9665F21AB1DFCC00EF4F1B /* extern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extern.h; sourceTree = "<group>"; };
+		4D9665F31AB1DFCC00EF4F1B /* input.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = input.c; sourceTree = "<group>"; };
+		4D9665F41AB1DFCC00EF4F1B /* input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input.h; sourceTree = "<group>"; };
+		4D9665F51AB1DFCC00EF4F1B /* itab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = itab.c; sourceTree = "<group>"; };
+		4D9665F61AB1DFCC00EF4F1B /* itab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = itab.h; sourceTree = "<group>"; };
+		4D9665F71AB1DFCC00EF4F1B /* syn-att.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "syn-att.c"; sourceTree = "<group>"; };
+		4D9665F81AB1DFCC00EF4F1B /* syn-intel.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "syn-intel.c"; sourceTree = "<group>"; };
+		4D9665F91AB1DFCC00EF4F1B /* syn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = syn.c; sourceTree = "<group>"; };
+		4D9665FA1AB1DFCC00EF4F1B /* syn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = syn.h; sourceTree = "<group>"; };
+		4D9665FB1AB1DFCC00EF4F1B /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		4D9665FC1AB1DFCC00EF4F1B /* udint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = udint.h; sourceTree = "<group>"; };
+		4D9665FD1AB1DFCC00EF4F1B /* udis86.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = udis86.c; sourceTree = "<group>"; };
+		4D9665FE1AB1DFCC00EF4F1B /* udis86.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = udis86.h; sourceTree = "<group>"; };
+		4D9665FF1AB1DFCC00EF4F1B /* Loader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Loader.mm; sourceTree = "<group>"; };
+		4D9666001AB1DFCC00EF4F1B /* mach_override.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mach_override.c; sourceTree = "<group>"; };
+		4D9666011AB1DFCC00EF4F1B /* mach_override.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mach_override.h; sourceTree = "<group>"; };
+		4D9666031AB1DFCC00EF4F1B /* rapidxml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml.hpp; sourceTree = "<group>"; };
+		4D9666041AB1DFCC00EF4F1B /* rapidxml_iterators.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_iterators.hpp; sourceTree = "<group>"; };
+		4D9666051AB1DFCC00EF4F1B /* rapidxml_print.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_print.hpp; sourceTree = "<group>"; };
+		4D9666061AB1DFCC00EF4F1B /* rapidxml_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_utils.hpp; sourceTree = "<group>"; };
+		4D9666081AB1DFCC00EF4F1B /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
+		4D9666091AB1DFCC00EF4F1B /* Logging.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Logging.mm; sourceTree = "<group>"; };
+		4D96660A1AB1DFCC00EF4F1B /* ThreadHelpers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThreadHelpers.cpp; sourceTree = "<group>"; };
+		4D96660B1AB1DFCC00EF4F1B /* ThreadHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadHelpers.h; sourceTree = "<group>"; };
+		4D96661B1AB1DFD600EF4F1B /* Generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Generator.cpp; sourceTree = "<group>"; };
+		4D96661E1AB1DFDD00EF4F1B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D9666201AB1DFDD00EF4F1B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		4D9666211AB1DFDD00EF4F1B /* lupng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lupng.c; sourceTree = "<group>"; };
+		4D9666221AB1DFDD00EF4F1B /* lupng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lupng.h; sourceTree = "<group>"; };
+		4D9666231AB1DFDD00EF4F1B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4D9666241AB1DFDD00EF4F1B /* opencl_error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = opencl_error.hpp; sourceTree = "<group>"; };
+		4D9666261AB1DFDD00EF4F1B /* ARBInstructions.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = ARBInstructions.cl; sourceTree = "<group>"; };
+		4D9666271AB1DFDD00EF4F1B /* ARBtoOpenCL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ARBtoOpenCL.cpp; sourceTree = "<group>"; };
+		4D9666281AB1DFDD00EF4F1B /* ARBtoOpenCL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARBtoOpenCL.h; sourceTree = "<group>"; };
+		4D9666291AB1DFDD00EF4F1B /* OpenCLSetupCode.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = OpenCLSetupCode.cl; sourceTree = "<group>"; };
+		4D96662A1AB1DFDD00EF4F1B /* SC2FragmentProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SC2FragmentProgram.cpp; sourceTree = "<group>"; };
+		4D96662B1AB1DFDD00EF4F1B /* SC2FragmentProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC2FragmentProgram.h; sourceTree = "<group>"; };
+		4D96662C1AB1DFDD00EF4F1B /* SC2Program.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SC2Program.cpp; sourceTree = "<group>"; };
+		4D96662D1AB1DFDD00EF4F1B /* SC2Program.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC2Program.h; sourceTree = "<group>"; };
+		4D96662E1AB1DFDD00EF4F1B /* SC2VertexProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SC2VertexProgram.cpp; sourceTree = "<group>"; };
+		4D96662F1AB1DFDD00EF4F1B /* SC2VertexProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC2VertexProgram.h; sourceTree = "<group>"; };
+		4D9666301AB1DFDD00EF4F1B /* Structures.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = Structures.cl; sourceTree = "<group>"; };
+		4D9666311AB1DFDD00EF4F1B /* Structures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Structures.h; sourceTree = "<group>"; };
+		4D9666331AB1DFDD00EF4F1B /* SC2 State Machine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "SC2 State Machine.cpp"; sourceTree = "<group>"; };
+		4D9666341AB1DFDD00EF4F1B /* SC2 State Machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SC2 State Machine.h"; sourceTree = "<group>"; };
+		4D9666351AB1DFDD00EF4F1B /* OpenGLEnumToString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLEnumToString.cpp; sourceTree = "<group>"; };
+		4D9666361AB1DFDD00EF4F1B /* OpenGLOverrider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLOverrider.cpp; sourceTree = "<group>"; };
+		4D9666381AB1DFDD00EF4F1B /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		4D9666391AB1DFDD00EF4F1B /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
+		4D96663A1AB1DFDD00EF4F1B /* TextureDatabase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureDatabase.cpp; sourceTree = "<group>"; };
+		4D96663B1AB1DFDD00EF4F1B /* TextureDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureDatabase.h; sourceTree = "<group>"; };
+		4D96663D1AB1DFDD00EF4F1B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		4D96663E1AB1DFDD00EF4F1B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4D96663F1AB1DFDD00EF4F1B /* xxhash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xxhash.c; sourceTree = "<group>"; };
+		4D9666401AB1DFDD00EF4F1B /* xxhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxhash.h; sourceTree = "<group>"; };
+		4D9666551AB1DFE300EF4F1B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D9666581AB1E00500EF4F1B /* SC2 Info */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "SC2 Info"; sourceTree = "<group>"; };
+		4D96725A1AB1E1D700EF4F1B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DA692591A637CD2004A4A13 /* Texture Classifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Texture Classifier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DA6925C1A637CD2004A4A13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DA6925D1A637CD2004A4A13 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -131,65 +217,36 @@
 		4DA692651A637CD2004A4A13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4DA6927D1A637E57004A4A13 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
 		4DA6927E1A637E57004A4A13 /* MainView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainView.mm; sourceTree = "<group>"; };
-		4DA692831A6408E0004A4A13 /* rapidxml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml.hpp; sourceTree = "<group>"; };
-		4DA692841A6408E0004A4A13 /* rapidxml_iterators.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_iterators.hpp; sourceTree = "<group>"; };
-		4DA692851A6408E0004A4A13 /* rapidxml_print.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_print.hpp; sourceTree = "<group>"; };
-		4DA692861A6408E0004A4A13 /* rapidxml_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_utils.hpp; sourceTree = "<group>"; };
-		4DAAEEA11A656B32002666EA /* Logging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Logging.h; path = SC2API/Utilities/Logging.h; sourceTree = "<group>"; };
-		4DAAEEA21A656DBD002666EA /* Logging.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Logging.mm; path = SC2API/Utilities/Logging.mm; sourceTree = "<group>"; };
-		4DAAEEA41A656E5C002666EA /* ThreadHelpers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ThreadHelpers.cpp; path = SC2API/Utilities/ThreadHelpers.cpp; sourceTree = "<group>"; };
-		4DAAEEA51A656E5C002666EA /* ThreadHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThreadHelpers.h; path = SC2API/Utilities/ThreadHelpers.h; sourceTree = "<group>"; };
-		4DAB00ED1A82C20C00844B10 /* Structures.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; name = Structures.cl; path = "OpenGL State Machine/SC2Programs/Structures.cl"; sourceTree = "<group>"; };
-		4DAB00F01A8512A800844B10 /* ARBtoOpenCL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ARBtoOpenCL.cpp; path = "OpenGL State Machine/SC2Programs/ARBtoOpenCL.cpp"; sourceTree = "<group>"; };
-		4DAB00F11A8512A800844B10 /* ARBtoOpenCL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARBtoOpenCL.h; path = "OpenGL State Machine/SC2Programs/ARBtoOpenCL.h"; sourceTree = "<group>"; };
-		4DAB00F31A854C7800844B10 /* Structures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Structures.h; path = "OpenGL State Machine/SC2Programs/Structures.h"; sourceTree = "<group>"; };
-		4DAF72F91A2F7C1600DF7137 /* StarCraft2API.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarCraft2API.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DAF72FD1A2F7C1600DF7137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4DB094561A50A76F005872DE /* mach_override.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mach_override.c; path = ../../OpenGLFileLogger/OpenGLFileLogger/mach_override.c; sourceTree = "<group>"; };
-		4DB094591A50A780005872DE /* Loader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Loader.mm; sourceTree = "<group>"; };
-		4DB0945A1A50A780005872DE /* OpenGLOverrider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLOverrider.cpp; sourceTree = "<group>"; };
+		4DAF72F91A2F7C1600DF7137 /* Loader.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Loader.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB832861A659F340028F3F2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		4DB832901A65C51E0028F3F2 /* SC2Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SC2Controller.h; path = SC2API/Cocoa/SC2Controller.h; sourceTree = "<group>"; };
-		4DB832911A65C51E0028F3F2 /* SC2Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SC2Controller.m; path = SC2API/Cocoa/SC2Controller.m; sourceTree = "<group>"; };
-		4DB832921A65C51E0028F3F2 /* SC2Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SC2Controller.xib; path = SC2API/Cocoa/SC2Controller.xib; sourceTree = "<group>"; };
-		4DB832951A65C6170028F3F2 /* SC2Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SC2Window.xib; path = SC2API/Cocoa/SC2Window.xib; sourceTree = "<group>"; };
-		4DE06EC81A62CA67007C676D /* decode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = decode.c; sourceTree = "<group>"; };
-		4DE06EC91A62CA67007C676D /* decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decode.h; sourceTree = "<group>"; };
-		4DE06ECA1A62CA67007C676D /* extern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extern.h; sourceTree = "<group>"; };
-		4DE06ECB1A62CA67007C676D /* input.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = input.c; sourceTree = "<group>"; };
-		4DE06ECC1A62CA67007C676D /* input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input.h; sourceTree = "<group>"; };
-		4DE06ECD1A62CA67007C676D /* itab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = itab.c; sourceTree = "<group>"; };
-		4DE06ECE1A62CA67007C676D /* itab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = itab.h; sourceTree = "<group>"; };
-		4DE06ECF1A62CA67007C676D /* syn-att.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "syn-att.c"; sourceTree = "<group>"; };
-		4DE06ED01A62CA67007C676D /* syn-intel.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "syn-intel.c"; sourceTree = "<group>"; };
-		4DE06ED11A62CA67007C676D /* syn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = syn.c; sourceTree = "<group>"; };
-		4DE06ED21A62CA67007C676D /* syn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = syn.h; sourceTree = "<group>"; };
-		4DE06ED31A62CA67007C676D /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
-		4DE06ED41A62CA67007C676D /* udint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = udint.h; sourceTree = "<group>"; };
-		4DE06ED51A62CA67007C676D /* udis86.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = udis86.c; sourceTree = "<group>"; };
-		4DE06ED61A62CA67007C676D /* udis86.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = udis86.h; sourceTree = "<group>"; };
-		4DE06EE01A62D9A1007C676D /* mach_override.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mach_override.h; path = ../../ExampleFunctionOverride/ExampleFunctionOverride/mach_override.h; sourceTree = "<group>"; };
-		4DE06EE51A62DC4B007C676D /* StarCraft Injector */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "StarCraft Injector"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DE06EE51A62DC4B007C676D /* SC2 API Injector */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "SC2 API Injector"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE06EE71A62DC4B007C676D /* main.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		4DE06EEC1A62DCD6007C676D /* MachInjectorFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MachInjectorFramework.framework; path = "/Users/bluechill/Developer/OpenGLInjector/Injector/../../../Library/Developer/Xcode/DerivedData/OpenGLInjector-cybtiijcflqqgibtzfbrkecgjabw/Build/Products/Debug/MachInjectorFramework.framework"; sourceTree = "<absolute>"; };
 		4DE06EEE1A62F9F7007C676D /* MachInjector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MachInjector.xcodeproj; path = /Users/bluechill/Developer/OpenGLInjector/Injector/../MachInjector/MachInjector.xcodeproj; sourceTree = "<absolute>"; };
 		4DE06EFA1A62FA98007C676D /* mach_inject_bundle_pid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mach_inject_bundle_pid.h; path = "../../../../Library/Developer/Xcode/DerivedData/OpenGLInjector-cybtiijcflqqgibtzfbrkecgjabw/Build/Products/Debug/MachInjectorFramework.framework/Headers/mach_inject_bundle_pid.h"; sourceTree = "<group>"; };
-		4DE06F011A6326AB007C676D /* OpenGL State Machine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "OpenGL State Machine.cpp"; path = "OpenGL State Machine/OpenGL State Machine.cpp"; sourceTree = "<group>"; };
-		4DE06F021A6326AB007C676D /* OpenGL State Machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OpenGL State Machine.h"; path = "OpenGL State Machine/OpenGL State Machine.h"; sourceTree = "<group>"; };
 		4DE06F041A634E10007C676D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		4DE06F071A6355DC007C676D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		4DE06F091A63573C007C676D /* TextureDatabase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureDatabase.cpp; path = "OpenGL State Machine/TextureDatabase.cpp"; sourceTree = "<group>"; };
-		4DE06F0A1A63573C007C676D /* TextureDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextureDatabase.h; path = "OpenGL State Machine/TextureDatabase.h"; sourceTree = "<group>"; };
-		4DE06F0C1A635747007C676D /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Texture.cpp; path = "OpenGL State Machine/Texture.cpp"; sourceTree = "<group>"; };
-		4DE06F0D1A635747007C676D /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Texture.h; path = "OpenGL State Machine/Texture.h"; sourceTree = "<group>"; };
-		4DE06F101A635965007C676D /* rapidxml_iterators.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_iterators.hpp; sourceTree = "<group>"; };
-		4DE06F111A635965007C676D /* rapidxml_print.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_print.hpp; sourceTree = "<group>"; };
-		4DE06F121A635965007C676D /* rapidxml_utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_utils.hpp; sourceTree = "<group>"; };
-		4DE06F131A635965007C676D /* rapidxml.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rapidxml.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4D34F74C1A5B4CB000A08B73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D9665CE1AB089DC00EF4F1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D70DF5D1AB1E82D00E6716E /* libz.dylib in Frameworks */,
+				4D70DF5C1AB1E82600E6716E /* OpenCL.framework in Frameworks */,
+				4D70DF5B1AB1E82200E6716E /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D9665DA1AB089ED00EF4F1B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -225,51 +282,191 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4D00B78D1A718E7900F1CBA3 /* SC2Programs */ = {
+		4D9665E71AB08B1C00EF4F1B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4D00B78F1A718ED300F1CBA3 /* SC2VertexProgram.cpp */,
-				4D00B7901A718ED300F1CBA3 /* SC2VertexProgram.h */,
-				4D00B7921A718EDF00F1CBA3 /* SC2Program.cpp */,
-				4D00B7931A718EDF00F1CBA3 /* SC2Program.h */,
-				4D00B7951A718EF500F1CBA3 /* SC2FragmentProgram.cpp */,
-				4D00B7961A718EF500F1CBA3 /* SC2FragmentProgram.h */,
-				4D00B79B1A71A3F000F1CBA3 /* ARBInstructions.cl */,
-				4DAB00ED1A82C20C00844B10 /* Structures.cl */,
-				4D4725251A89084E005ABBD2 /* OpenCLSetupCode.cl */,
-				4DAB00F31A854C7800844B10 /* Structures.h */,
-				4DAB00F01A8512A800844B10 /* ARBtoOpenCL.cpp */,
-				4DAB00F11A8512A800844B10 /* ARBtoOpenCL.h */,
+				4D00B7981A7195CA00F1CBA3 /* OpenCL.framework */,
+				4DB832861A659F340028F3F2 /* Cocoa.framework */,
+				4DE06F041A634E10007C676D /* OpenGL.framework */,
+				4DE06F071A6355DC007C676D /* libz.dylib */,
 			);
-			name = SC2Programs;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4D34F7311A5B3A7F00A08B73 /* LuPng */ = {
+		4D9665E91AB1DFCC00EF4F1B /* Loader */ = {
 			isa = PBXGroup;
 			children = (
-				4D34F7331A5B3A7F00A08B73 /* LICENSE */,
-				4D34F7341A5B3A7F00A08B73 /* lupng.c */,
-				4D34F7351A5B3A7F00A08B73 /* lupng.h */,
-				4D34F7391A5B3A7F00A08B73 /* README.md */,
+				4D96725A1AB1E1D700EF4F1B /* Info.plist */,
+				4D9665EA1AB1DFCC00EF4F1B /* Cocoa */,
+				4D9665EF1AB1DFCC00EF4F1B /* libudis86 */,
+				4D9665FF1AB1DFCC00EF4F1B /* Loader.mm */,
+				4D9666361AB1DFDD00EF4F1B /* OpenGLOverrider.cpp */,
+				4D9666351AB1DFDD00EF4F1B /* OpenGLEnumToString.cpp */,
+				4D70DF551AB1E39D00E6716E /* OpenGL State Machine.h */,
+				4D70DF621AB1EA1400E6716E /* OpenGL State Machine_definitions.cpp */,
+				4D9666001AB1DFCC00EF4F1B /* mach_override.c */,
+				4D9666011AB1DFCC00EF4F1B /* mach_override.h */,
+				4D9666021AB1DFCC00EF4F1B /* RapidXML */,
+				4D9666071AB1DFCC00EF4F1B /* Utilities */,
+			);
+			path = Loader;
+			sourceTree = "<group>";
+		};
+		4D9665EA1AB1DFCC00EF4F1B /* Cocoa */ = {
+			isa = PBXGroup;
+			children = (
+				4D9665EB1AB1DFCC00EF4F1B /* SC2Controller.h */,
+				4D9665EC1AB1DFCC00EF4F1B /* SC2Controller.mm */,
+				4D9665ED1AB1DFCC00EF4F1B /* SC2Controller.xib */,
+				4D9665EE1AB1DFCC00EF4F1B /* SC2Window.xib */,
+			);
+			path = Cocoa;
+			sourceTree = "<group>";
+		};
+		4D9665EF1AB1DFCC00EF4F1B /* libudis86 */ = {
+			isa = PBXGroup;
+			children = (
+				4D9665F01AB1DFCC00EF4F1B /* decode.c */,
+				4D9665F11AB1DFCC00EF4F1B /* decode.h */,
+				4D9665F21AB1DFCC00EF4F1B /* extern.h */,
+				4D9665F31AB1DFCC00EF4F1B /* input.c */,
+				4D9665F41AB1DFCC00EF4F1B /* input.h */,
+				4D9665F51AB1DFCC00EF4F1B /* itab.c */,
+				4D9665F61AB1DFCC00EF4F1B /* itab.h */,
+				4D9665F71AB1DFCC00EF4F1B /* syn-att.c */,
+				4D9665F81AB1DFCC00EF4F1B /* syn-intel.c */,
+				4D9665F91AB1DFCC00EF4F1B /* syn.c */,
+				4D9665FA1AB1DFCC00EF4F1B /* syn.h */,
+				4D9665FB1AB1DFCC00EF4F1B /* types.h */,
+				4D9665FC1AB1DFCC00EF4F1B /* udint.h */,
+				4D9665FD1AB1DFCC00EF4F1B /* udis86.c */,
+				4D9665FE1AB1DFCC00EF4F1B /* udis86.h */,
+			);
+			path = libudis86;
+			sourceTree = "<group>";
+		};
+		4D9666021AB1DFCC00EF4F1B /* RapidXML */ = {
+			isa = PBXGroup;
+			children = (
+				4D9666031AB1DFCC00EF4F1B /* rapidxml.hpp */,
+				4D9666041AB1DFCC00EF4F1B /* rapidxml_iterators.hpp */,
+				4D9666051AB1DFCC00EF4F1B /* rapidxml_print.hpp */,
+				4D9666061AB1DFCC00EF4F1B /* rapidxml_utils.hpp */,
+			);
+			path = RapidXML;
+			sourceTree = "<group>";
+		};
+		4D9666071AB1DFCC00EF4F1B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4D9666081AB1DFCC00EF4F1B /* Logging.h */,
+				4D9666091AB1DFCC00EF4F1B /* Logging.mm */,
+				4D96660A1AB1DFCC00EF4F1B /* ThreadHelpers.cpp */,
+				4D96660B1AB1DFCC00EF4F1B /* ThreadHelpers.h */,
+				4D70DF5E1AB1E9C400E6716E /* Logging_definitions.cpp */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4D96661A1AB1DFD600EF4F1B /* OpenGL Override Generator */ = {
+			isa = PBXGroup;
+			children = (
+				4D96661B1AB1DFD600EF4F1B /* Generator.cpp */,
+			);
+			path = "OpenGL Override Generator";
+			sourceTree = "<group>";
+		};
+		4D96661D1AB1DFDD00EF4F1B /* OpenGL State Machine */ = {
+			isa = PBXGroup;
+			children = (
+				4D96661E1AB1DFDD00EF4F1B /* Info.plist */,
+				4D96661F1AB1DFDD00EF4F1B /* LuPng */,
+				4D9666241AB1DFDD00EF4F1B /* opencl_error.hpp */,
+				4D9666251AB1DFDD00EF4F1B /* OpenGL Programs */,
+				4D9666321AB1DFDD00EF4F1B /* OpenGL State Machine */,
+				4D9666371AB1DFDD00EF4F1B /* OpenGL Textures */,
+				4D96663C1AB1DFDD00EF4F1B /* xxhash */,
+				4D70DF661AB220A100E6716E /* LoaderAPI.mm */,
+				4D70DF731AB374C400E6716E /* version.h */,
+				4D70DF6A1AB225BA00E6716E /* Logging_definitions.cpp */,
+			);
+			path = "OpenGL State Machine";
+			sourceTree = "<group>";
+		};
+		4D96661F1AB1DFDD00EF4F1B /* LuPng */ = {
+			isa = PBXGroup;
+			children = (
+				4D9666201AB1DFDD00EF4F1B /* LICENSE */,
+				4D9666211AB1DFDD00EF4F1B /* lupng.c */,
+				4D9666221AB1DFDD00EF4F1B /* lupng.h */,
+				4D9666231AB1DFDD00EF4F1B /* README.md */,
 			);
 			path = LuPng;
 			sourceTree = "<group>";
 		};
-		4D34F73F1A5B3A8A00A08B73 /* xxhash */ = {
+		4D9666251AB1DFDD00EF4F1B /* OpenGL Programs */ = {
 			isa = PBXGroup;
 			children = (
-				4D34F7401A5B3A8A00A08B73 /* LICENSE */,
-				4D34F7411A5B3A8A00A08B73 /* README.md */,
-				4D34F7421A5B3A8A00A08B73 /* xxhash.c */,
-				4D34F7431A5B3A8A00A08B73 /* xxhash.h */,
+				4D9666261AB1DFDD00EF4F1B /* ARBInstructions.cl */,
+				4D9666271AB1DFDD00EF4F1B /* ARBtoOpenCL.cpp */,
+				4D9666281AB1DFDD00EF4F1B /* ARBtoOpenCL.h */,
+				4D9666291AB1DFDD00EF4F1B /* OpenCLSetupCode.cl */,
+				4D96662A1AB1DFDD00EF4F1B /* SC2FragmentProgram.cpp */,
+				4D96662B1AB1DFDD00EF4F1B /* SC2FragmentProgram.h */,
+				4D96662C1AB1DFDD00EF4F1B /* SC2Program.cpp */,
+				4D96662D1AB1DFDD00EF4F1B /* SC2Program.h */,
+				4D96662E1AB1DFDD00EF4F1B /* SC2VertexProgram.cpp */,
+				4D96662F1AB1DFDD00EF4F1B /* SC2VertexProgram.h */,
+				4D9666301AB1DFDD00EF4F1B /* Structures.cl */,
+				4D9666311AB1DFDD00EF4F1B /* Structures.h */,
+			);
+			path = "OpenGL Programs";
+			sourceTree = "<group>";
+		};
+		4D9666321AB1DFDD00EF4F1B /* OpenGL State Machine */ = {
+			isa = PBXGroup;
+			children = (
+				4D9666331AB1DFDD00EF4F1B /* SC2 State Machine.cpp */,
+				4D9666341AB1DFDD00EF4F1B /* SC2 State Machine.h */,
+			);
+			path = "OpenGL State Machine";
+			sourceTree = "<group>";
+		};
+		4D9666371AB1DFDD00EF4F1B /* OpenGL Textures */ = {
+			isa = PBXGroup;
+			children = (
+				4D9666381AB1DFDD00EF4F1B /* Texture.cpp */,
+				4D9666391AB1DFDD00EF4F1B /* Texture.h */,
+				4D96663A1AB1DFDD00EF4F1B /* TextureDatabase.cpp */,
+				4D96663B1AB1DFDD00EF4F1B /* TextureDatabase.h */,
+			);
+			path = "OpenGL Textures";
+			sourceTree = "<group>";
+		};
+		4D96663C1AB1DFDD00EF4F1B /* xxhash */ = {
+			isa = PBXGroup;
+			children = (
+				4D96663D1AB1DFDD00EF4F1B /* LICENSE */,
+				4D96663E1AB1DFDD00EF4F1B /* README.md */,
+				4D96663F1AB1DFDD00EF4F1B /* xxhash.c */,
+				4D9666401AB1DFDD00EF4F1B /* xxhash.h */,
 			);
 			path = xxhash;
+			sourceTree = "<group>";
+		};
+		4D9666541AB1DFE300EF4F1B /* SC2 API */ = {
+			isa = PBXGroup;
+			children = (
+				4D70DF6E1AB225E800E6716E /* LoaderAPI.cpp */,
+				4D70DF6C1AB225D600E6716E /* Logging_definitions.cpp */,
+				4D9666551AB1DFE300EF4F1B /* Info.plist */,
+			);
+			path = "SC2 API";
 			sourceTree = "<group>";
 		};
 		4DA6925A1A637CD2004A4A13 /* Texture Classifier */ = {
 			isa = PBXGroup;
 			children = (
-				4DE06F0F1A635958007C676D /* RapidXML */,
 				4DA6925D1A637CD2004A4A13 /* AppDelegate.h */,
 				4DA6925E1A637CD2004A4A13 /* AppDelegate.m */,
 				4DA692621A637CD2004A4A13 /* Images.xcassets */,
@@ -290,43 +487,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		4DA692821A6408E0004A4A13 /* RapidXML */ = {
-			isa = PBXGroup;
-			children = (
-				4DA692831A6408E0004A4A13 /* rapidxml.hpp */,
-				4DA692841A6408E0004A4A13 /* rapidxml_iterators.hpp */,
-				4DA692851A6408E0004A4A13 /* rapidxml_print.hpp */,
-				4DA692861A6408E0004A4A13 /* rapidxml_utils.hpp */,
-			);
-			path = RapidXML;
-			sourceTree = "<group>";
-		};
-		4DAAEE9E1A656AAE002666EA /* SC2API */ = {
-			isa = PBXGroup;
-			children = (
-				4DB8328F1A65C48A0028F3F2 /* Cocoa */,
-				4DAAEEA01A656AB5002666EA /* Utilities */,
-			);
-			name = SC2API;
-			sourceTree = "<group>";
-		};
-		4DAAEEA01A656AB5002666EA /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				4DAAEEA11A656B32002666EA /* Logging.h */,
-				4DAAEEA21A656DBD002666EA /* Logging.mm */,
-				4DAAEEA41A656E5C002666EA /* ThreadHelpers.cpp */,
-				4DAAEEA51A656E5C002666EA /* ThreadHelpers.h */,
-			);
-			name = Utilities;
-			sourceTree = "<group>";
-		};
 		4DAF72F01A2F7C1600DF7137 = {
 			isa = PBXGroup;
 			children = (
-				4DAF72FB1A2F7C1600DF7137 /* StarCraft2API */,
+				4D9665E71AB08B1C00EF4F1B /* Frameworks */,
 				4DE06EE61A62DC4B007C676D /* StarCraft Injector */,
 				4DA6925A1A637CD2004A4A13 /* Texture Classifier */,
+				4D9665E91AB1DFCC00EF4F1B /* Loader */,
+				4D96661A1AB1DFD600EF4F1B /* OpenGL Override Generator */,
+				4D96661D1AB1DFDD00EF4F1B /* OpenGL State Machine */,
+				4D9666541AB1DFE300EF4F1B /* SC2 API */,
+				4D9666581AB1E00500EF4F1B /* SC2 Info */,
 				4DAF72FA1A2F7C1600DF7137 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -334,76 +505,14 @@
 		4DAF72FA1A2F7C1600DF7137 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4DAF72F91A2F7C1600DF7137 /* StarCraft2API.bundle */,
+				4DAF72F91A2F7C1600DF7137 /* Loader.bundle */,
 				4D34F74F1A5B4CB000A08B73 /* Generator */,
-				4DE06EE51A62DC4B007C676D /* StarCraft Injector */,
+				4DE06EE51A62DC4B007C676D /* SC2 API Injector */,
 				4DA692591A637CD2004A4A13 /* Texture Classifier.app */,
+				4D9665D11AB089DC00EF4F1B /* OpenGLStateMachine.bundle */,
+				4D9665DD1AB089ED00EF4F1B /* SC2API.bundle */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		4DAF72FB1A2F7C1600DF7137 /* StarCraft2API */ = {
-			isa = PBXGroup;
-			children = (
-				4D00B7981A7195CA00F1CBA3 /* OpenCL.framework */,
-				4DB832861A659F340028F3F2 /* Cocoa.framework */,
-				4DE06F041A634E10007C676D /* OpenGL.framework */,
-				4DE06F071A6355DC007C676D /* libz.dylib */,
-				4DB094591A50A780005872DE /* Loader.mm */,
-				4DAAEE9E1A656AAE002666EA /* SC2API */,
-				4DA692821A6408E0004A4A13 /* RapidXML */,
-				4DE06F001A632692007C676D /* OpenGL State Machine */,
-				4DE06EFF1A632689007C676D /* OpenGL Overrider */,
-				4DE06EFE1A632681007C676D /* Mach Override */,
-				4DE06EFD1A632676007C676D /* OpenGLOverride Generator */,
-				4DE06ED71A62CA67007C676D /* libudis86 */,
-				4D34F73F1A5B3A8A00A08B73 /* xxhash */,
-				4D34F7311A5B3A7F00A08B73 /* LuPng */,
-				4DAF72FC1A2F7C1600DF7137 /* Supporting Files */,
-			);
-			path = StarCraft2API;
-			sourceTree = "<group>";
-		};
-		4DAF72FC1A2F7C1600DF7137 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				4DAF72FD1A2F7C1600DF7137 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4DB8328F1A65C48A0028F3F2 /* Cocoa */ = {
-			isa = PBXGroup;
-			children = (
-				4DB832901A65C51E0028F3F2 /* SC2Controller.h */,
-				4DB832911A65C51E0028F3F2 /* SC2Controller.m */,
-				4DB832921A65C51E0028F3F2 /* SC2Controller.xib */,
-				4DB832951A65C6170028F3F2 /* SC2Window.xib */,
-			);
-			name = Cocoa;
-			sourceTree = "<group>";
-		};
-		4DE06ED71A62CA67007C676D /* libudis86 */ = {
-			isa = PBXGroup;
-			children = (
-				4DE06EC81A62CA67007C676D /* decode.c */,
-				4DE06EC91A62CA67007C676D /* decode.h */,
-				4DE06ECA1A62CA67007C676D /* extern.h */,
-				4DE06ECB1A62CA67007C676D /* input.c */,
-				4DE06ECC1A62CA67007C676D /* input.h */,
-				4DE06ECD1A62CA67007C676D /* itab.c */,
-				4DE06ECE1A62CA67007C676D /* itab.h */,
-				4DE06ECF1A62CA67007C676D /* syn-att.c */,
-				4DE06ED01A62CA67007C676D /* syn-intel.c */,
-				4DE06ED11A62CA67007C676D /* syn.c */,
-				4DE06ED21A62CA67007C676D /* syn.h */,
-				4DE06ED31A62CA67007C676D /* types.h */,
-				4DE06ED41A62CA67007C676D /* udint.h */,
-				4DE06ED51A62CA67007C676D /* udis86.c */,
-				4DE06ED61A62CA67007C676D /* udis86.h */,
-			);
-			name = libudis86;
-			path = ../../OpenGLFileLogger/OpenGLFileLogger/libudis86;
 			sourceTree = "<group>";
 		};
 		4DE06EE61A62DC4B007C676D /* StarCraft Injector */ = {
@@ -426,59 +535,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4DE06EFD1A632676007C676D /* OpenGLOverride Generator */ = {
-			isa = PBXGroup;
-			children = (
-				4D34F7491A5B3B0800A08B73 /* Generator.cpp */,
-			);
-			name = "OpenGLOverride Generator";
-			sourceTree = "<group>";
-		};
-		4DE06EFE1A632681007C676D /* Mach Override */ = {
-			isa = PBXGroup;
-			children = (
-				4DB094561A50A76F005872DE /* mach_override.c */,
-				4DE06EE01A62D9A1007C676D /* mach_override.h */,
-			);
-			name = "Mach Override";
-			sourceTree = "<group>";
-		};
-		4DE06EFF1A632689007C676D /* OpenGL Overrider */ = {
-			isa = PBXGroup;
-			children = (
-				4DB0945A1A50A780005872DE /* OpenGLOverrider.cpp */,
-				4D0D41E01A5F243400443983 /* OpenGLEnumToString.cpp */,
-			);
-			name = "OpenGL Overrider";
-			sourceTree = "<group>";
-		};
-		4DE06F001A632692007C676D /* OpenGL State Machine */ = {
-			isa = PBXGroup;
-			children = (
-				4D00B78D1A718E7900F1CBA3 /* SC2Programs */,
-				4DE06F011A6326AB007C676D /* OpenGL State Machine.cpp */,
-				4DE06F021A6326AB007C676D /* OpenGL State Machine.h */,
-				4DE06F091A63573C007C676D /* TextureDatabase.cpp */,
-				4DE06F0A1A63573C007C676D /* TextureDatabase.h */,
-				4DE06F0C1A635747007C676D /* Texture.cpp */,
-				4DE06F0D1A635747007C676D /* Texture.h */,
-				4D00B79A1A7198B500F1CBA3 /* opencl_error.hpp */,
-			);
-			name = "OpenGL State Machine";
-			sourceTree = "<group>";
-		};
-		4DE06F0F1A635958007C676D /* RapidXML */ = {
-			isa = PBXGroup;
-			children = (
-				4DE06F101A635965007C676D /* rapidxml_iterators.hpp */,
-				4DE06F111A635965007C676D /* rapidxml_print.hpp */,
-				4DE06F121A635965007C676D /* rapidxml_utils.hpp */,
-				4DE06F131A635965007C676D /* rapidxml.hpp */,
-			);
-			name = RapidXML;
-			path = ../StarCraft2API/RapidXML;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -499,6 +555,42 @@
 			productReference = 4D34F74F1A5B4CB000A08B73 /* Generator */;
 			productType = "com.apple.product-type.tool";
 		};
+		4D9665D01AB089DC00EF4F1B /* OpenGLStateMachine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D9665D81AB089DC00EF4F1B /* Build configuration list for PBXNativeTarget "OpenGLStateMachine" */;
+			buildPhases = (
+				4D70DF711AB32CFF00E6716E /* ShellScript */,
+				4D9665CD1AB089DC00EF4F1B /* Sources */,
+				4D9665CE1AB089DC00EF4F1B /* Frameworks */,
+				4D9665CF1AB089DC00EF4F1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenGLStateMachine;
+			productName = OpenGLStateMachine;
+			productReference = 4D9665D11AB089DC00EF4F1B /* OpenGLStateMachine.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		4D9665DC1AB089ED00EF4F1B /* SC2API */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D9665E11AB089ED00EF4F1B /* Build configuration list for PBXNativeTarget "SC2API" */;
+			buildPhases = (
+				4D9665D91AB089ED00EF4F1B /* Sources */,
+				4D9665DA1AB089ED00EF4F1B /* Frameworks */,
+				4D70DF721AB32D3300E6716E /* ShellScript */,
+				4D9665DB1AB089ED00EF4F1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SC2API;
+			productName = SC2API;
+			productReference = 4D9665DD1AB089ED00EF4F1B /* SC2API.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		4DA692581A637CD2004A4A13 /* Texture Classifier */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DA692781A637CD3004A4A13 /* Build configuration list for PBXNativeTarget "Texture Classifier" */;
@@ -516,26 +608,29 @@
 			productReference = 4DA692591A637CD2004A4A13 /* Texture Classifier.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4DAF72F81A2F7C1600DF7137 /* StarCraft2API */ = {
+		4DAF72F81A2F7C1600DF7137 /* Loader */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4DAF73001A2F7C1600DF7137 /* Build configuration list for PBXNativeTarget "StarCraft2API" */;
+			buildConfigurationList = 4DAF73001A2F7C1600DF7137 /* Build configuration list for PBXNativeTarget "Loader" */;
 			buildPhases = (
 				4DAF72F51A2F7C1600DF7137 /* Sources */,
 				4DAF72F61A2F7C1600DF7137 /* Frameworks */,
+				4D70DF701AB32CE000E6716E /* ShellScript */,
 				4DAF72F71A2F7C1600DF7137 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4D70DF571AB1E55800E6716E /* PBXTargetDependency */,
+				4D70DF591AB1E55A00E6716E /* PBXTargetDependency */,
 			);
-			name = StarCraft2API;
+			name = Loader;
 			productName = StarCraft2API;
-			productReference = 4DAF72F91A2F7C1600DF7137 /* StarCraft2API.bundle */;
+			productReference = 4DAF72F91A2F7C1600DF7137 /* Loader.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		4DE06EE41A62DC4B007C676D /* StarCraft Injector */ = {
+		4DE06EE41A62DC4B007C676D /* SC2 API Injector */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4DE06EE91A62DC4B007C676D /* Build configuration list for PBXNativeTarget "StarCraft Injector" */;
+			buildConfigurationList = 4DE06EE91A62DC4B007C676D /* Build configuration list for PBXNativeTarget "SC2 API Injector" */;
 			buildPhases = (
 				4DE06EE11A62DC4B007C676D /* Sources */,
 				4DE06EE21A62DC4B007C676D /* Frameworks */,
@@ -547,9 +642,9 @@
 				4DE06EFC1A62FC83007C676D /* PBXTargetDependency */,
 				4DE06EF81A62FA03007C676D /* PBXTargetDependency */,
 			);
-			name = "StarCraft Injector";
+			name = "SC2 API Injector";
 			productName = "StarCraft Injector";
-			productReference = 4DE06EE51A62DC4B007C676D /* StarCraft Injector */;
+			productReference = 4DE06EE51A62DC4B007C676D /* SC2 API Injector */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -563,6 +658,12 @@
 				TargetAttributes = {
 					4D34F74E1A5B4CB000A08B73 = {
 						CreatedOnToolsVersion = 6.1.1;
+					};
+					4D9665D01AB089DC00EF4F1B = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					4D9665DC1AB089ED00EF4F1B = {
+						CreatedOnToolsVersion = 6.2;
 					};
 					4DA692581A637CD2004A4A13 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -594,10 +695,12 @@
 			);
 			projectRoot = "";
 			targets = (
-				4DAF72F81A2F7C1600DF7137 /* StarCraft2API */,
+				4DAF72F81A2F7C1600DF7137 /* Loader */,
 				4D34F74E1A5B4CB000A08B73 /* Generator */,
-				4DE06EE41A62DC4B007C676D /* StarCraft Injector */,
+				4DE06EE41A62DC4B007C676D /* SC2 API Injector */,
 				4DA692581A637CD2004A4A13 /* Texture Classifier */,
+				4D9665D01AB089DC00EF4F1B /* OpenGLStateMachine */,
+				4D9665DC1AB089ED00EF4F1B /* SC2API */,
 			);
 		};
 /* End PBXProject section */
@@ -620,6 +723,24 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4D9665CF1AB089DC00EF4F1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D9666511AB1DFDD00EF4F1B /* LICENSE in Resources */,
+				4D9666421AB1DFDD00EF4F1B /* LICENSE in Resources */,
+				4D9666411AB1DFDD00EF4F1B /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D9665DB1AB089ED00EF4F1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D9666561AB1DFE300EF4F1B /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DA692571A637CD2004A4A13 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -633,19 +754,94 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DB832941A65C51E0028F3F2 /* SC2Controller.xib in Resources */,
-				4DB832961A65C6170028F3F2 /* SC2Window.xib in Resources */,
+				4D96660E1AB1DFCC00EF4F1B /* SC2Window.xib in Resources */,
+				4D96660D1AB1DFCC00EF4F1B /* SC2Controller.xib in Resources */,
+				4D96725B1AB1E1D700EF4F1B /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4D70DF701AB32CE000E6716E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CWBuildNumber\" \"${PROJECT_DIR}/Loader/Info.plist\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CWBuildNumber $buildNumber\" \"${PROJECT_DIR}/Loader/Info.plist\"";
+		};
+		4D70DF711AB32CFF00E6716E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CWBuildNumber\" \"${PROJECT_DIR}/OpenGL State Machine/Info.plist\")\nversion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/OpenGL State Machine/Info.plist\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CWBuildNumber $buildNumber\" \"${PROJECT_DIR}/OpenGL State Machine/Info.plist\"\necho \"#define VERSION \\\"$version\\\"\" > \"${PROJECT_DIR}/OpenGL State Machine/version.h\"\necho \"#define BUILD_NUMBER \\\"$buildNumber\\\"\" >> \"${PROJECT_DIR}/OpenGL State Machine/version.h\"";
+		};
+		4D70DF721AB32D3300E6716E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CWBuildNumber\" \"${PROJECT_DIR}/SC2 API/Info.plist\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CWBuildNumber $buildNumber\" \"${PROJECT_DIR}/SC2 API/Info.plist\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4D34F74B1A5B4CB000A08B73 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D34F7561A5B4CBA00A08B73 /* Generator.cpp in Sources */,
+				4D96661C1AB1DFD600EF4F1B /* Generator.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D9665CD1AB089DC00EF4F1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D70DF641AB1EA1400E6716E /* OpenGL State Machine_definitions.cpp in Sources */,
+				4D9666491AB1DFDD00EF4F1B /* SC2Program.cpp in Sources */,
+				4D9666481AB1DFDD00EF4F1B /* SC2FragmentProgram.cpp in Sources */,
+				4D9666501AB1DFDD00EF4F1B /* TextureDatabase.cpp in Sources */,
+				4D96664A1AB1DFDD00EF4F1B /* SC2VertexProgram.cpp in Sources */,
+				4D96664F1AB1DFDD00EF4F1B /* Texture.cpp in Sources */,
+				4D70DF751AB3754D00E6716E /* version.h in Sources */,
+				4D9666461AB1DFDD00EF4F1B /* ARBtoOpenCL.cpp in Sources */,
+				4D70DF681AB220A100E6716E /* LoaderAPI.mm in Sources */,
+				4D9666441AB1DFDD00EF4F1B /* README.md in Sources */,
+				4D96664C1AB1DFDD00EF4F1B /* SC2 State Machine.cpp in Sources */,
+				4D9666521AB1DFDD00EF4F1B /* README.md in Sources */,
+				4D9666531AB1DFDD00EF4F1B /* xxhash.c in Sources */,
+				4D70DF6B1AB225BA00E6716E /* Logging_definitions.cpp in Sources */,
+				4D9666431AB1DFDD00EF4F1B /* lupng.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D9665D91AB089ED00EF4F1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D70DF6F1AB225E800E6716E /* LoaderAPI.cpp in Sources */,
+				4D70DF6D1AB225D600E6716E /* Logging_definitions.cpp in Sources */,
+				4D70DF651AB1EA1400E6716E /* OpenGL State Machine_definitions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,31 +859,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DB0945B1A50A780005872DE /* Loader.mm in Sources */,
-				4DE06ED81A62CA67007C676D /* decode.c in Sources */,
-				4DB0945C1A50A780005872DE /* OpenGLOverrider.cpp in Sources */,
-				4DE06F0E1A635747007C676D /* Texture.cpp in Sources */,
-				4DE06EDB1A62CA67007C676D /* syn-att.c in Sources */,
-				4DB094581A50A76F005872DE /* mach_override.c in Sources */,
-				4DE06F031A6326AB007C676D /* OpenGL State Machine.cpp in Sources */,
-				4DE06F0B1A63573C007C676D /* TextureDatabase.cpp in Sources */,
-				4D00B7911A718ED300F1CBA3 /* SC2VertexProgram.cpp in Sources */,
-				4DE06EDE1A62CA67007C676D /* udis86.c in Sources */,
-				4DB832931A65C51E0028F3F2 /* SC2Controller.m in Sources */,
-				4DE06ED91A62CA67007C676D /* input.c in Sources */,
-				4DAAEEA61A656E5C002666EA /* ThreadHelpers.cpp in Sources */,
-				4D34F7471A5B3A8A00A08B73 /* xxhash.c in Sources */,
-				4D00B7941A718EDF00F1CBA3 /* SC2Program.cpp in Sources */,
-				4D0D41E11A5F243400443983 /* OpenGLEnumToString.cpp in Sources */,
-				4DAB00F21A8512A800844B10 /* ARBtoOpenCL.cpp in Sources */,
-				4D34F73C1A5B3A7F00A08B73 /* lupng.c in Sources */,
-				4D00B7971A718EF500F1CBA3 /* SC2FragmentProgram.cpp in Sources */,
-				4DAAEEA31A656DBD002666EA /* Logging.mm in Sources */,
-				4DE06EDA1A62CA67007C676D /* itab.c in Sources */,
-				4DE06EDD1A62CA67007C676D /* syn.c in Sources */,
-				4DE06EDC1A62CA67007C676D /* syn-intel.c in Sources */,
-				4DB773661AA38260007161B2 /* Structures.cl in Sources */,
-				4DB773651AA3825D007161B2 /* ARBInstructions.cl in Sources */,
+				4D9666171AB1DFCC00EF4F1B /* mach_override.c in Sources */,
+				4D9666101AB1DFCC00EF4F1B /* input.c in Sources */,
+				4D9672581AB1E11A00EF4F1B /* OpenGLOverrider.cpp in Sources */,
+				4D9672591AB1E18D00EF4F1B /* OpenGLEnumToString.cpp in Sources */,
+				4D9666131AB1DFCC00EF4F1B /* syn-intel.c in Sources */,
+				4D9666161AB1DFCC00EF4F1B /* Loader.mm in Sources */,
+				4D96660C1AB1DFCC00EF4F1B /* SC2Controller.mm in Sources */,
+				4D9666141AB1DFCC00EF4F1B /* syn.c in Sources */,
+				4D9666151AB1DFCC00EF4F1B /* udis86.c in Sources */,
+				4D9666181AB1DFCC00EF4F1B /* Logging.mm in Sources */,
+				4D9666121AB1DFCC00EF4F1B /* syn-att.c in Sources */,
+				4D70DF631AB1EA1400E6716E /* OpenGL State Machine_definitions.cpp in Sources */,
+				4D9666191AB1DFCC00EF4F1B /* ThreadHelpers.cpp in Sources */,
+				4D96660F1AB1DFCC00EF4F1B /* decode.c in Sources */,
+				4D70DF5F1AB1E9C400E6716E /* Logging_definitions.cpp in Sources */,
+				4D9666111AB1DFCC00EF4F1B /* itab.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,6 +889,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4D70DF571AB1E55800E6716E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D9665D01AB089DC00EF4F1B /* OpenGLStateMachine */;
+			targetProxy = 4D70DF561AB1E55800E6716E /* PBXContainerItemProxy */;
+		};
+		4D70DF591AB1E55A00E6716E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D9665DC1AB089ED00EF4F1B /* SC2API */;
+			targetProxy = 4D70DF581AB1E55A00E6716E /* PBXContainerItemProxy */;
+		};
 		4DE06EF81A62FA03007C676D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MachInjectorFramework;
@@ -709,7 +906,7 @@
 		};
 		4DE06EFC1A62FC83007C676D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4DAF72F81A2F7C1600DF7137 /* StarCraft2API */;
+			target = 4DAF72F81A2F7C1600DF7137 /* Loader */;
 			targetProxy = 4DE06EFB1A62FC83007C676D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -741,6 +938,82 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4D9665D51AB089DC00EF4F1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "OpenGL State Machine/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				OTHER_CFLAGS = (
+					"-DLUPNG_USE_ZLIB",
+					"-fno-constant-cfstrings",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		4D9665D61AB089DC00EF4F1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = "OpenGL State Machine/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				OTHER_CFLAGS = (
+					"-DLUPNG_USE_ZLIB",
+					"-fno-constant-cfstrings",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		4D9665E21AB089ED00EF4F1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SC2 API/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				OTHER_CFLAGS = "-fno-constant-cfstrings";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		4D9665E31AB089ED00EF4F1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = "SC2 API/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				OTHER_CFLAGS = "-fno-constant-cfstrings";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -852,9 +1125,10 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = StarCraft2API/Info.plist;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				INFOPLIST_FILE = Loader/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				OTHER_CFLAGS = "-DLUPNG_USE_ZLIB";
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
@@ -867,9 +1141,10 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = StarCraft2API/Info.plist;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				INFOPLIST_FILE = Loader/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				OTHER_CFLAGS = "-DLUPNG_USE_ZLIB";
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
@@ -918,6 +1193,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		4D9665D81AB089DC00EF4F1B /* Build configuration list for PBXNativeTarget "OpenGLStateMachine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D9665D51AB089DC00EF4F1B /* Debug */,
+				4D9665D61AB089DC00EF4F1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D9665E11AB089ED00EF4F1B /* Build configuration list for PBXNativeTarget "SC2API" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D9665E21AB089ED00EF4F1B /* Debug */,
+				4D9665E31AB089ED00EF4F1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4DA692781A637CD3004A4A13 /* Build configuration list for PBXNativeTarget "Texture Classifier" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -936,7 +1229,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4DAF73001A2F7C1600DF7137 /* Build configuration list for PBXNativeTarget "StarCraft2API" */ = {
+		4DAF73001A2F7C1600DF7137 /* Build configuration list for PBXNativeTarget "Loader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4DAF73011A2F7C1600DF7137 /* Debug */,
@@ -945,7 +1238,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4DE06EE91A62DC4B007C676D /* Build configuration list for PBXNativeTarget "StarCraft Injector" */ = {
+		4DE06EE91A62DC4B007C676D /* Build configuration list for PBXNativeTarget "SC2 API Injector" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4DE06EEA1A62DC4B007C676D /* Debug */,
